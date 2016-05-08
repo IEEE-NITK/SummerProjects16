@@ -10,9 +10,9 @@ pipes, tee, cut, tr, paste, sort, grep, sed, etc
 Learn about shells and Scripting with BASH and Python.
 
 ## 4. Vi, AWK and Perl scripting
-Learn text editing using the classic Vi editor.
-Master text filtering with AWK.
-Text manipulation made easy with Perl.
+Learn text editing using the classic Vi editor.     
+Master text filtering with AWK.     
+Text manipulation made easy with Perl.    
 
 * Start Project
 
@@ -35,7 +35,7 @@ Shed a little light on the architecture of the system.
 Version control with Git and other day to day tools like service, top, etc
 
 ## 9. Customizing kernels and Dependency Management
-Learn about linux kernels, device drivers and more about kernel building.
+Learn about linux kernels, device drivers and more about kernel building.     
 Dependency management with make, cmake, etc.
 
 ## 10. BREAK
