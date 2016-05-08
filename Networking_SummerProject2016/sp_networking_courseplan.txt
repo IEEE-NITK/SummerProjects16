@@ -1,11 +1,18 @@
 Networking Summer Project 2016
+
 Course Plan
-1st Week: 9th May-15th May
+
+1st Week: 9th May-15th 
 Tuesday-10th May: IRC session on Introduction to OSI Network Model, Covering Physical Layer.
 Friday-13th May(Tentative): IRC session on Data Link layer and Network Layer.
 Weekend-14-15 May: Assignment.
+
 2nd Week- 16th May-22nd May: 1 IRC session on Transport and Application Layer and 1 assignment.
+
 3rd and 4th Week: Socket Programming and Packet Tracing. (3 IRC and 1 assignment)
+
 5th and 6th Week: Implementation of TCP and UDP together for a chat application which is both text and video. (more like skype) and Introduction to ns3 (so that it can be used for the 7th and 8th week task).
+
 7th and 8th Week: Juniors have to built something creative using what they have learnt- More like a hackathon. (Mentors will guide them while coding).
+
 9th week: Few key points will be shared on IRC( Juniors will describe the application they built to other juniors).
