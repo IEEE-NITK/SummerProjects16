@@ -12,7 +12,7 @@ Learn text editing using the classic Vi editor.
 ## 4. Shells and Scripting
 Learn about shells and Scripting with BASH.
 
-*Start Project
+* Start Project
 
 ## 5. BREAK
 A week to revisit the things learnt so far.
@@ -37,9 +37,9 @@ Another week to revisit the things learnt so far.
 
 ## 11. The system architecture
 Shed a little light on the architecture of the system.
-* boot
-* file system
-* device management
+* Boot
+* File system
+* Device management
 
 ## 12. Git and other Linux tools
 Version control with Git and other day to day tools like service, top, etc
