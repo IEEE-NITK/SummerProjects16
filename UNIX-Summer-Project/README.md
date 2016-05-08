@@ -10,6 +10,9 @@ The sessions will be held over IRC on the #ieee-UNIX channel
 on freenode (detailed instructions will be mailed).
 
 For any doubts or queries, contact:
+
 E-mail: 
+
 dth.bht@gmail.com
+
 soundaryaramesh96@gmail.com
