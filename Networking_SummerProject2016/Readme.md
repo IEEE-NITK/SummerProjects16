@@ -13,8 +13,12 @@ There will be 9 sessions held on IRC.
 Channel : #ieeespnetworking
 
 Mentors:
+
 Sheetal Shalini : sheetalsh456@gmail.com
+
 Pooja Mahadev Soundalgekar : pooja27ms@gmail.com
+
 Isha Tarte : tarteisha@gmail.com
+
 
 For any doubts or queries, feel free to contact the mentors. 
