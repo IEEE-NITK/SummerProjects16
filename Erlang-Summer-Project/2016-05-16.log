@@ -1,0 +1,311 @@
+[01:18:01] *** Joins: rakshith (~hehaichi@61.3.24.144)
+[02:02:38] *** Quits: rakshith (~hehaichi@61.3.24.144) (Ping timeout: 265 seconds)
+[08:34:24] <vinayb> testing log 2
+[08:41:23] <vinayb> some more testing
+[08:43:59] *** vinayb changes topic to 'Distributed Systems Programming with Erlang | Today's log: https://goo.gl/3ud7jK'
+[09:02:45] *** Joins: botBot_ (736337c3@gateway/web/freenode/ip.115.99.55.195)
+[09:10:55] *** Joins: salman_ (b63a6b9b@gateway/web/freenode/ip.182.58.107.155)
+[09:18:10] <vinayb> hello salman_ 
+[09:18:21] <salman_> Hi vinayb
+[09:18:33] <salman_> :D
+[09:18:50] <salman_> How much time to start?
+[09:19:11] <botBot_> Gonna wait till people show up, might start by 7 15 or so
+[09:19:51] <salman_> Great I'll get a Shawrma and come :p
+[09:20:07] <salman_> I'm assuming botBot_ is Akshay?
+[09:20:28] <vinayb> no no it's my other monitoring account :P
+[09:20:34] <vinayb> ahh shawarma
+[09:20:38] <vinayb> sounds delicious
+[09:21:58] *** Joins: vilas_m (75dd2100@gateway/web/freenode/ip.117.221.33.0)
+[09:23:08] <salman_> Like seriously vinayb creating fake accountss
+[09:23:35] <salman_> You could have told me its my AI like JARVIS and I would've believed you :p
+[09:26:30] <vinayb> I never said otherwise ;)
+[09:28:24] *** Joins: aditya_a (75c04f5b@gateway/web/freenode/ip.117.192.79.91)
+[09:30:02] *** Joins: Z1 (~akshayrev@117.215.134.228)
+[09:31:01] *** Joins: m_gautham (75ca2125@gateway/web/freenode/ip.117.202.33.37)
+[09:34:18] <Z1> oh god.. stop commiting every 1 minute da..
+[09:34:54] *** Z1 is now known as akshayrevankar
+[09:35:54] <vinayb> auto log bro :P 
+[09:36:29] <akshayrevankar> save it in the VM and then finally log it.. no ones gonna check it every 1 minute on github, rather they use the IRC :P
+[09:36:36] *** Joins: rakshith (~hehaichi@117.202.66.206)
+[09:37:00] <vinayb> if somebody joins late, they can see the log akshayrevankar
+[09:37:20] <vinayb> Hello everyone!
+[09:37:23] <akshayrevankar> oh ok..
+[09:37:25] <vinayb> We'll be starting soon
+[09:39:21] <vinayb> Alright, let's begin. First, me and Akshay will introduce ourselves, then others, please do so :)
+[09:39:32] *** Joins: rakshith_ (~hehaichi@117.202.66.206)
+[09:39:40] <vinayb> I'm Vinay Bhat, second-year-finished IT. 
+[09:40:25] <akshayrevankar> I'm Akshay Revankar, second-year ECE.
+[09:40:52] *** Parts: rakshith_ (~hehaichi@117.202.66.206) ()
+[09:41:19] *** Quits: rakshith (~hehaichi@117.202.66.206) (Ping timeout: 265 seconds)
+[09:41:26] <vinayb> Both of us are your project heads for the Summer Project, and hopefully you all will like it :) 
+[09:41:26] *** Joins: rakshith_ (~hehaichi@117.202.66.206)
+[09:41:30] <m_gautham> i'm gautham first year cse
+[09:41:30] <salman_> I'm Salman Shah 1st year IT
+[09:41:32] <vilas_m> Hi! Vilas here, 1st year CS.
+[09:41:38] <aditya_a> Iam A Aditya ,1st year IT
+[09:41:50] <rakshith_> Hi, Rakshith here, 1st Year IT
+[09:42:13] <vinayb> salman_, any chance you can contact Pratyush? 
+[09:42:13] <salman_> Oh wait I'm second year IT*
+[09:42:22] <salman_> Yes I'll call him
+[09:42:24] <vinayb> Hello guys! Nice to meet you all
+[09:43:00] <vinayb> Alright, so the topic of this channel as well as this Summer Project is: "Distributed Systems Programming with Erlang"
+[09:44:01] <salman_> Pratyush is out he'll join us in some time.
+[09:44:38] <vinayb> Today, the agenda is to explain these four related, and important concepts: Functional Concepts, Distributed systems, Concurrency, Parallelism
+[09:44:53] <vinayb> and answer the question "Why Erlang?"
+[09:45:01] <vinayb> "Why should I learn a new programming language?"
+[09:45:40] <vinayb> Also, after we're done today, I'll send you links to download and setup Erlang. I'll be available on this channel if you run into problems.
+[09:45:59] *** Joins: Pratyushgr (40e9ad94@gateway/web/freenode/ip.64.233.173.148)
+[09:46:06] <vinayb> Does anyone have an idea about Distrbuted Systems here?
+[09:46:23] <Pratyushgr> No. Not me
+[09:46:33] <salman_> Yeah sort of
+[09:46:48] <salman_> Is it the way Google's Search Algorithm runs
+[09:46:55] <salman_> ?
+[09:47:21] <rakshith_> not exactly..
+[09:47:41] <vinayb> Right. That comes into the bigger picture of "Distributed Algorithms" but the idea is sorta same
+[09:47:59] <vinayb> Okay, so all of you know C
+[09:48:20] <vinayb> Now you might be wondering, I know C, I can solve problems with C, why should i bother with anything else
+[09:48:57] <vinayb> Let's see some problems that come up with that approach
+[09:48:59] *** Joins: rakshith (~hehaichi@117.202.66.206)
+[09:49:19] <vinayb> say you have one big C program for some work
+[09:49:57] <vinayb> Now, say it becomes very popular (assume it's hosted on the web), and some 50 million users want to use it
+[09:50:36] <vinayb> Since so many people start using it, somethings become problematic
+[09:50:54] <vinayb> Accessibility: 50 millionth person has to wait for all others to finish!
+[09:50:58] *** Quits: Pratyushgr (40e9ad94@gateway/web/freenode/ip.64.233.173.148) (Ping timeout: 250 seconds)
+[09:51:33] <vinayb> Reliability: 50 million people want to use it simultaneously, the immense load breaks the program, and it crashes!
+[09:52:08] <vinayb> Availability: Since it crashed, now no one can use it
+[09:52:46] <vinayb> Now, let's define Distributed Systems, and see how they deal with this pain points
+[09:53:30] <vinayb> Distributed Systems, put simply, are individual programs, all coordinating with each other by passing messages
+[09:54:01] <vinayb> Distributed Systems might be implemented as lots of tiny programs communicating with each other, but the outside impression if of "JUST ONE PROGRAM"
+[09:54:25] <vinayb> for example: everybody knows google.com, but google is implemented across lots and lots of servers
+[09:54:41] <vinayb> but you think of "google search" as one big entity
+[09:55:06] <vinayb> so that's the notion of distribution: dividing, communicating, yet giving the appearence of one big system
+[09:55:32] <vinayb> so those systems are "Distributed Systems": a collection of independent computers that appears to its users as a single coherent system
+[09:55:41] <vinayb> any doubts as of now?
+[09:55:47] <vilas_m> No
+[09:55:50] <salman_> Umm yeah
+[09:55:58] <rakshith_> no
+[09:56:03] <aditya_a> no
+[09:56:03] <salman_> Can u tell why  a program crashes?
+[09:56:15] <salman_> As in its independent code on each computer
+[09:56:21] <salman_> Why will it crash?
+[09:57:26] <vinayb> Our assumption is that it is running only on one computer. So if 50 million people try accessing it, now imagine 50 million * X MB of data needs to given, the CPU needs to process them.. it overwhelms the computer and it crashes
+[09:58:02] <vinayb> and by XMB of data, I mean physical RAM: which is only few gigabytes
+[09:58:16] <salman_> Oh okay
+[09:58:21] <vinayb> Distribution helps PREVENT this
+[09:58:22] <salman_> Please continue
+[09:58:36] <salman_> How?
+[09:58:49] <vinayb> Let's see that. So the pain points:
+[09:59:19] <vinayb> Accessibility: By having 100s of instances of a program, you make it more accessable to users.
+[09:59:30] <vinayb> which is obvious
+[09:59:49] <vinayb> Reliability: If one fails, there's still lots other instances
+[10:00:21] <vinayb> Availability: Say one component failed. Yet there are lots others which will ensure users can use the program
+[10:01:48] <vinayb> Now, let's talk a bit about Functional concepts. We'll see how it all relates to Distributed systems, and Concurrency, Parallelism
+[10:02:15] <vinayb> In a Functional programming language such as Erlang, there's no notion of mutable data
+[10:02:27] <vinayb> by mutable, i mean data that can be changed
+[10:06:14] <salman_> ok
+[10:06:16] *** Parts: aditya_a (75c04f5b@gateway/web/freenode/ip.117.192.79.91) ()
+[10:06:43] *** Joins: aditya_a_ (75c04f5b@gateway/web/freenode/ip.117.192.79.91)
+[10:06:54] <vinayb> so yes, Erlang has no variables!
+[10:09:46] *** Joins: m__gautham (75ca2125@gateway/web/freenode/ip.117.202.33.37)
+[10:09:54] *** Joins: botbot2 (dfe4bef0@gateway/web/freenode/ip.223.228.190.240)
+[10:10:25] <vinayb> hey guys sorry, had a technical glitch
+[10:10:39] *** Quits: m__gautham (75ca2125@gateway/web/freenode/ip.117.202.33.37) (Client Quit)
+[10:11:15] <vinayb> alright, so as i said: there's notion of variables in erlang
+[10:11:20] *** Quits: botBot_ (736337c3@gateway/web/freenode/ip.115.99.55.195) (Ping timeout: 250 seconds)
+[10:11:32] <vinayb> This property is called "Referential Transparency"
+[10:11:52] <vinayb> a function f(x) which returns the same value for some x, is referentially transparent!
+[10:11:55] <vinayb> eg:
+[10:12:05] <vinayb> f(x) = x + 5 is referentially transparent
+[10:12:13] <vinayb> however, todays_date() is not
+[10:12:18] <vinayb> as it changes every day
+[10:12:22] <vinayb> any doubts?
+[10:12:32] <salman_> no
+[10:12:40] <vilas_m> no
+[10:12:45] <m_gautham> no
+[10:12:59] <rakshith_> no
+[10:13:03] <aditya_a_> no
+[10:14:17] <vinayb> alright, now this leads us to what we call a "pure" function
+[10:14:35] <vinayb> a pure function is referentially transparent
+[10:15:00] <vinayb> why is this good? can anyone tell me?
+[10:15:08] <vinayb> what's the advantage of pure functions?
+[10:15:12] <vinayb> you can guess anything
+[10:15:52] <vilas_m> On different systems, you get the same result regardless of other conditions?
+[10:15:52] <vinayb> anyone?
+[10:16:12] <vinayb> vilas_m: execellent answer!
+[10:16:31] <vinayb> much better that my not so excellent spelling
+[10:16:35] <vinayb> *than
+[10:16:45] <rakshith_> lol
+[10:16:47] <vilas_m> LOL xD
+[10:16:50] <salman_> :D
+[10:17:12] <vinayb> So yes, with pure functions, testing becomes easier. No external condition can crash our system!
+[10:17:38] <vinayb> You can reason more easily about your function
+[10:18:31] <vinayb> With pure functions, composability becomes easier!
+[10:19:04] <vinayb> because of this very simple notion: If f, and g are pure, then so f o g and g o f!
+[10:19:08] <vinayb> * so are
+[10:19:19] <vinayb> f o g = f(g(x))
+[10:19:57] <vinayb> if however
+[10:20:23] <vinayb> both f and g are impure: then you have to worry about external conditions in both f AND g! so any small crash can crash the other
+[10:20:33] <vinayb> this is how pure functions are so important
+[10:20:57] <vinayb> Functional programming is all about writing these pure functions, and composing them together :)
+[10:22:23] <vinayb> can anyone tell me if IO is pure or impure? ;)
+[10:22:31] <vinayb> by IO i mean scanf, printf etc
+[10:22:36] *** Joins: Pratyushgr (40e9adbd@gateway/web/freenode/ip.64.233.173.189)
+[10:22:55] <rakshith_> i guess not
+[10:23:09] <salman_> Pure?
+[10:23:26] <salman_> Because once given a value they can't be changed
+[10:24:04] <vinayb> IO is impure
+[10:24:16] <salman_> Okay.
+[10:24:18] <vinayb> like print_todays_date()
+[10:24:27] <vinayb> it will print something different every new day
+[10:25:07] <vinayb> and any program without IO is kinda useless :)
+[10:25:31] <vinayb> so what Functional Programming also allows you tu use impure functions
+[10:25:40] <vinayb> *to
+[10:25:45] <vinayb> *there's no what
+[10:26:02] <vinayb> *so functional programming also allows you to use impure functions
+[10:26:13] <vinayb> But, importantly, it SEPERATES them
+[10:26:24] <vinayb> you KNOW which are pure and which aren't
+[10:27:10] <vinayb> this might seem totally unrelated to DS, but we'll see soon how they are related
+[10:27:42] <vinayb> Now, I'll digress a bit, and talk about Concurrency
+[10:27:57] <vinayb> does anyone have an idea about Concurrency?
+[10:28:55] <rakshith_> like parallel programming?
+[10:29:46] <vinayb> Parallel and Concurreny are very related, but there's a slight difference ;)
+[10:30:02] <salman_> No
+[10:30:11] <vinayb> Alright, put simply, concurrency means running somethings at the same time
+[10:30:38] <vinayb> In programs that you all are used to, program is run line by line
+[10:30:56] <vinayb> that's called sequential program flow
+[10:31:27] <vinayb> in concurrent program flow, multiple parts of a program are running
+[10:31:45] *** Quits: akshayrevankar (~akshayrev@117.215.134.228) (Quit: Leaving)
+[10:32:25] <vinayb> similarly, even in parallel programs, things are running parallely at the same time
+[10:32:39] <vinayb> difference between concurrency and parallelism:
+[10:32:49] <vinayb> I'll show this with example
+[10:33:05] <vinayb> say you have a program which has two parts which run at the same time
+[10:33:11] <rakshith_> similar to multithreading?
+[10:33:21] <vinayb> yes!
+[10:34:04] <vinayb> now, if you only have one processor, processor has to run one part for some time, then shift to another for some time.. and so on.. to give the APPEARENCE of them running at the same time
+[10:34:31] <vinayb> if you had two processors, then no need of appearence! both parts can actually run on each processor!
+[10:34:31] *** Joins: akshayrevankar (~akshayrev@117.215.134.228)
+[10:35:11] <vinayb> running one part for some time, then other, then other for some time.. on a single processor is called MULTIPLEXING
+[10:35:21] <vinayb> this is concurrency!
+[10:35:34] <vinayb> when there is the appearence of things runnning at the same time
+[10:36:05] <vinayb> Parallelism is when they ACTUALLY run at the same time, because of hardware support!
+[10:36:14] <vinayb> any doubts?
+[10:36:18] <rakshith_> nope
+[10:36:24] <salman_> Nope
+[10:36:27] <m_gautham> nope
+[10:36:42] <vilas_m> No
+[10:36:50] <aditya_a_> no
+[10:36:51] <akshayrevankar> vinay can u tell the difference between threading and concurrency also
+[10:39:00] <vinayb> right, threading is a WAY to divide your program into multiple parts
+[10:39:17] <vinayb> So you have threads running at the same time
+[10:39:42] <vinayb> if you only have one processor: they get MULTIPLEXED, and you have appearency of them running at the same time
+[10:39:58] <vinayb> otherwise, they actually get run at the same time, thanks to multiple processors
+[10:40:17] <vinayb> can anyone tell me why is concurrency or parallelism important?
+[10:40:25] <vinayb> *is important?
+[10:40:44] <salman_> Faster results
+[10:40:45] <rakshith_> to be able to do multiple tasks at the same time?
+[10:40:57] <salman_> Basically the code gets execcuted fasteer
+[10:41:02] <vinayb> Exactly!
+[10:42:28] <vinayb> And it has real life importance too in the sense that you HAVE hardware support (multiple processors, in phones as well as computers), etc, so it is very important to know concurrent programming
+[10:42:44] <vinayb> now, let's bring it all together
+[10:43:04] <vinayb> today we talked about Distribution, functional concepts, concurrency, parallelism
+[10:43:19] <vinayb> Erlang is a beautiful language which has NATIVE support for all of that!
+[10:44:38] <vinayb> in C, where you have line by line execution, Erlang has direct support for multiple threads (Erlang calls them "processes") which send messages to each other!
+[10:45:27] <vinayb> and now how are all those concepts related?
+[10:45:38] <vinayb> the thing is, each concept reinforces the other!
+[10:46:02] <rakshith_> on another note, even python has support for all of these isn't it?
+[10:47:00] <vinayb> so does C, but it's very painful in python.. and if you try making 50 million threads in Python, your computer will die like Julius Caesar on May 15th ;)
+[10:47:18] <vinayb> But Erlang, 50 million processes is no big deal :)
+[10:47:26] <vinayb> okay, back on track
+[10:47:40] <akshayrevankar> Ok.. one point about threading and concurrency that i asked before is. In case of concurrency the important factor is that the outcome of each individually running computation is independent of the others.. In case of threading, we basically run threads of different things performing at the same time. For example: I could have an IO operation which can be concurrent and handling different users but performing the same operation independent
+[10:47:40] <akshayrevankar> ly. Threading would be like there is a IO operation going on for a user and there is a spell check engine running. Both of them will be encapsulated into one but running in two threads with spell check continously using the data from the IO. Now these two encapsulated things run concurrently for different users
+[10:48:06] <vinayb> Exactly. 
+[10:48:17] <vinayb> So with pure functions, concurrency is very easy!
+[10:48:24] <akshayrevankar> yep
+[10:48:58] <vinayb> because they don't have any side effects, you can a huge number of concurrent parts running, because they won't mess with each other!
+[10:49:04] <vinayb> *have a 
+[10:49:33] <vinayb> And with pure functions.. concurrency.. you can distribute them easily!
+[10:50:12] <vinayb> You'll have Reliability, Accessibility, Availability, regardless of 50 users or 50 million users!
+[10:51:02] <akshayrevankar> we have seen mostly erlang as most said in their IEEE response, that it is used for Whatsapp.. Has erlang been implemented for tcp/ip or is it just being used for xmpp ?
+[10:51:28] <vinayb> So this is why we are learning Distributed Systems with Erlang: it has native, and powerful support for concurrency and is a functional language
+[10:51:43] <vinayb> They don't know TCP/IP or XMPP
+[10:51:55] <vinayb> But Erlang can be implemented for both
+[10:52:06] <akshayrevankar> ok..
+[10:52:08] <vinayb> So, WhatsApp's backend is written in Erlang
+[10:52:40] <vinayb> and only 11 engineers manage that codebase!
+[10:52:53] <vinayb> 11 engineers for a service that has 1 BILLION messages every day!
+[10:52:56] *** Quits: Pratyushgr (40e9adbd@gateway/web/freenode/ip.64.233.173.189) (Ping timeout: 250 seconds)
+[10:53:03] <akshayrevankar> i am asking questions here which target to vinay but are meant for others to search upon also
+[10:53:55] <vinayb> So you can visualize WhatsApp's each "connection" between person A to person B as an Erlang process!
+[10:54:24] <vinayb> yeah, akshayrevankar and me want you guys to become curious and search more :)
+[10:54:32] <vinayb> So this is why Erlang is important
+[10:54:40] <vinayb> This is why C is inadequate
+[10:55:05] <salman_> So basically that "connection" is indpendent of any other "connection" ryt?
+[10:55:15] <salman_> Which is why it is concurrent?
+[10:55:16] <vinayb> exactly!
+[10:55:43] <vinayb> What you and your wife talk, your mistress shouldn't come to know :p
+[10:55:50] <rakshith_> lol
+[10:55:54] <salman_> Or is it parallel?
+[10:56:15] <vinayb> It is parallel because of hardware support
+[10:56:18] <vinayb> it's a fine line
+[10:56:23] <salman_> How do you differentiate where you use concurrency and where you use parallel?
+[10:56:33] <vinayb> when you know the underlying hardware
+[10:56:37] <rakshith_> You mean there are really 50 million processors out there?
+[10:57:33] <vinayb> No, in practice, it's a mix of parallelism and concurrency.. WhatsApp has about 100 XEON servers, which each have about 4 cores.. 16 processors each.. :)
+[10:58:02] <rakshith_> 4 cores and 16 threads basically..
+[10:58:18] <rakshith_> ?
+[10:58:55] <vinayb> yeah. But then it gets blurred because your OS also does Multiplexing.. and then on top of that, even Erlang does multiplexing for its "processes"
+[10:59:41] <vinayb> point being that with Erlang you can handle so many connections with only that much hardware@
+[10:59:44] <vinayb> *!
+[10:59:50] <salman_> So shouldn't multiplexing make it slower?
+[11:00:11] <salman_> Instead of pure parallelism
+[11:00:50] <rakshith_> OS tries to minimize the idle time of each processor, and in the time thus saved, it multiplexes.. Am i right?
+[11:01:02] <vinayb> Yes, but keep in mind that processors are idle too.. so in pure parallelism.. they'd just sit there wasting time like we do in lectures. Instead, by using multiplexing, when a processor is idle, we can put the other process on it!
+[11:01:09] <vinayb> exactly rakshith_ !
+[11:01:56] <salman_> okay
+[11:02:23] <vinayb> so now would you guys say C is enough?
+[11:02:44] <rakshith_> not at all :P
+[11:02:47] <vilas_m> No xD
+[11:02:53] <aditya_a_> no
+[11:03:20] <vinayb> that was the aim of today's session :)
+[11:03:41] <vinayb> and thus we begin the journey of learning these wonderful ideas and language!
+[11:03:52] <vinayb> ..that's it for today :)
+[11:04:00] <aditya_a_> So is this mix of concurrency and parallelism better than pure parallelism?
+[11:04:03] <vinayb> you can ask me questions
+[11:04:56] <vinayb> Yes, it is better because, if we needed 50 million processors for handle 50 million message: first of all no money. second, lots of idle time being wasted. so mix is better :)
+[11:05:23] <vinayb> It's a fine balance between speed, cost and efficiency!
+[11:05:53] <aditya_a_> ok!
+[11:06:17] *** Quits: m_gautham (75ca2125@gateway/web/freenode/ip.117.202.33.37) (Quit: Page closed)
+[11:06:37] <vinayb> You guys can now try installing Erlang on Windows, or Linux if you have that.. you can ask me questions if you encounter any problems. 
+[11:06:54] <vinayb> That's all for today folks :)
+[11:07:32] <aditya_a_> thank u!!
+[11:07:35] <vilas_m> Thanks a lot! :) Was a good session...
+[11:07:52] <vinayb> I hope you guys liked it! :)
+[11:08:33] <vinayb> You can ping me on IRC, mail, whatsapp, however you prefer
+[11:09:02] *** Parts: vilas_m (75dd2100@gateway/web/freenode/ip.117.221.33.0) ()
+[11:09:44] <salman_> Could you explain xmpp
+[11:09:53] <salman_> I understood tcp/ip
+[11:10:18] <salman_> And the stark difference between the two?
+[11:12:19] <vinayb> TCP/IP is a network protocol for communication in the Internet. XMPP is a chat protocol. You need to know the layered protocol model to appreciate the differences between the two, and XMPP is usually a layer on top of TCP/IP
+[11:14:02] <salman_> The 7 layer model right
+[11:14:16] <salman_> Application, Presentation......
+[11:14:49] <salman_> So TCP/IP comes in the Network model right?
+[11:15:20] <salman_> Network Layer*
+[11:15:54] <salman_> I think this was covered in the winter session
+[11:16:10] <rakshith_> transport layer in ip suite / network layer in osi model
+[11:17:12] *** Quits: botbot2 (dfe4bef0@gateway/web/freenode/ip.223.228.190.240) (Ping timeout: 250 seconds)
+[11:17:40] <salman_> OKay what about XMPP
+[11:17:44] *** Quits: akshayrevankar (~akshayrev@117.215.134.228) (Quit: Leaving)
+[11:17:55] <vinayb> TCP Transport layer, IP network layer, XMPP application layer
+[11:18:14] <salman_> Ah okay.....
+[11:19:03] <salman_> So what of Erlang
+[11:19:46] <salman_> Where is it implemented
+[11:19:49] <salman_> ?
+[11:20:49] <vinayb> Erlang has TCP/IP "sockets", and it has Binary pattern matching which makes it very easy to make protocols on top of TCP/IP
+[11:21:02] *** Quits: rakshith_ (~hehaichi@117.202.66.206) (Quit: Leaving)
+[11:21:02] <vinayb> we'll talk more about this in later sessions :)
+[11:22:10] <vinayb> alright, going out for a bit for dinner. 
+[11:22:13] <salman_> Oh okay then
+[11:22:18] <salman_> Yup bye
+[11:22:19] <salman_> ..
+[11:22:24] <salman_> Thanks for today
+[11:22:30] *** Parts: salman_ (b63a6b9b@gateway/web/freenode/ip.182.58.107.155) ()
