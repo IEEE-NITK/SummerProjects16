@@ -1,0 +1,492 @@
+--- Log opened Mon May 16 19:26:15 2016
+19:26 ::: soundaryaramesh [~soundarya@59.94.75.163] has joined #ieee-UNIX
+19:26 ::: Irssi: #ieee-UNIX: Total of 3 nicks [1 ops, 0 halfops, 0 voices, 2 normal]
+19:26 ::: Irssi: Join to #ieee-UNIX was synced in 2 secs
+19:34 ::: rahul_kummi [~rahul@117.235.106.155] has joined #ieee-UNIX
+19:34 ::: catchchaos [6ad8b2ea@gateway/web/freenode/ip.106.216.178.234] has joined #ieee-UNIX
+19:35 < rahul_kummi> hey guys this is rahul.
+19:35 ::: rahul_kummi [~rahul@117.235.106.155] has quit [Remote host closed the connection]
+19:36 ::: rahul_kummi [~rahul@117.235.106.155] has joined #ieee-UNIX
+19:36 ::: rahul_kummi [~rahul@117.235.106.155] has quit [Remote host closed the connection]
+19:37 ::: rahul_kummi [~rahul@117.235.106.155] has joined #ieee-UNIX
+19:39 < soundaryaramesh> hey rahul. we'll start the session at 8pm sharp if enough people are there.
+19:39 < rahul_kummi> okay:)
+19:41 ::: bharath [3d026b31@gateway/web/freenode/ip.61.2.107.49] has joined #ieee-UNIX
+19:47 ::: rahul_kummi [~rahul@117.235.106.155] has quit [Quit: Leaving]
+19:48 ::: Samvid [~Samvid@176.205.64.107] has joined #ieee-UNIX
+19:48 ::: rahul_kummi [~rahul@117.235.106.155] has joined #ieee-UNIX
+19:50 ::: kaushik_sk [~kaushik21@117.200.120.7] has joined #ieee-UNIX
+19:50 ::: siddhanth [8b0530cf@gateway/web/freenode/ip.139.5.48.207] has joined #ieee-UNIX
+19:55 ::: swati [~swati@14.99.162.43] has joined #ieee-UNIX
+19:55 ::: m_gautham_ [75ca2125@gateway/web/freenode/ip.117.202.33.37] has joined #ieee-UNIX
+19:58 ::: Harita_Reddy [73f125d6@gateway/web/freenode/ip.115.241.37.214] has joined #ieee-UNIX
+19:59 < catchchaos> Hi!
+19:59 < catchchaos> I'm Param Hanji, one of your mentors
+20:00 < catchchaos> A few more of you need to connect. Let's give it a few more minutes.
+20:01 < soundaryaramesh> Hey guys. I'm Soundarya. 
+20:03 < soundaryaramesh> You guys can introduce yourselves too :P
+20:04 < rahul_kummi> hey guys,
+20:04 < catchchaos> *should introduce :p
+20:04 < catchchaos> since it's the first time
+20:05 < rahul_kummi> Rahul Kumaresan here from IT
+20:05 < m_gautham_> Hello i'm gautham fromCS
+20:05 < bharath> hi guys i am bharath from cs
+20:05 < Samvid> Hey guys, Samvid here, CSE :)
+20:06 < Harita_Reddy> Hi, Harita here, from CSE
+20:06 < swati> Swati here, from IT :)
+20:07 < catchchaos> If anyone you know is about to join us, tell them to hurry up
+20:08 < kaushik_sk> Kaushik here, from CSE 
+20:08 < siddhanth> This is Siddhanth, from IT
+20:09 ::: Varsh [dfe37933@gateway/web/freenode/ip.223.227.121.51] has joined #ieee-UNIX
+20:10 < soundaryaramesh> So we have enough number of people now. 
+20:10 < soundaryaramesh> Let's start the session :)
+20:11 < soundaryaramesh> We gave you tasks to do. Did you guys do it?
+20:12 < soundaryaramesh> And this session is completely informal. So you guys can stop us whenever if you have doubts :)
+20:12 < soundaryaramesh> Answer, guys :p
+20:12 < m_gautham_> installing linux right
+20:12 ::: abhisheks [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has joined #ieee-UNIX
+20:13 < Samvid> yup, did them
+20:13 < soundaryaramesh> Nope. The ones in the mail
+20:13 < rahul_kummi> yeah, did those
+20:13 < kaushik_sk> yup
+20:13 < soundaryaramesh> So what's the command to create a directory? 
+20:14 < bharath> mkdir directoryname
+20:14 < soundaryaramesh> So rahul, can you tell me all the commands you used for those questions?
+20:14 < catchchaos> https://groups.google.com/forum/#!topic/unix-summer-project-nitk-ieee/0G6mnQHSfAY
+20:14 < catchchaos> This were the tasks
+20:14 < soundaryaramesh> So you typed mkdir unix project? Is it right?
+20:14 < catchchaos> These*
+20:15 < rahul_kummi> mkdir <UNIXproject>
+20:15 < rahul_kummi> cat r1
+20:15 < rahul_kummi> sorry
+20:16 < rahul_kummi> cat >r1
+20:16 < soundaryaramesh> The directory name was unix project with a space in between? Are you sure that command worked?
+20:16 < rahul_kummi> entered some text
+20:16 < bharath> no
+20:16 < rahul_kummi> whats with the name
+20:16 < Samvid> mkdir "Unix Project" works
+20:17 < soundaryaramesh> yep. Samvid you're right.
+20:17 < soundaryaramesh> Has anybody done it without using quotes?
+20:17 < catchchaos> @rahul cat can't be used to create directories, only files
+20:17 < swati> mkdir Unix\ Project
+20:18 < rahul_kummi> okay
+20:18 < soundaryaramesh> That's right swati :)
+20:18 < soundaryaramesh> So wat's \ called? other than backslash ofc :P
+20:19 < soundaryaramesh> it's basiaclly an escape character which takes off the special meaning associated with space in general
+20:20 < soundaryaramesh> if you had otherwise typed mkdir unix project, you would have got two new directories unix and project
+20:20 < soundaryaramesh> So what's the answer for the next question?
+20:21 < soundaryaramesh> you have to go into the directory, so yo use which command?
+20:21 < kaushik_sk> cd Unix\ Project
+20:21 < bharath> cd
+20:21 < bharath> command
+20:21 < soundaryaramesh> yep right.
+20:22 < soundaryaramesh> And next, like rahul said it is cat >r1
+20:22 < soundaryaramesh> So, this will create a new file called r1.
+20:22 < soundaryaramesh> And you can write into it. How to close the file after writing?
+20:22 < Samvid> ctrl+d
+20:22 < soundaryaramesh> correct. wat is ^d here?
+20:23 < rahul_kummi> ctrl+c also works
+20:23 < kaushik_sk> is using cltr+c wrong ?
+20:23 < rahul_kummi> what would this be
+20:24 < soundaryaramesh> This is the first session, hence will be basic. As it progresses it will get harder.(for those of you who are wondering why the hell is she teaching us simple commands :P)
+20:24 < soundaryaramesh> Both are right.
+20:24 < soundaryaramesh> But they mean different things
+20:24 < catchchaos> Good question
+20:24 < soundaryaramesh> Do you guys know the difference?
+20:24 < soundaryaramesh> Anybody?
+20:25 < rahul_kummi> is ctrl+D to quit the current action
+20:25 < rahul_kummi> ..
+20:25 < soundaryaramesh> Okay so basically, ^d is an End of file character. Once that is encountered, the file writing is complete.
+20:25 < kaushik_sk> ah
+20:25 ::: Harita_Reddy_ [73f13c68@gateway/web/freenode/ip.115.241.60.104] has joined #ieee-UNIX
+20:25 ::: Harita_Reddy [73f125d6@gateway/web/freenode/ip.115.241.37.214] has quit [Ping timeout: 250 seconds]
+20:26 < soundaryaramesh> ^c kills the current process which is the process of writing into the file.
+20:26 < abhisheks> ohk
+20:26 < soundaryaramesh> ^z also will work, although in this case you will be pausing the current process. This is not advisable.
+20:27 < catchchaos> 'fg'command can then be used to resume it
+20:27 < soundaryaramesh> So is there anyway to append text to a file using cat?
+20:28 < soundaryaramesh> Like say, you want to reopen r1 and add a few more lines.
+20:28 ::: Varsh [dfe37933@gateway/web/freenode/ip.223.227.121.51] has quit [Quit: Page closed]
+20:28 < soundaryaramesh> Okay before this, do you know wat '>' means in the previous command?
+20:29 < soundaryaramesh> Okay so basically this is called a redirection operator. 
+20:29 ::: rahul_kummi [~rahul@117.235.106.155] has quit [Ping timeout: 244 seconds]
+20:30 < soundaryaramesh> It opens a file to the right of it(in this case r1) in write mode, and writes whatever is entered on the terminal into it.
+20:30 < soundaryaramesh> As it opens it in 'w' mode, any existing text in r1 will be re-written
+20:30 < soundaryaramesh> Basically erased.
+20:31 < soundaryaramesh> So now if you want to append data, you should use the '>>' which will open the file in append mode.
+20:31 < soundaryaramesh> so it would be cat >> r1
+20:32 ::: rahul_kummi [~rahul@117.235.106.155] has joined #ieee-UNIX
+20:32 < soundaryaramesh> So now the last question, you guys got it?
+20:32 < kaushik_sk> yup
+20:32 < siddhanth> yep
+20:32 < Harita_Reddy_> Yes
+20:32 < soundaryaramesh> So harita, what's the command?
+20:32 < bharath> YES
+20:33 < Harita_Reddy_> Sorry, for what?
+20:33 < soundaryaramesh> the last question
+20:34 < soundaryaramesh> Anybody?
+20:34 < siddhanth> > is called redirection operator
+20:35 < soundaryaramesh> Okay so the command you can use is rmdir.
+20:35 < soundaryaramesh> yep.
+20:35 < soundaryaramesh> does rmdir unix\ project work?
+20:35 < kaushik_sk> nope
+20:35 < kaushik_sk> can't delete with files inside it
+20:36 < soundaryaramesh> so wat else would work?
+20:36 < kaushik_sk> rm -r Unix\ Project
+20:36 ::: m_gautham_ [75ca2125@gateway/web/freenode/ip.117.202.33.37] has quit [Quit: Page closed]
+20:36 < kaushik_sk> but when i read up it said "Use cautiously"
+20:36 ::: Harita_Reddy_ [73f13c68@gateway/web/freenode/ip.115.241.60.104] has quit [Quit: Page closed]
+20:36 < kaushik_sk> the -r command i mean
+20:36 < catchchaos> Correct! Did you realise why the warning was issued?
+20:37 < soundaryaramesh> Yes, so wat this -r option basically does is, it recursively deletes all files within that directory.
+20:37 < kaushik_sk> we may accidentally delete file? I dont know
+20:37 < soundaryaramesh> And as UNIX never gives you an undo option, once you delete the file, it's gone.
+20:38 < rahul_kummi> oh
+20:38 < kaushik_sk> Oh ok. Could you emphasise on the 'recursively' bt? What did you mean exactly ?
+20:38 < kaushik_sk> bit*
+20:38 < soundaryaramesh> there is a command which is capable of destroying your entire OS, by deleting all the files in your system. I'm not even gonna tell you guys that :P
+20:39 < kaushik_sk> wow
+20:39 < soundaryaramesh> That means, it will recursively traverse through every sub-directory within this particular file and delete files within that as well.
+20:39 < soundaryaramesh> *directory not file
+20:40 < soundaryaramesh> Kaushik, did you get it?
+20:40 < kaushik_sk> ah ok
+20:40 < kaushik_sk> gotit 
+20:40 < soundaryaramesh> Cool, so coming to the first question now. What's the difference between UNIX and LINUX?
+20:40 < catchchaos> Don't worry, if it didn't make sense, we'll revisit this when we do File Structure
+20:41 < catchchaos> The recursive bit
+20:41 < soundaryaramesh> Anybody?
+20:41 < soundaryaramesh> You don't have to be giving us right answers. Tell us what you know or think.
+20:41 < kaushik_sk> Linux is sort of like-UNIX but not UNIX 
+20:41 < rahul_kummi> as many resources mention linux is  a liscense free clone of UNIX
+20:42 < siddhanth> linux is a free version of unix
+20:42 < soundaryaramesh> Great. So LINUX is basically open source, while UNIX is proprietary software.
+20:42 < soundaryaramesh> So what does open source mean?
+20:43 ::: Harita_Reddy [01271428@gateway/web/freenode/ip.1.39.20.40] has joined #ieee-UNIX
+20:43 < siddhanth> the source code is public?
+20:43 < rahul_kummi> anything whose source is openly available
+20:44 < abhisheks> which can be appended?
+20:44 < catchchaos> what do you mean by 'source'?
+20:44 < rahul_kummi> sorry i meant 'source code'
+20:44 < catchchaos> good
+20:45 < rahul_kummi> missed the code 
+20:45 < soundaryaramesh> Excatly. Any of us can view the source code of the OS, and modify it. It is useful for the tech community and students to learn better.
+20:45 < rahul_kummi> my bad
+20:45 ::: kaushiksk [~kaushik21@117.200.121.173] has joined #ieee-UNIX
+20:45 < soundaryaramesh> But modifying can be dangerous too, if something goes wrong, you're responsible.
+20:46 < soundaryaramesh> Now does it make sense as to why we asked you to install ubuntu, a linux variant?
+20:46 < soundaryaramesh> It basically aids learning. 
+20:46 ::: kaushik_sk [~kaushik21@117.200.120.7] has quit [Ping timeout: 265 seconds]
+20:46 < siddhanth> yes
+20:46 < soundaryaramesh> So any questions before we proceed?
+20:47 < soundaryaramesh> Seems like no, let's proceed.
+20:47 < rahul_kummi> how different is the directory concept 
+20:48 < rahul_kummi> from the folder concept
+20:48 < rahul_kummi> of windows
+20:48 < soundaryaramesh> A directory is same as a folder.
+20:48 < catchchaos> They're synonyms xD
+20:48 < rahul_kummi> okay
+20:49 < soundaryaramesh> But the way in which an OS views a directory in unix might be different from windows.
+20:49 < rahul_kummi> oh i see
+20:50 < soundaryaramesh> To just give you a brief view, unix basically sees everything as files
+20:51 < soundaryaramesh> Even directory is a file in unix. Quite confusing I know. But you'll get more clarity later.
+20:51 ::: kaushiksk [~kaushik21@117.200.121.173] has quit [Ping timeout: 250 seconds]
+20:51 < soundaryaramesh> So, let's start with the first command for today.
+20:51 < soundaryaramesh> which is ls.
+20:52 < soundaryaramesh> Wat does ls do?
+20:52 < Harita_Reddy> Listing the files and directories
+20:52 < siddhanth> lists the files 
+20:52 < Samvid> Shows all the files and directories in the current directory
+20:52 ::: kaushik_sk [~kaushik21@117.208.154.227] has joined #ieee-UNIX
+20:52 < swati> lists files in current directory
+20:53 ::: abhisheks [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has quit [Ping timeout: 250 seconds]
+20:53 < soundaryaramesh> Okay before getting into this, let me just tell you about briefly about the applications of unix. It's very suited for multi-user environments, multi tasking, communications etc.
+20:54 < soundaryaramesh> You guys used the shell client in your first year comps lab right? Do you know how that worked?
+20:54 < soundaryaramesh> As in none of your files got stored in your local systems, so where were they?
+20:54 < Samvid> They were on a server
+20:54 ::: kaushik21 [75d09ae3@gateway/web/freenode/ip.117.208.154.227] has joined #ieee-UNIX
+20:55 < kaushik21> kindly provide logs
+20:55 ::: kaushik21 [75d09ae3@gateway/web/freenode/ip.117.208.154.227] has quit [Client Quit]
+20:56 < soundaryaramesh> Correct. So you're system was acting like it had only monitor and keyboard with no CPU.(it was acting dumb basically :p)
+20:56 < soundaryaramesh> All the commands that you entered were securely sent over a channel to the server, and it was evaluated there.
+20:56 ::: bharath [3d026b31@gateway/web/freenode/ip.61.2.107.49] has quit [Ping timeout: 250 seconds]
+20:56 < rahul_kummi> okay
+20:57 < soundaryaramesh> Such local systems which are connected to remote servers for computation, memory etc are called terminal emulators.
+20:58 < soundaryaramesh> So this actually uses the multi-user capability of linux/unix. The server will most probably be running linux/unix os.
+20:58 < soundaryaramesh> Any doubts?
+20:58 < Harita_Reddy> Why is it called 'remote' server?
+20:58 < soundaryaramesh> Also each user will be given login id and password by the system admin for this.
+20:59 < soundaryaramesh> remote basically means that the server might not be on your local network
+21:00 ::: kaushiksk [~kaushik_s@117.251.40.48] has joined #ieee-UNIX
+21:00 < soundaryaramesh> It might be far away elsewhere. But you can access it through it's ip 
+21:00 < soundaryaramesh> Got it?
+21:00 < Harita_Reddy> Yeah
+21:00 ::: kaushiksk [~kaushik_s@117.251.40.48] has quit [Read error: Connection reset by peer]
+21:00 < soundaryaramesh> cool, so let's proceed.
+21:00 ::: kaushik_sk [~kaushik21@117.208.154.227] has quit [Ping timeout: 276 seconds]
+21:01 < soundaryaramesh> ls basically lists all files present within a current directory.
+21:01 < soundaryaramesh> Does it also list directories within directories?
+21:01 < Samvid> nope
+21:01 ::: catchchaos [6ad8b2ea@gateway/web/freenode/ip.106.216.178.234] has quit [Ping timeout: 250 seconds]
+21:02 < soundaryaramesh> It does actually :p
+21:02 < rahul_kummi> yes
+21:02 < Harita_Reddy> It does
+21:02 < soundaryaramesh> To get more info about each files, used ls -l.
+21:02 < Samvid> i mean ls as such doesnt
+21:02 < soundaryaramesh> It gives a detailed description for every file
+21:02 ::: kaushik_sk [~kaushik_s@117.251.40.48] has joined #ieee-UNIX
+21:02 < soundaryaramesh> ls as such does :p
+21:02 < kaushik_sk> Yup
+21:03 < rahul_kummi> ls
+21:03 < soundaryaramesh> To get the detailed description of a particular file in the directory, use ls <filename>
+21:03 < soundaryaramesh> *ls -l <filename>
+21:03 < soundaryaramesh> -rw-r--r--  1 soundaryaramesh  staff  436 Dec  4 00:31 bsort.c
+21:04 < soundaryaramesh> This was the result when i executed ls -l bsort.c
+21:04 ::: catchchaos [6ad8a149@gateway/web/freenode/ip.106.216.161.73] has joined #ieee-UNIX
+21:04 < soundaryaramesh> There are many columns here.
+21:04 < soundaryaramesh> Let's quickly go through wat they are
+21:05 < soundaryaramesh> The second one tells you the number of symbolic links of that file
+21:05 < soundaryaramesh> I want you guys to read up about this
+21:05 < soundaryaramesh> Task 1: Read about soft and hard links
+21:05 < soundaryaramesh> The third one is the name of the admin
+21:06 < soundaryaramesh> Fourth one tells you the name of the group- will elaborate wat this means in a while.
+21:06 < soundaryaramesh> 438 indicates the size of the file in bytes
+21:06 < soundaryaramesh> The next specifies the date of creation
+21:06 < soundaryaramesh> the last one indicates the file name
+21:07 < soundaryaramesh> The first column -rw-r--r-- indicates the access specifiers of the file
+21:07 < soundaryaramesh> the initial - specifies that this is an ordinary file
+21:08 < soundaryaramesh> the remaining indicate the read, write and execute permissions of the user, group and others respectively
+21:08 < soundaryaramesh> here user has r,w but no x access, group and others have r access only
+21:09 ::: siddhanth [8b0530cf@gateway/web/freenode/ip.139.5.48.207] has quit [Ping timeout: 250 seconds]
+21:09 < soundaryaramesh> in unix basically several users are grouped into different groups. For eg: college students can be grouped as second_years, thirs_years etc
+21:10 < soundaryaramesh> And every group has a name. Here the name of the group to which the user belongs in staff.
+21:10 < soundaryaramesh> Everybody outside the group is referred to as others.
+21:10 < soundaryaramesh> Any more doubts with this command?
+21:11 < soundaryaramesh> Also, the access for a file can be changed by the user(creator of the file).
+21:11 < soundaryaramesh> There is a command for this, called chmod. We'll discuss this later on
+21:12 < soundaryaramesh> And one extremely useful command when it comes to unix commands is man
+21:12 < soundaryaramesh> man <command_name> gives you all possible options with respect to a given command, it's meaning etc
+21:13 < soundaryaramesh> Doubts so far?
+21:13 < Harita_Reddy> Any particular way in which the groups are divided?
+21:13 < catchchaos> Like Soundarya mentioned, man is extremely helpful
+21:14 < catchchaos> You can get description of the command, its usage and a list of the various options as well
+21:14 < soundaryaramesh> Groups are divided based on many different things. Like within a company, groups might be production_team, management_team, technical_team etc.
+21:14 < Harita_Reddy> Okay
+21:14 < soundaryaramesh> As in all of the members of a particular group might access similar files.
+21:14 < catchchaos> In fact, I want you guys to pick a command you know, and see its manual page right now
+21:15 < soundaryaramesh> Task 2: Read up about access permissions for directories.
+21:16 < catchchaos> Okay moving on
+21:17 < catchchaos> Have you guys tried installing 3rd party softwares?
+21:17 < catchchaos> Using the command line
+21:17 < Samvid> yes
+21:17 < catchchaos> How did you go about doing this?
+21:17 < kaushik_sk> Yes
+21:17 < rahul_kummi> yes
+21:17 < catchchaos> One of tell me how you did it
+21:17 < Samvid> sudo to gain admin permissions, and apt-get install to install a package
+21:17 < catchchaos> one of you*
+21:17 < rahul_kummi> sudo
+21:18 < kaushik_sk> dido apt-get install <software name>
+21:18 < catchchaos> correct, that's our next command - sudo :)
+21:18 < kaushik_sk> For some it was pretty complicated. Had to mention author name and stuff. I just used the commands specified in the sources.
+21:19 < catchchaos> that's fine, I just wanted to make sure you had used sudo
+21:19 < catchchaos> as @Samvid mentioned, sudo is used to gain additional permissions
+21:20 < catchchaos> it stands for substitute user do
+21:21 < catchchaos> The root or 'admin' is just one of the privelages
+21:21 < catchchaos> the default is indeed this
+21:21 ::: bharath [3d026b31@gateway/web/freenode/ip.61.2.107.49] has joined #ieee-UNIX
+21:22 < catchchaos> but sudo allows users to run programs with the security privileges of any other user
+21:22 < catchchaos> When you typed in sudo did you guys notice that your password was required?
+21:23 < rahul_kummi> ye
+21:23 < kaushik_sk> Yeah
+21:23 < swati> yes
+21:23 < catchchaos> This is an important security feature of UNIX
+21:23 < catchchaos> Can someone guess why this might be required?
+21:24 < kaushik_sk> Is it like the administrator settings in windows ?
+21:24 ::: Harita_Reddy_ [67187f49@gateway/web/freenode/ip.103.24.127.73] has joined #ieee-UNIX
+21:24 < kaushik_sk> The way software's ask for permission?
+21:24 < catchchaos> Yes
+21:24 < rahul_kummi> to deny/allow certain privilages to users
+21:24 < catchchaos> But why are permissions required
+21:25 < catchchaos> Okay revisit the rm command
+21:25 ::: Harita_Reddy [01271428@gateway/web/freenode/ip.1.39.20.40] has quit [Ping timeout: 250 seconds]
+21:25 < catchchaos> What happens if I try using rm on the filed owned by some other user
+21:26 ::: siddhanth [8b0530cf@gateway/web/freenode/ip.139.5.48.207] has joined #ieee-UNIX
+21:26 < catchchaos> If I'm successful, it can be dangerous
+21:26 < rahul_kummi> yes
+21:26 < catchchaos> This would enable malicious users to meddle with the files of others
+21:27 < catchchaos> sudo is one way of providing security among users
+21:28 < catchchaos> Also, certain instructions or commands can and should be used only by the root
+21:28 < catchchaos> You should remember that when you log in, you are simply a user
+21:29 < catchchaos> not the root user
+21:29 < catchchaos> To execute special instructions you must temporarily transition to root
+21:29 < catchchaos> This is where sudo comes in
+21:29 < catchchaos> Any doubts?
+21:30 < siddhanth> can u share the text of the conversation later?
+21:30 < soundaryaramesh> Sure :)
+21:30 < catchchaos> Yes
+21:31 < siddhanth> disconnected due to power failure :'(
+21:31 < soundaryaramesh> oh fine :(
+21:31 < catchchaos> There are ways to switch to root permanently, but this can be harmful. So don't try it just yet :p
+21:32 < catchchaos> Apart from installing software, have you guys used sudo for any other command?
+21:33 < rahul_kummi> upgrading the os
+21:33 < kaushik_sk> Sometimes for python modules
+21:33 < kaushik_sk> But don't know if it was necessary
+21:34 < Samvid> to move around system files
+21:34 < catchchaos> Yes, you need sudo for update and upgrade
+21:34 < catchchaos> @rahul, what do you mean for python modules?
+21:35 < catchchaos> @samvid move around where?
+21:35 < Samvid> as in, copy files into system folders
+21:35 < catchchaos> @kaushik python modules, not rahul
+21:36 < kaushik_sk> Using pip. Some modules wouldn't install without pip sometimes. I don't remember which ones. But i remember reading online to include sudo in the command
+21:36 < kaushik_sk> Without sudo*
+21:36 < catchchaos> Correct! It is obviously undesirable for everyone to read or write into system directories
+21:38 < catchchaos> Yeah, pip is just another way of installing stuff, but only python modules
+21:39 < catchchaos> But using sudo with pip is generally frowned upon
+21:39 < catchchaos> Okay lets add this to your tasks
+21:40 < catchchaos> Task 3: Figure out why sudo pip isn't a great idea. How to avoid this?
+21:40 < catchchaos> Any doubts regarding sudo?
+21:40 ::: abhisheks [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has joined #ieee-UNIX
+21:41 < catchchaos> Also, sudo has a few options.
+21:42 < catchchaos> Just look at the man pages if you need to know what these do.
+21:43 < soundaryaramesh> And there's one important thing you should know.
+21:43 < soundaryaramesh> . stands for the current directory and .. stands for the parent directory
+21:44 < catchchaos> stands for root directory and ~ stands for home directory
+21:44 < soundaryaramesh> think of the file structure as a directed acyclic graph, with only directories.
+21:44 < catchchaos> forward slash is root
+21:45 < soundaryaramesh> So you can use cd which is change directory command, to move up the tree(towards the parent directory) or downwards
+21:45 < soundaryaramesh> if a->b->c and if your current directory is b
+21:46 < soundaryaramesh> then cd c leads you into directory c as expected
+21:46 < soundaryaramesh> now if you type cd ../..
+21:46 < soundaryaramesh> in which directory will you be?
+21:47 < rahul_kummi> ls
+21:47 < rahul_kummi> sorry about that
+21:47 < kaushik_sk> Home
+21:47 < catchchaos> xD
+21:47 < siddhanth> a?
+21:47 < soundaryaramesh> .. will get you to the parent directory of c, which is b, and another pair of dots .., will bring you to a(the parent directory of b)
+21:48 < soundaryaramesh> Correct.
+21:48 < catchchaos> correct @siddhanth
+21:48 < soundaryaramesh> Now try this command ls -a
+21:48 < soundaryaramesh> You see many additional files beginning with ., including . and ..
+21:48 < soundaryaramesh> These files are called hidden files. 
+21:49 < soundaryaramesh> So every directory has two files . and .. which correspond to the current dir and parent dir
+21:50 < soundaryaramesh> So next command is pwd
+21:50 < soundaryaramesh> This basically just prints to the "present working directory".
+21:51 < soundaryaramesh> mv command next
+21:51 < soundaryaramesh> This basically helps in renaming files, if you move files within the same directory
+21:52 < soundaryaramesh> mv a.txt b.txt, renames the former as the latter.
+21:52 < soundaryaramesh> It is also used to move files to other directory
+21:53 < soundaryaramesh> mv a.txt ~/Desktop/b.txt (you're in the home directory, say)
+21:53 < soundaryaramesh> So the file a.txt is removed from the home directory and is placed in the Desktop by the name b.txt
+21:54 < catchchaos> remember that if there exists a file b.txt, it is overwritten
+21:54 < catchchaos> to prevent this we have a couple of options for mv
+21:55 < catchchaos> mv -i runs mv command in interactive mode
+21:55 < catchchaos> thus the user is prompted before rewriting occurs
+21:55 < catchchaos> mv -b creates a backup of the pre-existing file
+21:56 < catchchaos> mv -n completely prevents overwriting
+21:57 < catchchaos> most of these options are present for cp as well
+21:57 < catchchaos> can someone guess what cp command does?
+21:57 < rahul_kummi> copy:o
+21:57 < catchchaos> yeah
+21:58 < catchchaos>  okay so the next command is ps
+21:59 < catchchaos> ps is used to list all the processes that are running
+21:59 < catchchaos> before that
+21:59 < catchchaos> do you guys know what we mean when we say 'option'
+22:00 < catchchaos> Or generally, do you know the structure of a typical UNIX command?
+22:01 < catchchaos> Guys? :p
+22:02 < Samvid> hmm, a guess, command -mode file/argument?
+22:02 < rahul_kummi> please elaborate
+22:02 < catchchaos> Okay
+22:02 < catchchaos> command [-option(s)] [argument(s)]
+22:02 < catchchaos> This is the structure
+22:03 < catchchaos> We have a command, then one or more options(optional) followed by arguments(optional for some commands)
+22:03 < soundaryaramesh> And good news,this is the last command for today :p
+22:04 < catchchaos> Yeah just hang on, I'll be quick :p
+22:04 < soundaryaramesh> Do you guys get the difference between options and arguments?
+22:04 < Samvid> yes
+22:05 ::: bharath [3d026b31@gateway/web/freenode/ip.61.2.107.49] has quit [Ping timeout: 250 seconds]
+22:05 < soundaryaramesh> @samvid, Wat is the difference?
+22:05 < kaushik_sk> Options tell you how the command is supposed to run?
+22:05 < siddhanth> could you say once again?
+22:05 < kaushik_sk> And arguments are whatever files/anything that we want the command to perform operation on?
+22:06 < Samvid> hmm, options sort of run the command in a different way whereas the the argument is what the command performes operations on
+22:06 < catchchaos> http://stackoverflow.com/questions/12496900/the-difference-between-arguments-and-options-pertaining-to-the-linux-shell
+22:06 < catchchaos> Here you go
+22:06 < catchchaos> Look at that thread after we're done with the session
+22:06 < soundaryaramesh> options are also similar to arguments, but they have a special name because their list is pre-determined.
+22:07 < soundaryaramesh> get it?
+22:07 < rahul_kummi> yeah
+22:07 < Samvid> a doubt here
+22:07 < soundaryaramesh> Fine the last bit for the day..
+22:07 < kaushik_sk> Yeah
+22:08 < siddhanth> yes
+22:08 < soundaryaramesh> I told you everything in UNIX is files, right?
+22:08 < Samvid> some commands have their options entered as -, and some --
+22:08 < Samvid> what is the difference?
+22:08 < soundaryaramesh> So these commands that we are using must also be files.
+22:08 < catchchaos> if you look closely, - is followed by a letter, -- is followed by a whole word
+22:08 < soundaryaramesh> both are used with arguments, but when -- is used the option is more descriptive.
+22:09 < Samvid> ah yes
+22:09 < soundaryaramesh> *options
+22:09 < catchchaos> It's mostly a matter of preference
+22:09 < catchchaos> - means you need to remember letters, faster but harder to remember
+22:10 < soundaryaramesh> Any more doubts?
+22:10 < catchchaos> -- means you remember a word, which is a nice description of what the option does
+22:10 < Samvid> ah, alright
+22:10 < catchchaos> Some options have a short and long version, some don't
+22:11 < soundaryaramesh> Okay, coming back to my point.
+22:11 < soundaryaramesh> Everything in unix is files.
+22:11 < soundaryaramesh> So these commands that we use must also be files, correct?
+22:12 < kaushik_sk> Yes
+22:12 < soundaryaramesh> So, where are these files present?
+22:12 < Samvid> the bin directory?
+22:12 < soundaryaramesh> these files are present across many directories in the system
+22:13 < soundaryaramesh> yes, bin is one of them.
+22:13 < soundaryaramesh> when you enter a command on the terminal, the shell interpreter searches for these files in the directories specified by PATH
+22:14 < soundaryaramesh> PATH is a shell variable. To know it's value, type- echo $PATH
+22:14 < soundaryaramesh> So this will contain many directories separated by :
+22:15 < catchchaos> You can actually change the PATH variable to force shell interpreter to look in specific directories
+22:15 < soundaryaramesh> The shell interpreter, once it finds the file in one of these directries, it executes them
+22:15 < soundaryaramesh> All of these files are in executable binary format.
+22:16 < soundaryaramesh> They are basically C files or shell scripts.
+22:16 < soundaryaramesh> At the end of this project, you will be writing one such shell script :)
+22:17 < soundaryaramesh> So, now we are officially done.
+22:17 < soundaryaramesh> Any more doubts?
+22:17 < Samvid> So we can write a shell script, place it in one of those directories and create a exectuable command?
+22:17 < soundaryaramesh> I suggest all of you to later go through the linux source code on github.
+22:18 < catchchaos> Reminder - 3 tasks for you guys
+22:18 < soundaryaramesh> Yes, or you can even change the value of the PATH variable to include the directory in which the .sh file is present.
+22:19 < Samvid> ah ya and that
+22:19 < soundaryaramesh> So did you guys find the session useful? Any feedback? I want all of you to respond to this.
+22:20 < siddhanth> yes it was very useful
+22:20 < rahul_kummi> it sure was very useful
+22:21 < Samvid> Yup, it was pretty useful!
+22:22 < soundaryaramesh> Oh good :) Thanks guys, for being patient for this long.
+22:22 < catchchaos> Yup, thank you :)
+22:22 < soundaryaramesh> The dates for the next session might be sometime this week itself. We'll let you the exact date and time through mail.
+22:23 < catchchaos> See you next time.
+22:23 < Samvid> Thank y'all for taking the time to teach us! :P 
+22:23 < Samvid> And also, how many sessions will we have per week?
+22:23 < soundaryaramesh> Haha, you're welcome :P
+22:23 < abhisheks> can u plz share d logs??
+22:23 < catchchaos> We'll try to have 2 or 3 per week.
+22:24 < abhisheks> lost a bit in between
+22:24 < kaushik_sk> Looking forward to the next session :D
+22:24 < soundaryaramesh> We will have more than one session per week during the initial weeks, so that you can get more time to do your project.
+22:24 < rahul_kummi> thank you soundarya and "catchchaos"
+22:24 < catchchaos> Haha call me param
+22:25 < catchchaos> :)
+22:25 < soundaryaramesh> @abhishek, we'll try to make the sessions shorter next time. Sorry if it was too long.
+22:25 < rahul_kummi> yeah 
+22:25 < rahul_kummi> :
+22:25 < rahul_kummi> ;p
+22:25 < soundaryaramesh> Sure, we'll share the logs with you guys. :)
+22:25 ::: catchchaos [6ad8a149@gateway/web/freenode/ip.106.216.161.73] has quit []
+22:25 < soundaryaramesh> Good night then :)
+22:25 < abhisheks> no it wasnt long.....
+22:26 ::: Samvid [~Samvid@176.205.64.107] has quit [Quit: Good Night y'all!]
+22:26 ::: kaushik_sk [~kaushik_s@117.251.40.48] has quit [Read error: Connection reset by peer]
+22:26 ::: siddhanth [8b0530cf@gateway/web/freenode/ip.139.5.48.207] has left #ieee-UNIX []
+22:26 ::: soundaryaramesh [~soundarya@59.94.75.163] has left #ieee-UNIX []
+--- Log closed Mon May 16 22:26:16 2016--- 
+
