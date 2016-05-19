@@ -1,0 +1,385 @@
+9:10 PM <mohitreddy1996> Okay lets start.
+9:10 PM → aditya_a joined  ⇐ ASWANTH quit  
+9:10 PM <mohitreddy1996> Today's topic was actually discussed during winter mentorship program.
+9:11 PM → arvindsaik joined (7aacede4@gateway/web/freenode/ip.122.172.237.228)
+9:11 PM <mohitreddy1996> But few of you might not have attended that session.
+9:11 PM → Mihir joined (6f7dc43c@gateway/web/freenode/ip.111.125.196.60)
+9:11 PM <mohitreddy1996> So lets start from basics.
+9:11 PM → rajgauri joined (67f7345e@gateway/web/freenode/ip.103.247.52.94)
+9:11 PM <anand16__> Topic for today - analysis of algorithms 
+9:12 PM → sraksha and ASWANTH joined  ⇐ Naksha quit  
+9:12 PM <anand16__> before we analyse algorithms .. what is an algorithm ?
+9:12 PM ⇐ vrishabh22 and aditya_a_ quit  
+9:13 PM <aditya_a> A sequence of steps to solve a problem?
+9:13 PM <Prateek> A set of detailed steps in solving a problem
+9:13 PM ⇐ qwerty29 quit (6a331848@gateway/web/freenode/ip.106.51.24.72) Ping timeout: 250 seconds
+9:13 PM <anand16__> correct!
+9:13 PM → Pashi_ joined (dfe309cd@gateway/web/freenode/ip.223.227.9.205)
+9:13 PM <mohitreddy1996> yeah ground rules again. Questions will be asked to a specific person. Only that person should reply.
+9:13 PM <mohitreddy1996> Otherwise please don't. Logs will be messy.
+9:14 PM <Salman_Shah> Can we wait for another 5 minutes please.....
+9:14 PM <Salman_Shah> Too many people leaving and entering
+9:14 PM <anand16__> sure 
+9:14 PM → Kanata_Age_ joined (dfe37e2b@gateway/web/freenode/ip.223.227.126.43)
+9:15 PM <abhisheks> wats a ping time out?
+9:16 PM → vrishabh22 joined (3d00dac6@gateway/web/freenode/ip.61.0.218.198)
+9:16 PM <mohitreddy1996> See basically what happens is IRC pings all of its clients.
+9:16 PM → AdityaK joined (~AK@117.192.100.30)
+9:16 PM <mohitreddy1996> And this occurs silently to the user.
+9:16 PM <mohitreddy1996> basically user doesnt know that there was ping
+9:17 PM <mohitreddy1996> if the client doesn't respond in reasonable time 
+9:17 PM <mohitreddy1996>  then the IRC server considers this a dead connection and will force the client to disconnect
+9:17 PM <mohitreddy1996> that's ping time out :)
+9:18 PM <abhisheks> ok thanks
+9:18 PM <Salman_Shah> Do we have logs on GitHub for today's chat?
+9:18 PM → lekh joined (6a4cf002@gateway/web/freenode/ip.106.76.240.2)
+9:19 PM <anand16__> yeah it'll be posted 
+9:19 PM ⇐ Mihir quit (6f7dc43c@gateway/web/freenode/ip.111.125.196.60) Ping timeout: 250 seconds
+9:19 PM <mohitreddy1996> okay lets continue then
+9:21 PM <anand16__> algorithm - sequence of steps to solve a problem 
+9:21 PM → Mihir and Rahul joined  
+9:22 PM <anand16__> for a given problem one can come up with many algorithms 
+9:22 PM <anand16__> now there's a need to compare these algorithms 
+9:22 PM ⇐ Kanata_Age_ quit  •  Rahul → Guest21928  
+9:22 PM <anand16__> our main aim is to choose the most efficient algorithm 
+9:23 PM ⇐ Shantanu quit (7085f87d@gateway/web/freenode/ip.112.133.248.125) Ping timeout: 250 seconds
+9:23 PM <anand16__> efficiency of an algorithm can be measured in different ways 
+9:23 PM → Kanata joined (dfe37e2b@gateway/web/freenode/ip.223.227.126.43)
+9:24 PM <anand16__> although we'll be measuring the running time of an algorithm
+9:24 PM <anand16__> how do we do that ? 
+9:24 PM <anand16__> normal way would be to just implement the algorithm in any language, execute it on a computer and measure the time taken
+9:24 PM <anand16__> but this depends on a lot of factors like the language chosen, implementation, hardware, etc,.
+9:25 PM ⇐ HR_ quit (7376d542@gateway/web/freenode/ip.115.118.213.66) Ping timeout: 250 seconds
+9:25 PM <anand16__> whereas what we're really interested in is to find the running time of the algorithm in terms of its input
+9:25 PM <anand16__> or in other words the rate at which the running time grows with input 
+9:27 PM <anand16__> this can be done by finding the number of simple operations performed by the algorithm on a given input 
+9:27 PM <anand16__> simple operations include arithmetic, logical, relational, etc,.
+9:28 PM <anand16__> any doubt so far ?
+9:28 PM <Salman_Shah> yes
+9:28 PM → kapilvshst joined (31f9ad10@gateway/web/freenode/ip.49.249.173.16)
+9:28 PM <anand16__> shoot 
+9:28 PM <Dude_> No
+9:28 PM <Salman_Shah> How does it depend on language chosen?
+9:29 PM <anand16__> different languages are implemented in different ways ... for example same piece of code written in c would take less time compared to that written in java 
+9:30 PM <Salman_Shah> Does it depend on level of abstraction then>
+9:30 PM <Salman_Shah> ?*
+9:30 PM <anand16__> that is why time limit for certain languages are high in coding contests :P
+9:30 PM <Salman_Shah> Oh okay
+9:30 PM <Salman_Shah> Thanks
+9:30 PM <anand16__> yes
+9:31 PM <Salman_Shah> Please continue
+9:31 PM <anand16__> any other doubt ?
+9:32 PM <kapilvshst> What is level of abstraction
+9:32 PM <kapilvshst> ?
+9:32 PM <Guest21928> Amount of data hidden?
+9:33 PM <Tushaar> I guess it's the amount of complexity with which a program is written.
+9:34 PM <anand16__> abstraction can be related to complexity ... for example  c is more complex when compared with python  
+9:34 PM <Guest21928> Ok
+9:35 PM <anand16__> python takes more time to execute though :P
+9:35 PM <anand16__> moving on 
+9:35 PM → Ramu, Prateek_ and vikram_ joined  
+9:36 PM <anand16__> there are many notaions to analyse complexity of an algorithm
+9:36 PM <anand16__> Most commonly used are 
+9:37 PM <anand16__> 1. Big-Oh -> worst case
+9:37 PM <anand16__> 2. Big-Omega -> best case
+9:37 PM ⇐ Prateek quit (b638488a@gateway/web/freenode/ip.182.56.72.138) Ping timeout: 250 seconds
+9:37 PM <anand16__> 3. Big-Theta -> average case
+9:38 PM → dude joined (75c03568@gateway/web/freenode/ip.117.192.53.104)
+9:38 PM <anand16__> our interest lies in worst case analysis 
+9:38 PM <anand16__> so we go with Big-Oh
+9:39 PM <anand16__> Definition - Let f(n) and g(n) be two functions then f(n) = O(g(n)) if and only if there exist positive constants c and n0 such that f(n)<=c*g(n) for all n >= n0
+9:40 PM <mohitreddy1996> https://en.wikipedia.org/wiki/Big_O_notation#/media/File:Big-O-notation.png
+9:40 PM → HR_ joined  ⇐ Prateek_, Pashi_ and Dude_ quit  
+9:41 PM <anand16__> this means that g(n) is an upper bound for f(n) 
+9:42 PM → qwerty joined (6a331848@gateway/web/freenode/ip.106.51.24.72)
+9:42 PM <anand16__> Basic Properties of Big-Oh
+9:43 PM <anand16__> Sum : if f1 = O(g1) and f2 = O(g2) then f1 + f2 = O(g1 + g2)
+9:43 PM qwerty → Guest47293
+9:43 PM <anand16__> Product: if f1 = O(g1) and f2 = O(g2) then f1*f2 = O(g1*g2)
+9:43 PM <anand16__> if f1 = O(g1) then kf = O(g1) where k is a nonzero constant
+9:43 PM <anand16__> this is because the constant c in the definition of Big-Oh can be multiplied by k thus maintaining the inequality
+9:43 PM → RashP joined  ⇐ Guest21928 and Salman_Shah quit  
+9:44 PM <anand16__> for example - f(n) = 4 * n^2 => f(n) = O(n^2)
+9:45 PM → sbshah and Naksha joined  
+9:46 PM <anand16__> f(n) is also O(n^3) and all other higher powers but we're interested in the tight upper bound
+9:48 PM <anand16__> next .. any polynomial of degree m has order O(n^m)
+9:48 PM <anand16__> example - f(n) = n^3 + 2*n^2 + 2 -> f(n) = O(n^3)
+9:49 PM <anand16__> let's take a real program and find it's complexity in terms of Big-Oh
+9:49 PM <anand16__> Problem Statement : Given a positive integer n, find whether it's prime ?
+9:50 PM → Ramu_ joined (6ad89506@gateway/web/freenode/ip.106.216.149.6)
+9:51 PM <anand16__> Simple approach - check if the number is divisible by any number in between 1 and n ( both exclusive ) ... if yes n is not prime and vice versa
+9:51 PM ⇐ Ramu quit (6ace9719@gateway/web/freenode/ip.106.206.151.25) Ping timeout: 250 seconds
+9:51 PM <anand16__> here since we need to make utmost n comparisons when n is prime our algorithm is O(n)
+9:52 PM <anand16__> can we do better ? ( i know that you all know how )
+9:52 PM ⇐ sbshah quit (b63a6e75@gateway/web/freenode/ip.182.58.110.117) Ping timeout: 250 seconds
+9:52 PM <anand16__> check only from 2 till sqrt(n) 
+9:53 PM ⇐ sraksha quit (75c871a8@gateway/web/freenode/ip.117.200.113.168) Ping timeout: 250 seconds
+9:53 PM <anand16__> new complexity will be O(sqrt(n))
+9:53 PM <anand16__> code is here - http://ideone.com/Sp58lL
+9:54 PM ⇐ dude quit (75c03568@gateway/web/freenode/ip.117.192.53.104) Ping timeout: 250 seconds
+9:54 PM <anand16__> the simple operation here is modulus 
+9:54 PM <anand16__> any doubt so far ?
+9:55 PM <ASWANTH> Why need modulus operation
+9:56 PM → dude joined (75c02193@gateway/web/freenode/ip.117.192.33.147)
+9:56 PM <AdityaK> Modulo not modulus right?
+9:56 PM ⇐ RashP quit (dfe3a5ca@gateway/web/freenode/ip.223.227.165.202) Ping timeout: 250 seconds
+9:57 PM <anand16__> aren't they the same ?
+9:58 PM → sbs_ and Rs joined  
+9:58 PM <AdityaK> modulus is absolute value
+9:58 PM <ASWANTH> I thought it was absolute value operation
+9:58 PM <AdityaK> modulo is remainder
+9:58 PM Rs → Guest90410
+9:59 PM <ASWANTH> Ok
+9:59 PM <Tushaar> Are we supposed to consider the big-O case always or is there any condition as such?
+9:59 PM <anand16__> oh okay 
+9:59 PM → delhi and Mihir_ joined  
+9:59 PM <anand16__> we are mostly concerned with the worst case 
+10:00 PM <Tushaar> Cool!
+10:00 PM sbs_ → Salmaan
+10:00 PM <anand16__> although in some cases other notations will be used .. we won't be discussing such cases 
+10:00 PM <anand16__> self exploration ! :P
+10:02 PM ← delhi left  ⇐ Mihir quit  
+10:02 PM <anand16__> did everyone get the reason for O(n^0.5) ... reply only if you didn't get it XD
+10:02 PM ⇐ Manali_Shah and rajgauri quit  
+10:04 PM <anand16__> moving on 
+10:04 PM <anand16__> over to mohitreddy1996 :P
+10:04 PM <kapilvshst> Can u elaborate the reason why sqrt only
+10:04 PM <mohitreddy1996> 2 mins
+10:06 PM <anand16__> can you be a little more specific ?
+10:06 PM → Manali_Shah and Tushaar_ joined  ⇐ Tushaar quit  
+10:06 PM <kapilvshst> Why we r going upto sqrt of n not half of n or other
+10:08 PM ← Naksha left  ⇐ mk2597, vikram_ and SagarB_97 quit  
+10:09 PM <anand16__> suppose n is not prime it must have atleast two divisors other than 1 and n 
+10:09 PM → nps joined (7ab2dc92@gateway/web/freenode/ip.122.178.220.146)
+10:09 PM <anand16__> one of them has to be less than sqrt(n) and the other greater than sqrt(n)
+10:10 PM <anand16__> if no such number less than or equal to sqrt(n) is found ... then it implies that no divisor exists after sqrt(n)
+10:10 PM <anand16__> got it ?
+10:10 PM → arvindsaik_ joined  ⇐ arvindsaik quit  
+10:11 PM <kapilvshst> Ok i got
+10:11 PM <mohitreddy1996> Okay so few more examples.
+10:11 PM <mohitreddy1996> http://ideone.com/9vtujE
+10:12 PM <mohitreddy1996> check this code.
+10:12 PM <mohitreddy1996> So this is a sample linear search code.
+10:12 PM <mohitreddy1996> So worst case will be when the item to be searched is the last element
+10:12 PM <mohitreddy1996> So then you are actually traversing the whole array once.
+10:13 PM <mohitreddy1996> So here the complexity is pretty straight forward : O(n)
+10:13 PM <mohitreddy1996> Linear time.
+10:14 PM ⇐ Kanata quit (dfe37e2b@gateway/web/freenode/ip.223.227.126.43) Ping timeout: 250 seconds
+10:14 PM <mohitreddy1996> Next : http://ideone.com/zTF5ri
+10:14 PM <mohitreddy1996> This is a sample code for binary search.
+10:15 PM → Kanata joined (dfe37e2b@gateway/web/freenode/ip.223.227.126.43)
+10:15 PM <mohitreddy1996> Main conditions to be satisfied : Array should be sorted.
+10:15 PM <mohitreddy1996> Only then binary search works
+10:15 PM → SagarB_97 joined  ⇐ nps and lekh quit  
+10:16 PM <mohitreddy1996> First we check the middle element. If the element is the one which we are searching for,  return 
+10:16 PM <mohitreddy1996> else check if it is smaller, If yes take the first half(Smaller half) else the second half(Greater than key)
+10:17 PM <mohitreddy1996> So we repeat this till we get the key.
+10:17 PM <mohitreddy1996> Ex : 1 2 3 4 5 
+10:17 PM <mohitreddy1996> We are searching for 4
+10:17 PM ⇐ Tushaar_ quit (75c0d079@gateway/web/freenode/ip.117.192.208.121) Ping timeout: 250 seconds
+10:18 PM <mohitreddy1996> Array : 1 2 3 4 5
+10:18 PM <mohitreddy1996> Middle element 3, smaller than 4 so we take the second half, i.e 3 4 5 or 4 5 depending on the code you write.
+10:18 PM <mohitreddy1996> perform same operation and we get 4 here.
+10:18 PM ⇐ Guest90410 quit (dfe3a5ca@gateway/web/freenode/ip.223.227.165.202) Ping timeout: 250 seconds
+10:18 PM <mohitreddy1996> So time complexity here would be O(logn)
+10:18 PM <mohitreddy1996> how ?
+10:18 PM <mohitreddy1996> we divide the array into 2 every single time
+10:18 PM → mk2597 joined (7aa79038@gateway/web/freenode/ip.122.167.144.56)
+10:19 PM <mohitreddy1996> meaning we get the array half the size of the previous one
+10:19 PM <mohitreddy1996> Worst case, we can find the element when the size of the array is 1.
+10:19 PM <mohitreddy1996> So lets say n is the size of the array
+10:19 PM → kapilvshst_ joined (31f9ad10@gateway/web/freenode/ip.49.249.173.16)
+10:19 PM <mohitreddy1996> it goes as follows: 
+10:19 PM ⇐ Kanata and aditya_a quit  
+10:19 PM <mohitreddy1996> n , n/2 , n/4, n/8 .... 1
+10:20 PM <mohitreddy1996> So basically it is n/(2^x) = 1
+10:20 PM <mohitreddy1996> n = (2^x)
+10:20 PM <mohitreddy1996> x = logn
+10:20 PM <mohitreddy1996> That will be our worst case.
+10:20 PM <mohitreddy1996> any doubts?
+10:20 PM → Kanata, aditya_a, Tushaar and VNK joined  ⇐ kapilvshst quit  
+10:22 PM <Salmaan> No
+10:22 PM <Salmaan> Please continue
+10:23 PM → lekh joined (6a4c13fe@gateway/web/freenode/ip.106.76.19.254)
+10:23 PM mohitreddy1996 set the topic: Analysis of Algorithms ,  Logs: https://github.com/mohitreddy1996/IEEE-SP-CP/blob/master/session1
+10:23 PM <mohitreddy1996> Okay so lets try one more algorithm.
+10:23 PM <mohitreddy1996> a pretty basic one
+10:24 PM <mohitreddy1996> for (int i=0; i <n; i*=3)
+10:24 PM <mohitreddy1996> {
+10:24 PM <mohitreddy1996>       // Some operation;
+10:24 PM <mohitreddy1996> }
+10:25 PM <mohitreddy1996> Salmaan : What would be the time complexity?
+10:26 PM ⇐ HR_ quit (7376d542@gateway/web/freenode/ip.115.118.213.66) Ping timeout: 250 seconds
+10:26 PM <Salmaan> Sorry Mohit just looking at the logs
+10:26 PM <Salmaan> I'll answer the next question
+10:26 PM → Rashi joined (75c01567@gateway/web/freenode/ip.117.192.21.103)
+10:26 PM <mohitreddy1996> yeah its fine.
+10:26 PM <mohitreddy1996> Anyone ?
+10:27 PM ⇐ Kanata quit (dfe37e2b@gateway/web/freenode/ip.223.227.126.43) Ping timeout: 250 seconds
+10:27 PM <aditya_a> logn base 3?
+10:27 PM <mohitreddy1996> good.
+10:27 PM <mohitreddy1996> The approach is same as binary search.
+10:27 PM ⇐ AdityaK quit (~AK@117.192.100.30) Remote host closed the connection
+10:27 PM <mohitreddy1996> make it i = 1 :P
+10:27 PM <mohitreddy1996> otherwise its an infinite loop XD
+10:27 PM → AK joined  ⇐ VNK quit  
+10:28 PM <mohitreddy1996> yeah so the value of i changes as
+10:28 PM <mohitreddy1996> 1
+10:28 PM <mohitreddy1996> 3
+10:28 PM <mohitreddy1996> 9
+10:28 PM <mohitreddy1996> 27 ..
+10:28 PM <mohitreddy1996> So its basically 3^x
+10:28 PM <mohitreddy1996> and it breaks when 3^x>=n
+10:28 PM <mohitreddy1996> So consider this same as 3^x = n
+10:28 PM <mohitreddy1996> x = logn base 3
+10:28 PM <mohitreddy1996> Any doubts ?
+10:29 PM <dude> no
+10:30 PM <mohitreddy1996> One more example, this will make you understand better
+10:30 PM <mohitreddy1996> for(int i=1;i<=n; i++)
+10:30 PM <mohitreddy1996> {
+10:30 PM <mohitreddy1996>  for(int j=1;j<=log(i); j++)
+10:30 PM <mohitreddy1996>  {
+10:30 PM <mohitreddy1996>   // some operation
+10:30 PM <mohitreddy1996>  }
+10:30 PM <mohitreddy1996> }
+10:31 PM <mohitreddy1996> think and answer.
+10:31 PM <mohitreddy1996> Anyone can answer.
+10:32 PM <dhaval_> n*log(n)?
+10:32 PM <SagarB_97> nlogn?
+10:32 PM <mohitreddy1996> how ?
+10:32 PM → Kanata joined (dfe37e2b@gateway/web/freenode/ip.223.227.126.43)
+10:32 PM <SagarB_97> worst case for inner loop is log n
+10:32 PM <SagarB_97> outer loop n
+10:33 PM <mohitreddy1996> Okay but i expected a more accurate answer.
+10:33 PM <mohitreddy1996> SO the answer is basically O(log n!)
+10:34 PM <mohitreddy1996> which can be approximated to O(nlogn) using sterling's approximation.
+10:34 PM <mohitreddy1996> So here the Time complexity would be 
+10:35 PM <mohitreddy1996> log(1) + log(2)  + log(3) ... log(n) operations.
+10:35 PM <mohitreddy1996>  = log(1.2.3.4 ... n)
+10:35 PM <mohitreddy1996>  = log(n!)
+10:35 PM <mohitreddy1996> so n!<= n^n
+10:35 PM <mohitreddy1996> as 1<=n , 2<=n ... n<=n
+10:35 PM <mohitreddy1996> taking product of all , makes it n! <= n^n
+10:36 PM <mohitreddy1996> apply log 
+10:36 PM <mohitreddy1996> log(n!) <= nlog(n)
+10:36 PM <mohitreddy1996> as its an upper bound we can say O(nlogn)
+10:36 PM <mohitreddy1996> any doubts ?
+10:37 PM <kapilvshst_> Y we r adding logs as log 1 log 2...
+10:37 PM <mohitreddy1996> Upper bounds of inner loops
+10:38 PM <Tushaar> But the tight upper bound will be log(n!), right?
+10:38 PM <mohitreddy1996> but yeah they are not integers so it wont be the answer. But mathematically thats how the analysis is to be done.
+10:38 PM <mohitreddy1996> yep!
+10:38 PM <kapilvshst_> Ok
+10:40 PM <Salmaan> I didn't get how u got logn!
+10:40 PM <Salmaan> O(logn!)
+10:40 PM <mohitreddy1996> see the inner loop runs for log(i) times rit ?
+10:40 PM ⇐ arvindsaik_ quit (7aa77f99@gateway/web/freenode/ip.122.167.127.153) Quit: Page closed
+10:40 PM <Salmaan> yup
+10:40 PM <mohitreddy1996> i increases.
+10:41 PM <mohitreddy1996> the operation will be performed log(1) times when i =1, log(2) times when i=2 and so on
+10:41 PM ⇐ Kanata quit (dfe37e2b@gateway/web/freenode/ip.223.227.126.43) Ping timeout: 250 seconds
+10:41 PM <Salmaan> Yes
+10:41 PM <mohitreddy1996> so how many times the operations is being performed ?
+10:41 PM <mohitreddy1996> log(1) + log(2) ... log(n) times rit?
+10:41 PM <mohitreddy1996> log(n) + log(m) = log(n*m)
+10:41 PM <Salmaan> Ohh
+10:41 PM <Salmaan> Okay
+10:41 PM <mohitreddy1996> so log(n!)
+10:41 PM <Salmaan> Alright understood
+10:42 PM <mohitreddy1996> Nice :)
+10:42 PM <mohitreddy1996> Okay so worst case is what Competitive coders look for.
+10:42 PM <kapilvshst_> Now it became completely clear
+10:42 PM <mohitreddy1996> So we discussed about upper bound.
+10:43 PM <mohitreddy1996> There is theta notation and omega notation too.
+10:43 PM <mohitreddy1996> We wont be discussing that. No uses them for analysis during CP.
+10:43 PM <mohitreddy1996> but they are important.
+10:44 PM <mohitreddy1996> We will be posting the links, So please go through them, try to get the Complexity in terms of theta and omega for  the algorithms discussed.
+10:44 PM <mohitreddy1996> So next session will be on STL in C++
+10:44 PM <mohitreddy1996> So how many of you know C++ already?
+10:44 PM <kapilvshst_> I dnt know 
+10:44 PM <mohitreddy1996> Few Hacks for C++ for competitive coders. 
+10:44 PM <dude> whts stl ?
+10:45 PM <mohitreddy1996> Standard template library.
+10:45 PM <mohitreddy1996> Okay we will discuss the hacks later.
+10:45 PM <gagaturing> i dont know c++ too
+10:45 PM <mohitreddy1996> C++ We will just discuss the C++ basic syntax 
+10:45 PM <aditya_a> i know
+10:45 PM <Tushaar> I know cpp. Kind of. 
+10:45 PM <mohitreddy1996> People basically use cout, cin for writing/reading purposes.
+10:46 PM <mohitreddy1996> hack 1 : cout/cin consume more time.
+10:46 PM <mohitreddy1996> use printf/scanf in contests where the inputs/output is damn high
+10:46 PM <mohitreddy1996> printf scanf works for c++.
+10:46 PM <abhisheks> oh ok
+10:46 PM <mohitreddy1996> The basic layout of a c++ program is almost the same as C
+10:47 PM <mohitreddy1996> few differences C++ is Object oriented Language.
+10:47 PM <dude> why not use c then ?
+10:47 PM <mohitreddy1996> C doesnt have STL
+10:47 PM <mohitreddy1996> you will end up writing damn huge codes 
+10:48 PM <dude> ok,so whats stl ?
+10:48 PM <mohitreddy1996> you will learn more why C++ is preferred over C
+10:48 PM <mohitreddy1996> Chill dude :P Wait till next session..
+10:48 PM <Tushaar> Wait, isn't cpp, a better programming language due to its usage of classes and objects?
+10:48 PM <mohitreddy1996> Or you can google yourself.
+10:48 PM <mohitreddy1996> It is. But classes and objects are rarely used in CPs
+10:49 PM <dude> ok..
+10:49 PM <Tushaar> Oh okay :)
+10:50 PM <mohitreddy1996> I have used classes in CP only once. while implementing tries. But later learnt a new technique. faster way..  I will teach you that in the last week :P
+10:50 PM <mohitreddy1996> http://ideone.com/zTF5ri
+10:50 PM <Tushaar> Awesome!
+10:51 PM <mohitreddy1996> Go through this code
+10:51 PM <mohitreddy1996> its written in C++
+10:51 PM <mohitreddy1996> So you can see no 5-6 header files :P
+10:51 PM <mohitreddy1996> only one
+10:52 PM <mohitreddy1996> It consists of all the header files.
+10:52 PM <mohitreddy1996> It wont effect your run time 
+10:52 PM <mohitreddy1996> just the compile time .
+10:52 PM <abhisheks> cool
+10:52 PM <mohitreddy1996> Which is not considered in CPs .. So chill :P
+10:52 PM <mohitreddy1996> next using namespace std;
+10:53 PM <mohitreddy1996> http://stackoverflow.com/questions/18914106/what-is-the-use-of-using-namespace-std
+10:53 PM <mohitreddy1996> Best Answer. 
+10:54 PM <mohitreddy1996> if you dont use using namespace std, you must use std::vector and stuff.
+10:54 PM → kapilvshst joined (31f9ad10@gateway/web/freenode/ip.49.249.173.16)
+10:54 PM <mohitreddy1996> so to ignore writing std everywhere, we use namespace 
+10:54 PM → nihalakp joined (01273dc0@gateway/web/freenode/ip.1.39.61.192)
+10:54 PM <mohitreddy1996> the functions are declared in the same way as in C
+10:54 PM <mohitreddy1996> use int main() , avoid using void main()
+10:55 PM <mohitreddy1996> and return 0; is a must if you are using int main()
+10:55 PM ⇐ Tushaar quit (75c0d079@gateway/web/freenode/ip.117.192.208.121) Ping timeout: 250 seconds
+10:55 PM <mohitreddy1996> http://ideone.com/9vtujE
+10:55 PM <mohitreddy1996> switch to this code.
+10:55 PM <mohitreddy1996> here I/O are there.
+10:55 PM ⇐ kapilvshst_ quit (31f9ad10@gateway/web/freenode/ip.49.249.173.16) Ping timeout: 250 seconds
+10:55 PM <mohitreddy1996> So declaration of a variable.
+10:55 PM <mohitreddy1996> Same as C.
+10:56 PM <mohitreddy1996> in C we basically declare the iterator outside.
+10:56 PM <mohitreddy1996> as in 
+10:56 PM <mohitreddy1996> int i;
+10:56 PM <mohitreddy1996> for(i=0;i<n;i++);
+10:56 PM ← manalig left (73f52b9d@gateway/web/freenode/ip.115.245.43.157)
+10:56 PM <mohitreddy1996> but in C++, we can do
+10:56 PM <mohitreddy1996> for(int i=0;i<n;i++)
+10:57 PM → Dvr joined  ← kapilvshst left  
+10:57 PM <mk2597> You can initialise the counter in C as well if the compiler is C99 compatible
+10:58 PM <mk2597> In the for loop
+10:58 PM <mohitreddy1996> yeah 
+10:58 PM <mohitreddy1996> comparing C and c++ here :P
+10:58 PM → Tushaar joined (75c0d079@gateway/web/freenode/ip.117.192.208.121)
+10:59 PM <mohitreddy1996> other things are pretty much same.
+10:59 PM <Salmaan> ok
+11:01 PM → dude_ joined (40e9ad9e@gateway/web/freenode/ip.64.233.173.158)
+11:01 PM <mohitreddy1996> okay so we will discuss more about C++ and STL in the next session
+11:01 PM <mohitreddy1996> We will let you know the timings.
+11:01 PM ⇐ dude quit (75c02193@gateway/web/freenode/ip.117.192.33.147) Quit: Page closed
+11:01 PM <mohitreddy1996> You can contact us anytime.
+11:01 PM <Salmaan> ty
+11:01 PM <Tushaar> When is the next session?
+11:01 PM <mohitreddy1996> We may reply a bit late, but we surely will get back to you
+11:02 PM <mohitreddy1996> Try questions on hackerrank.
+11:02 PM <mohitreddy1996> start from implementation
+11:02 PM <mohitreddy1996> and try to do in C++.
+11:02 PM ← vrishabh22 left (3d00dac6@gateway/web/freenode/ip.61.0.218.198)
+11:02 PM <mohitreddy1996> https://www.hackerrank.com/domains/algorithms/warmup
+11:03 PM <mohitreddy1996> try to complete these questions \
+11:03 PM <mohitreddy1996> dont take much time. They are all pretty easy.
+11:03 PM <mohitreddy1996> ************ LOGS END HERE *************

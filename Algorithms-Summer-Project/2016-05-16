@@ -1,0 +1,336 @@
+[20:53] == anand16 [67157d50@gateway/web/freenode/ip.103.21.125.80] has joined #IEEE-SP-CP
+[20:53] -NickServ- This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+[20:53] -NickServ- You are now identified for anand16.
+[20:54] == Prerana [25e7b328@gateway/web/freenode/ip.37.231.179.40] has joined #IEEE-SP-CP
+[20:54] == aditya_a [75c04f5b@gateway/web/freenode/ip.117.192.79.91] has quit [Ping timeout: 250 seconds]
+[20:55] == bharath_ [3d026b31@gateway/web/freenode/ip.61.2.107.49] has quit [Ping timeout: 250 seconds]
+[20:55] == Prerana [25e7b328@gateway/web/freenode/ip.37.231.179.40] has quit [Client Quit]
+[20:56] == sachinitk [74caf844@gateway/web/freenode/ip.116.202.248.68] has joined #IEEE-SP-CP
+[20:56] == mk2597 [mk2597@122.167.184.86] has joined #IEEE-SP-CP
+[20:59] == mk2597_ [7aa7b856@gateway/web/freenode/ip.122.167.184.86] has joined #IEEE-SP-CP
+[20:59] == sbshah [b63a6b9b@gateway/web/freenode/ip.182.58.107.155] has joined #IEEE-SP-CP
+[20:59] <sbshah> Hi
+[20:59] == mk2597_ [7aa7b856@gateway/web/freenode/ip.122.167.184.86] has left #IEEE-SP-CP []
+[20:59] == arvind97 [3d028cdf@gateway/web/freenode/ip.61.2.140.223] has joined #IEEE-SP-CP
+[21:00] <sbshah> Did we start already?
+[21:00] == Prerana [25e7b328@gateway/web/freenode/ip.37.231.179.40] has joined #IEEE-SP-CP
+[21:00] == aditya_a [75c04f5b@gateway/web/freenode/ip.117.192.79.91] has joined #IEEE-SP-CP
+[21:00] == djchakli [~djchakli@117.202.66.206] has joined #IEEE-SP-CP
+[21:00] == arvind [~arvind@122.167.116.37] has joined #IEEE-SP-CP
+[21:00] <anand16> i'll be starting in 10 minutes
+[21:01] == kapilvshst [75d429bc@gateway/web/freenode/ip.117.212.41.188] has joined #IEEE-SP-CP
+[21:01] <anand16> ask your friends to join fast :P
+[21:01] == Suhas [75dd63f2@gateway/web/freenode/ip.117.221.99.242] has joined #IEEE-SP-CP
+[21:01] == Suhas has changed nick to Guest68662
+[21:02] == Ramu [3d03198c@gateway/web/freenode/ip.61.3.25.140] has joined #IEEE-SP-CP
+[21:02] == RAJGAURI [75c8a958@gateway/web/freenode/ip.117.200.169.88] has joined #IEEE-SP-CP
+[21:02] == Dhaval [40e9adc1@gateway/web/freenode/ip.64.233.173.193] has joined #IEEE-SP-CP
+[21:03] == abhishek_ [673951d2@gateway/web/freenode/ip.103.57.81.210] has joined #IEEE-SP-CP
+[21:03] == abhishek_ has changed nick to Guest49135
+[21:03] == Mihir [6ac202bd@gateway/web/freenode/ip.106.194.2.189] has joined #IEEE-SP-CP
+[21:05] == HR_ [7376337c@gateway/web/freenode/ip.115.118.51.124] has joined #IEEE-SP-CP
+[21:05] == Mihir [6ac202bd@gateway/web/freenode/ip.106.194.2.189] has left #IEEE-SP-CP []
+[21:05] == Rupashi [75d5f717@gateway/web/freenode/ip.117.213.247.23] has joined #IEEE-SP-CP
+[21:05] == Mihir [6f7dc475@gateway/web/freenode/ip.111.125.196.117] has joined #IEEE-SP-CP
+[21:05] == Varsh [dfe3e0e8@gateway/web/freenode/ip.223.227.224.232] has joined #IEEE-SP-CP
+[21:06] == HR_ [7376337c@gateway/web/freenode/ip.115.118.51.124] has left #IEEE-SP-CP []
+[21:07] == Rahul [7376337c@gateway/web/freenode/ip.115.118.51.124] has joined #IEEE-SP-CP
+[21:07] == Guest49135 [673951d2@gateway/web/freenode/ip.103.57.81.210] has quit [Quit: Page closed]
+[21:08] == Rahul has changed nick to Guest27846
+[21:08] == abhi_ [673951d2@gateway/web/freenode/ip.103.57.81.210] has joined #IEEE-SP-CP
+[21:09] == HR__ [7376337c@gateway/web/freenode/ip.115.118.51.124] has joined #IEEE-SP-CP
+[21:10] == SagarB_97 [75c06661@gateway/web/freenode/ip.117.192.102.97] has joined #IEEE-SP-CP
+[21:10] == arvind [~arvind@122.167.116.37] has quit [Ping timeout: 244 seconds]
+[21:10] <anand16> okay let's start
+[21:10] <anand16> topic for today is stl functions and some containers
+[21:12] <anand16> before that ... did you try solving basic questions on codechef, etc., ?
+[21:12] == Guest27846 [7376337c@gateway/web/freenode/ip.115.118.51.124] has quit [Ping timeout: 250 seconds]
+[21:12] == AdityaK [3d031842@gateway/web/freenode/ip.61.3.24.66] has joined #IEEE-SP-CP
+[21:12] <sbshah> Yes
+[21:12] <sbshah> Hackerrank was easier though :p
+[21:13] <sachinitk> yes hacker rank was easier
+[21:13] <anand16> nice :)
+[21:13] <sachinitk> can yoj explain the basic of stl
+[21:13] <sachinitk> *you
+[21:14] <anand16> yeah
+[21:14] <anand16> so stl stands for standard template library
+[21:15] <sachinitk> why we use stl
+[21:15] <sachinitk> and what are the advantage of it
+[21:15] == hrily [~androirc@106.77.56.20] has joined #IEEE-SP-CP
+[21:15] <anand16> patience my friend :P
+[21:15] == hrily [~androirc@106.77.56.20] has quit [Client Quit]
+[21:16] == Dhaval [40e9adc1@gateway/web/freenode/ip.64.233.173.193] has quit [Ping timeout: 250 seconds]
+[21:16] == hrily [~androirc@106.77.56.20] has joined #IEEE-SP-CP
+[21:17] <anand16> why do we use it - we as competitive programmers will obviously want to spend more time trying to devise a logic to solve a question rather than writing the code
+[21:17] <anand16> this is where stl comes into picture
+[21:17] == dhaval [40e9adbd@gateway/web/freenode/ip.64.233.173.189] has joined #IEEE-SP-CP
+[21:18] <anand16> stl provides ready-made functions and containers which makes our code look neat
+[21:20] <anand16> for example instead of implementing the entire sort function you could just use sort(a,a+n) to sort the array a of n elements in nlogn complexity
+[21:21] <mk2597> What is a container?
+[21:21] == arvind [~arvind@122.167.116.37] has joined #IEEE-SP-CP
+[21:21] <Guest68662> Isnt this function defined in algorithms.h??
+[21:22] <anand16> ground rules - please don't ask questions inbetween ... the logs become messy
+[21:22] == bharath_ [3d026b31@gateway/web/freenode/ip.61.2.107.49] has joined #IEEE-SP-CP
+[21:23] <anand16> first i'll talk about some functions that stl provides
+[21:23] <anand16> to use these functions include algorithm in your c++ code
+[21:24] <anand16> #include <algorithm>
+[21:24] == namratha [74ca79b3@gateway/web/freenode/ip.116.202.121.179] has joined #IEEE-SP-CP
+[21:25] <anand16> for searching :
+[21:25] == Varsh [dfe3e0e8@gateway/web/freenode/ip.223.227.224.232] has quit [Ping timeout: 250 seconds]
+[21:25] <anand16> find(a,a+n,key) - linear search for key in the range a[0] to a[n-1]
+[21:26] == dhaval [40e9adbd@gateway/web/freenode/ip.64.233.173.189] has quit [Ping timeout: 250 seconds]
+[21:27] <anand16> binary_search(a,a+n,key) - binary search for key in the range a[0] to a[n-1] .. note that the array a should be sorted for this to work
+[21:27] == Varsh [dfe3e35c@gateway/web/freenode/ip.223.227.227.92] has joined #IEEE-SP-CP
+[21:27] <anand16> similarly lower_bound() and upper_bound can be used on sorted arrays
+[21:28] == Rupashi [75d5f717@gateway/web/freenode/ip.117.213.247.23] has quit [Ping timeout: 250 seconds]
+[21:28] <anand16> lower bound - element greater than or equal to
+[21:28] <anand16> upper bound - element strictly greater than the key
+[21:28] == kapilvshst_ [75d429bc@gateway/web/freenode/ip.117.212.41.188] has joined #IEEE-SP-CP
+[21:29] == mohitreddy1996 [uid85309@gateway/web/irccloud.com/x-bzdprdgxksfmrblf] has joined #IEEE-SP-CP
+[21:29] == dhaval [75e48242@gateway/web/freenode/ip.117.228.130.66] has joined #IEEE-SP-CP
+[21:29] == mohitreddy1996 changed the topic of #IEEE-SP-CP to: STL : Standard template Library C++
+[21:30] <anand16> next ..
+[21:31] <anand16> min(a,b) - returns minimum of a and b
+[21:31] <anand16> max(a,b) - returns maximum of a and b
+[21:31] == Rupashi [dfe32217@gateway/web/freenode/ip.223.227.34.23] has joined #IEEE-SP-CP
+[21:31] == kapilvshst [75d429bc@gateway/web/freenode/ip.117.212.41.188] has quit [Ping timeout: 250 seconds]
+[21:32] <anand16> min_element(a,a+n) - returns minimum of all the elements in the range a[0] to a[n-1]
+[21:32] <anand16> similarly max_element(a,a+n)
+[21:34] <anand16> remove(a,a+n,key) remove all occurrences of key in the array  
+[21:34] <anand16> reverse(a,a+n) reverses the array
+[21:34] <anand16> sort(a,a+n) sorts the array
+[21:35] <anand16> swap(a,b) swaps the values of a and b
+[21:35] == Rupashi [dfe32217@gateway/web/freenode/ip.223.227.34.23] has quit [Ping timeout: 250 seconds]
+[21:35] <anand16> question - given a sequence of distinct numbers print all possible permutations ... expect this in your interview :P
+[21:36] <anand16> the code for this is simple ... explore if you're interested
+[21:36] <anand16> but this can be done easily with stl :P
+[21:36] <mohitreddy1996> sir giving tips :P
+[21:37] <anand16> sort the array
+[21:37] <anand16> keep using next_permutation(a,a+n)
+[21:37] == rapash [67c1668a@gateway/web/freenode/ip.103.193.102.138] has joined #IEEE-SP-CP
+[21:38] <anand16> it finds the next lexicographically greater permutation
+[21:38] <anand16> and returns false when the array is reverse sorted
+[21:39] <anand16> okay that's all about basic functions which will be used
+[21:39] == noobie_ [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has joined #IEEE-SP-CP
+[21:39] <anand16> you can read about them ... and some other ones if you're interested from here
+[21:39] <anand16> http://www.cplusplus.com/reference/algorithm/
+[21:39] <mohitreddy1996> upper_bound lower_bound done?
+[21:40] <anand16> any doubts so far ?
+[21:40] <arvind> no
+[21:40] <hrily> Yes
+[21:40] <sachinitk> upper_bound lower_bound ?
+[21:40] <anand16> ground rule applies to co-mentors also :P
+[21:41] <mohitreddy1996> -_- those functions are damn important !
+[21:41] <hrily> In these functions, which is better way, passing pointers or iterators???
+[21:41] <anand16> i told about them :P
+[21:42] == kapilvshst [75d429bc@gateway/web/freenode/ip.117.212.41.188] has joined #IEEE-SP-CP
+[21:42] <mk2597> But, what is the syntax of lower_bound and upper
+[21:42] <mk2597> _bound?
+[21:43] <anand16> same as binary_search()
+[21:43] <sachinitk> thanks!
+[21:43] == nihalakp [01271517@gateway/web/freenode/ip.1.39.21.23] has joined #IEEE-SP-CP
+[21:44] <mk2597> What does it mean by a function returning false?
+[21:44] == kapilvshst_ [75d429bc@gateway/web/freenode/ip.117.212.41.188] has quit [Ping timeout: 250 seconds]
+[21:45] <mohitreddy1996> do
+[21:45] <mohitreddy1996> {
+[21:45] <mohitreddy1996>  //some operation
+[21:45] <mohitreddy1996> }while(arr,arr+n);
+[21:45] <mohitreddy1996> this is how we basically use nex_permutation
+[21:45] <anand16> an iterator is a pointer to a dynamic array
+[21:45] <mohitreddy1996> *while(next_permutation(arr,arr+n));
+[21:46] <mk2597> Oh okay.Thanks!
+[21:47] <anand16> pass iterators whenever possible
+[21:47] <aditya_a> Which sorting technique does sort() function use?
+[21:47] <mohitreddy1996> we will solve few problems today.
+[21:48] <mohitreddy1996> you will understand better than
+[21:49] <abhi_> does lower bound return all elements greater than the key?
+[21:49] <mohitreddy1996> sort() uses a combination of quick_sort and insertion sort
+[21:49] <anand16> good question .. was my interview question
+[21:49] <mohitreddy1996> its basically called a introsort
+[21:50] <aditya_a> oh ok
+[21:50] <mohitreddy1996> abhi_ no iterator to the first element satisfying the condition.
+[21:50] <abhi_> okay
+[21:50] == Varsh [dfe3e35c@gateway/web/freenode/ip.223.227.227.92] has quit [Ping timeout: 250 seconds]
+[21:52] == sachinitk [74caf844@gateway/web/freenode/ip.116.202.248.68] has quit [Ping timeout: 250 seconds]
+[21:52] <anand16> sort() does it in 2 steps .. first introsort ( combination of quick sort and heap sort ) and then insertion sort when the size of the array becomes small
+[21:53] <sbshah> Heap sort?
+[21:53] <sbshah> How does that work out?
+[21:53] <kapilvshst>  Xplain the types of sort?
+[21:54] == sachinitk [74caf844@gateway/web/freenode/ip.116.202.248.68] has joined #IEEE-SP-CP
+[21:56] <sbshah> ?
+[21:56] == Ramu_ [3d03198c@gateway/web/freenode/ip.61.3.25.140] has joined #IEEE-SP-CP
+[21:57] <mohitreddy1996> Okay if we start explaining all the sorting techniques, we have to continue with the data structures in the next session
+[21:57] == Ramu [3d03198c@gateway/web/freenode/ip.61.3.25.140] has quit [Ping timeout: 250 seconds]
+[21:57] <anand16> sorting is taught in your course(s) XD you can still self-explore them if you wish
+[21:57] <mohitreddy1996> Okay so we will do sorting techniques today
+[21:58] <mohitreddy1996> okay so starting with insertion sort
+[21:58] <mohitreddy1996> worst case : n^2
+[21:59] == Mihir_ [6f7dc475@gateway/web/freenode/ip.111.125.196.117] has joined #IEEE-SP-CP
+[21:59] <mohitreddy1996> best case : n
+[21:59] <mohitreddy1996> anand put up the logs
+[21:59] == kapilvshst_ [75d429bc@gateway/web/freenode/ip.117.212.41.188] has joined #IEEE-SP-CP
+[21:59] == Mihir [6f7dc475@gateway/web/freenode/ip.111.125.196.117] has quit [Ping timeout: 250 seconds]
+[22:00] <mohitreddy1996> how does the algorithm works
+[22:00] == kapilvshst [75d429bc@gateway/web/freenode/ip.117.212.41.188] has quit [Ping timeout: 250 seconds]
+[22:00] <mohitreddy1996> if we at some point of time are iterator i, then the subarray [0,i) is sorted.
+[22:00] <mohitreddy1996> as in 5,6,7,1,2
+[22:00] <mohitreddy1996> sorry
+[22:00] <mohitreddy1996> 7,5,4,1,2
+[22:01] <mohitreddy1996> say we are running the algorithm we are at index 3
+[22:01] <mohitreddy1996> then the array would be
+[22:01] <mohitreddy1996> 4,5,7,1,2
+[22:01] <mohitreddy1996> the subarray [0,3) is sorted
+[22:01] <mohitreddy1996> and then the element at the iterator is chosen
+[22:01] <mohitreddy1996> and placed at the correct position
+[22:01] <mohitreddy1996> this case
+[22:01] <mohitreddy1996> 1 is taken , as placed at the beginning
+[22:02] <mohitreddy1996> So the worst case is when : the array is reverse sorted
+[22:02] <mohitreddy1996> best case : when the array is sorted
+[22:02] <mohitreddy1996> how ?
+[22:02] <mohitreddy1996> worst case : 4,3,2,1
+[22:02] <mohitreddy1996> first iteration : 4 <- sorted
+[22:02] <mohitreddy1996> then 4,3
+[22:02] <mohitreddy1996> 3 is picked and placed at the correct position
+[22:02] <mohitreddy1996> the subarray becomes
+[22:02] <mohitreddy1996> 3,4
+[22:02] <mohitreddy1996> then 2 is picked and placed
+[22:03] <mohitreddy1996> 2,3,4
+[22:03] <mohitreddy1996> and same happens with 1
+[22:04] <mohitreddy1996> so basic code would be
+[22:04] <mohitreddy1996> for(i=0;i<n;i++)
+[22:05] <mohitreddy1996> can't type all that, wait i will send a well explained link
+[22:05] <mohitreddy1996> https://www.khanacademy.org/computing/computer-science/algorithms/insertion-sort/a/insertion-sort
+[22:06] == arvind [~arvind@122.167.116.37] has quit [Ping timeout: 244 seconds]
+[22:06] <mohitreddy1996> best case would be when the array is sorted.
+[22:06] <mohitreddy1996> 1,2,3,4  subarray is sorted and the element first compared is smaller than the chosen element, we break at the point saving n iterations, making it linear in time.
+[22:06] <mohitreddy1996> any doubts?
+[22:07] == nihalakp [01271517@gateway/web/freenode/ip.1.39.21.23] has quit [Quit: Page closed]
+[22:09] == nihalakp [01271517@gateway/web/freenode/session] has joined #IEEE-SP-CP
+[22:09] == nihalakp [01271517@gateway/web/freenode/session] has quit [Changing host]
+[22:09] == nihalakp [01271517@gateway/web/freenode/ip.1.39.21.23] has joined #IEEE-SP-CP
+[22:09] <mohitreddy1996> No ?
+[22:09] == sachinitk [74caf844@gateway/web/freenode/ip.116.202.248.68] has quit [Ping timeout: 250 seconds]
+[22:09] == arvind [~arvind@122.167.117.111] has joined #IEEE-SP-CP
+[22:10] <mohitreddy1996> okay so selection sort
+[22:10] <mohitreddy1996> Worst case : O(n^2), best case : O(n^2)
+[22:10] == kapilvshst_ [75d429bc@gateway/web/freenode/ip.117.212.41.188] has quit [Ping timeout: 250 seconds]
+[22:10] <mohitreddy1996> how does the code work,
+[22:11] <mohitreddy1996> say i am at index i, i will search for the smallest element in the subarray [i+1,n)
+[22:11] <mohitreddy1996> and swap that element with the current element
+[22:11] <mohitreddy1996> ex :
+[22:11] <mohitreddy1996> 4, 1, 3 ,2 5
+[22:11] <mohitreddy1996> at 0,
+[22:11] <mohitreddy1996> smallest element on the remaining subarray , is 1
+[22:12] <mohitreddy1996> swap(4,1)
+[22:12] <mohitreddy1996> 1,4,3,2,5
+[22:12] <mohitreddy1996> at 1,
+[22:12] <mohitreddy1996> ^index 1
+[22:12] <mohitreddy1996> smallest on the right subarray : 2
+[22:12] <mohitreddy1996> swap(4,2)
+[22:12] <mohitreddy1996> array : 1,2,3,4,5
+[22:13] <mohitreddy1996> sorry smallest element in the subarray [i,n)
+[22:13] == bharath_ [3d026b31@gateway/web/freenode/ip.61.2.107.49] has quit [Quit: Page closed]
+[22:13] <mohitreddy1996> not i+1.
+[22:13] <mohitreddy1996> so 3,4,5 left , 3 is the smallest, no change after swapping
+[22:13] <mohitreddy1996> similarily for 4,5
+[22:14] <mohitreddy1996> why n^2 both cases.
+[22:14] <mohitreddy1996> We don't know if the subarray ahead is sorted or not as in case of insertion sort so that we can keep break statements to avoid operations
+[22:14] <mohitreddy1996> so we basically do
+[22:14] <mohitreddy1996> n-1, n-2,n-3, ... operations
+[22:15] <mohitreddy1996> sum of them being : n*(n-1)/2
+[22:15] <mohitreddy1996> and n^2 is safe upper bound !
+[22:15] <mohitreddy1996> any doubts>
+[22:15] <mohitreddy1996> *?
+[22:15] <mohitreddy1996> https://en.wikipedia.org/wiki/Selection_sort#/media/File:Selection-Sort-Animation.gif
+[22:15] <mohitreddy1996> this explains better
+[22:16] == arvind [~arvind@122.167.117.111] has quit [Ping timeout: 265 seconds]
+[22:20] == himadri [~himadripa@1.39.61.100] has joined #IEEE-SP-CP
+[22:22] <anand16> okay next is merge sort
+[22:22] == mohitreddy1996 [uid85309@gateway/web/irccloud.com/x-bzdprdgxksfmrblf] has left #IEEE-SP-CP []
+[22:23] <anand16> this follows the divide and conquer approach
+[22:24] == aditya [75c04f5b@gateway/web/freenode/ip.117.192.79.91] has joined #IEEE-SP-CP
+[22:24] == himadri [~himadripa@1.39.61.100] has quit [Ping timeout: 246 seconds]
+[22:25] <anand16> the array of size say n is divided into two subarrays of size n/2 are sorted by merge sort
+[22:25] <anand16> these two arrays can be merged in linear time because they are already sorted
+[22:25] <anand16> complexity - nlogn
+[22:26] <anand16> example : 4 5 2 3 1 6
+[22:26] <anand16> steps -
+[22:27] <anand16> left subarray 4 5 2
+[22:27] <anand16> recursive steps - 4 5 2
+[22:27] <anand16> 4 2 5
+[22:27] == mk2597 [mk2597@122.167.184.86] has quit [Ping timeout: 276 seconds]
+[22:27] <anand16> 2 4 5
+[22:27] <anand16> right subarray
+[22:27] <anand16> 3 1 6
+[22:27] <anand16> 3 1 6
+[22:27] <anand16> 1 3 6
+[22:27] <anand16> now merging them .. 1 2 3 4 5 6
+[22:28] == mk2597 [~Wolfgang@122.167.184.86] has joined #IEEE-SP-CP
+[22:29] <anand16> you can see the animation here
+[22:29] <anand16> http://www.ee.ryerson.ca/~courses/coe428/sorting/mergesort.html
+[22:29] == aditya_a [75c04f5b@gateway/web/freenode/ip.117.192.79.91] has quit [Ping timeout: 250 seconds]
+[22:29] <anand16> any doubt ?
+[22:30] <sbshah> YES!
+[22:30] <sbshah> How is it nlogn
+[22:30] <sbshah> The complexity
+[22:31] <sbshah> And can u tell about the recursive sorting step?
+[22:31] <sbshah> I didn't understand it
+[22:34] == HR__ [7376337c@gateway/web/freenode/ip.115.118.51.124] has quit [Ping timeout: 250 seconds]
+[22:35] <anand16> okay
+[22:35] <anand16> think of it like this .. let T(n) be the running time for the size n
+[22:36] <anand16> every time we divide the array into two parts and then merge in linear time
+[22:36] <anand16> so cost T(n) = 2*T(n/2) + n
+[22:37] == RAJGAURI [75c8a958@gateway/web/freenode/ip.117.200.169.88] has quit [Quit: Page closed]
+[22:38] == himadri [~himadripa@1.39.61.100] has joined #IEEE-SP-CP
+[22:40] <sbshah> Okay
+[22:40] <anand16> the recursive calls go until the size of the array becomes 1
+[22:41] <sbshah> Yeah exactly thaat's where the problem could be right
+[22:41] <sbshah> If we have odd sub-array
+[22:41] <sbshah> What if*
+[22:42] <anand16> floor(n/2) and ceil(n/2)
+[22:42] <anand16> while analyzing complexity we can neglect floors and ceils
+[22:43] <anand16> the size becomes 1 when n/2^i = 1 i.e i = logn
+[22:43] <anand16> the recursive function reduces to a summation
+[22:43] <anand16> summing upto nlogn
+[22:43] <anand16> any other doubt ?
+[22:44] <sbshah> No
+[22:44] <noobie_> wat does floor and ceil mean?
+[22:45] <anand16> floor(x) - greatest integer less than or equal to x
+[22:45] == Guest68662 [75dd63f2@gateway/web/freenode/ip.117.221.99.242] has quit [Ping timeout: 250 seconds]
+[22:45] <anand16> ceil(x) - least integer greater than or equal to x
+[22:45] == Suhas [75c0f954@gateway/web/freenode/ip.117.192.249.84] has joined #IEEE-SP-CP
+[22:46] <anand16> moving on to quick sort
+[22:46] <noobie_> okay
+[22:46] == Suhas has changed nick to Guest15517
+[22:47] <anand16> quick sort follows two steps :
+[22:47] <anand16> 1. picks a pivot and partitions the array
+[22:47] <anand16> 2. sorts the partitions formed recursively
+[22:49] <anand16> explanation - 1. pivot is picked randomly and all the elements less than the pivot are placed to the left and all the elements to the right are placed to the right
+[22:49] == dhaval [75e48242@gateway/web/freenode/ip.117.228.130.66] has left #IEEE-SP-CP []
+[22:49] <anand16> 2. quick sort is applied to the left and right subarray recursively
+[22:51] <anand16> same example
+[22:51] <anand16> 4 5 2 3 1 6
+[22:51] <anand16> let 3 be the pivot
+[22:52] <anand16> after partitioning it'll become 2 1 3 4 5 6
+[22:52] <anand16> left is sorted by using same logic to get
+[22:52] <anand16> 1 2 3 4 5 6
+[22:53] <anand16> right is sorted (it's already sorted in this case) to get 1 2 3 4 5 6
+[22:55] <anand16> now the complexity
+[22:55] <anand16> worst case :
+[22:56] <anand16> suppose the partition function always picks the smallest number as the pivot then the subcalls will be or the order n
+[22:57] == nihalakp [01271517@gateway/web/freenode/ip.1.39.21.23] has quit [Ping timeout: 250 seconds]
+[22:57] <anand16> i.e T(n) = {T(1) + T(n-1)} + n
+[22:58] <anand16> which will become O(n^2)
+[22:58] == rapash [67c1668a@gateway/web/freenode/ip.103.193.102.138] has quit [Quit: Page closed]
+[22:58] == SagarB_97 [75c06661@gateway/web/freenode/ip.117.192.102.97] has quit [Quit: Page closed]
+[22:58] <anand16> best case is when the array is always divided into two equal (almost equal) parts
+[22:59] <anand16> which will give us the same function as that of merge sort
+[22:59] <anand16> T(n) = 2*T(n/2) + n yielding nlogn
+[22:59] <anand16> any doubts ?
+[23:01] == hrily [~androirc@106.77.56.20] has quit [Quit: AndroIRC - Android IRC Client ( http://www.androirc.com )]
+[23:01] == hrily [~androirc@223.196.248.6] has joined #IEEE-SP-CP
+[23:03] <anand16> that's all for today
+[23:03] <anand16> you can read on stl functions and sorting techniques online
+[23:03] <anand16> and try solving questions on the topics covered today
+[23:04] <anand16> logs will be put up for the absentees :P
+[23:04] <anand16> good night :)
