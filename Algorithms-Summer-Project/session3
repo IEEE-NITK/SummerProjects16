@@ -1,0 +1,265 @@
+7:30 PM <mohitreddy1996> we will wait for 5 more minutes and then continue
+7:30 PM <ABHISHEKs> .
+7:30 PM <mohitreddy1996> *start
+7:30 PM <mohitreddy1996> any doubts so far?
+7:31 PM <mohitreddy1996> i am sort of free today, so lets have an interactive session, with good questions discussion.
+7:31 PM → abhi_ joined (673951c1@gateway/web/freenode/ip.103.57.81.193)
+7:32 PM <Tushaar> I didn't understand, what to do, if the array is odd-sized, while performing merge-sort.
+7:32 PM ⇐ gautham_ quit (673c44da@gateway/web/freenode/ip.103.60.68.218) Ping timeout: 250 seconds
+7:32 PM <mohitreddy1996> okay say the size if 5
+7:32 PM <mohitreddy1996> the array is 3 ,2, 5, 6, 1
+7:32 PM → Mihir and shamitha joined  
+7:33 PM <Tushaar> Yeah!
+7:33 PM <mohitreddy1996> so we can divide it as 
+7:33 PM <mohitreddy1996> 3,2 and 5,6,1
+7:33 PM <mohitreddy1996> or 3,2,5 and 6,1
+7:33 PM → gautham_ joined (673c44da@gateway/web/freenode/ip.103.60.68.218)
+7:34 PM <Tushaar> Cool!
+7:34 PM <mohitreddy1996> if you see the code you will understand that division doesn't matter
+7:34 PM <mohitreddy1996> so after that in 3,2 you split it, and check
+7:34 PM <mohitreddy1996> it becomes 
+7:34 PM <mohitreddy1996> 2,3
+7:34 PM <mohitreddy1996> and then 5,6,1
+7:34 PM <mohitreddy1996> can be again split as 5 and 6,1
+7:34 PM <mohitreddy1996> 5 will stay as itis
+7:34 PM <mohitreddy1996> then check 6,1 and divide, and merge
+7:34 PM <mohitreddy1996> it becomes 1,6
+7:35 PM <mohitreddy1996> then you have 5 and 1,6 on the RHS
+7:35 PM <mohitreddy1996> you try to merge them
+7:35 PM <mohitreddy1996> compare 1 and 5
+7:35 PM <mohitreddy1996> 1 is smaller so pick it up and put
+7:35 PM <mohitreddy1996> 1,5,6
+7:35 PM <mohitreddy1996> now we have 2 sorted subarraus
+7:35 PM <mohitreddy1996> 2,3 and 1,5,6
+7:35 PM <mohitreddy1996> again merge operation on them
+7:35 PM <mohitreddy1996> 1,2,3,5,6
+7:35 PM → kapilvshst joined (75f1919d@gateway/web/freenode/ip.117.241.145.157)
+7:36 PM <Tushaar> And, for time complexity; T(n) = 2*(n/2) + n; how do we get '+ n'?
+7:36 PM <mohitreddy1996> 2*T(n/2) + n
+7:36 PM <mohitreddy1996> don't forget T
+7:36 PM <Tushaar> Yeah, that. 
+7:36 PM <mohitreddy1996> it is recursively being called rit?
+7:36 PM <Tushaar> Oh okay. 
+7:37 PM <mohitreddy1996> +n why? because while merging you are comparing elements of the sub arrays you are merging
+7:37 PM → dhaval joined (75e5189d@gateway/web/freenode/ip.117.229.24.157)
+7:37 PM <mohitreddy1996> got it?
+7:37 PM <Tushaar> Yeah.
+7:37 PM <Tushaar> Thanks.
+7:38 PM <mohitreddy1996> cool ;)
+7:38 PM → sandeepmenon joined (~sandukutt@60.243.149.23)
+7:38 PM <mohitreddy1996> any other doubts? 
+7:38 PM <mohitreddy1996> Okay so lets start the session.
+7:39 PM <mohitreddy1996> STL data structures are really important
+7:39 PM <mohitreddy1996> If you check any top coder's codes , you will find STL Data structures being used.
+7:39 PM <mohitreddy1996> why?
+7:39 PM <mohitreddy1996> it will make your code smaller
+7:40 PM <mohitreddy1996> and they are in the most optimized way
+7:40 PM <mohitreddy1996> say you may implement maps or pairs using C/C++ but maps and pairs used in STL are the well optimised.
+7:41 PM <mohitreddy1996> your codes may not be the best..
+7:41 PM <mohitreddy1996> Okay so lets start.
+7:41 PM <mohitreddy1996> 1) very important :  vectors
+7:41 PM <mohitreddy1996> vectors are basically like arrays itself
+7:41 PM <mohitreddy1996> so why vectors?
+7:42 PM <mohitreddy1996> here is the deal, say you have to create an 2D array, with max X coordinate 10^6 and max Y coordinate 10^6
+7:42 PM <mohitreddy1996> so we create an array A[10^6][10^6]
+7:42 PM <mohitreddy1996> segmentation fault in compiler :P
+7:42 PM → DVG joined (0ec2b944@gateway/web/freenode/ip.14.194.185.68)
+7:43 PM <mohitreddy1996> vectors will help here.
+7:43 PM <mohitreddy1996> because you actually never create a memory space of 10^6 * 10^6
+7:43 PM <mohitreddy1996> so basic operation of vectors : 
+7:43 PM → varsh joined (0e63dc23@gateway/web/freenode/ip.14.99.220.35)
+7:43 PM <mohitreddy1996> no wait, how are they declared and initialised
+7:43 PM <mohitreddy1996> vector<int> v;
+7:43 PM <mohitreddy1996> vector<data_type> v;
+7:44 PM <mohitreddy1996> and say you want to create a 2D vector
+7:44 PM <mohitreddy1996> vector<data_type> v[size_X];
+7:44 PM <mohitreddy1996> how do we add elements to it?>
+7:44 PM <mohitreddy1996> v.push_back(x)
+7:45 PM <mohitreddy1996> push_back puts the element in the end.
+7:45 PM <mohitreddy1996> you can insert in between at any place too. but you will actually never do that in CP.
+7:45 PM <mohitreddy1996> how do we know how many elements are inside vector
+7:45 PM <mohitreddy1996> v.size()
+7:46 PM <mohitreddy1996> we can use index to access vectors too.
+7:46 PM → siddharth joined  ⇐ dhaval quit  
+7:46 PM <mohitreddy1996> say we do
+7:46 PM <mohitreddy1996> for(i=0;i<5;i++)
+7:46 PM <mohitreddy1996> {
+7:46 PM <mohitreddy1996>  v.push_back(i);
+7:46 PM <mohitreddy1996> }
+7:46 PM <mohitreddy1996> how to access them?
+7:46 PM <mohitreddy1996> v[i]
+7:46 PM <mohitreddy1996> or we can use iterators too.
+7:47 PM <mohitreddy1996> vector<int> :: iterator it;
+7:47 PM <mohitreddy1996> it = v.begin(); it!=v.end();it++
+7:47 PM <mohitreddy1996> to access element at iterator it -> *it
+7:47 PM ⇐ ABHISHEKs quit (75f695ac@gateway/web/freenode/ip.117.246.149.172) Ping timeout: 250 seconds
+7:47 PM <mohitreddy1996> iterator as anand told you other day dynamic pointer
+7:48 PM <mohitreddy1996> similarly there are different methods to remove, delete, resize, etc which are never used.
+7:48 PM <mohitreddy1996> One most important thing : never use STL anywhere, you will get 0 :P
+7:48 PM <mohitreddy1996> in academics
+7:49 PM <sandeepmenon> true that =D
+7:49 PM <mohitreddy1996> lets solve a question now using just STL
+7:49 PM <mohitreddy1996> say we have to insert elements : 3,4,1,2,5 and sort them
+7:50 PM → abhi__ joined  ↔ abcd popped in  
+7:50 PM <mohitreddy1996> http://collabedit.com/mrg56
+7:50 PM <mohitreddy1996> switch over here
+7:50 PM <mohitreddy1996> we will write codes there: P
+7:50 PM → Noobie_ joined  ⇐ abhi_ quit  
+7:51 PM <mohitreddy1996> everyone join there. and once you do ping here.
+set the topic: STL : Standard template Library C++, Data structures || Logs  https://github.com/mohitreddy1996/IEEE-SP-CP/blob/master/session3
+7:57 PM <mohitreddy1996> we will write our codes here, they will be put up on logs.
+7:57 PM <mohitreddy1996> so our first question was : given  we have to insert elements : 3,4,1,2,5 and sort them
+7:57 PM <mohitreddy1996> how do we do it?
+7:57 PM <mohitreddy1996> vector<int> v;
+7:57 PM <mohitreddy1996> for(int i=0;i<5;i++)
+7:57 PM <mohitreddy1996> {
+7:57 PM <mohitreddy1996>        v.push_back(elements);
+7:57 PM <mohitreddy1996> }
+7:57 PM <mohitreddy1996>    
+7:57 PM <mohitreddy1996> sort(v.begin(),v.end());
+7:57 PM <sandeepmenon> join http://collabedit.com/mrg56
+7:57 PM ⇐ Noobie_, hrily, siddharth and sandeepmenon quit  
+8:03 PM <mohitreddy1996> Next, say you want to search for an element, 
+8:03 PM <mohitreddy1996> given vector : 2,3,4,5,6
+8:03 PM <mohitreddy1996> check if 5, is there in the vector or not!
+8:03 PM <mohitreddy1996> how do we do it?
+8:03 PM <mohitreddy1996> 1) use binary_search -> because the given vector is actually sorted.
+8:03 PM <mohitreddy1996> 2) use linear search -> suppose the vector was not sorted.
+8:03 PM <mohitreddy1996> So binary search returns True/False.
+8:03 PM <mohitreddy1996> if(binary_search(v.begin(),v.end(),5)
+8:03 PM <mohitreddy1996>     cout<<"5 is present in the vector";
+8:03 PM <mohitreddy1996>     
+8:03 PM <mohitreddy1996> Linear search returns the iterator : 
+8:03 PM <mohitreddy1996> how do we get the index of the position from iterator? 
+8:03 PM <mohitreddy1996> do (it-v.begin()-1) we will be position.
+8:03 PM → dhaval joined  ⇐ arvindsaik quit  ↔ hrily7 nipped out  
+8:13 PM <mohitreddy1996> Okay so vectors are just like arrays basically, we will see how they can be used. You guys have to explore
+8:13 PM <mohitreddy1996> okay lets try lower_bound and upper_bound, they are my fav STL functions :P
+8:13 PM <mohitreddy1996> used in many CFs.
+8:13 PM <mohitreddy1996> IMP : The vector has to be sorted.
+8:13 PM <mohitreddy1996> lower_bound : will tell you the location of the element, which is not less than the value.
+8:13 PM <mohitreddy1996> so basically we can get the location of the first element matching to value, 
+8:13 PM <mohitreddy1996> so say the array is 20,10,10,20,20,20
+8:13 PM <mohitreddy1996> and we want the location of the element less than equal to 10, and greater than 10
+8:13 PM <mohitreddy1996> we can use lower_bound and upper bound here
+8:13 PM <mohitreddy1996> both of them runs at log time
+8:13 PM <mohitreddy1996> so we need to sort it first.
+8:13 PM <mohitreddy1996> sort(v.begin(),v.end())
+8:13 PM <mohitreddy1996> 10,10,20,20,20,20 <- result
+8:13 PM <mohitreddy1996> so we do lower_bound(v.begin(),v.end(),10) - v.begin() to get the location of first thing which either matches to 10 or value not less than 10.
+8:13 PM <mohitreddy1996> similarly upper_bound(v.begin(),v.end(),10) - v.begin()
+8:13 PM <mohitreddy1996> so first one will match to the first element,
+8:13 PM <mohitreddy1996> and upper_bound to the third element -> 20
+8:15 PM ⇐ dhaval and sachinitk quit  ↔ gautham_ nipped out  
+8:18 PM <mohitreddy1996> Next : Maps
+8:18 PM <mohitreddy1996> my personal favs.
+8:18 PM <mohitreddy1996> way?
+8:18 PM <mohitreddy1996> The data we store gets sorted.
+8:18 PM <mohitreddy1996> we can map anything to anything
+8:18 PM <mohitreddy1996> anything : data_type.
+8:18 PM <mohitreddy1996> So lets try out one problem
+8:18 PM <mohitreddy1996> No wait, declaration and stuff :
+8:18 PM <mohitreddy1996> map<int,int> m;
+8:18 PM <mohitreddy1996> map<data_type,data_type> m;
+8:18 PM <mohitreddy1996> and say we want to map A to 10
+8:18 PM <mohitreddy1996> map<char,int> m;
+8:18 PM <mohitreddy1996> m['A'] = 10;
+8:18 PM <mohitreddy1996> done!!
+8:18 PM <mohitreddy1996> next say m['Z'] = 2;
+8:18 PM <mohitreddy1996> m['S']=3
+8:18 PM <mohitreddy1996> as i said, stored in sorted way, <- key wise.
+8:18 PM <mohitreddy1996> so we run the iterator or traverse through the map 
+8:18 PM <mohitreddy1996> for(map<char,int> :: iterator it= m.begin(), it!=m.end(),it++)
+8:18 PM <mohitreddy1996> {
+8:18 PM <mohitreddy1996>     cout<<(*it).first<<" "<<(*it).second;
+8:18 PM <mohitreddy1996> }
+8:18 PM <mohitreddy1996> So it print : 
+8:18 PM <mohitreddy1996> 'A' 10
+8:18 PM <mohitreddy1996> 'S' 3
+8:18 PM <mohitreddy1996> 'Z' 2
+8:18 PM <mohitreddy1996> in sorted way...
+8:18 PM ⇐ mohitreddy1996 quit (uid85309@gateway/web/irccloud.com/x-kslwklkuiwudchym) Excess Flood
+8:18 PM Connection closed unexpectedly: Closing Link: gateway/web/irccloud.com/x-kslwklkuiwudchym (Excess Flood)
+8:18 PM → mohitreddy1996 joined  •  Channel mode: +ns  
+8:20 PM <mohitreddy1996> So map is basically in the {key : value} form
+8:20 PM <mohitreddy1996> So lets out a simple question : 
+8:20 PM <mohitreddy1996> Say we are given name and marks..
+8:20 PM <mohitreddy1996> and we want the list in sorted marks form
+8:20 PM <mohitreddy1996> how do we do it?
+8:27 PM <mohitreddy1996> lets discuss few approaches :
+8:27 PM <mohitreddy1996> 1) using maps
+8:27 PM <mohitreddy1996> map<int,string> m;
+8:27 PM <mohitreddy1996> m[marks] = name
+8:27 PM <mohitreddy1996> Good question : same marks, they will be stored in the sorted way according to their values, here alphabetically
+8:27 PM <mohitreddy1996> then you just iterate through them and print out!
+8:27 PM <mohitreddy1996> 2) approach 2
+8:27 PM <mohitreddy1996> using pairs
+8:27 PM <mohitreddy1996> what are basically pairs?
+8:27 PM <mohitreddy1996> its kind of a tuple like in python
+8:27 PM <mohitreddy1996> say you want two things to exist together you use pairs.
+8:27 PM <mohitreddy1996> here just pair name and marks
+8:27 PM <mohitreddy1996> syntax : pair<data_type,data_type> p;
+8:27 PM <mohitreddy1996> access first element : p.first and access second element : p.second
+8:27 PM <mohitreddy1996> so we put pair<int,string> p;
+8:27 PM <mohitreddy1996> for(i=0;i<n;i++)
+8:27 PM <mohitreddy1996> {
+8:27 PM <mohitreddy1996>     v.push_back(make_pair(marks,name));
+8:27 PM <mohitreddy1996> }
+8:27 PM <mohitreddy1996> sort(v.begin(),v.end());
+8:27 PM <mohitreddy1996> and you iterate through the vector, done !
+8:27 PM → siddharth joined  ⇐ DVG and bharath quit  
+8:32 PM <mohitreddy1996> next sets :P
+8:32 PM <mohitreddy1996> what exactly is a set?
+8:32 PM <mohitreddy1996> data structure with unique elements :
+8:32 PM <mohitreddy1996> and good things about sets in STL : 
+8:32 PM <mohitreddy1996> they store data in sorted way
+8:32 PM <mohitreddy1996> syntax : set<int> s;
+8:32 PM <mohitreddy1996> one more thing : pairs can be used a data_type
+8:32 PM <mohitreddy1996> as in we can use set<pair<int,int> > s;
+8:32 PM <mohitreddy1996> this applies to every data structure we have discussed. except arrays :P
+8:32 PM <mohitreddy1996> insert in a set : s.insert(10);
+8:32 PM <mohitreddy1996> Other syntax you can google.
+8:32 PM <mohitreddy1996> Main thing about CP is you have to think how the problem was set and how you can approach to solve it.
+8:32 PM <mohitreddy1996> Solve it in the most optimised way
+8:32 PM <mohitreddy1996> syntax you will learn yourself slowly and you can google anytime.
+8:32 PM <mohitreddy1996> so lets do a question :
+8:32 PM ⇐ kapilvshst, suraksha, Shantanu, abhi__ and gautham_ quit  
+8:35 PM <mohitreddy1996> so lets do a question :
+8:35 PM <mohitreddy1996> say you are given 10^6 integer elements which can range upto -10^18 to 10^18
+8:35 PM <mohitreddy1996>  here we can't use count array method, because of negative and large values,
+8:35 PM <mohitreddy1996>  we can do it , using coordinate compression, we will learn about that later.
+8:35 PM <mohitreddy1996>  
+8:35 PM <mohitreddy1996> how yoto do it?+
+8:35 PM <mohitreddy1996> 1) use sets.
+8:35 PM <mohitreddy1996> insert into a set and get its size,
+8:35 PM <mohitreddy1996> 2) using maps;
+8:35 PM <mohitreddy1996> how >
+8:35 PM <mohitreddy1996> the value of any key in a map is by default zero.
+8:35 PM <mohitreddy1996> so we can do m[x]++
+8:35 PM <mohitreddy1996> and iterate through the map and see how many elements are present!
+8:45 PM <mohitreddy1996> say the elements will be given as input
+8:45 PM <mohitreddy1996> map<int,int> m;
+8:45 PM <mohitreddy1996> for(int i=0;i<n;i++)
+8:45 PM <mohitreddy1996> {
+8:45 PM <mohitreddy1996>     cin>>x;
+8:45 PM <mohitreddy1996>     map[x]++;
+8:45 PM <mohitreddy1996> }
+8:45 PM <mohitreddy1996> so here say 1000 was given as input, and 1001 was not
+8:45 PM <mohitreddy1996> when you iterate through the map
+8:45 PM <mohitreddy1996> you will just see 1000 but not 1001
+8:45 PM <mohitreddy1996> thats how maps work,
+8:45 PM <mohitreddy1996> so you want how many elements are present
+8:45 PM <mohitreddy1996> count=0;
+8:45 PM <mohitreddy1996> for(map<int,int> :: iterator it= m.begin();it!=m.end();it++)
+8:45 PM <mohitreddy1996> {
+8:45 PM <mohitreddy1996>     count++;
+8:45 PM <mohitreddy1996> }
+8:45 PM <mohitreddy1996> cout<<count;
+New messages
+8:45 PM <mohitreddy1996> https://www.topcoder.com/community/data-science/data-science-tutorials/power-up-c-with-the-standard-template-library-part-1/
+8:45 PM <mohitreddy1996> https://www.topcoder.com/community/data-science/data-science-tutorials/power-up-c-with-the-standard-template-library-part-2/
+8:45 PM <mohitreddy1996> http://www.cplusplus.com/reference/algorithm/
+8:45 PM <mohitreddy1996> https://www.hackerearth.com/code-monk-c-stl/
+8:45 PM <mohitreddy1996> https://www.hackerearth.com/codemonk/ 
+8:45 PM <mohitreddy1996> ^^ try the last one out and try to solve problems till STL 
+8:45 PM <mohitreddy1996> they are pretty basic and you guys can do it!
