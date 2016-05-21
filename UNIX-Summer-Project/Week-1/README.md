@@ -5,5 +5,5 @@
 * sudo
 * pwd
 * mkdir, mv, rm, cp
-* cat, pwd, exit, passwd
+* cat
 * Other useful day to day commands
