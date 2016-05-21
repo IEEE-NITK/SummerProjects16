@@ -1,4 +1,4 @@
-# Topics to be covered:
+# Topics covered:
 * ls
 * man
 * cd
