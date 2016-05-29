@@ -1,0 +1,446 @@
+[02:53:06] *** Joins: pratyushgr (7aa25b24@gateway/web/freenode/ip.122.162.91.36)
+[03:46:42] *** Quits: pratyushgr (7aa25b24@gateway/web/freenode/ip.122.162.91.36) (Ping timeout: 250 seconds)
+[07:36:49] <vinayb> hola folks
+[09:00:21] *** Joins: salman-bhai (b63a62f8@gateway/web/freenode/ip.182.58.98.248)
+[09:08:40] <salman-bhai> https://summerofcode.withgoogle.com/projects/#5369657808650240
+[09:08:52] <salman-bhai> Just in case anyone is interested.
+[09:12:35] <vinayb> selections for this year's GSoC are over yeah?
+[09:13:25] <salman-bhai> Yeah long back
+[09:14:40] <salman-bhai> The projects have started today.
+[09:14:54] <salman-bhai> Well they started coding today for the projects!
+[09:15:45] <vinayb> oh interesting
+[09:15:52] <vinayb> i should talk to Param 
+[09:19:17] <salman-bhai> Do people get GSoC at the end of second year from NITK?
+[09:20:34] <vinayb> some excellent people do. Karthik Senthil two years back. Param Hanji this year
+[09:20:57] *** Joins: aditya (75c04a62@gateway/web/freenode/ip.117.192.74.98)
+[09:23:51] *** Joins: m_gautham (673c4634@gateway/web/freenode/ip.103.60.70.52)
+[09:23:59] <salman-bhai> Ah okay!
+[09:31:06] <vinayb> let's wait a few minutes for everyone to arrive
+[09:32:14] *** Joins: vilas_m (dfeefbf8@gateway/web/freenode/ip.223.238.251.248)
+[09:32:47] *** vinayb changes topic to 'Distributed Systems Programming with Erlang | Today's log: https://goo.gl/v7EP1x'
+[09:33:03] <salman-bhai> Hi everyone!
+[09:34:04] <vilas_m> Hi Bhai! :P
+[09:35:28] <aditya> Hi Sallu bhai!!
+[09:36:00] <salman-bhai> @vinayb See I told u :D
+[09:36:14] <vinayb> haha salman-bhai xD
+[09:36:33] <vinayb> btw salman-bhai, can you please message your peers to join us here :P
+[09:36:45] <salman-bhai> sure
+[09:38:49] <vinayb> alright, we'll begin
+[09:38:55] <salman-bhai> Pratyush will join us in 5 minutes
+[09:39:03] <vinayb> All of you guys ready?
+[09:39:10] <salman-bhai> yeah
+[09:39:11] <vilas_m> Yea
+[09:39:25] <aditya> yes!
+[09:39:55] <vinayb> salman-bhai, if you can, msg the others too
+[09:40:02] <vinayb> okay so today we'll start off with modules
+[09:40:12] <vinayb> in the past session, we saw the erlang shell 
+[09:40:19] <vinayb> and how to run our expressions on it
+[09:40:38] <vinayb> But any sort of longform programming is not possible :P 
+[09:40:45] <vinayb> so we need to write in files
+[09:40:59] <vinayb> Modules are a bunch of functions regrouped in a single file, under a single name.
+[09:41:27] <vinayb> Additionally, all functions in Erlang must be defined in modules
+[09:41:44] <vinayb> You have already used modules, perhaps without realizing it
+[09:41:51] <vinayb> hd() and tl()
+[09:41:58] <vinayb> these belong to the erlang module
+[09:42:14] <vinayb> as well as all of the arithmetic, logic and boolean operators
+[09:42:21] *** Joins: adarsh_h (6ad881a9@gateway/web/freenode/ip.106.216.129.169)
+[09:42:50] <vinayb> Functions from the "erlang" module are automatically imported when you use erlang
+[09:43:14] <vinayb> Every other function defined in a module you will ever use needs to be called the form Module:Function(Arguments)
+[09:43:21] <vinayb> if you open up your shell
+[09:43:25] <vinayb> you can try this;
+[09:43:29] <vinayb> *:
+[09:43:38] <vinayb> erlang:element(2, {a,b,c}).
+[09:43:48] <vinayb> element(2, {a,b,c}).
+[09:44:03] <vinayb> they'll give the same result, as erlang module is always loaded in shell
+[09:44:18] <salman-bhai> b
+[09:44:44] <salman-bhai> Is the result/answer
+[09:44:52] <vinayb> So let's talk about writing our own modules
+[09:45:07] <vinayb> right salman-bhai !
+[09:45:19] <salman-bhai> @vinayb
+[09:45:26] <salman-bhai> What did we just do?
+[09:45:35] <vinayb> When writing a module, you can declare two kinds of things: *functions* and *attributes*
+[09:45:49] <vinayb> We called a function in the form Module:Function(Arguments)
+[09:45:56] <salman-bhai> OKay ....
+[09:46:02] <salman-bhai> Go on
+[09:46:17] <vinayb> so, there's a module called "erlang" which has the function called element
+[09:46:22] <vinayb> that's what we did
+[09:46:55] <vinayb> alright guys, open a file and save it as erlang_module.erl
+[09:47:14] <vinayb> you can use any code editor you wish
+[09:47:26] <vinayb> or notepad too if you're feeling particularly brave
+[09:47:37] *** Joins: Pratyushgr (b640b3ae@gateway/web/freenode/ip.182.64.179.174)
+[09:47:46] <vinayb> in the first line of your file should be this: 
+[09:47:57] <vinayb> -module(Name).
+[09:48:07] <vinayb> so in our case, if you've saved the file as erlang_module.erl
+[09:48:11] <vinayb> then it should be
+[09:48:19] <vinayb> -module(erlang_module).
+[09:49:01] <vinayb> then, we have another attribute called export
+[09:49:11] <vinayb> you always need to mention your defined functions in export
+[09:49:19] <vinayb> so that you can use them in your program
+[09:49:23] <vinayb> shell*
+[09:49:32] <vinayb> it's of the form:
+[09:49:56] <vinayb> -export([Function1/Arity, Function2/Arity, ..., FunctionN/Arity]).
+[09:50:04] <vinayb> Does any one know what arity is?
+[09:50:42] <aditya> no of arguments?
+[09:50:44] *** Joins: akshayrevankar (67157d53@gateway/web/freenode/ip.103.21.125.83)
+[09:50:51] <vinayb> correct aditya !
+[09:51:12] <vinayb> so add this line to your file:
+[09:51:15] <vinayb> -export([add/2]).
+[09:51:27] <vinayb> and then let's define our first function!
+[09:51:33] <vinayb> add(A, B) ->
+[09:51:39] <vinayb>   A + B.
+[09:52:43] <vinayb> in Erlang, the syntax of a function follows the form Name(Args) -> Body., where Body is a bunch of Erlang expressions seperated by commas.
+[09:52:55] <vinayb> There
+[09:53:13] <vinayb> *There's no Return in erlang functions!
+[09:53:44] <vinayb> Instead, the last logical expression of a function to be executed will have its value returned to te caller automatically without you having to mention it.
+[09:53:58] <vinayb> now, add this function to your file too:
+[09:54:04] <vinayb> hello() ->
+[09:54:18] <vinayb>   io:format("Hello, world!~n").
+[09:54:46] <vinayb> remember, don't forget to update your export line!
+[09:54:53] <vinayb> it should be
+[09:55:03] <vinayb> -export([add/2, hello/0]).
+[09:55:06] <vinayb> now
+[09:55:35] <vinayb> let's define one more function
+[09:55:39] <vinayb> add this to your file too
+[09:55:52] <vinayb> greet_and_add_two(X) ->
+[09:55:56] <vinayb>   hello(),
+[09:55:57] <vinayb>   add(X,2).
+[09:56:23] <vinayb> alright! we're done with our first module!
+[09:56:39] <vinayb> can someone copy their file and post it here?
+[09:57:16] <vilas_m> -module(erlang_module).  -export([add/2, hello/0, greet_and_add_two/1]).  add(A, B) -> A + B.  hello() -> io:format("Hello, world!~n"). greet_and_add_two(X) -> hello(), add(X,2).
+[09:57:21] <vinayb> and remember guys, you have to add greet_and_add_two/1 to the export line!
+[09:57:37] <vinayb> nice work vilas_m !
+[09:57:59] <vinayb> let's run our functions now
+[09:58:01] <vinayb> open up your erlang shell
+[09:58:11] <vinayb> then type this:
+[09:58:20] <vinayb> cd("/path/to/your/file").
+[09:58:52] <vinayb> so whichever folder you saved your file in, put that in the cd() function
+[09:59:13] <vinayb> Windows users, don't forget, Windows paths have forward slashes
+[09:59:48] <vinayb> for Linux users if you saved it in a folder called erlang_codes in your home directory
+[09:59:52] <vinayb> then it would be
+[09:59:57] <vinayb> cd("~/erlang_codes").
+[10:00:12] <vinayb> okay, now type this:
+[10:00:19] <vinayb> c(erlang_module).
+[10:00:28] <vinayb> this will load our module in the shell!
+[10:00:43] <vinayb> then you call the functions!
+[10:00:53] <vinayb> in the format Module:Function(Arguments)
+[10:00:54] <vinayb> so:
+[10:01:02] <vinayb> erlang_module:add(7,2).
+[10:01:10] <vinayb> erlang_module:hell().
+[10:01:17] <vinayb> sorry, that should be
+[10:01:23] <vinayb> erlang_module:hello().
+[10:01:42] <vinayb> erlang_module:greet_and_add_two(-3).
+[10:01:47] <vinayb> now, somebody post the outputs here!
+[10:04:35] <vinayb> vilas_m: Is the code running?
+[10:04:57] <vilas_m> yup! I was waiting for someone else to post it :P
+[10:05:02] <vilas_m> 1) 9
+[10:05:19] <vilas_m> 2) Hello world! ok
+[10:05:39] <vilas_m> ( Why does that ok appear in the output? )
+[10:05:55] <vilas_m> 3) Hello world! -1
+[10:05:58] <adarsh_h> wheni type c(erlang_module). its giving me no module definition
+[10:06:21] <vinayb> you must save the file with the same name. so file name should be erlang_module.erl
+[10:06:33] <vinayb> and did you cd() to the folder having the file?
+[10:06:39] <vinayb> great question vilas_m !
+[10:06:43] <adarsh_h> its working now
+[10:07:00] <adarsh_h> forgot to save the notepad file Xd
+[10:07:12] <vinayb> so, Erlang always returns the value of the last expression in the body of the function definition
+[10:08:01] <vinayb> the format function from the io module just returns ok (an atom) to show that it's job of printing to the user's shell is done
+[10:08:25] <vinayb> in the hello() function, the format function is the last expression
+[10:08:28] <vinayb> so we get ok
+[10:09:01] <vinayb> in the greet_and_add_two() function, the last expression is add(-3,2)
+[10:09:05] <vinayb> which returns -1
+[10:09:30] <vilas_m> While entering c(erlang_module), I'm getting {ok, erlang_module}. What about this one?
+[10:10:01] <vinayb> ok is an atom which says that whatever you're trying to do has been successful 
+[10:10:23] <vinayb> is it clear now vilas_m ?
+[10:10:38] <vilas_m> Yea.
+[10:10:53] <vinayb> any doubts you guys??
+[10:11:39] <adarsh_h> the arguments in the functions are like variables? starting with capital letter?
+[10:12:35] <vinayb> yep! when you call the function, whatever you passed as the parameter gets BOUND to that variable
+[10:12:37] <akshayrevankar> the difference in both the outputs is, the "Hello" actually is printed to your terminal/cmd by the io:format, whereas the ok part is the return of the io:format printed by the shell and not the io:format
+[10:12:57] <vinayb> nice working noticing the capital letters adarsh_h !
+[10:13:02] <vinayb> *work
+[10:13:13] <vinayb> yes, akshayrevankar is right
+[10:13:17] <adarsh_h> thanks :D
+[10:14:00] <vinayb> okay, you guys remember pattern matching from last session??
+[10:14:19] <vilas_m> Yup
+[10:14:38] <vinayb> let's see how we can use pattern matching in functions
+[10:15:11] <vinayb> let's see how we would write a "greet" function in a C-like language
+[10:15:22] <vinayb> function greet(Gender, name)
+[10:15:28] <vinayb>   if Gender == male then
+[10:15:43] <vinayb>     print("Hello, Mr. %s!", Name)
+[10:15:54] <vinayb>   else if Gender == female then
+[10:16:09] <vinayb>     print("Hello, Mrs. %s!", Name)
+[10:16:11] <vinayb>   else
+[10:16:20] <vinayb>     print("Hello, %s!", Name)
+[10:16:22] <vinayb> end
+[10:16:32] <vinayb> right, this would be in a C like language!
+[10:16:42] <vinayb> but in Erlang, using pattern matching, this becomes very easy!
+[10:16:51] <vinayb> type this in your file:
+[10:16:59] <vinayb> greet(male, Name) ->
+[10:17:16] <vinayb>   io:format("Hello, Mr. ~s!", [Name]);
+[10:17:27] <vinayb> greet(female, Name) ->
+[10:17:46] <vinayb>   io:format("Hello, Mrs. ~s!", [Name]);
+[10:17:54] <vinayb> greet(_, Name) ->
+[10:18:07] <vinayb>   io:format("Hello, ~s!", [Name]).
+[10:18:20] <vilas_m> semicolon?
+[10:18:25] <vinayb> notice the semicolons at the end of the first two clauses!
+[10:18:33] <vinayb> and full stop at the end!
+[10:19:40] <vinayb> so semicolon is to show that you're expression is done, but function definition is not!
+[10:19:59] <vinayb> and fullstop at the end shows that function definition is done
+[10:20:15] <vinayb> guys, don't forget to add greet/2 to export line!
+[10:20:39] <vinayb> then compile and run it again!
+[10:20:43] <vinayb> and call the greet function
+[10:21:09] <vinayb> like
+[10:21:10] <vinayb> greet(male, "Ram").
+[10:21:10] <vinayb> greet(female, "Priya).
+[10:21:41] <vinayb> greet(dsadad, "Rohit").
+[10:21:51] <vinayb> what are the outputs?
+[10:22:15] *** Parts: vilas_m (dfeefbf8@gateway/web/freenode/ip.223.238.251.248) ()
+[10:22:23] <vinayb> ****greet(female, "Priya").
+[10:22:32] <vinayb> sorry, forgot to add end quote
+[10:22:41] <vinayb> salman-bhai: what are the outputs?
+[10:23:02] *** Joins: vilas_m (dfeefbf8@gateway/web/freenode/ip.223.238.251.248)
+[10:23:38] <aditya> the cd command is not working for me!
+[10:23:55] <salman-bhai> hEY
+[10:24:10] <salman-bhai> I'm sorry I'm still trying to compile the first file
+[10:24:20] <vinayb> it's no issue salman-bhai 
+[10:24:33] <vinayb> aditya: go the folder where you saved the file
+[10:24:36] <vinayb> are you on Windows ?
+[10:24:37] <salman-bhai> Whenever i type the cd command in the shell it gives me the output /home/salman
+[10:24:39] <salman-bhai> ok
+[10:24:42] <aditya> yes
+[10:24:43] <salman-bhai> No linux
+[10:24:58] <salman-bhai> Ubuntu
+[10:25:17] <salman-bhai> I can't seem to reach my folder on the shell
+[10:25:19] <vinayb> aditya, salman-bhai, which folder have you guys saved the file in?
+[10:26:08] <salman-bhai> On the home folder
+[10:26:13] <adarsh_h> 1)Hello, Mr.Ram!ok
+[10:26:19] <salman-bhai> The name of the folder is erlang_codes
+[10:26:38] <vinayb> is cd("~/erlang_codes"). not working?
+[10:26:58] <vinayb> aditya: which drive and in that which folder did you save the file in?
+[10:27:01] <salman-bhai> 11> cd("~/erlang_codes"). /home/salman ok
+[10:27:26] <vinayb> ok and c(erlang_module). isn't working after that?
+[10:27:32] <salman-bhai> THis is what I'm getting.
+[10:27:54] <akshayrevankar> hes getting the home folder ^^, even after changing dir to erlang_codes
+[10:28:00] <vinayb> ok salman-bhai , just do cd("/home/salman/erlang_codes").
+[10:28:11] <salman-bhai> 12> c(erlang_module). erlang_module.erl: no such file or directory error
+[10:28:40] <vinayb> ok did you try cd("/home/salman/erlang_codes"). ?
+[10:28:40] <salman-bhai> c(erlang_module).                {ok,erlang_module}
+[10:29:01] <akshayrevankar> ya dont try ~
+[10:29:11] <vinayb> nice, now try running the functions
+[10:29:11] <salman-bhai> ok,erlang module
+[10:29:28] <m_gautham> c(erlang_module.erl) gives syntax error before:"." ??
+[10:29:50] <m_gautham> *c(erlang_module.erl) .gives syntax error before:"." ??
+[10:29:57] <aditya> the file i saved on desktop but when i type cd----C:/Program Files/erl7.3/usr
+[10:30:43] <vinayb> don't put in the .erl part, only "c(erlang_module)."
+[10:30:52] <vinayb> and if you saved in Desktop
+[10:31:29] <vinayb> then path will probably be C:/Users/<YourName>/Desktop
+[10:31:52] <m_gautham> no module definition  error
+[10:32:29] <vinayb> m_gautham, did the cd() work?
+[10:32:35] <akshayrevankar> check ur current working dir by using pwd().
+[10:33:15] <vinayb> ya check if pwd(). and the folder where you saved the file match!
+[10:33:30] <m_gautham> yes it is in right directory
+[10:33:45] <vinayb> ok, what did you save the file as? 
+[10:33:48] <aditya> desktop
+[10:33:55] <salman-bhai> Is this what I should get?
+[10:34:10] <vinayb> m_gautham: erlang_module.erl ?
+[10:34:17] <m_gautham> yes
+[10:34:55] <vinayb> aditya: put that in cd, like cd("C:/Users/<YourName>/Desktop").
+[10:35:02] <aditya> ok..worked thnx!
+[10:35:27] *** Quits: adarsh_h (6ad881a9@gateway/web/freenode/ip.106.216.129.169) (Quit: Page closed)
+[10:35:38] <vinayb> m_gautham: after cd, did you try c(erlang_module). ? (notice the full stop, and there's no .erl part)
+[10:35:52] <m_gautham> yes
+[10:36:10] <vinayb> ok what's the error?
+[10:36:50] <m_gautham> no module defination
+[10:37:16] <vilas_m> Did you save the notepad file? @m_gautham
+[10:37:28] <m_gautham> yes
+[10:37:44] <vinayb> m_gautham: what does pwd(). return?
+[10:37:50] <vinayb> run pwd(). on the shell
+[10:37:57] <akshayrevankar> can you paste the contents of the file here?
+[10:38:04] <m_gautham> G:/
+[10:38:20] <vinayb> ok then do cd("G:/").
+[10:38:33] <vinayb> ya and make sure you have this line as the first line in file:
+[10:38:42] <vinayb> -module(erlang_module).
+[10:38:57] <m_gautham> ok
+[10:39:33] <m_gautham> working thanks
+[10:39:53] <vinayb> no problem!
+[10:40:04] <salman-bhai> greet(male, "Ram"). ** exception error: undefined shell command greet/2
+[10:40:08] <vinayb> alright, let's move forward
+[10:40:13] <salman-bhai> What was my mistake?
+[10:40:34] <vinayb> did you add greet/2 to the file and then recompile by running c(erlang_module). again?
+[10:40:46] <vinayb> add export/2 to the export line
+[10:40:47] <salman-bhai> Yes.
+[10:40:51] <vinayb> *greet/2
+[10:41:00] <salman-bhai> 23> c(erlang_module).   {ok,erlang_module} 24> greet(male, "Ram"). ** exception error: undefined shell command greet/2
+[10:41:01] <vinayb> ok and did you define the function?
+[10:41:31] <salman-bhai> -module(erlang_module). -export([add/2, hello/0, greet_and_add_two/1, greet/2]).  add(A, B) -> A + B.  hello() -> io:format("Hello, world!~n").  greet_and_add_two(X) -> hello() , add (X,2).  greet(male, Name) -> io:format("Hello, Mr. ~s!", [Name]);  greet(female, Name) -> io:format("Hello, Mrs. ~s!", [Name]);  greet(_,Name) -> io:format("Hello, ~s!", [Name]).
+[10:41:34] <vinayb> run it as Module:Function(Arguments)
+[10:41:35] <vinayb> so 
+[10:41:41] <salman-bhai> Yes
+[10:41:46] <vinayb> erlang_module:greet(male, "Ram")
+[10:41:47] <vinayb> .
+[10:41:54] <salman-bhai> Okay
+[10:41:54] <vinayb> is it running now?
+[10:42:17] <salman-bhai> Yes
+[10:42:26] <salman-bhai> What happened earlier?
+[10:42:30] <vinayb> paste the output here
+[10:42:31] <vinayb> for
+[10:42:43] <salman-bhai> 25> erlang_module:greet(male, "Ram"). Hello, Mr. Ram!ok
+[10:42:45] <vinayb> Since we didn't specify the module, Erlang didn't know where to look
+[10:42:54] <vinayb> ok run these twoL
+[10:42:56] <vinayb> *two:
+[10:43:08] <vinayb> erlang_module:greet(female, "Priya").
+[10:43:22] <vinayb> elrang_module:greet(dsdad, "Prakash").
+[10:44:15] <salman-bhai> YUp working fine
+[10:44:22] *** Joins: rakshith (~hehaichi@117.192.96.212)
+[10:44:35] <salman-bhai> BUt in the first instance I didn't use the erlang_module command
+[10:44:43] <salman-bhai> Simply the function
+[10:44:48] <salman-bhai> For adding the numbers
+[10:44:58] <salman-bhai> And it gave the right output
+[10:45:09] <vinayb> that's because add() is already predefined in Erlang core module
+[10:45:39] <salman-bhai> 17> erlang_module:greet_and_add_two(-3). Hello, world!
+[10:45:44] <salman-bhai> What about this
+[10:45:56] <salman-bhai> -1*
+[10:46:05] <salman-bhai> THis isn't pre-defined ryt?
+[10:46:11] <vinayb> Are you sure you didn't use erlang_module ?
+[10:46:23] <vinayb> i mean erlang_module:greet_and_add_two(-3).
+[10:46:26] <salman-bhai> *The -1 is also there I forgot to copy it
+[10:46:40] <vinayb> greet_and_add_two(-3). is working without having to specify erlang_module: before it?
+[10:47:10] <salman-bhai> Oh yeah it isn't
+[10:47:19] <salman-bhai> I didn't look properly
+[10:47:21] <salman-bhai> My bad!
+[10:47:21] <vinayb> ;)
+[10:47:33] <salman-bhai> Yes please continue
+[10:47:43] <vinayb> so this is how pattern matching works
+[10:47:53] <vinayb> for anything of the form
+[10:47:59] <vinayb> function(Args)
+[10:47:59] <vinayb> if X then
+[10:47:59] <vinayb> Expression
+[10:47:59] <vinayb> else if Y then
+[10:47:59] <vinayb> Expression
+[10:48:02] <vinayb> else
+[10:48:06] <vinayb> we can write in Erlang
+[10:48:13] <vinayb> function(X) ->
+[10:48:17] <vinayb> Expression;
+[10:48:17] <vinayb> function(Y) ->
+[10:48:17] <vinayb> Expression;
+[10:48:17] <vinayb> function(_) ->
+[10:48:20] *** Quits: vilas_m (dfeefbf8@gateway/web/freenode/ip.223.238.251.248) (Ping timeout: 250 seconds)
+[10:48:20] <vinayb> Expression.
+[10:48:48] *** Joins: vilas_m (dfeefbf8@gateway/web/freenode/ip.223.238.251.248)
+[10:49:40] <vinayb> alright, now let's say we have a function is_adult() 
+[10:49:52] <vinayb> in C it would be something like
+[10:50:15] <vinayb> *C-like
+[10:50:21] <vinayb> function is_adult(x)
+[10:50:33] <vinayb>   if(x >= 18)
+[10:50:40] <vinayb>     return true;
+[10:50:41] <vinayb>   else
+[10:50:47] <vinayb>     return false;
+[10:50:50] <vinayb> end
+[10:51:09] <vinayb> however, with pattern-matching how can we do this?
+[10:51:16] <vinayb> we can't be expected to do..
+[10:51:22] <vinayb> is_adult(0) -> false;
+[10:51:28] <vinayb> is_adult(1) -> false;
+[10:51:33] <vinayb> is_adult(2) -> false;
+[10:51:39] <vinayb> ...
+[10:51:39] <akshayrevankar> ....
+[10:51:47] <vinayb> is_adult(18) -> true;
+[10:51:59] <vinayb> is_adult(_) -> true;
+[10:52:07] <akshayrevankar> -1 :P
+[10:52:16] <vinayb> right? we can't be expected to cover all cases like this xD
+[10:52:22] <salman-bhai> Yess
+[10:52:23] <vinayb> so let's see GUARDS!
+[10:52:32] <vinayb> Guards are additional clauses that can go in a function's head to make pattern matching more expressive. 
+[10:52:46] <vinayb> so add this function to your file:
+[10:52:54] <vinayb> is_adult(X) when X >= 18 -> true;
+[10:53:03] <vinayb> is_adult(_) -> false.
+[10:54:17] <vinayb> so the when part is called a GUARD in a function head
+[10:54:21] <vinayb> notice how it comes before the function body
+[10:54:28] <vinayb> that is, before the arrow
+[10:54:41] <vinayb> also notice, how only in the finishing clause we add a full stop
+[10:54:53] <vinayb> for all clauses before that, they end with a semi-colon
+[10:55:10] <vinayb> which makes perfect sense :P full stop is to finish. Semi-colon is to seperate
+[10:56:11] <vilas_m> Not related, but why does C/C++ use semicolon anyway? :P I mean, it was more logical to use a fullstop
+[10:56:31] <vinayb> Ask that to the C/C++ creators xD
+[10:56:42] <vinayb> I have no idea. xD
+[10:56:49] <vilas_m> Yea googling :P
+[10:57:00] <vilas_m> Please proceed.
+[10:57:07] <vinayb> Right! now let's say we have a function to check if a person is ALIVE
+[10:57:13] <vinayb> say people don't live past 104 :P
+[10:57:23] <salman-bhai> 37> erlang_module:is_adult(19). true
+[10:57:40] <vinayb> is_alive(X) when X =< 104 -> true;
+[10:57:49] <vinayb> is_alive(_) -> false.
+[10:58:02] <vinayb> nice work salman-bhai !
+[10:58:17] <vinayb> but however, if i put is_alive(-10) also this will work
+[10:58:33] <vinayb> and a person who is 10 years away from his birth is not alive :P
+[10:58:54] <vinayb> we can do this:
+[10:59:12] <vinayb> is_alive(X) when X >= 0 and X =< 104 ->
+[10:59:15] <vinayb>   true;
+[10:59:27] <vinayb> is_alive(_) -> 
+[10:59:27] <vinayb>   false;
+[11:00:09] <vinayb> so as you can see you can use the "and" and "or" and any other relational, logical operators in GUARDS
+[11:00:35] <vinayb> any doubts?
+[11:00:46] <vilas_m> no
+[11:00:56] <salman-bhai> What if I want to print something
+[11:00:59] <salman-bhai> Say not valid
+[11:01:10] <salman-bhai> I'll use io:format?
+[11:01:23] <vinayb> yes salman-bhai , you'll use io:format
+[11:01:30] <salman-bhai> Cool thanks
+[11:01:43] <vinayb> also, i want to add one more thing
+[11:02:13] <vinayb> instead of "and" you can use a comma "," and instead of "or" you can use semi-colon ";"
+[11:02:15] <vinayb> so:
+[11:02:30] <vinayb> is_alive(X) when X >= 0, X =< 104 ->
+[11:02:32] <vinayb>   true;
+[11:02:54] <vinayb> is_alive(_) ->
+[11:02:55] <vinayb>   false;
+[11:03:12] <vinayb> so as you can see, you can use comma instead of and, and semicolon instead of or
+[11:03:23] <vinayb> example:
+[11:03:34] <vinayb> is_dead(X) when X < 0; X > 104 ->
+[11:03:36] <vinayb>   true;
+[11:03:44] <vinayb> is_dead(_) ->
+[11:03:45] <vinayb>   false.
+[11:05:00] <vinayb> okay we'll wrap up for today guys
+[11:05:06] <vinayb> any questions?
+[11:05:31] <aditya> says syntax error for is_alive!
+[11:05:56] <vilas_m> Can we use functions in a module which has been defined in some other module?
+[11:06:15] <vinayb> My bad! after "false" in last line it should be a full stop, not a semi-colon!
+[11:06:31] <vinayb> yes vilas_m !
+[11:06:45] <aditya> is_alive(X) when X>=0 and X=<104 ->true; is_alive(_)->false.
+[11:06:52] <aditya> even with that
+[11:07:18] <vinayb> try using "," instead of "and"
+[11:07:21] <aditya>  syntax error before: '=<'
+[11:07:49] <aditya> ya works!
+[11:08:18] <Pratyushgr> ya and is not working for me either
+[11:08:34] <Pratyushgr> while "," worked
+[11:08:37] <Pratyushgr> why?
+[11:08:45] <vinayb> i'll introduce some new operators in next session, orelse and andalso
+[11:08:59] <vinayb> and and or are actually supposed to be used in a different context
+[11:09:16] <vinayb> instead of "and" you can try "," or "andalso"
+[11:09:28] <vinayb> instead of "or" you can try ";" or "orelse"
+[11:09:59] <Pratyushgr> ya andalso works
+[11:10:35] <vinayb> Pratyushgr: and is an old Erlang operator, andalso is preferred over it. Some implementations might prevent you from using and
+[11:11:30] <salman-bhai> 45> c(erlang_module).          {ok,erlang_module} 46> erlang_module:is_dead(45). ** exception error: undefined function erlang_module:is_dead/1 47> c(erlang_module).          {ok,erlang_module} 48> erlang_module:is_dead(45).
+[11:11:32] <vinayb> okay guys post your doubts here, i'll be back in a bit and answer them if any!
+[11:11:34] <Pratyushgr> ohkay.
+[11:11:46] <salman-bhai> I changed ; to orelse
+[11:11:58] <vinayb> salman-bhai: please add is_dead to export line 
+[11:12:00] <salman-bhai> Why this thing?
+[11:12:03] <salman-bhai> Yes I did
+[11:12:16] <salman-bhai> Like I said I changed only one bit of sytax
+[11:12:19] <salman-bhai> Syntax*
+[11:12:46] <salman-bhai> The semi-colon to orelse and it worked
+[11:13:06] <vinayb> it's working then?
+[11:13:30] <vinayb> just a second guys! i'll be right back
+[11:13:40] <vinayb> no more concepts today, post any doubts in any
+[11:13:55] <vinayb> if no doubts, then you can leave
+[11:15:12] <vilas_m> Thank you! :)
+[11:15:13] *** Parts: vilas_m (dfeefbf8@gateway/web/freenode/ip.223.238.251.248) ()
+[11:16:01] <aditya> thnx!
+[11:16:05] *** Quits: aditya (75c04a62@gateway/web/freenode/ip.117.192.74.98) (Quit: Page closed)
+[11:16:22] <salman-bhai> SUre I'll wait.
+[11:17:15] <Pratyushgr> thanks a lot.. bubye
+[11:22:12] *** Quits: Pratyushgr (b640b3ae@gateway/web/freenode/ip.182.64.179.174) (Quit: Page closed)
+[11:25:10] *** Quits: m_gautham (673c4634@gateway/web/freenode/ip.103.60.70.52) (Ping timeout: 250 seconds)
+[11:26:50] <salman-bhai> @vinayb Let's continue our conversation on WHtasapp
+[11:27:07] <salman-bhai> See ya there.
+[11:27:23] *** Quits: salman-bhai (b63a62f8@gateway/web/freenode/ip.182.58.98.248) (Quit: Page closed)
+[11:29:59] *** Quits: akshayrevankar (67157d53@gateway/web/freenode/ip.103.21.125.83) (Quit: Page closed)

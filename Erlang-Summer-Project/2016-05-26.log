@@ -1,0 +1,310 @@
+[07:55:11] *** Joins: rakshith (~hehaichi@103.194.14.43)
+[08:10:38] <vinayb> hey guys!
+[08:18:00] <vinayb> help_me(Animal) ->
+[08:18:01] <vinayb> Talk = if Animal == cat  -> "meow";
+[08:18:01] <vinayb> Animal == beef -> "mooo";
+[08:18:01] <vinayb> Animal == dog  -> "bark";
+[08:18:01] <vinayb> Animal == tree -> "bark";
+[08:18:03] <vinayb> true -> "fgdadfgna"
+[08:18:05] <vinayb> end,
+[08:18:07] <vinayb> {Animal, "says " ++ Talk ++ "!"}.
+[08:19:16] *** Joins: aditya (3d031604@gateway/web/freenode/ip.61.3.22.4)
+[08:19:19] *** Joins: gautham_ (75c671ab@gateway/web/freenode/ip.117.198.113.171)
+[08:20:52] *** Quits: rakshith (~hehaichi@103.194.14.43) (Ping timeout: 258 seconds)
+[08:21:26] *** Joins: rakshith (67c20e2b@gateway/web/freenode/ip.103.194.14.43)
+[08:22:49] *** Joins: rakshith_ (~hehaichi@103.194.14.43)
+[08:23:28] *** Parts: rakshith (67c20e2b@gateway/web/freenode/ip.103.194.14.43) ()
+[08:23:41] *** Quits: rakshith_ (~hehaichi@103.194.14.43) (Client Quit)
+[08:24:00] *** Joins: rakshith (~hehaichi@103.194.14.43)
+[08:29:12] *** Quits: aditya (3d031604@gateway/web/freenode/ip.61.3.22.4) (Quit: Page closed)
+[08:29:41] *** Joins: aditya_a (3d031604@gateway/web/freenode/ip.61.3.22.4)
+[08:31:00] <vinayb> hey guys we'll start in 5 mins
+[08:31:47] <vinayb> how's all of yours vacations going? :P
+[08:32:51] <rakshith> What's the idea behind assignments? :P
+[08:33:16] <vinayb> To get you accustomed to harder assignments to come :P
+[08:34:38] *** vinayb changes topic to 'Distributed Systems Programming with Erlang | Today's log: https://goo.gl/fEkQJ3'
+[08:35:32] <vinayb> okay let's begin
+[08:35:37] <vinayb> today's session won't be too long
+[08:35:46] <vinayb> So let's come to if expressions
+[08:36:04] <vinayb> everybody here knows if statements in C right?
+[08:36:16] <rakshith> yeah
+[08:36:29] <aditya_a> yes
+[08:36:54] <gautham_> yes
+[08:37:22] <vinayb> alright. If *expressions* in Erlang are a little different, let's see how
+[08:37:28] <vinayb> open up your shell
+[08:37:31] <vinayb> and a file
+[08:37:39] <vinayb> add this function:
+[08:37:52] <vinayb> always_true() -> 
+[08:38:02] <vinayb>   if 1 =:= 1 ->
+[08:38:06] <vinayb>     works
+[08:38:13] <vinayb>   end.
+[08:38:42] <vinayb> compile and run it. what's the output?
+[08:40:10] *** Joins: salman-bhai (b63a36dd@gateway/web/freenode/ip.182.58.54.221)
+[08:40:58] <salman-bhai> Sorry for being late.
+[08:41:06] <vinayb> no problem.
+[08:41:10] <vinayb> guys, what's the output?
+[08:41:27] <rakshith> works
+[08:41:35] <vinayb> right!
+[08:41:38] <vinayb> now redefine it
+[08:41:41] <vinayb> always_works() ->
+[08:41:57] <vinayb>   if 1 =:= 2; 1 =:= 1 ->
+[08:42:05] <vinayb>     still_works
+[08:42:07] <vinayb>   end.
+[08:42:15] <vinayb> what's the output?
+[08:42:26] <aditya_a> works
+[08:42:38] <vinayb> for the second one?
+[08:43:03] <aditya_a> yes
+[08:43:05] <rakshith> still_works
+[08:43:49] <vinayb> correct! everything seems to be working fine, right? if expressions are just like your if statements
+[08:43:53] <vinayb> now try this:
+[08:43:58] <vinayb> always_fails() ->
+[08:44:15] <vinayb>   if 1 =:= 2, 1 =:= 1 ->
+[08:44:17] <vinayb>     fails
+[08:44:19] <vinayb>   end.
+[08:44:25] <vinayb> what's the output?
+[08:47:06] <vinayb> anyone?
+[08:47:06] <rakshith> I get a warning
+[08:47:14] <rakshith> no clause will ever match
+[08:47:25] <vinayb> what do you get when you run the function?
+[08:47:30] <rakshith> the guard for this clause always evaluated to false
+[08:47:47] <rakshith> exception error
+[08:48:00] <vinayb> correct! any guesses why that happens?
+[08:48:34] <rakshith> there is no else clause?
+[08:49:28] <vinayb> alright, remember how i said all expressions in Erlang are supposed to return something? that's true for if expressions too! When no matching clause can be found, it's an error because Erlang doesn't know what the expression should return
+[08:49:40] <vinayb> yes rakshith , in Erlang there is no else clause
+[08:49:52] <vinayb> so this is how else clauses are made in Erlang:
+[08:50:12] <vinayb> maybe_true(N) ->
+[08:50:24] <vinayb>   if N =:= 2 -> might_succeed;
+[08:50:30] <vinayb>     true -> always_does
+[08:50:31] <vinayb>   end.
+[08:50:48] <vinayb> see that 'true' clause there? That's effectively the else
+[08:51:01] <vinayb> now try running this function
+[08:51:25] <vinayb> module_name:maybe_true(2).
+[08:51:35] <vinayb> module_name:maybe_true(3).
+[08:52:11] <salman-bhai> Vinay I'm getting a syntax error in my first one
+[08:52:19] <vinayb> which one?
+[08:53:17] <aditya_a> 1)might_succeed  2)always_does
+[08:53:34] <salman-bhai> Oh waitt
+[08:53:42] <vinayb> correct aditya_a ! so the 'true' clause there acts as else in other languages
+[08:54:02] <vinayb> salman-bhai what happened? :P
+[08:54:21] <vinayb> right! so now as i said earlier if expressions, just like all expressions in Erlang, have to return something
+[08:54:23] *** Joins: akshayrevankar (67157d53@gateway/web/freenode/ip.103.21.125.83)
+[08:54:29] <vinayb> now, that can be captured too
+[08:54:37] <vinayb> try this function:
+[08:54:41] <salman-bhai> 7> c(erlang_module1). erlang_module1.beam: Module name 'erlang_module' does not match file name 'erlang_module1'
+[08:55:01] <salman-bhai> error
+[08:55:02] <vinayb> animal_sounds(Animal) ->
+[08:55:25] <vinayb>   Talk = if Animal == cat -> "meow";
+[08:55:45] <vinayb>           Animal == cow -> "mooo";
+[08:55:55] <vinayb>         Animal == dog -> "bark";
+[08:56:05] <vinayb>           Animal == tree -> "bark";
+[08:56:13] <vinayb>       true -> "dsadas"
+[08:56:18] <vinayb>       end,
+[08:56:33] <vinayb>       {Animal, "says ", ++ Talk ++ "!"}.
+[08:56:59] <vinayb> sorry about the atrocious indentation, it's hard to, over IRC :P
+[08:57:19] <vinayb> salman-bhai, rename your file to erlang_module1.erl
+[08:57:42] <salman-bhai> JUst did
+[08:57:51] <salman-bhai> Ohwait
+[08:58:11] <vinayb> guys, i want the output to these:
+[08:58:46] <vinayb> module_name:animal_sounds(dog).
+[08:58:46] <vinayb> module_name:animal_sounds(tree).
+[08:58:46] <vinayb> module_name:animal_sounds(nothing).
+[08:58:50] <salman-bhai> Wait I'll pm u
+[09:00:16] <rakshith> syntax error before ++
+[09:00:27] <aditya_a> remove the ,
+[09:00:38] <rakshith> ah
+[09:01:11] <vinayb> ah yes, nice catch aditya_a ! remove the comma after "says "
+[09:02:49] <vinayb> so what are the outputs guys?
+[09:02:52] <aditya_a> {dog,"says bark!"}{tree,"says bark!"}{nothing,"says dsadas!"}
+[09:03:27] <vinayb> correct! now you've seen how to bind the result of an if expression to a variable, just like it's possible to do with any other expression
+[09:04:14] <vinayb> alright, now let's go to case expressions
+[09:04:46] <vinayb> case expressions are extremely powerful! 
+[09:05:11] <vinayb> you can have complex pattern matching with each argument and have guards on top of it
+[09:05:24] <vinayb> let's implement a Set data structure on Lists
+[09:05:41] <vinayb> Set is a List where you can't have duplicate members
+[09:05:56] <vinayb> let's implement the Insert function:
+[09:06:03] <vinayb> insert(X, []) ->
+[09:06:09] <vinayb>   [X];
+[09:06:17] <vinayb> insert(X, Set) ->
+[09:06:25] <vinayb>   case lists:member(X, Set) of 
+[09:06:32] <vinayb>     true -> Set;
+[09:06:40] <vinayb>     false -> [X|Set]
+[09:06:43] <vinayb>   end.
+[09:07:49] <vinayb> before we proceed, tell me what do the first two lines do?
+[09:09:10] <aditya_a> for an empty list we get a list  with only X
+[09:09:14] <rakshith> insert the element into the list and then call the same function with X and Set?
+[09:10:05] <vinayb> correct aditya_a! The first two lines pattern match with an empty set, where we return a List with just that element
+[09:10:13] <rakshith> and then if X is a member of set ,return the set else append X and then return?
+[09:10:33] <vinayb> correct rakshith !
+[09:10:42] <vinayb> you can try it out:
+[09:10:49] <vinayb> module_name:insert(1, []).
+[09:11:11] <vinayb> module_name:insert(5, [1,2,3,4]).
+[09:11:21] <vinayb> module_name:insert(9, [1,2,3,4,9]).
+[09:11:25] <vinayb> what are the outputs/
+[09:11:26] <vinayb> *?
+[09:12:10] <aditya_a> [1][1,2,3,4,5][1,2,3,4,9]
+[09:12:16] <vinayb> btw lists:member/2 is a function defined in lists module which checks if an element exists in a List
+[09:12:45] <vinayb> correct aditya_a ! so as you can see in the last output, an additional 9 did not get added to the List
+[09:12:46] <aditya_a> *[1,2,3,4] for second one!
+[09:13:12] <vinayb> are you sure? ;)
+[09:13:26] <rakshith> How is it arranging itself aditya_a? :P
+[09:13:34] <rakshith> [5,1,2,3,4]
+[09:13:44] <vinayb> the output to second one is [5,1,2,3,4] as rakshith said
+[09:13:59] <vinayb> because we append it to the beginning in the line false -> [x|Set]
+[09:14:04] <vinayb> remember your pattern matching guys!
+[09:14:22] <vinayb> *[X|Set]
+[09:15:06] <vinayb> so that's the syntax of case...of expressions
+[09:15:21] <vinayb> case <expr> of
+[09:15:29] <vinayb>   clause1 ...
+[09:15:35] <vinayb>   clause2 ...
+[09:15:38] <vinayb>   ...
+[09:15:44] <vinayb>   clausen ...
+[09:15:51] <vinayb>  end.
+[09:16:12] <vinayb> and remember your clauses can have guards too!
+[09:17:03] <vinayb> let's see how we can combine them:
+[09:17:16] <vinayb> beach(Temperature) ->
+[09:17:23] <vinayb>   case Temperature of 
+[09:17:38] <vinayb>     {celcius, N} when N >= 20, N =< 45 ->
+[09:17:49] <vinayb>       'favourable';
+[09:18:12] <vinayb>     {kelvin, N} when N >= 293, N =< 318 ->
+[09:18:22] <vinayb>       'scientifically favourable';
+[09:18:41] <vinayb>     {fahrenheit, N} when N >= 68, N =< 113 ->
+[09:18:59] <vinayb>       'favourable in imperial countries';
+[09:19:09] <vinayb>     _ -> 
+[09:19:16] <vinayb>       'avoid beach'
+[09:19:20] <vinayb>   end.
+[09:20:22] <vinayb> what's the output to these?:
+[09:20:41] <vinayb> beach({celcius, 30}).
+[09:20:56] <vinayb> beach({kelvin, 300}).
+[09:21:22] <vinayb> beach({fahrenheit, 200}).
+[09:22:42] <rakshith> favourable, scientifically favourable, avoid beach
+[09:22:48] <aditya_a> favorable 'scientifically favorable' 'avoid beach'
+[09:23:46] <vinayb> good going!
+[09:23:49] <vinayb> nice work guys
+[09:23:57] <salman-bhai> favourable, scientifically favourable, avoid beach
+[09:24:11] <vinayb> correct rakshith , aditya_a and salman-bhai !
+[09:24:34] <vinayb> so this is how we can combine Pattern Matching, Guards, Case expressions etc
+[09:25:06] <vinayb> so we're pretty much done with the syntax of Erlang :D
+[09:25:18] <vinayb> this is all there is to it!
+[09:25:21] <vinayb> we'll see more soon
+[09:25:25] <vinayb> in Concurrency
+[09:25:33] <vinayb> but in normal Erlang, this is all there is
+[09:25:52] <vinayb> Before we move on to Recursion and Higher Order Functions, I want to talk a bit about types
+[09:26:27] <vinayb> Can anyone tell what are the different kinds of types?
+[09:27:41] <rakshith> Type :: any()                 %% The top type, the set of all Erlang terms
+[09:27:42] <rakshith>         | none()                %% The bottom type, contains no terms
+[09:27:42] <rakshith>         | pid()
+[09:27:42] <rakshith>         | port()
+[09:27:42] <rakshith>         | reference()
+[09:27:42] <rakshith>         | []                    %% nil
+[09:27:43] <salman-bhai> Atom
+[09:27:43] <rakshith>         | Atom
+[09:27:45] <rakshith>         | Bitstring
+[09:27:49] <rakshith>         | float()
+[09:27:53] <rakshith>         | Fun
+[09:27:55] <rakshith>         | Integer
+[09:27:57] <rakshith>         | List
+[09:27:59] <rakshith>         | Map
+[09:28:03] <rakshith>         | Tuple
+[09:28:05] <rakshith>         | Union
+[09:28:07] <rakshith>         | UserDefined
+[09:28:09] <rakshith> From erlang website
+[09:28:28] <vinayb> right! those are the various types in Erlang
+[09:28:54] <vinayb> now, what are the various kinds of Type Systems?
+[09:29:33] <vinayb> basically you can have a language's type systems in these four broad categories:
+[09:29:49] <vinayb> Strongly typed, weakly typed, statically typed, dynamically typed
+[09:31:07] <vinayb> Strongly typed means, the language won't do too many implicit type conversions for you
+[09:31:18] <vinayb> it means, there are a lot of types
+[09:31:33] <vinayb> and you can't have operations mixing and matching them just like that
+[09:31:35] <vinayb> for example
+[09:31:47] <vinayb> if you try doing "1" + 10 in Erlang
+[09:31:53] <vinayb> you'll get an error
+[09:32:14] <vinayb> because you're trying to add a String and an Integer, which is illegal in Erlang
+[09:32:24] <vinayb> Hence, Erlang is *strongly typed*.
+[09:32:34] <salman-bhai> Example of matchimh strongly typed?
+[09:32:41] <salman-bhai> matching*
+[09:33:07] <vinayb> C is also strongly typed. There's lots of types like ints, floats, chars, etc
+[09:33:14] <vinayb> matching as in salman-bhai ?
+[09:33:15] *** Quits: rakshith (~hehaichi@103.194.14.43) (Read error: Connection reset by peer)
+[09:33:37] <salman-bhai> u wrote right @vinayb> and you can't have operations mixing and matching them just like that
+[09:33:42] *** Joins: rakshith (~hehaichi@103.194.14.43)
+[09:33:48] <salman-bhai> mixing is when u used the + sign
+[09:33:56] <salman-bhai> What in matching
+[09:34:16] <vinayb> that's just a phrase i used xD Think like trying to do operations on them
+[09:34:21] <vinayb> + is an operation
+[09:34:36] <vinayb> Weakly typed is the exact opposite
+[09:34:41] <salman-bhai> Ok
+[09:35:21] <vinayb> There aren't many types in a weakly typed language, it's all Numbers instead of ints, floats, etc. And you can freely do operations between data types
+[09:35:28] <vinayb> example: JavaScript
+[09:35:33] <vinayb> "1" + 10
+[09:35:37] <vinayb> will give you 11 in JS!
+[09:35:57] <vinayb> JS has no floats or ints. It just has one common type called Number
+[09:36:10] <vinayb> Now, ;et
+[09:36:15] <vinayb> *Now, let's come to
+[09:36:24] <vinayb> Dynamically typed vs Statically typed
+[09:36:58] <vinayb> Statically typed means you're explicitly specifying what type some variable is, what type a function returns, etc
+[09:37:02] <vinayb> eg: C
+[09:37:14] <vinayb> you can't just do x, you have to do int x, float y etc
+[09:37:23] <vinayb> you have to specify the return type
+[09:37:34] <vinayb> you have to specify what types the parameters are 
+[09:37:43] <vinayb> it can be cumbersome at times
+[09:38:25] <vinayb> Dynamically typed is the exact opposite: you don't have to specify explicitly what type a variable is, what type a function returns, etc
+[09:38:36] <vinayb> is Erlang dynamically typed or statically? ;)
+[09:38:45] <aditya_a> dynamic
+[09:38:46] <rakshith> dynamic
+[09:39:17] <salman-bhai> dynamic
+[09:40:02] <vinayb> correct! So Erlang is a strongly, dynamically typed language! Which happens to be a very good combination: You can generalize what your inputs are, your outputs are, it's less cumbersome, but being strongly typed, there ARE types in the background preventing you from doing illegal actions!
+[09:40:07] <vinayb> Best of both worlds!
+[09:40:18] <vinayb> Erlang: strongly, dynamically typed
+[09:40:24] <vinayb> C: strongly, statically typed
+[09:40:33] <rakshith> But isn't all floats and ints the same in erlang?
+[09:40:36] <vinayb> JavaScript: weakly, dynamically typed
+[09:40:54] <salman-bhai> How is weakly typeb bad? @vinayb
+[09:41:08] <salman-bhai> typed*
+[09:41:49] <vinayb> no rakshith , there is seperate types for them, it's just Erlang allows you to do operations between them
+[09:42:08] <vinayb> BUT for all intents and purposes: this allows you to write general programs
+[09:42:09] <salman-bhai> The =:= and ==
+[09:42:19] <vinayb> ya there is a distinction
+[09:42:23] <salman-bhai> THat's where Erlang separates them ryt, @Rakshith?
+[09:42:32] <vinayb> salman-bhai: , weakly typed language are not that great because
+[09:42:38] <rakshith> yeah
+[09:42:47] <vinayb> you never want "1" + 10 to give you 11
+[09:42:55] <vinayb> this can lead to lots and lots of bugs!
+[09:43:04] <vinayb> say you take the input from user as string
+[09:43:14] <vinayb> say you take two inputs
+[09:43:30] <vinayb> if both are strings: "1" + "10" will give you "110"
+[09:43:46] <vinayb> if you happen to convert one, and forget to convert another it will give you 11
+[09:44:02] <vinayb> so it leads to lots of bugs later 
+[09:44:06] <salman-bhai> Ah okay...
+[09:45:15] <vinayb> so these are all kinds of type systems you can have
+[09:45:47] <vinayb> and to finish off today's session, the way you comment a line in Erlang is
+[09:45:53] <vinayb> %%
+[09:46:12] <vinayb> two percentage symbols
+[09:46:21] <salman-bhai> %%Thank_you_:p
+[09:46:32] <aditya_a> %%Thankyou!!!
+[09:46:38] <vinayb> and that's all for today :)
+[09:46:44] <vinayb> you're welcome guys!
+[09:46:50] <rakshith> %%Thanks!
+[09:46:52] <vinayb> Please play around with ifs and case!
+[09:47:01] <vinayb> you can do lots of fun things with them :)
+[09:47:17] <vinayb> especially combined with Pattern Matching
+[09:47:50] <vinayb> Next session, we'll see Recursion, one of the landmark, if not THE landmark powerhouse in Functional Languages
+[09:48:01] <vinayb> See ya everyone!
+[09:48:21] <salman-bhai> See ya, bye!
+[09:48:30] *** Quits: salman-bhai (b63a36dd@gateway/web/freenode/ip.182.58.54.221) (Quit: Page closed)
+[09:48:45] <rakshith> no loops in functional languages right?
+[09:49:02] <vinayb> yes, no such things as loops in functional languages. 
+[09:49:22] <vinayb> The property of iterating over something is captured using Recursion, we'll see eventually :)
+[09:50:14] *** Quits: aditya_a (3d031604@gateway/web/freenode/ip.61.3.22.4) (Quit: Page closed)
+[09:51:26] <rakshith> yeah.. But recursion has an inherent disadvantage right? In every call separate memory is created and also the previous data also has to be stored. Might lead to stack overflow?
+[09:52:08] <rakshith> esp if the recursion is very deep
+[09:52:24] <vinayb> Functional language compilers do a lot of optimization in behind. There is something called tail recursion which prevents a lot of these memory issues
+[09:52:33] <vinayb> FL Compilers do a lot of magic behind the scenes
+[09:53:21] <rakshith> Aha!
+[09:53:44] <vinayb> we'll get to it soon ;)
+[09:53:53] <vinayb> and i'll go over in detail about it
+[09:54:00] <rakshith> about?
+[09:54:13] <vinayb> Recursion, tradeoffs, advantages etc
+[09:55:17] <rakshith> See you man! :D
+[09:55:44] *** Parts: rakshith (~hehaichi@103.194.14.43) ("Leaving")
+[09:55:44] <vinayb> See you :)

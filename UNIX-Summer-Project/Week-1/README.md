@@ -1,9 +1,9 @@
-# Topics to be covered:
+# Topics covered:
 * ls
 * man
 * cd
 * sudo
 * pwd
 * mkdir, mv, rm, cp
-* cat, pwd, exit, passwd
+* cat
 * Other useful day to day commands

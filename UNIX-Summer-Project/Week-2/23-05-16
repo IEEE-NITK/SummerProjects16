@@ -1,0 +1,330 @@
+swati!~swati@59.93.238.55 JOIN #ieee-UNIX
+kaushiksk!~kaushik21@117.215.132.19 JOIN #ieee-UNIX
+Harita_Reddy!01273dc2@gateway/web/freenode/ip.1.39.61.194 JOIN #ieee-UNIX
+Varsh!0e6393b8@gateway/web/freenode/ip.14.99.147.184 JOIN #ieee-UNIX
+
+AdithyaBhat:Lets wait for a few minutes.
+
+m_gautham!3b58c307@gateway/web/freenode/ip.59.88.195.7 JOIN #ieee-UNIX
+Harita_Reddy_!653fa066@gateway/web/freenode/ip.101.63.160.102 JOIN #ieee-UNIX
+bharath!6738fb41@gateway/web/freenode/ip.103.56.251.65 JOIN #ieee-UNIX
+
+bharath:is the session started?
+AdithyaBhat:No.
+AdithyaBhat:We will kick off at 8 !0.
+AdithyaBhat:*10.
+
+abhisheks!2bf79cb8@gateway/web/freenode/ip.43.247.156.184 JOIN #ieee-UNIX
+Harita_Reddy!01273dc2@gateway/web/freenode/ip.1.39.61.194 QUIT :
+
+AdithyaBhat:How many of you did not do the homework?
+AdithyaBhat:No worries, if you didn't btw.
+AdithyaBhat:I'm not continueing until I get some response.
+AdithyaBhat:*continuing
+kaushik_sk:I've done.
+AdithyaBhat:Today we also be learning about passwd and exit commands.
+AdithyaBhat:A little bit of introduction to scripting in linux.
+AdithyaBhat:And ofc sed.
+kaushiksk!~kaushik21@117.215.132.19 QUIT :Quit: Leaving
+AdithyaBhat:What do you think the command passwd does?
+kaushik_sk:set a password ?
+Harita_Reddy_:change password
+swati:set or change password?
+AdithyaBhat:yes.
+AdithyaBhat:try it out.
+AdithyaBhat:notice that you can only change the password of your own account.
+AdithyaBhat:However the root user can change anyone's password.
+AdithyaBhat:Does everyone know who a root is?
+kaushik_sk:having access to files of all users ?
+m_gautham:permission to do anything??
+Harita_Reddy_:sort of admin or superuser?
+bharath:is the main user who can access to all accounts??
+AdithyaBhat:The root is like ADMINISTRATOR in Windows.
+AdithyaBhat:They are the superuser.
+AdithyaBhat:can override any restrictions.
+AdithyaBhat:You might have used many commands starting with sudo.
+AdithyaBhat:In a multiuser environment sudo allows any user to temporarily take on the role of the superuser.
+AdithyaBhat:Open a terminal and try these commands.
+AdithyaBhat:id -u
+AdithyaBhat:sudo id -u
+AdithyaBhat:and tell me what happens.
+m_gautham:1000 for first and 0 for second
+bharath:first it shown me 1000 and next it shown 0
+kaushiksk!~kaushik21@117.215.132.75 JOIN #ieee-UNIX
+AdithyaBhat:Now imagine you're writing a program that performs a system task.
+AdithyaBhat:obviously a normal user cannot do this because he will get permission denied messages from the system.
+AdithyaBhat:you can now use the output of the `id -u` command to check if the program is running in root mode or user mode.
+kaushik_sk!~kaushik21@117.215.132.19 QUIT :
+AdithyaBhat:Now let us start with the introduction to scripting.
+AdithyaBhat:create a file with exit as the content.
+AdithyaBhat:"exit""
+AdithyaBhat:*"exit"
+AdithyaBhat:then run the file as bash <filename>
+AdithyaBhat:what are the results?
+kaushiksk:nothing happened
+AdithyaBhat:replace "exit" with "exit 5"
+AdithyaBhat:run `bash <filename>'
+AdithyaBhat:then run `echo "$?"'
+kaushiksk:"exit 5" with quotes ?
+AdithyaBhat:without the quotes.
+kaushiksk:ok. output "5".
+AdithyaBhat:Everyone got the same output??
+swati:i got "0" as the output
+AdithyaBhat:dont run any commands in between.
+AdithyaBhat:try `bash <filename>; echo "$?"'
+swati:0 again
+kaushiksk:5 again
+AdithyaBhat:did you change your file?
+AdithyaBhat:edit the content i mean.
+swati:yeah
+AdithyaBhat:what does your file have?
+swati:exit 5
+AdithyaBhat:what are the commands?
+swati:cat >f1
+swati:bash f1; echo "$?"
+AdithyaBhat:the same commands are giving me 5.
+AdithyaBhat:in the same terminal.
+bharath:mine showed 0
+AdithyaBhat:do not try the commands in different terminals.
+swati:okay got it
+swati:5
+AdithyaBhat:still 0?
+AdithyaBhat:quick notes.
+bharath:if the text is 'exit 6' then it shows 6
+AdithyaBhat:yes
+AdithyaBhat:first of all bash stands for Bourne Again SHell.
+AdithyaBhat:A shell is an intermediate between the kernel and the User.
+AdithyaBhat:In UNIX/Linux the GUI is also a shell.
+AdithyaBhat:Shells can be changed and customized.
+AdithyaBhat:And thus so can your GUI.
+AdithyaBhat:the bash you run is a program.
+kaushiksk:ok
+AdithyaBhat:everything you run in the terminal is a program written in C/C++ or others.
+AdithyaBhat:some programs are a part of the shell. As in, they are embedded into your shell like grapes in plum cake.
+AdithyaBhat:you can find out if a command is a shell built in or external by using the type command.
+AdithyaBhat:try `type echo'
+AdithyaBhat:or `type type'
+AdithyaBhat:or `type ls'
+Gauthamm!67fd801f@gateway/web/freenode/ip.103.253.128.31 JOIN #ieee-UNIX
+AdithyaBhat:everyone with me?
+m_gautham!3b58c307@gateway/web/freenode/ip.59.88.195.7 QUIT :
+kaushiksk:yup
+abhisheks:yes
+swati:yeah
+Gauthamm:Missed a bit
+AdithyaBhat:now i want everyone to try the above exercise with `exit 256'
+AdithyaBhat:type `exit 256' in a file.
+gautham_!67fd801f@gateway/web/freenode/ip.103.253.128.31 JOIN #ieee-UNIX
+AdithyaBhat:run this command: `bash <filename> ; echo $?"
+kaushiksk:0
+AdithyaBhat_!dfe33dd9@gateway/web/freenode/ip.223.227.61.217 JOIN #ieee-UNIX
+AdithyaBhat_:Results?
+gautham_:0
+swati:0
+AdithyaBhat_:now try with `exit -1'
+AdithyaBhat_:results?
+swati:255
+
+AdithyaBhat!dfe33dd9@gateway/web/freenode/ip.223.227.61.217 QUIT :
+
+AdithyaBhat_:Conclusoin?
+AdithyaBhat_:*conclusion?
+kaushiksk:only 0-255 exit status alowed ?
+AdithyaBhat:yes.
+AdithyaBhat:a little more on exit.
+AdithyaBhat:try `ls; echo $?'
+AdithyaBhat:and then `grep "hi" <your_last_bash_file>; echo $?'
+AdithyaBhat_!dfe33dd9@gateway/web/freenode/ip.223.227.61.217 JOIN #ieee-UNIX
+AdithyaBhat_:Need to speed up.
+AdithyaBhat_:Still in intro.
+AdithyaBhat_:so basically the commands are programmed in such a way that they return non zero values when they fail.
+AdithyaBhat_:Usually each number has a meaning.
+
+AdithyaBhat!dfe33dd9@gateway/web/freenode/ip.223.227.61.217 QUIT :
+
+AdithyaBhat_:so if a task requires a few commands to work before doing something dangerous say delete a fail, they can use the exit status of the prerequisite commands.
+AdithyaBhat_:Understood?
+kaushiksk:ok
+abhisheks:yup
+gautham_:ok
+gautham_:what happend??
+AdithyaBhat_:now about echo
+AdithyaBhat_:it just prints whatever is given in double quotes.
+AdithyaBhat_:say you want to use escape characters like \n.
+AdithyaBhat_:then you must use echo -e "\n"
+kaushiksk:what does -e do 
+AdithyaBhat_:enable interpretation of escape sequences.
+AdithyaBhat_:now does everyone remember running ./a.out
+AdithyaBhat_:?
+kaushiksk:yup
+Harita_Reddy_:yes
+gautham_:i didnt get it
+AdithyaBhat_:always remember if you give a file to the shell it will run it.
+AdithyaBhat_:on two conditions.
+AdithyaBhat_:it should know what to call to run the file.
+AdithyaBhat_:and it should know where the source is.
+AdithyaBhat_:moving on.
+AdithyaBhat_:how many of you know python?
+kaushiksk:me
+swati:me
+AdithyaBhat_:add this line to your existing bash file.
+AdithyaBhat_:#!/bin/bash
+AdithyaBhat_:to your file with exit x
+kaushiksk:beginning or end ?
+AdithyaBhat:first line.
+kaushiksk:done
+AdithyaBhat:now try ./<your file>
+kaushiksk:permission denied
+AdithyaBhat:do chmod u+x <your file>
+AdithyaBhat:run chmod ..
+kaushiksk:it says missing operand after '..'
+AdithyaBhat:i meant `chmod u+x <your file>'
+kaushiksk:ok done
+AdithyaBhat:./<your file>
+AdithyaBhat:should work now.
+kaushiksk:does nothing
+AdithyaBhat:you could write any number of commands on seperate lines
+AdithyaBhat:to see results replace exit with a echo command.
+AdithyaBhat:your file could be like this.
+AdithyaBhat:#!/bin/bash
+AdithyaBhat:echo "...."
+AdithyaBhat:now run ./<your file>
+kaushiksk:works 
+kaushiksk:shows whatever is inside quotes in echo "..."
+AdithyaBhat:for those of you who know python, you can write python programs in a file.
+AdithyaBhat:add `#!/usr/bin/python' for python 2.x
+AdithyaBhat:and `#!/usr/bin/python3'
+AdithyaBhat:any doubts?
+AdithyaBhat:Must start sed soon.
+kaushiksk:no
+swati:no
+abhisheks:nope
+AdithyaBhat:want a break for dinner?
+AdithyaBhat:??
+kaushiksk:yup
+kaushiksk:sounds good
+kaushiksk:10 mins
+kaushiksk:?
+AdithyaBhat:the others?
+bharath:15  mins
+abhisheks:yup 15 mins
+abhisheks:?
+AdithyaBhat:be back by 9:55.
+AdithyaBhat:Here is the link for the source code of sed: http://git.savannah.gnu.org/cgit/sed.git/snapshot/sed-4.2.2.tar.gz
+AdithyaBhat:sed is a stream editor.
+AdithyaBhat:as in it reads streams of text line by line, and performs text manipulation on them.
+AdithyaBhat:Lets start with the first homework question.
+kaushiksk:ok
+AdithyaBhat:printing odd lines.
+AdithyaBhat:of a file.
+AdithyaBhat:How many of you got it?
+Harita_Reddy_:sed -n '1~2p' filename ?
+kaushiksk:yup
+AdithyaBhat:correct.
+AdithyaBhat_!dfe37d96@gateway/web/freenode/ip.223.227.125.150 JOIN #ieee-UNIX
+AdithyaBhat_:where was I?
+kaushiksk:1,$
+AdithyaBhat_:you can use it like 1,2 or 2,3 or 1,100 or 3,$ and so on.
+AdithyaBhat_:the ~ is the step operator.
+AdithyaBhat_:meaning how much to increment to go the next address.
+AdithyaBhat_:so 1~2 would mean 1,3,5,7, and so on.
+
+AdithyaBhat!dfe33dd9@gateway/web/freenode/ip.223.227.61.217 QUIT :Ping timeout: 250 seconds
+
+AdithyaBhat_:p is the command used to print.
+AdithyaBhat:and all of these come together to form the complete operation.
+AdithyaBhat:any doubts?
+gautham_:no
+kaushiksk:nope
+Harita_Reddy_:no
+swati:no
+
+varsh!0e6393b8@gateway/web/freenode/ip.14.99.147.184 QUIT :Ping timeout: 250 seconds
+AdithyaBhat_!dfe37d96@gateway/web/freenode/ip.223.227.125.150 JOIN #ieee-UNIX
+
+AdithyaBhat_:A pattern is a regular expression.
+AdithyaBhat_:Remember regular expression?
+kaushiksk:yes!
+
+varsh!0e6393b8@gateway/web/freenode/ip.14.99.147.184 JOIN #ieee-UNIX
+
+AdithyaBhat_:coming to the second question.
+AdithyaBhat_:Duplicating the grep's functionality.
+kaushiksk:sed -n 's/regexp/&/p' filename
+AdithyaBhat_:just search for the lines which match the pattern.
+AdithyaBhat_:do not print the stream.
+AdithyaBhat_:Print only matching streams.
+AdithyaBhat!dfe37d96@gateway/web/freenode/ip.223.227.125.150 QUIT :Ping timeout: 250 seconds
+AdithyaBhat_:now who can make the command from scratch?
+AdithyaBhat_:taking care of the above three points?
+AdithyaBhat_:this is how you use a pattern as an address.
+AdithyaBhat_:sed '/pattern/ . .  
+AdithyaBhat_:now how to make sed not print all the lines?
+kaushiksk:-n
+AdithyaBhat_:ie not print the stream.
+AdithyaBhat_:good.
+AdithyaBhat_:task 2. use search key word as pattern
+AdithyaBhat_:how?
+AdithyaBhat_:the command is:
+AdithyaBhat_:sed -n '/pattern/p'
+AdithyaBhat_:and grep "pattern"
+AdithyaBhat_:both will give the same results.
+AdithyaBhat_:try it.
+kaushiksk:yup
+AdithyaBhat_:moving on to the third task.
+AdithyaBhat_:substitution.
+AdithyaBhat_:the p command will print
+AdithyaBhat_:and similarly d will delete the line from the stream or file.
+AdithyaBhat_:d is also therefore, dangerous:P
+AdithyaBhat_:sed can be used to substitute things in a stream.
+AdithyaBhat_:the format is as follows.
+AdithyaBhat_:sed 's/abc/dcx/'
+AdithyaBhat_:you can add a command at the end.
+AdithyaBhat_:like s/abc/def/p
+AdithyaBhat_:like s/abc/def/d
+AdithyaBhat_:like s/abc/def/g
+AdithyaBhat_:g stands for global.
+AdithyaBhat_:meaning replace all occurences in the line.
+AdithyaBhat_:you can also write the substituted stream to another file with the w command
+AdithyaBhat_:like s/abc/def/gw fname
+AdithyaBhat_:& stands for the selected pattern
+AdithyaBhat_:s/abc/& &/ will replace abc with "abc abc"
+AdithyaBhat_:clear?
+kaushiksk:yup
+Harita_Reddy_:yes
+AdithyaBhat_:good.
+AdithyaBhat_:others?
+gautham_:ok
+kaushiksk:dont we enter input file like we do with grep ?
+kaushiksk:then how do we mention file to write into as in "s/abc/def/gw fname"
+AdithyaBhat_:like this.
+AdithyaBhat_:sed 's/abc/def/gw output' input
+kaushiksk:ah ok 
+AdithyaBhat_:for more cool and advanced tricks refer to: http://www.grymoire.com/Unix/Sed.html
+AdithyaBhat_:He is good.
+AdithyaBhat_:We are done for today.
+AdithyaBhat_:Any questions related to today's topics or generic ones?
+abhisheks!2bf79cb8@gateway/web/freenode/ip.43.247.156.184 QUIT :Ping timeout: 250 seconds
+AdithyaBhat_:The best way to learn is by trying out all the commands.
+kaushiksk:in echo
+AdithyaBhat_:yeah?
+kaushiksk:what exactly is the "$?"
+bharath!6738fb41@gateway/web/freenode/ip.103.56.251.65 PART #ieee-UNIX
+AdithyaBhat_:anything that begins with a $ is a variable in shell language.
+AdithyaBhat_:like $PATH, $HOME and $?
+kaushiksk:ohk
+AdithyaBhat_:you can try `echo $hello'
+AdithyaBhat_:it will not print anything because that variable is unset.
+kaushiksk:ah 
+AdithyaBhat_:you can type `hello=12'
+AdithyaBhat_:and then retry the same thing.
+kaushiksk:gotit
+AdithyaBhat_:try `set'
+AdithyaBhat_:it will give you all the shell variables set so far.
+AdithyaBhat_:and also shell functions.
+
+kaushiksk!~kaushik21@117.215.132.75 QUIT :Quit: Leaving
+swati!~swati@59.93.238.55 QUIT :Quit: Leaving
+kaushik_sk!~kaushik21@117.215.132.75 JOIN #ieee-UNIX
+Harita_Reddy_!653fa066@gateway/web/freenode/ip.101.63.160.102 QUIT :Quit: Page closed
+gautham_!67fd801f@gateway/web/freenode/ip.103.253.128.31 QUIT :Ping 

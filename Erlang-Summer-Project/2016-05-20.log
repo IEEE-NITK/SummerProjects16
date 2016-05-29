@@ -1,0 +1,460 @@
+[07:55:40] *** Joins: salman_ (b63a6584@gateway/web/freenode/ip.182.58.101.132)
+[08:08:33] *** Joins: pratyushgr (7aa2348f@gateway/web/freenode/ip.122.162.52.143)
+[08:08:50] <pratyushgr> hello
+[08:12:38] <vinayb> hey pratyushgr 
+[08:13:45] <pratyushgr> actually i am not clear about "what is functional concepts"
+[08:14:16] <pratyushgr> the other day i got disconnected while it was being discussed
+[08:16:02] <vinayb> sorry, had a technical glitch. what doubt do you have?
+[08:16:22] <salman_> functional concepts
+[08:16:36] <vinayb> ya what in that?
+[08:16:48] <salman_> definition
+[08:16:56] <salman_> what it is..
+[08:17:25] <pratyushgr> yaa..what it is..
+[08:19:12] <vinayb> functional concepts relate to pure functions, which don't have any side effects, now side effects can mean touching on something other than the function. pure function returns always the same value for a given parameter. however you can't make a useful program using only pure functions. You need IO. So functional languages allow you to explicitly seperate the pure functions from the impure, and functio
+[08:19:18] <vinayb> nal programming is all about composing these functions together, like f o g, g o f etc/
+[08:23:19] <vinayb> any doubts?
+[08:23:49] <pratyushgr> yaa got it..
+[08:24:21] <pratyushgr> can u give an example of pure function
+[08:25:19] <vinayb> f(x) = x + 5
+[08:25:50] <vinayb> whatever be value of x, for that x it will always give same value
+[08:26:36] <pratyushgr> ohk
+[08:26:44] <vinayb> todays_date() however is a function that always gives different values depending on which day it is
+[08:27:43] <vinayb> and you can get the logs from the link on the topic :)
+[08:29:01] <pratyushgr> yeah.
+[08:29:11] <pratyushgr> Thankx
+[08:31:39] <salman_> I had a doubt in installing Erlang on Linux
+[08:32:03] <salman_> All I did was sudo apt-get install erlang
+[08:32:16] <salman_> And then all those folders started downloading
+[08:32:29] <salman_> Was there anything else to do as well?
+[08:33:34] <vinayb> Does the erlang shell open when you type erl on the command line?
+[08:34:04] *** vinayb changes topic to 'Distributed Systems Programming with Erlang | Today's log: https://goo.gl/aRNIyA'
+[08:37:41] <salman_> Oh okay it does
+[08:37:55] <salman_> I'm assuming that's it right?
+[08:38:08] <vinayb> ya then everything is right
+[08:39:59] <salman_> Cool
+[08:42:22] *** Quits: pratyushgr (7aa2348f@gateway/web/freenode/ip.122.162.52.143) (Ping timeout: 250 seconds)
+[09:25:07] *** Joins: m_gautham (3b58c676@gateway/web/freenode/ip.59.88.198.118)
+[09:26:51] *** Joins: aditya (75d8eb3d@gateway/web/freenode/ip.117.216.235.61)
+[09:28:18] *** Quits: salman_ (b63a6584@gateway/web/freenode/ip.182.58.101.132) (Ping timeout: 250 seconds)
+[09:30:28] *** Joins: anirudhgp (~androirc@2604:2000:f246:9100:7427:2428:d3ea:2e81)
+[09:31:11] *** Joins: adarsh_honawad (6ace810d@gateway/web/freenode/ip.106.206.129.13)
+[09:31:35] *** Joins: sshah (b63a6584@gateway/web/freenode/ip.182.58.101.132)
+[09:33:03] <sshah> When do we start?
+[09:33:28] <vinayb> we'll start now
+[09:33:37] <sshah> Cool
+[09:33:38] <vinayb> Hey everyone! Vinay here
+[09:33:56] *** Quits: m_gautham (3b58c676@gateway/web/freenode/ip.59.88.198.118) (Ping timeout: 250 seconds)
+[09:33:56] <anirudhgp> Hi!
+[09:33:58] <sshah> Hi VInay :P
+[09:34:09] <adarsh_honawad> Hi vinay, i am adarsh
+[09:34:09] <vinayb> Alright, so has everyone gotten Erlang set up on their systems?
+[09:34:22] <vinayb> hey adarsh_honawad :)
+[09:34:29] <adarsh_honawad> yep
+[09:34:54] <vinayb> To those of you on Linux, type erl on the command line to open the erlang shell
+[09:35:09] <vinayb> and to those on Windows, open erl.exe 
+[09:35:16] <vinayb> or werl.exe
+[09:35:25] <vinayb> just search for it
+[09:35:55] *** Joins: rakshith (~hehaichi@117.192.110.99)
+[09:36:10] <vinayb> have you guys started the shell?
+[09:36:48] <adarsh_honawad> yeah
+[09:36:59] <sshah> yes
+[09:37:35] <aditya> yes
+[09:37:49] <vinayb> Alright, so Erlang has a shell for interactive programming
+[09:38:05] <vinayb> it's called a REPL
+[09:38:11] <vinayb> A read-eval-print-lop
+[09:38:13] <vinayb> *loop
+[09:38:32] <vinayb> So you type in an expression, it evaluates it, and shows you the result!
+[09:39:10] <vinayb> type in help().
+[09:39:19] <vinayb> and note the fullstop!
+[09:39:45] <vinayb> you can see q() there
+[09:40:04] <vinayb> so to quit the shell session all you have to type is q().
+[09:40:31] *** Quits: anirudhgp (~androirc@2604:2000:f246:9100:7427:2428:d3ea:2e81) (Quit: AndroIRC - Android IRC Client ( http://www.androirc.com ))
+[09:40:43] <vinayb> if your shell hangs, do Ctrl+G and then type h
+[09:40:51] <rakshith> its called erl in my build
+[09:41:34] <vinayb> yeah, erl is the erlang shell :)
+[09:41:57] <vinayb> okay then! let's start
+[09:42:17] <vinayb> Erlang is a relatively small and simple language (in the way C is simpler than C++)
+[09:42:27] <vinayb> there are a few basic data types
+[09:42:34] <vinayb> we'll start off with them
+[09:42:35] *** Joins: gautham_ (75ca21f6@gateway/web/freenode/ip.117.202.33.246)
+[09:43:16] <vinayb> In the Erlang shell, expressions have to be terminated with a period followed by whitespace (line break, a space etc.)
+[09:43:28] *** Quits: sshah (b63a6584@gateway/web/freenode/ip.182.58.101.132) (Ping timeout: 250 seconds)
+[09:43:40] <vinayb> a little unusual syntax, but you'll get used to it
+[09:44:12] <vinayb> type in 2 + 15.
+[09:44:17] <vinayb> or any such expressions
+[09:44:27] <vinayb> 5 div 2.
+[09:44:30] <vinayb> 5 rem 2.
+[09:44:32] <vinayb> etc
+[09:44:41] <vinayb> don't forget the fullstop!
+[09:45:06] <gautham_>  
+[09:45:37] <vinayb> similarly like C, there is *, +, - operators
+[09:46:29] <vinayb> like C, there are floating point values also:
+[09:46:32] <vinayb> 5 / 2.
+[09:46:40] <vinayb> can anyone tell me what this returns?
+[09:46:52] <aditya> 2.5
+[09:46:53] <rakshith> 2.5
+[09:47:08] *** Joins: Pratyushgr (b640471a@gateway/web/freenode/ip.182.64.71.26)
+[09:47:08] <vinayb> and in C? ;)
+[09:47:13] <adarsh_honawad> 2
+[09:47:50] <vinayb> Correct! so UNLIKE C, Erlang doesn't care if you enter floating point numbers or integers: both types are supported when dealing with arithmetic
+[09:48:26] <vinayb> However, if you want to have integer-to-integer division, you can use `div`, and for module operator, use `rem`
+[09:49:06] <vinayb> ok so what is returned when you type in 2#101.
+[09:49:06] <vinayb> ?
+[09:49:19] <aditya> 5
+[09:49:45] <vinayb> right! and can anyone guess why is that?
+[09:50:00] <rakshith> 101 is 5 in binary?
+[09:50:14] <rakshith> I mean 5 is 101
+[09:50:15] <rakshith> :P
+[09:50:59] <vinayb> yep! so if you want to express integers in other bases than 10, just enter the number as `Base#Value`
+[09:51:10] <vinayb> you can try out 16#AE.
+[09:51:15] <vinayb> 8#0677.
+[09:51:17] <vinayb> etc
+[09:51:44] <vinayb> now, let's come to Variables in Erlang
+[09:51:58] <vinayb> does anyone remember what i said about variables in functional languages?
+[09:52:45] <rakshith> they're immutable
+[09:53:17] <vinayb> yep! so once you assign them a value you can't change it
+[09:53:42] <vinayb> variables begin with an uppercase letter in erlang
+[09:53:52] *** Quits: gautham_ (75ca21f6@gateway/web/freenode/ip.117.202.33.246) (Ping timeout: 250 seconds)
+[09:53:54] <vinayb> try typing out these examples:
+[09:53:56] <vinayb> One.
+[09:53:59] <vinayb> One = 1.
+[09:54:10] <vinayb> Two = One + One.
+[09:54:20] <vinayb> Two = Two + 1.
+[09:54:23] *** Joins: gautham_ (75dd25de@gateway/web/freenode/ip.117.221.37.222)
+[09:54:37] <vinayb> what's the output for the last one?
+[09:55:13] <rakshith> exception error
+[09:55:15] <aditya> exception error: no match of right hand side value 3
+[09:55:45] <vinayb> yep, it's an error, because variables are immutable in Erlang
+[09:56:12] <Pratyushgr> error
+[09:56:22] <vinayb> the '=' operator also checks for equality of both sides!
+[09:56:34] <vinayb> that's why Erlang says RHS not equal to LHS :P
+[09:56:57] <vinayb> you'll get a similar error if you try to do
+[09:57:01] <vinayb> 47 = 45 + 3.
+[09:57:44] <Pratyushgr> yes.
+[09:57:45] <vinayb> type in this: Variable.
+[09:57:52] <vinayb> what does it say?
+[09:58:09] <rakshith> unboun
+[09:58:11] <aditya> variable 'Variable' is unbound
+[09:58:12] <rakshith> d
+[09:59:02] <vinayb> correct. So when the '=' operator is used on an unbound variable, it evaluates the RHS, and then BINDS the variable to it, forever!
+[09:59:38] <vinayb> except until you close the shell, of course
+[10:00:35] <vinayb> Just for TESTING/DEBUGGING reasons: it is possible to unbound a variable by doing f(Variable) 
+[10:00:40] <vinayb> only in the shell
+[10:01:06] <vinayb> Let's come to a fascinating data type called atoms
+[10:01:18] *** Joins: salman_shah (b63a6584@gateway/web/freenode/ip.182.58.101.132)
+[10:01:27] <vinayb> There is a reason why variable names can't begin with a lowercase character: atoms
+[10:01:40] <vinayb> Atoms are literals, constants with their own name for value
+[10:02:11] <vinayb> The atom 'cat' means "cat" and that's it. You can't play with it, you can't change it, you can't smash it to pieces, it's 
+[10:02:22] <vinayb> `cat`, Deal with it :P
+[10:02:33] <vinayb> try typing these examples:
+[10:02:35] <vinayb> atom.
+[10:02:40] <vinayb> atoms_rule.
+[10:02:47] <vinayb> atoms_rule@erlang.
+[10:03:01] <vinayb> 'Atoms can be cheated!'.
+[10:03:32] <vinayb> if you don't want to start an atom with a small letter, if should be enclosed in single quotes
+[10:03:51] <vinayb> REMEMBER: Atoms aren't strings. Atoms are just atoms!
+[10:04:22] <vinayb> so why atoms?
+[10:04:40] <vinayb> In C, if you want to define some constants, you have to do
+[10:04:45] <vinayb> #define BLUE 1
+[10:04:50] <vinayb> or const int BLUE = 1;
+[10:04:57] <vinayb> const int RED = 2;
+[10:04:58] <vinayb> etc
+[10:05:23] <vinayb> Atoms let you just have those constants, you don't have to associate them with anything
+[10:05:57] <vinayb> any doubts?
+[10:06:12] <rakshith> no
+[10:06:19] <aditya> no
+[10:06:27] <salman_shah> no
+[10:06:34] <Pratyushgr> no.
+[10:06:45] <gautham_> no
+[10:06:48] <vinayb> alright, so boolean algebra is pretty simple: 
+[10:06:49] <adarsh_honawad> no
+[10:06:52] <vinayb> true and false.
+[10:06:55] <vinayb> false or true.
+[10:06:58] <vinayb> true xor false.
+[10:07:03] <vinayb> type all of those above ^
+[10:07:12] <vinayb> what are the returned value?
+[10:07:15] <vinayb> *values
+[10:07:37] <salman_shah> 1. false
+[10:07:41] <salman_shah> 2.true
+[10:07:47] <adarsh_honawad> 3.true
+[10:07:48] <aditya> false,true,true
+[10:07:54] <vinayb> correct, similarly you can have
+[10:07:58] <vinayb> not false.
+[10:08:01] <vinayb> not (true and true).
+[10:08:15] <vinayb> testing for equality is also simple:
+[10:08:20] <vinayb> 5 =:= 5.
+[10:08:26] <vinayb> 1 =:= 0.
+[10:08:40] <vinayb> note: the operator is =:= and not == 
+[10:08:57] <vinayb> inequality:
+[10:09:01] <vinayb> 1 =/= 0.
+[10:09:28] <aditya> but even == works!
+[10:09:35] <vinayb> so instead of == and != in C, it is =:= and =/= in Erlang
+[10:09:38] <vinayb> yes it does!
+[10:09:44] <vinayb> try to evaluate these:
+[10:09:50] <vinayb> 5 =:= 5.0.
+[10:09:52] <vinayb> 5 == 5.0.
+[10:09:57] <vinayb> what's the difference?
+[10:10:17] <aditya> false,true
+[10:10:36] <salman_shah> The data types matter ?
+[10:10:42] <salman_shah> int and float
+[10:11:13] <vinayb> yep! =:= checks for strict inequality, but since erlang doesn't care really if you want to use float or int, you can use == operator too
+[10:11:34] <salman_shah> okay.
+[10:11:49] <vinayb> similarly, there is /= also
+[10:12:01] <vinayb> which is
+[10:12:09] <vinayb> opposite of ==
+[10:12:32] <vinayb> let's come to comparison operators!
+[10:12:35] <vinayb> you have the usual:
+[10:12:37] <vinayb> 1 < 2.
+[10:12:40] <vinayb> 1 < 1.
+[10:12:42] <vinayb> 1 >= 1.
+[10:12:49] <vinayb> 1 =< 1.
+[10:12:57] <vinayb> can anyone spot something different? ;)
+[10:13:11] <salman_shah> =<
+[10:13:18] <salman_shah> The order
+[10:13:28] <salman_shah> Its interchanged from the conventional one
+[10:13:39] <vinayb> yes! keep in mind, instead of <= it is =<
+[10:13:59] <vinayb> always leads to lots of syntax errors
+[10:13:59] <rakshith> any reason why its like that?
+[10:14:16] <salman_shah> Order of equality maybe
+[10:14:18] <vinayb> historical reasons, really
+[10:14:25] <salman_shah> FIrst > then = then <
+[10:14:30] <salman_shah> Oh oops
+[10:15:00] <vinayb> yeah, just historical reasons
+[10:15:14] <vinayb> 5 + hey.
+[10:15:15] <Pratyushgr> oh.
+[10:15:21] <vinayb> what is returned?
+[10:15:32] <salman_shah> Not valid
+[10:15:41] <salman_shah> ** exception error: an error occurred when evaluating an arithmetic expression      in operator  +/2         called as 5 + hey
+[10:16:06] <Pratyushgr> error
+[10:16:09] <vinayb> yep! Erlang doesn't really like you misusing some of its fundamental types! The emulator returns a nice error message here. It tells us it doesn't like one of the two arguments used around the + operator!
+[10:17:00] <vinayb> however this is fine:
+[10:17:05] <vinayb> 5 =:= true.
+[10:17:21] <vinayb> why does it refure different types in some operations but not others?
+[10:17:40] <salman_shah> refure?
+[10:17:47] <vinayb> While Erlang doesn't let you ADD anything with everything, it will let you COMPARE them
+[10:17:53] <vinayb> *refuse
+[10:19:15] <salman_shah> OKay one doubt!
+[10:19:19] <vinayb> go ahead
+[10:19:27] <salman_shah> I didn't get why 5=:= true
+[10:19:33] <salman_shah> Turns out to be false
+[10:19:49] <salman_shah> .*
+[10:19:49] <vinayb> because Erlang isn't C! try running these too:
+[10:19:54] <vinayb> 0 == false.
+[10:20:13] <vinayb> so ONLY false is false and nothing else ;)
+[10:20:21] <Pratyushgr> yaa.!
+[10:20:23] <salman_shah> Oh okay
+[10:21:02] <vinayb> so everything except false is true!
+[10:21:13] <vinayb> Let's move on to Tuples
+[10:21:37] <vinayb> A tuple is a way to organize data, it's a way to group together many terms when you know how many are there
+[10:21:54] <vinayb> Point = {4, 5}.
+[10:22:03] <vinayb> {4, 5} is a tuple
+[10:22:14] <vinayb> which gets bound to the variable Point
+[10:22:48] <vinayb> Similarly you can have
+[10:22:58] <vinayb> threeDPoint = {4, 5, 6}
+[10:22:59] <vinayb> .
+[10:23:04] <vinayb> don't forget the fullstop!
+[10:23:15] <vinayb> you get the idea
+[10:23:48] <salman_shah> ThreeDPoint*
+[10:23:51] <salman_shah> Ryt?
+[10:23:52] <rakshith> yeah
+[10:24:02] <vinayb> nice catch salman_shah !
+[10:24:11] <salman_shah> Thanks.
+[10:24:25] <vinayb> i'll pretend and say that was intentional of me :P
+[10:24:56] <salman_shah> I know :D
+[10:25:16] <vinayb> now let's come to one of the most powerful concepts in Erlang, and funtional languages, pattern matching!
+[10:25:42] <vinayb> evaluate this:
+[10:25:51] <vinayb> ThreeDPoint = {4, 5, 6}.
+[10:26:05] <vinayb> {X, Y, Z} = ThreeDPoint.
+[10:26:07] <vinayb> X.
+[10:26:09] <vinayb> Y.
+[10:26:10] <vinayb> Z.
+[10:26:51] <salman_shah> yUP
+[10:26:55] <salman_shah> Works well
+[10:27:35] <Pratyushgr> ywah
+[10:27:54] <Pratyushgr> yeah*
+[10:28:29] <vinayb> So what happens here is, when we set the tuple {X, Y, Z} on the LHS of the '=' operator, the operator compares both values: {X, Y, Z} versus ThreeDPoint which is {4, 5, 6}. Erlang uses pattern matching to unpack the values from the tuple and distribute them to the UNBOUND variables of the LHS
+[10:29:01] <vinayb> you can also do this:
+[10:29:15] <gautham_> is it same way as python??
+[10:29:43] <vinayb> Much, much more advanced than python. We'll learn more about pattern matching in the coming sessions :)
+[10:29:55] <gautham_> ok
+[10:29:57] <vinayb> Point = {4, 5}.
+[10:30:03] <vinayb> {X, _} = Point.
+[10:30:19] <vinayb> you can use the variable '_' when you want to ignore some values
+[10:30:41] <vinayb> it is a special variable which is always UNBOUND and can never be binded to anything
+[10:31:13] <salman_shah> Btw it works for different data types as well ..... My tuple was Point2 = {4,5,hey}.
+[10:31:49] <vinayb> yeah, tuples can hold any data type!
+[10:32:02] <vinayb> atoms, integers, floats, anything
+[10:32:13] <Pratyushgr> one  doubt
+[10:32:18] <vinayb> go ahead
+[10:32:35] <Pratyushgr> we used X in ThreeDPoint
+[10:32:54] <Pratyushgr> and was assigned  value 4
+[10:32:56] <rakshith> are there lists in erlang?
+[10:33:10] <vinayb> we are coming to that next, rakshith 
+[10:33:17] <Pratyushgr> now using X for Point
+[10:33:34] <vinayb> Pratyushgr, yes you are right! just assume i am having a new shell session everytime i give an example :)
+[10:33:41] <Pratyushgr> thus it over write
+[10:33:59] <vinayb> nope! X once bound can not be over written
+[10:34:06] <vinayb> Just think that i closed the shell and reopened it ;)
+[10:34:18] <Pratyushgr> ohkay!
+[10:34:35] <aditya> but d value of X is same right...4!
+[10:35:23] <vinayb> yeah, in my examples, i think Pratyushgr meant what if I done {X, _} = {100, 101}. or something in the SAME shell session
+[10:35:43] <vinayb> but coincidentally i used the same in each example
+[10:35:51] <Pratyushgr> yaa ..
+[10:35:59] <aditya> ok!
+[10:36:11] <vinayb> okay let's come to lists!
+[10:36:14] *** Joins: rakshith_ (~hehaichi@117.192.110.99)
+[10:36:25] <vinayb> Lists are the bread and butter of functional languages.
+[10:36:43] <vinayb> They're undoubtedly the most used data structure in Erlang
+[10:36:49] <vinayb> however before we start
+[10:36:58] <vinayb> REPEAT with me: Lists are not Arrays!
+[10:37:12] <rakshith_> yeah!
+[10:37:38] <vinayb> Lists are NOT contiguously allocated regions of memory
+[10:37:44] <vinayb> which hold data of same type
+[10:38:17] <vinayb> Lists can contain data of any type, and you can append to a list, remove from it, etc
+[10:38:20] *** Quits: rakshith (~hehaichi@117.192.110.99) (Ping timeout: 260 seconds)
+[10:38:43] <vinayb> the basic notation is [Element1, Element2, ... , Elementn]
+[10:38:54] <vinayb> and you can have any type of data:
+[10:39:11] <vinayb> [1, 2, 3, {numbers, [4,5,6]}, 5.34, atom].
+[10:39:19] <vinayb> how many elements does the above list have?
+[10:39:41] <adarsh_honawad> 6
+[10:39:43] <gautham_> 6
+[10:39:43] <aditya> 6
+[10:40:07] <rakshith_> 6
+[10:40:09] <vinayb> correct. 
+[10:40:15] <Pratyushgr> 6
+[10:40:18] <vinayb> Simple enough, right?
+[10:40:24] <adarsh_honawad> yeah
+[10:40:25] <vinayb> [97, 98, 99].
+[10:40:31] <vinayb> type that
+[10:40:31] <vinayb> what is evaluated?
+[10:40:50] <aditya> "abc"
+[10:40:52] <rakshith_> abc
+[10:40:57] <rakshith_> "abc"*
+[10:41:05] <vinayb> Uh oh! This is one of the most disliked things in Erlang: strings! Strings are lists and the notation is absolutely the exact same! Why do people dislike it? Because of this:
+[10:41:22] <vinayb> [97, 98, 99, 4, 5, 6].
+[10:41:25] <vinayb> [233].
+[10:41:34] <vinayb> Erlang will print lists of numbers as numbers only when at least one of them could not also represent a letter! 
+[10:42:21] <vinayb> But don't worry, we'll see workarounds to this :)
+[10:42:31] <vinayb> To glue lists together, we use ++ operator:
+[10:42:41] <vinayb> [1,2,3] ++ [4, 5].
+[10:42:52] <vinayb> [1,2,3,4,5] -- [1,2,3].
+[10:43:07] <vinayb> [2,4,2] - [2,4].
+[10:43:17] <vinayb> [2,4,2] -- [2,4,2].
+[10:43:38] <vinayb> the last one gives us the empty list: []
+[10:44:05] <vinayb> Let's keep going. The first element of a list is named the Head, and the rest of the list is named the Tail.
+[10:44:18] <vinayb> hd([1,2,3,4,5]).
+[10:44:26] <vinayb> tl([1,2,3,4,5]).
+[10:44:29] <vinayb> what is returned?
+[10:45:13] <rakshith_> 1
+[10:45:19] <salman_shah> 5
+[10:45:20] <rakshith_> and [2,3,4,5]
+[10:45:47] <vinayb> correct. and remember: 1 is not the same as [1]!
+[10:46:23] <vinayb> hd and tl are some builtin functions in the shell
+[10:46:30] <vinayb> there is length(List) too
+[10:47:15] <vinayb> Whenever you're processing a list, you usually want the head, so there's a nicer way to seperate the head from the tail of a list with the help of pattern matching:
+[10:47:24] <vinayb> [Head|Tail]
+[10:47:29] <vinayb> here's how you use it:
+[10:47:41] <vinayb> List = [2,3,4].
+[10:47:47] <vinayb> NewList = [1|List].
+[10:48:00] <vinayb> this is adding a new head to a list
+[10:48:28] <vinayb> do this:
+[10:48:39] <vinayb> [Head|Tail] = NewList.
+[10:48:46] <vinayb> Head.
+[10:48:48] <vinayb> Tail.
+[10:49:07] <vinayb> returned values are 1 and [2,3,4]
+[10:49:13] <vinayb> now:
+[10:49:21] <vinayb> [NewHead|NewTail] = Tail.
+[10:49:23] <vinayb> NewHead.
+[10:49:27] <vinayb> What's returned?
+[10:50:35] <rakshith_> 2
+[10:50:43] <aditya> 2 and [3,4]
+[10:51:09] <vinayb> correct! so what we did was, we extracted the Tail, THEN got the new head and new tail of the earlier Tail
+[10:51:38] <vinayb> The | we used is named the cons operator (constructor)
+[10:51:53] <vinayb> In fact, any list can be built with only cons and values:
+[10:52:00] <vinayb> [1 | []].
+[10:52:10] <vinayb> [2 | [1 | []]].
+[10:52:28] <vinayb> [3 | [2 | [1 | [] ] ] ].
+[10:52:47] <vinayb> just see how it gets done right to left
+[10:53:22] <vinayb> [1 | [] ]. returns [1]
+[10:54:05] <vinayb> then [2 | [1 | [] ]] becomes [2 | [1]] which becomes [2, 1]
+[10:54:16] <vinayb> doubts?
+[10:54:20] <rakshith_> nope
+[10:55:43] <adarsh_honawad> nope..
+[10:55:43] <vinayb> This is a little hint of how important recursion is to functional programming: Lists are defined a head preceding a tail, which, you guessed it, is itself a head followed by more heads
+[10:56:24] <vinayb> Think of it as an earthworm, you can slice it in half, and then you'll have two worms
+[10:57:08] *** Quits: aditya (75d8eb3d@gateway/web/freenode/ip.117.216.235.61) (Ping timeout: 250 seconds)
+[10:57:09] <vinayb> just to familiarize you all, ALL of these are equivalent:
+[10:57:14] <vinayb> [a, b, c, d]
+[10:57:14] <vinayb> [a, b, c, d | []]
+[10:57:14] <vinayb> [a, b | [c, d]]
+[10:57:14] <vinayb> [a, b | [c | [d]]]
+[10:57:14] <vinayb> [a | [b | [c | [d]]]]
+[10:58:05] <vinayb> With this understood, we can come to List Comprehensions
+[10:58:20] *** Joins: aditya_a (75d8eb3d@gateway/web/freenode/ip.117.216.235.61)
+[10:58:24] <vinayb> List Comprehensions in Erlang are about building sets from other sets
+[10:58:38] <vinayb> you guys remember your maths? ;)
+[10:58:48] <vinayb> set notation
+[10:58:53] <vinayb> it is similar to that!
+[10:58:56] <vinayb> so let's dive in
+[10:59:09] <vinayb> [2*N || N <- [1,2,3,4]].
+[10:59:14] <vinayb> what's the result?
+[10:59:39] <rakshith_> [2,4,8,16]
+[11:00:13] <aditya_a> [2,4,6,8]
+[11:00:14] <vinayb> are you sure about that? ;)
+[11:00:26] <vinayb> correct aditya_a 
+[11:00:27] <rakshith_> I'm sorry
+[11:00:33] <rakshith_> read it as 2**N
+[11:00:35] <rakshith_> :P
+[11:00:43] <vinayb> gotcha, we all do that ;)
+[11:00:48] <rakshith_> too much python influence
+[11:00:49] <rakshith_> :P
+[11:01:13] <vinayb> we can combine these with constraints too:
+[11:01:31] <vinayb> [X || X <- [1,2,3,4,5,6,7,8,9,10], X rem 2 =:= 0].
+[11:02:19] <salman_shah> [2,4,6,8,10]
+[11:03:16] <vinayb> yep! you can use it to create ordered pairs too
+[11:03:39] <vinayb> [{X,Y} || X <- [1,2,3], Y <- [1,2,3]].
+[11:03:51] <vinayb> what's the returned value?
+[11:04:05] <salman_shah> [{1,1},{1,2},{1,3},{2,1},{2,2},{2,3},{3,1},{3,2},{3,3}]
+[11:04:10] <aditya_a> [{1,1},{1,2},{1,3},{2,1},{2,2},{2,3},{3,1},{3,2},{3,3}]
+[11:04:15] <vinayb> correct!
+[11:04:25] <vinayb> now let's say we have this:
+[11:05:21] <vinayb> Weather = [{bangalore, rain}, {surathkal, storms}, {bombay, fog}, {delhi, sun}, {allahabad, fog}, {chennai, fog}].
+[11:05:41] <vinayb> FoggyPlaces = [X || {X, fog} <- Weather].
+[11:05:47] <vinayb> what's the returned value?
+[11:06:11] <salman_shah> [bombay,allahabad,chennai]
+[11:06:31] <rakshith_> similar to filter in python?
+[11:06:44] <vinayb> correct! so these are the ways you can use List Comprehensions!
+[11:07:24] <vinayb> nope, there is list comprehensions itself in python, but map and filter are some classic functional programming concepts which we'll come to in due time :)
+[11:07:40] <vinayb> but yes, it is similar to filter
+[11:07:58] <vinayb> but list comprehensions in python aren't as powerful :P
+[11:08:15] <rakshith_> debatable :P
+[11:08:48] <vinayb> you just wait and watch, Erlang is still to reveal itself fully ;)
+[11:08:56] <vinayb> Alright guys, this is it for today!
+[11:09:03] <vinayb> you can ask me questions
+[11:09:12] <vinayb> please try out more things in your shell!
+[11:09:54] <salman_shah> MOre things like....?
+[11:10:01] <Pratyushgr> like?
+[11:10:12] <vinayb> try out list comprehensions
+[11:10:29] <vinayb> see how you can combine constraints and all that
+[11:10:47] <vinayb> get yourself comfortable with it :)
+[11:10:59] <salman_shah> Oh okay
+[11:11:06] <Pratyushgr> ohkay!
+[11:11:14] <chinmay_dd> okay!
+[11:11:15] <salman_shah> And can u explain about the 'abc' which came as output
+[11:11:48] <vinayb> Strings are just lists which are represented as numbers
+[11:12:00] <vinayb> similar to ASCII values in C
+[11:12:07] <vinayb> but they aren't ASCII values
+[11:12:17] <vinayb> it's specific to Erlang
+[11:12:27] <vinayb> don't worry about it, we'll look more into Strings soon!
+[11:12:53] <salman_shah> So 97 has value a, 98 has b .....
+[11:12:56] <salman_shah> And so on.
+[11:13:00] <vinayb> hey chinmay_dd, nice to see you here ;)
+[11:13:04] <vinayb> yep exactly
+[11:13:54] <vinayb> alright, i'll quickly go have dinner, you guys can ping me in IRC or WhatsApp or Mail. If you missed anything, check out the log in the Topic. 
+[11:14:07] <vinayb> But yeah, that's it for today!
+[11:14:09] <salman_shah> YUp thanks a lot
+[11:14:11] <salman_shah> :D
+[11:14:18] <salman_shah> Bye! Gn.
+[11:14:24] *** Quits: salman_shah (b63a6584@gateway/web/freenode/ip.182.58.101.132) (Quit: Page closed)
+[11:14:56] <aditya_a> thanks!!
+[11:15:00] *** Quits: aditya_a (75d8eb3d@gateway/web/freenode/ip.117.216.235.61) (Quit: Page closed)

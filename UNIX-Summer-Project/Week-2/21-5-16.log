@@ -1,0 +1,449 @@
+--- Log opened Sat May 21 19:31:52 2016
+19:31 ::: soundaryaramesh [~soundarya@45.125.41.138] has joined #ieee-UNIX
+19:31 ::: Irssi: #ieee-UNIX: Total of 3 nicks [1 ops, 0 halfops, 0 voices, 2 normal]
+19:31 ::: Irssi: Join to #ieee-UNIX was synced in 2 secs
+19:54 ::: m_gautham [3b58c79d@gateway/web/freenode/ip.59.88.199.157] has joined #ieee-UNIX
+19:56 ::: varsh [0e60287c@gateway/web/freenode/ip.14.96.40.124] has joined #ieee-UNIX
+19:56 ::: rahul_kummi [~Rahul@117.231.236.75] has joined #ieee-UNIX
+19:57 ::: Harita_Reddy [67187f49@gateway/web/freenode/ip.103.24.127.73] has joined #ieee-UNIX
+19:57 ::: catchchaos [~AndChat32@1.39.62.232] has joined #ieee-UNIX
+19:59 ::: Guest42101 [~barun@45.116.31.129] has joined #ieee-UNIX
+20:00 < Guest42101> hey barun here
+20:00 < soundaryaramesh> Hey guys. We'll be starting in another five mins. So call up all you friends who haven't joined the session yet.
+20:02 ::: abhisheks [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has joined #ieee-UNIX
+20:05 < catchchaos> Any more joining?
+20:05 ::: siddhanth [2d723dc7@gateway/web/freenode/ip.45.114.61.199] has joined #ieee-UNIX
+20:07 < abhisheks> is der any way to get rid of this "ping timeout"?
+20:08 < soundaryaramesh> it's because of a bad internet connection. 
+20:08 < abhisheks> oh ok
+20:08 < catchchaos> Okay let's start 
+20:08 < catchchaos> The tasks first 
+20:09 < catchchaos> Did you guys finish them?
+20:09 < siddhanth> yes
+20:09 < m_gautham> yep
+20:09 ::: Someone__ [6ad89d4e@gateway/web/freenode/ip.106.216.157.78] has joined #ieee-UNIX
+20:10 < catchchaos> What about the rest of you?
+20:11 < soundaryaramesh> Okay, the first task was- the difference between hard and symbolic links. Can anybody tell me wat are hard links?
+20:11 ::: paramhanji [~AndChat32@1.39.61.34] has joined #ieee-UNIX
+20:11 < siddhanth> hard link is like a mirror image of the file with the same inodes
+20:12 < soundaryaramesh> ok cool, wat are inodes?
+20:13 < siddhanth> data structures used to represent files and directories
+20:13 < soundaryaramesh> Perfect!
+20:13 < soundaryaramesh> Okay so wat are symbolic links?
+20:13 ::: Adithyabhat [40e9ad03@gateway/web/freenode/ip.64.233.173.3] has joined #ieee-UNIX
+20:14 ::: catchchaos [~AndChat32@1.39.62.232] has quit [Ping timeout: 246 seconds]
+20:14 < m_gautham> soft link is like short cut saves address
+20:14 < siddhanth> links that will take you to the original file 
+20:14 ::: Someone___ [6ad89d4e@gateway/web/freenode/ip.106.216.157.78] has joined #ieee-UNIX
+20:14 < siddhanth> they have different inode values
+20:14 < soundaryaramesh> Yeah, symbolic links are like shortcut files which you must have seen on windows
+20:15 < rahul_kummi> file that bears the filename of the original file 
+20:15 < Harita_Reddy> Deleting the file will destroy the link in case of soft link
+20:15 < rahul_kummi> there can be many softlinks to a  inode
+20:15 < soundaryaramesh> if the file to which this file is linked, is removed or renamed, the link is lost, and the shortcut file no longer has meaning
+20:15 < soundaryaramesh> Correct.
+20:16 < soundaryaramesh> So how many links does a directory have by default?
+20:16 < Guest42101> any analogous example for hard links?
+20:16 < soundaryaramesh> Remember in the last session we told you that every directory has hidden files . and ..
+20:16 < rahul_kummi> 1
+20:16 < siddhanth> one?
+20:17 < Adithyabhat> Deleting the original file of a soft link does not affect the soft link.
+20:17 ::: swati [~swati@117.200.119.145] has joined #ieee-UNIX
+20:17 < soundaryaramesh> No, it's two.
+20:18 < rahul_kummi> okay
+20:18 < soundaryaramesh> Every directory file has two hard links at the least.
+20:18 < Guest42101> okay
+20:18 ::: Someone__ [6ad89d4e@gateway/web/freenode/ip.106.216.157.78] has quit [Ping timeout: 250 seconds]
+20:18 < siddhanth> ok
+20:19 < soundaryaramesh> It's present as . in the current directory and also is a part of parent directory
+20:19 < Guest42101> if the original file to which the soft link links is deleted then where will the soft link points to?
+20:19 < soundaryaramesh> try creating a soft link right now and try this out.
+20:20 < soundaryaramesh> what is the command to create soft link?
+20:20 < siddhanth> ln -s name1 name2
+20:20 < soundaryaramesh> what is name1 and name2?
+20:20 < Harita_Reddy> ln -s
+20:20 < siddhanth> name1 - original file name
+20:20 < siddhanth> name2- link file name
+20:21 < soundaryaramesh> correct. try it out. and tell what happens
+20:22 < siddhanth> it says - no such file or directory
+20:23 ::: Harita_Reddy_ [012714f9@gateway/web/freenode/ip.1.39.20.249] has joined #ieee-UNIX
+20:23 < soundaryaramesh> makes sense? It's a mere symbolic link. The filename to which no longer exists, which means the link is lost.
+20:23 ::: ABHI_ [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has joined #ieee-UNIX
+20:23 < soundaryaramesh> ^it points
+20:24 < soundaryaramesh> did all of you guys try it out?
+20:24 < Guest42101> yup
+20:24 < rahul_kummi> yes
+20:24 < m_gautham> yes
+20:24 ::: Harita_Reddy [67187f49@gateway/web/freenode/ip.103.24.127.73] has quit [Ping timeout: 250 seconds]
+20:25 < soundaryaramesh> to see how many symolic link the current directory has, type ls -ld
+20:25 < soundaryaramesh> the second column tells u the links
+20:25 < soundaryaramesh> *hard links, i'm sorry
+20:25 ::: abhisheks [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has quit [Quit: Page closed]
+20:25 < soundaryaramesh> drwxr-xr-x  6 soundaryaramesh  staff  204 May 21 20:22 .
+20:25 ::: Adithyabhat [40e9ad03@gateway/web/freenode/ip.64.233.173.3] has quit [Ping timeout: 250 seconds]
+20:25 ::: Samvid [~Samvid@bba499221.alshamil.net.ae] has joined #ieee-UNIX
+20:25 < soundaryaramesh> Here, this directory has 6 hard links, can you tell how?
+20:26 < Samvid> Sorry for being late and for interrupting..how much did I miss?
+20:27 < soundaryaramesh> not much, we are still discussing the first question. 
+20:27 < Samvid> Ah alright, thanks
+20:27 < rahul_kummi> the number of subdirectories in them would be 6?
+20:27 < soundaryaramesh> lrwxr-xr-x  1 soundaryaramesh  staff    5 May 21 20:26 a1.txt -> b.txt 
+20:28 ::: AdithyaBhat [40e9ad09@gateway/web/freenode/ip.64.233.173.9] has joined #ieee-UNIX
+20:28 < soundaryaramesh> Here a1.txt is a symbolic link of b.txt, to indicate this you can see 'l' is present at the beginning of the line
+20:29 < soundaryaramesh> Okay, so there exists a directory, it's sub-directories will have a file .. pointing to the parent directory. Right?
+20:29 ::: swati_ [~swati@117.200.118.18] has joined #ieee-UNIX
+20:29 < siddhanth> yep
+20:29 < rahul_kummi> yes
+20:29 < soundaryaramesh> So, if a directory has 6 hard links, then it means it has 4 subdirectories. Got it?
+20:29 ::: swati [~swati@117.200.119.145] has quit [Ping timeout: 260 seconds]
+20:29 < rahul_kummi> okay
+20:30 < rahul_kummi> 4 + . + ..
+20:30 < rahul_kummi> thats what you mean?
+20:30 < soundaryaramesh> no
+20:31 < siddhanth> can u explain then?
+20:31 < soundaryaramesh> 4 .. from each of the sub-directories, 1 . from the current directory, and one from parent directory
+20:31 < siddhanth> ok
+20:32 < soundaryaramesh> any more doubts regarding links?
+20:32 < soundaryaramesh> And ls -l command only gives you the number of hard links.
+20:32 ::: Harita_Reddy [012714b2@gateway/web/freenode/ip.1.39.20.178] has joined #ieee-UNIX
+20:32 < siddhanth> will manipulation of data in hard link affect data in original file?
+20:32 ::: gauthamm_ [3b5b1125@gateway/web/freenode/ip.59.91.17.37] has joined #ieee-UNIX
+20:33 < soundaryaramesh> yes. 
+20:33 < siddhanth> ok cool
+20:34 < soundaryaramesh> Any changes made in any of the files with hard-links, will change the others too
+20:34 ::: Harita_Reddy_ [012714f9@gateway/web/freenode/ip.1.39.20.249] has quit [Ping timeout: 250 seconds]
+20:34 < soundaryaramesh> And now say there are two links(hard) for a file.
+20:34 < soundaryaramesh> If I delete one, the other link still exists.
+20:34 < soundaryaramesh> So the file is not lost
+20:35 ::: AdithyaBhat [40e9ad09@gateway/web/freenode/ip.64.233.173.9] has quit [Ping timeout: 250 seconds]
+20:35 ::: m_gautham [3b58c79d@gateway/web/freenode/ip.59.88.199.157] has quit [Ping timeout: 250 seconds]
+20:35 < soundaryaramesh> Hence multiple links(hard) are made for files which should not be lost. 
+20:36 < siddhanth> ok
+20:36 < soundaryaramesh> Also, having links is a good way of sharing files between different users. Instead of creating multiple copies, which take up more space.
+20:36 ::: Guest42101 [~barun@45.116.31.129] has quit [Quit: Leaving]
+20:36 < soundaryaramesh> Moving on..
+20:37 < siddhanth> but hard link and original file take up the same space rt?
+20:37 < soundaryaramesh> Any answer to the second task?
+20:37 < soundaryaramesh> What do access permissions mean for directories?
+20:37 < soundaryaramesh> Anybody?
+20:37 ::: Irssi: #ieee-UNIX: Total of 13 nicks [1 ops, 0 halfops, 0 voices, 12 normal]
+20:38 < soundaryaramesh> Ok, i'll tell you
+20:39 < soundaryaramesh> So basically rwx permissions of a file tell you nothing about whether you can copy,move or delete a file. 
+20:39 < soundaryaramesh> For this reason, we have directory permissions
+20:40 < soundaryaramesh> Directory file is basically a special file right? It contains only file names and corresponding inode number(more on inode, later)
+20:40 < soundaryaramesh> So it's permissions have different meaning
+20:41 < soundaryaramesh> When a directory has read permission, it means you can read the directory file, which inturn means, you can use ls command on the directory
+20:41 < soundaryaramesh> Now try creating a directory and remove the read permission using the following command
+20:41 < soundaryaramesh> mkdir <dir_name>; chmod -r <dir_name>
+20:42 < soundaryaramesh> now try ls, it would say permission denied.
+20:43 < soundaryaramesh> A write permission is needed to manipulate the directory file, which means you need this to remove and add files to the directory
+20:43 < soundaryaramesh> And execute permission is required to make any changes to the files in the directory and to use cd command.
+20:44 < soundaryaramesh> So try, chmod -x <dir_name>; cd <dir_name> 
+20:44 < soundaryaramesh> Again permission denied. Right?
+20:44 < soundaryaramesh> Any doubts so far?
+20:45 < Samvid> nope
+20:46 < soundaryaramesh> But you should understand that if you have only write permission for the directory, you can literally do nothing
+20:47 < rahul_kummi> ls
+20:47 < siddhanth> we cannot even move files into the directory?
+20:47 < soundaryaramesh> This is because with only w access, you cannot know what files are there in the directory
+20:47 < soundaryaramesh> Nope, because adding files to the directory implies you are adding an entry in the directory file. So not possible
+20:48 < soundaryaramesh> Neither can you copy files from the directory because you don't know what files are in there.
+20:48 < soundaryaramesh> And you cannot even move in to the dir, as there is no x access.
+20:48 < siddhanth> ok
+20:49 < gauthamm_> ok
+20:49 < soundaryaramesh> Now, can any of you tell me, what you can do with only r and w access for a directory?
+20:49 < ABHI_> Copy files?
+20:49 < Samvid> See the contents of the directory and copy stuff into it?
+20:50 < swati_> Add or remove files?
+20:50 < siddhanth> find which files are in the directory and copy file in/out?
+20:50 < soundaryaramesh> @abhi Into the directory or from the directory?
+20:50 < siddhanth> out?
+20:50 < ABHI_> Into.
+20:50 < soundaryaramesh> yes, you can copy files from this directory
+20:52 < soundaryaramesh> If you want to copy a file into this directory, you will write into the directory file, but that is file as you have w access. But you will also be accessing the inode data-structure of the added file to update the values like file-size,modification time etc. This is not possible without x access. Hence, you cannot copy files into the dir with only r and w
+20:52 < soundaryaramesh> *fine
+20:53 < soundaryaramesh> Given r and x access what can you do?
+20:54 < siddhanth> modify which files are there in directory and/or execute them?
+20:54 < soundaryaramesh> you can use ls and cd command on the dir. That's all.
+20:54 < soundaryaramesh> Got it?
+20:54 < siddhanth> why not modify?
+20:54 < soundaryaramesh> You will get the inode part properly once we explain filesystems. 
+20:55 < soundaryaramesh> Modifying the inode datastructure which contains all info abt the file needs x access.
+20:55 < soundaryaramesh> @siddhant modify what?
+20:55 < siddhanth> modify the contents of the files?
+20:56 < siddhanth> files in the directory
+20:57 < soundaryaramesh> You're right. Given r and x access, you can also modify the contents of the files as this does not involve writing into the directory file.
+20:57 < soundaryaramesh> Any more doubts?
+20:57 < siddhanth> nope
+20:57 < ABHI_> Which access combination is useful to copy files 'into' a directory??
+20:57 < ABHI_> *used
+20:57 < soundaryaramesh> you stole my question :p
+20:58 ::: kaushik_sk [~kaushik_s@117.230.88.252] has joined #ieee-UNIX
+20:58 < ABHI_> Oops
+20:58 < siddhanth> w and x?
+20:58 < soundaryaramesh> So, to add a new file into teh dir, you will be modifying the directory file, hence w is needed.
+20:58 < soundaryaramesh> Also,x because you will be accessing the inode datastructure
+20:58 < rahul_kummi> wx
+20:59 < soundaryaramesh> @rahul, correct!
+20:59 < ABHI_> Ok thanks ..
+20:59 < soundaryaramesh> So, what permissions are required to remove a file from the dir?
+21:00 < Samvid> r and w?
+21:00 ::: AdithyaBhat [6a33845c@gateway/web/freenode/ip.106.51.132.92] has joined #ieee-UNIX
+21:01 < soundaryaramesh> Are you sure?
+21:01 < siddhanth> rwx?
+21:01 < soundaryaramesh> Try it out right now with r and w.
+21:01 < Samvid> Will removing a file also access its inode?
+21:03 < soundaryaramesh> It will just remove the link between the inode number and the inode data structure.
+21:03 < soundaryaramesh> So, I think r and w should be enough.
+21:03 < soundaryaramesh> I'll get back to you guys on this.
+21:04 < soundaryaramesh> Now next question, done?
+21:04 < gauthamm_> it may cause system hack
+21:05 ::: kaushik_sk [~kaushik_s@117.230.88.252] has left #ieee-UNIX []
+21:05 ::: Irssi: #ieee-UNIX: Total of 14 nicks [1 ops, 0 halfops, 0 voices, 13 normal]
+21:05 ::: swati_ [~swati@117.200.118.18] has quit [Quit: Leaving]
+21:06 < siddhanth> it may give unauthorized program root access
+21:07 < soundaryaramesh> Correct. 
+21:07 < Harita_Reddy> Alternative for sudo pip is pip install -U <filename> --user. 
+21:07 ::: Noobie_ [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has joined #ieee-UNIX
+21:07 < soundaryaramesh> @harita, right!
+21:07 < soundaryaramesh> So, we'll move on to today's topic of discussion
+21:08 < soundaryaramesh> It is regular expressions.
+21:08 < soundaryaramesh> Any idea wat are they?
+21:09 < soundaryaramesh> Okay these are basically used to match patterns in UNIX.
+21:09 < soundaryaramesh> they are quite useful for find and replace functions
+21:09 < Samvid> Sequence of characters for searching?
+21:09 < Samvid> alright :P
+21:09 < soundaryaramesh> sequenec of characters with a pattern
+21:10 < soundaryaramesh> Say you want to search for "apple", but it might Apple or apple or APPLE.
+21:10 < soundaryaramesh> So in this case, search becomes harder if it is character by character comparison.
+21:10 < rahul_kummi> okay
+21:11 < soundaryaramesh> Therefore, these are used.
+21:12 < soundaryaramesh> There are a few metacharacters used in regex.
+21:12 < soundaryaramesh> Metacharacters are basically characters with special meaning.
+21:12 ::: catchchaos [~AndChat32@1.39.61.34] has joined #ieee-UNIX
+21:13 < soundaryaramesh> The metacharacters are *,.,?,etc
+21:13 < soundaryaramesh> Now let us see what each of these mean
+21:14 < soundaryaramesh> If i have g* it basically means i can zero or more of g.
+21:14 < soundaryaramesh> That is nothing or g,gg,ggg etc
+21:15 < soundaryaramesh> . implies a single character
+21:15 < soundaryaramesh> So now what does .* mean?
+21:15 ::: paramhanji [~AndChat32@1.39.61.34] has quit [Ping timeout: 250 seconds]
+21:15 < rahul_kummi> atleast one g?
+21:16 < gauthamm_> any other character??
+21:16 < rahul_kummi> i mean atleast one character
+21:16 < soundaryaramesh> This does not have g, the expression is only .*
+21:16 < rahul_kummi> ??
+21:16 < soundaryaramesh> It actually means nothing or any number of characters.
+21:16 < soundaryaramesh> Okay say i have g.*
+21:17 < soundaryaramesh> This could mean, g,gsdf,gtgryht or anything starting with a g.
+21:18 < soundaryaramesh> note that this is different from the shell metacharacters which some of you might have used.
+21:19 < soundaryaramesh> For ex, rm * deletes all the files in that directory. Here * has different meaning from what I just told you
+21:19 < AdithyaBhat> Do not try that.
+21:20 < soundaryaramesh> So far good?
+21:20 < catchchaos> .* Is very dangerous. Can you guess why?
+21:21 ::: Irssi: #ieee-UNIX: Total of 14 nicks [1 ops, 0 halfops, 0 voices, 13 normal]
+21:22 < catchchaos> It's because this particular regex pattern every single thing. Even zero characters.
+21:23 < catchchaos> As mentioned before, . matches any character 
+21:24 < catchchaos> And * means zero or more instances of the preceding character 
+21:24 < catchchaos> So .* Means 0 or more characters 
+21:24 < catchchaos> Following?
+21:24 < siddhanth> yep
+21:25 < rahul_kummi> okay,yeah
+21:25 < catchchaos> Let's talk about patterns 
+21:26 < catchchaos> Even simple words can be patterns. These don't include any special characters.
+21:26 < catchchaos> Even 'regexPattern' is a valid pattern 
+21:27 < catchchaos> This simply searches for the exact sequence of characters regexPattern
+21:27 ::: gauthamm_ [3b5b1125@gateway/web/freenode/ip.59.91.17.37] has quit [Ping timeout: 250 seconds]
+21:27 < catchchaos> Only an exact match is returned 
+21:28 < catchchaos> Then we have character classes 
+21:29 < catchchaos> Character classes are creates by enclosing characters and meta characters in square brackets 
+21:29 < catchchaos> Any one of the characters in the class can matched 
+21:30 < catchchaos> For example, to search for Apple or apple, the regex used us [aA]pple
+21:30 < catchchaos> Here either a or A is picked as the first letter. The rest of the string must be pple
+21:31 < catchchaos> Makes sense?
+21:31 ::: Harita_Reddy [012714b2@gateway/web/freenode/ip.1.39.20.178] has quit [Ping timeout: 250 seconds]
+21:32 < catchchaos> Guys?
+21:32 < siddhanth> yes
+21:32 < Samvid> yup
+21:33 ::: rahul_kummi [~Rahul@117.231.236.75] has quit [Read error: Connection reset by peer]
+21:33 < ABHI_> Yes 
+21:33 ::: gautham_ [3b5b1125@gateway/web/freenode/ip.59.91.17.37] has joined #ieee-UNIX
+21:33 < ABHI_> Plz continue 
+21:33 ::: rahul_kummi [~Rahul@117.237.162.107] has joined #ieee-UNIX
+21:34 < catchchaos> We can also have ranges in the character class 
+21:34 ::: gautham__ [3b5b1125@gateway/web/freenode/ip.59.91.17.37] has joined #ieee-UNIX
+21:34 < AdithyaBhat> Here is an IRC etiqutte.
+21:34 < AdithyaBhat> The mentor asks PING.
+21:35 < catchchaos> [0-9] stands for any digit, [a-z] can be used for a lowercase letter and so on
+21:35 < AdithyaBhat> You respond with a PONG.
+21:36 ::: Someone___ [6ad89d4e@gateway/web/freenode/ip.106.216.157.78] has quit [Ping timeout: 250 seconds]
+21:36 < catchchaos> Note that to match a digit, you can also use \d and \w for alphanumeric character 
+21:38 < catchchaos> We can also represent whitespace characters using regex
+21:38 < catchchaos> \t stands for tab and \n for linefeed
+21:39 < catchchaos> Do any of you know that terminate line has different characters in Windows and UNIX?
+21:40 < catchchaos> Can someone tell me the difference?
+21:41 < catchchaos> PING
+21:42 < soundaryaramesh> Lol xD
+21:42 < catchchaos> Guys?
+21:43 < rahul_kummi> is it $ and >>
+21:43 < rahul_kummi> ??
+21:43 < AdithyaBhat> @catchchaos: dinner break?
+21:43 < rahul_kummi> PONG:p
+21:44 < catchchaos> @rahul nope
+21:44 < soundaryaramesh> Nope. We can finish this in sometime.
+21:44 < catchchaos> Lol
+21:44 < AdithyaBhat> alrighty.
+21:44 < catchchaos> Okay guys let's break for dinner
+21:44 < AdithyaBhat> Whoever is online respond to the Ping with a pong.
+21:44 < soundaryaramesh> Let's go faster. Guys, show some energy. We'll finish this soon
+21:44 < catchchaos> Half an hour is okay? Meet at 10:15?
+21:44 < soundaryaramesh> Nahiii :P
+21:45 < gautham__> thats quite long
+21:45 < catchchaos> 15 minutes then? Is that okay Soundarya?
+21:46 < soundaryaramesh> Fine. We'll meet again at 10 then.
+21:46 < siddhanth> kk
+21:46 < ABHI_> Ok 
+21:46 ::: ABHI_ [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has quit [Quit: Page closed]
+21:48 ::: gautham_ [3b5b1125@gateway/web/freenode/ip.59.91.17.37] has quit [Ping timeout: 250 seconds]
+21:49 ::: gautham__ [3b5b1125@gateway/web/freenode/ip.59.91.17.37] has quit [Ping timeout: 250 seconds]
+21:50 ::: siddhanth [2d723dc7@gateway/web/freenode/ip.45.114.61.199] has quit [Ping timeout: 250 seconds]
+21:52 ::: Noobie_ [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has quit [Ping timeout: 250 seconds]
+21:53 ::: m__gautham [3b5b132e@gateway/web/freenode/ip.59.91.19.46] has joined #ieee-UNIX
+21:56 ::: soundaryaramesh changed the topic of #ieee-UNIX to: UNIX Programming
+21:59 ::: siddhanth [2d723dc7@gateway/web/freenode/ip.45.114.61.199] has joined #ieee-UNIX
+22:00 ::: Noobie_ [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has joined #ieee-UNIX
+22:02 < catchchaos> Wait for 10:05?
+22:02 < siddhanth> how much time will it take to complete the remaining stuff?
+22:04 < catchchaos> We'll finish up regex soon. And11 then we need to do ask, so maybe 10:30 to
+22:04 < catchchaos> 11
+22:04 < catchchaos> Awk*
+22:05 ::: rahul_kummi [~Rahul@117.237.162.107] has quit [Ping timeout: 250 seconds]
+22:05 < soundaryaramesh> Not awk, grep actually.
+22:05 < catchchaos> My bad :p
+22:06 < catchchaos> We'll finish up regex once everyone connects 
+22:06 ::: Irssi: #ieee-UNIX: Total of 10 nicks [1 ops, 0 halfops, 0 voices, 9 normal]
+22:08 ::: rahul_kummi [~Rahul@117.235.216.164] has joined #ieee-UNIX
+22:09 < soundaryaramesh> Maybe we can start now.
+22:09 ::: siddhanth [2d723dc7@gateway/web/freenode/ip.45.114.61.199] has quit [Ping timeout: 250 seconds]
+22:09 < catchchaos> Yup, 10:10 is enough time
+22:10 < catchchaos> Regex also has anchors 
+22:11 < catchchaos> ^ matches the beginning of a string and $ matches end of a string 
+22:12 ::: paramhanji [~AndChat32@1.39.61.34] has joined #ieee-UNIX
+22:13 ::: gauthamm__ [75ca211b@gateway/web/freenode/ip.117.202.33.27] has joined #ieee-UNIX
+22:14 < soundaryaramesh> Btw, for removing a file, wx access is enough, if you know the name of the file.
+22:14 < soundaryaramesh> Else you need all three.
+22:15 < soundaryaramesh> Actually there is something called a sticky bit, that prevents files from being removed irrespective of the permissions.
+22:15 < soundaryaramesh> I found a link explaining all this properly
+22:15 < soundaryaramesh> Will share with you guys later
+22:16 ::: catchchaos [~AndChat32@1.39.61.34] has quit [Ping timeout: 276 seconds]
+22:17 ::: m__gautham [3b5b132e@gateway/web/freenode/ip.59.91.19.46] has quit [Ping timeout: 250 seconds]
+22:18 < soundaryaramesh> So now we have almost looked at all metacharacters
+22:18 < soundaryaramesh> We'll get to grep
+22:18 < soundaryaramesh> grep is basically a file manipulation command in unix
+22:18 < soundaryaramesh> It stands for global regular expression print
+22:19 < soundaryaramesh> It basically searches for a pattern and print the line containing such patterns
+22:19 ::: paramhanji [~AndChat32@1.39.61.34] has quit [Quit: Bye]
+22:19 < soundaryaramesh> So the basic syntax is grep options pattern filename(s)
+22:20 < soundaryaramesh> grep is basically a filter.
+22:20 ::: catchchaos [6ad8b75e@gateway/web/freenode/ip.106.216.183.94] has joined #ieee-UNIX
+22:20 < soundaryaramesh> Filter means a command which takes both input and output from files.
+22:21 < soundaryaramesh> For eg: mkdir is not a filter while grep is.
+22:22 < soundaryaramesh> We will see how in a while
+22:22 < soundaryaramesh> You guys are with me right?
+22:22 < soundaryaramesh> PING :p
+22:22 < gauthamm__> yup
+22:23 < rahul_kummi> pong
+22:23 < gauthamm__> pong
+22:23 < soundaryaramesh> So can you name any filter command you know?
+22:24 < soundaryaramesh> Okay let's go faster actually. 
+22:24 < soundaryaramesh> cat is an example which you guys know
+22:24 < soundaryaramesh> So, coming to grep now.
+22:25 < soundaryaramesh> If you want to search and find out the lines containing apple, you would type--
+22:25 < soundaryaramesh> grep "apple" <file_name>
+22:25 < soundaryaramesh> So this will list all lines in the file containing the word apple
+22:26 < soundaryaramesh> Wat if i want to search for Apple and apple using grep
+22:26 < soundaryaramesh> You should be using regex here. It would be grep "[aA]pple" <filename>
+22:28 < soundaryaramesh> It's always good to enclose the pattern in " " or ' '. This will prevent shell from interpreting it as a shell metacharcter
+22:28 < soundaryaramesh> Now if you want more than one file to be searched for then,
+22:29 < soundaryaramesh> grep "pattern" f1 f2 and so on.
+22:29 < soundaryaramesh> The output will always contain the filename before every line to know which file that particular line came from.
+22:30 < soundaryaramesh> Few options--
+22:30 < soundaryaramesh> -i : Ignores case
+22:30 < soundaryaramesh> -v : print all the lines which do not contain the pattern
+22:30 < soundaryaramesh> As grep is a filter,
+22:30 < soundaryaramesh> you can take this output and redirect it into a file, like this--
+22:31 < soundaryaramesh> grep -v "[aA]apple" f1.txt > f2.txt
+22:31 < soundaryaramesh> -n : To display line numbers 
+22:32 < soundaryaramesh> -c : Will only give you the count of the number of lines with the matching pattern
+22:32 < soundaryaramesh> To search for multiple patterns, -e is used.
+22:32 < soundaryaramesh> Eg: grep -e "abc" -e "def" a.txt
+22:32 < catchchaos> -R is very useful(personally) too. It recursively searches every subfolder.
+22:33 ::: bharath [75dd56ad@gateway/web/freenode/ip.117.221.86.173] has joined #ieee-UNIX
+22:33 < soundaryaramesh> This will print lines which contain abc or def.
+22:34 < AdithyaBhat> With this knowledge what do you think `grep -R "word" /` will do?
+22:35 < soundaryaramesh> So wat command will you use, if you want to search for lines which start with a 2?
+22:35 < gauthamm__> search for "word in the whole directory"
+22:35 < AdithyaBhat> gautham: you're close.
+22:36 < AdithyaBhat> Also, a side note: grep has many full forms. One of them also being "GNU Regular Expression Processor"
+22:37 < soundaryaramesh> Okay, so to find all lines starting with 2, we can use grep "^2" filename
+22:38 < soundaryaramesh> No find all lines which dont begin with 2, what can we do?
+22:38 < AdithyaBhat> The command searches for word in your entire linux file system. It can only search in filesfor which the user has read permissions.
+22:38 < soundaryaramesh> Either use grep -v command or u can use grep "^[^2]" filename
+22:39 ::: rahul_kummi [~Rahul@117.235.216.164] has quit [Quit: Leaving]
+22:39 < gauthamm__> its still searching in mine:p
+22:39 < soundaryaramesh> caret(^) inside the character class means negation.
+22:39 < catchchaos> @gautham remember that / stands for the root directory
+22:39 < gauthamm__> ok
+22:40 < soundaryaramesh> So next we have two more special characters to understand. They are + and ?
+22:40 < AdithyaBhat> You can use Ctrl + C to kill the search you initiated.
+22:41 < soundaryaramesh> + is used to match one or more occurences of the prev char
+22:42 < soundaryaramesh>  ? matches 0 or more occurrence of the previous char
+22:42 < soundaryaramesh> So, if you want to print lines which contain one or more spaces in the beginning of line, what's the command?
+22:43 < soundaryaramesh> Also, remember that + and ? belong to Extended Regex. Hence to use them, you SHOULD use the option -E.
+22:43 < soundaryaramesh> So for the above question-
+22:43 < catchchaos> or use egrep instead of just grep
+22:44 < soundaryaramesh> grep -E "^ +" filename 
+22:45 < soundaryaramesh> (,),| are also part of egrep
+22:46 < soundaryaramesh> | is basically an "or" operator. Checks for dissimilar patters.
+22:46 < soundaryaramesh> eg: grep -E "apple|banana" filename
+22:47 < soundaryaramesh> ( and ) helps in more compact patterns when the two have some similarity.
+22:47 < soundaryaramesh> eg: grep -E "(walk,sing)ing" filename
+22:49 < soundaryaramesh> and sometimes you might want to search for patterns like g* and you dont want * to have it's special meaning
+22:49 < soundaryaramesh> We use escape sequences in this case.
+22:50 < soundaryaramesh> A \ before the metacharacter will do this.
+22:50 < soundaryaramesh> So to check for the patter g*, use grep "g\*" filename
+22:50 < Noobie_> Oh ok
+22:51 < soundaryaramesh> I'm sorry. Its (walk|sing)ing in the previous eg.
+22:51 < catchchaos> Also note that the metacharacters become normal when used in character classes
+22:52 < catchchaos> In [a*g] or [fgd+gf] * and + don't have special meanings
+22:52 ::: varsh [0e60287c@gateway/web/freenode/ip.14.96.40.124] has quit [Quit: Page closed]
+22:54 < soundaryaramesh> Any doubts?
+22:54 < Noobie_> No
+22:55 < soundaryaramesh> Ok then, we're done for today.
+22:55 < soundaryaramesh> Your tasks will reach in the next few days.
+22:55 < AdithyaBhat> Any questions?
+22:56 < soundaryaramesh> In the next session, sed command will be taught. 
+22:56 < gauthamm__> any good reference to most used regex??
+22:57 < soundaryaramesh> Good night :)
+22:57 < Noobie_> Wat if v want to search g**
+22:57 < catchchaos> http://www.regular-expressions.info/
+22:57 < Noobie_> ?
+22:57 < catchchaos> I found this very helpful, go through the site when you're free
+22:58 < gauthamm__> ok thanks 
+22:58 < catchchaos> @Noobie you can just escape the * (both of them)
+22:58 < Noobie_> Thank you:)
+22:58 < gauthamm__> good night xp
+22:59 < catchchaos> Night :)
+22:59 < gauthamm__> please try to update logs as soon as possible
+22:59 ::: bharath [75dd56ad@gateway/web/freenode/ip.117.221.86.173] has quit [Quit: Page closed]
+22:59 < Noobie_> Lyk g\**
+22:59 ::: gauthamm__ [75ca211b@gateway/web/freenode/ip.117.202.33.27] has quit [Quit: Page closed]
+23:00 ::: Samvid [~Samvid@bba499221.alshamil.net.ae] has quit [Quit: Leaving]
+23:01 < Noobie_> Thank you and good night:D
+23:02 < AdithyaBhat> Noobie
+23:02 < AdithyaBhat> use "g\*\*" as your pattern.
+23:02 < soundaryaramesh> @Noobie, it should be g\*\*
+23:02 < AdithyaBhat> to search for g**
+23:03 < catchchaos> Escape both is *
+23:03 ::: soundaryaramesh [~soundarya@45.125.41.138] has left #ieee-UNIX []
+--- Log closed Sat May 21 23:03:44 2016
