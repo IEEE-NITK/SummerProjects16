@@ -1,0 +1,588 @@
+[10:02:22] *** Joins: salman-bhai (b63a5fb3@gateway/web/freenode/ip.182.58.95.179)
+[11:19:50] *** Joins: aditya (75d8ec6f@gateway/web/freenode/ip.117.216.236.111)
+[11:21:02] *** Joins: vilas_m (3b5b10ee@gateway/web/freenode/ip.59.91.16.238)
+[11:21:46] <vilas_m> Anybody else watching the finals? :P
+[11:24:31] *** Joins: akshayrevankar (67157d53@gateway/web/freenode/ip.103.21.125.83)
+[11:24:39] <vinayb> hey guys
+[11:25:22] <salman-bhai> hey
+[11:25:43] <salman-bhai> vilas_m Me! :p
+[11:26:21] <vilas_m> Hi ! :)
+[11:27:06] <akshayrevankar> ██████╗ ███████╗ ██████╗██╗   ██╗██████╗ ███████╗██╗ ██████╗ ███╗   ██╗
+[11:27:16] <vilas_m> Good timing for the session xD Would have switched off the TV anyway :P
+[11:27:17] <akshayrevankar> Hey guys
+[11:27:32] <salman-bhai> hey akshay
+[11:27:49] <aditya> Hi!
+[11:27:50] <vilas_m> Hi Akshay Sir :)
+[11:28:38] <akshayrevankar> Thanks for being here on a Sunday :D.. Hope you dont mind a 1 hour session :P
+[11:28:57] *** vinayb changes topic to 'Distributed Systems Programming with Erlang | Today's log: https://goo.gl/GFWbqP'
+[11:30:01] <akshayrevankar> We will start the session after 5 minutes..
+[11:30:18] <vinayb> call all your friends guys
+[11:30:28] <akshayrevankar> So how are vacations going on for all?
+[11:30:33] <vinayb> i expect everyone to be here
+[11:30:57] <akshayrevankar> vinayb #being strict is it :P
+[11:31:42] <vinayb> ;)
+[11:35:58] <akshayrevankar> ok guys.. so we will start of with todays session..
+[11:36:20] <akshayrevankar> so last time rakshith asked if there exists any looping constructs in erlang..
+[11:36:24] *** Joins: adarsh_h (6ace890c@gateway/web/freenode/ip.106.206.137.12)
+[11:36:35] <akshayrevankar> as vinay said, there are no looping constructs.. like for or while
+[11:36:51] <akshayrevankar> so we make the use of recursion in implementing of loops..
+[11:37:17] <akshayrevankar> so can someone recall and list what all you guys coded using recursion in your CO110 course
+[11:38:16] <vilas_m> Factorial, binary search, sum upto n, nCr.
+[11:38:45] <aditya> fibonacci,sumofdigits
+[11:39:16] <vilas_m> X^n
+[11:39:20] <akshayrevankar> yes.. you implemented the funtions as you mentioned using recursion.. you were explictly taught some functions using recursion..
+[11:39:38] <akshayrevankar> but what are you actually doing there in reality.. can the same function be implemented using a while loop?
+[11:40:11] <akshayrevankar> can one of you write down a C like code here for a while loop based factorial and a recursion based
+[11:40:31] <akshayrevankar> aditya can write down the C like
+[11:40:39] <akshayrevankar> and vilas the recursion based
+[11:41:19] <akshayrevankar> I want others to also acknowledge and reply... dont be a spectator only.. If you dont know anything, ask of immediately..
+[11:41:34] <aditya> fact=1; while(n){ fact*=n; n--;}
+[11:41:55] <vilas_m> int fact (int n) { if(n==1) return 1; else return(n*fact(n-1)); }
+[11:43:04] <akshayrevankar> ok.. can someone identify a small correction in code written by vilas..
+[11:43:21] <aditya> o factorial!
+[11:43:34] <akshayrevankar> correct aditya..
+[11:43:47] <akshayrevankar> just a matter of n==0 instead of n==1
+[11:44:07] <akshayrevankar> so this condition of n==0 is called the base case for recursion..
+[11:44:19] <akshayrevankar> which is when the recursion stops..
+[11:44:54] <akshayrevankar> today we will first start by writing a factorial code in erlang..
+[11:45:16] *** Joins: m_gautham (75dd6f0f@gateway/web/freenode/ip.117.221.111.15)
+[11:45:17] <akshayrevankar> guys make a erl file with module name "recursion"
+[11:45:50] <akshayrevankar> gautham, please go through the log :)
+[11:46:38] <akshayrevankar> ok, lets write our function for factorial using recursion..
+[11:46:56] <akshayrevankar> you know the base case which is fac(0) = 1
+[11:47:06] <akshayrevankar> so what would be the equivalent statement in erlang?
+[11:48:47] <aditya> fac(0) -> 1;
+[11:49:01] <akshayrevankar> yes correct aditya..
+[11:49:26] <akshayrevankar> its as simple as that..
+[11:49:49] <akshayrevankar> do others have a doubt with regard to that ^^^ ?
+[11:50:08] <salman-bhai> No
+[11:50:09] <vilas_m> No.
+[11:50:39] <akshayrevankar> i want a reply from everyone.. a simple Yes or No
+[11:50:40] <salman-bhai> Oh wait shouldn't it be full-stop.
+[11:50:53] <salman-bhai> fac(0) -> 1.
+[11:51:00] <akshayrevankar> ya correct salman..
+[11:51:22] <aditya> It needs to be followed by fac(N)
+[11:51:31] <akshayrevankar> aditya "might" have just used the semicolon as our function isnt complete yet
+[11:51:42] <akshayrevankar> ya..
+[11:52:02] <akshayrevankar> ok..
+[11:52:05] <vinayb> exactly akshayrevankar . salman-bhai , the function defintion isn't complete yet
+[11:52:13] <salman-bhai> Oh okay
+[11:52:31] <akshayrevankar> ya so we have the other half of the function remaining..
+[11:52:48] <akshayrevankar> so if  n=/=0 then what do we do?
+[11:53:13] <vilas_m> N*fac(N-1).
+[11:53:32] <akshayrevankar> correct! we return the above value..
+[11:53:41] <akshayrevankar> so what would be the erlang equivalent?
+[11:53:50] <aditya> fac(N) when N > 0 -> N*fac(N-1).
+[11:53:56] <vilas_m> fac(N) when N >=1 -> N*fac(N-1).
+[11:55:22] <akshayrevankar> yes both are correct..
+[11:55:42] <akshayrevankar> we can even write fac(N) -> N*fac(N-1).
+[11:56:37] <akshayrevankar> but can anyone tell me what should be kept in mind while writing the above statement?
+[11:56:47] <salman-bhai> N negative?
+[11:56:57] <salman-bhai> It can't be negative
+[11:57:06] <vilas_m> It should follow the base case?
+[11:57:20] <akshayrevankar> ya.. thats true.. for now we will consider that user is sensible to not input negative :D
+[11:57:49] <akshayrevankar> fac(N) -> N*fac(N-1). I wrote this statement without any condition right?
+[11:58:02] <salman-bhai> Yes
+[11:58:28] <akshayrevankar> if i write this statement above fac(0)->1 , then the function will go into a infinite recursion
+[11:58:35] <akshayrevankar> #NOTE
+[11:58:52] <akshayrevankar> the pattern matching works in the same order as you write the statement..
+[11:59:09] <akshayrevankar> you can consider it to be like a if-elseif ladder..
+[11:59:18] <akshayrevankar> Imagine this situation:
+[11:59:24] <akshayrevankar> your code is:
+[11:59:34] <akshayrevankar> fac(N)->N*fac(N-1);
+[11:59:40] <akshayrevankar> fac(0)->1.
+[12:00:07] <akshayrevankar> for erlang it is like, first check if its a Number N, if yes execute the first statement..
+[12:00:18] <akshayrevankar> elseif N=0 then return 1
+[12:00:36] <akshayrevankar> so you notice that the first statement is always true, the second will never get executed.
+[12:01:15] <akshayrevankar> so you either do it by giving a condition that fac(N) when N>0
+[12:01:16] <akshayrevankar> OR
+[12:01:24] <akshayrevankar> you write fac(0)->1;
+[12:01:26] <akshayrevankar> and then
+[12:01:35] <akshayrevankar> fac(N)->N*fac(N-1);
+[12:01:43] <akshayrevankar> can you tell me which way is preferable and why?
+[12:02:45] <vilas_m> First one? Lesser number of statements executed?
+[12:03:02] <aditya> 1st one lesser comparisons?
+[12:03:16] <akshayrevankar> can u write down which..
+[12:03:25] <akshayrevankar> its all jumbled up there :D
+[12:03:40] <aditya> 2nd
+[12:03:57] <akshayrevankar> ok 1st or 2nd :P
+[12:04:03] <salman-bhai> 2nd
+[12:04:17] <vilas_m> fac(N) when N>0 -> N*fac(N-1) ; fac(0) -> 1.
+[12:04:30] <salman-bhai> fac(N)->N*fac(N-1).*
+[12:04:38] <akshayrevankar> why would this be preferable @vilas
+[12:05:03] <akshayrevankar> dont you think in worst case there will be two pattern match and one condition checking?
+[12:05:44] <akshayrevankar> if you do it as fac(0)->1; fac(N)->N*fac(N-1). this would involve two pattern matching..
+[12:06:00] <akshayrevankar> so i guess the 2nd one is faster..
+[12:06:02] <vilas_m> For every number, if the zero case was first then it would have to be checked each time? I was thinking it could skip checking for 0 if the zero case was later.
+[12:06:24] <vilas_m> Oh ok
+[12:07:30] <akshayrevankar> ya i agree.. its nearly the same... its just once case where it goes down.. not a big deal here.. doesnt matter to us much.. but when we see further examples, we will understand more about the timing..
+[12:08:01] <akshayrevankar> ok so we wrote our first recursion function which was factorial..
+[12:08:25] <akshayrevankar> now lets move onto another very simple example which is finding the number of elements in a list..
+[12:08:37] <akshayrevankar> can anyone come up with a solution for it..?
+[12:09:13] <akshayrevankar> i want adarsh and gautham to reply..
+[12:09:34] <akshayrevankar> first start by thinking of the base condition.. what could that be?
+[12:10:18] <aditya> length([]) -> 0; I  think?
+[12:10:42] <akshayrevankar> yes correct... length of an empty list is 0..
+[12:11:01] <akshayrevankar> does everyone agree to it?
+[12:11:16] <vilas_m> Yup
+[12:11:44] <akshayrevankar> like did u guys understand how we got the base condition.. recursion is all about firstly finding the base condition and then moving up to construct the entire function..
+[12:12:00] <akshayrevankar> salman bhai.. any doubts :D
+[12:12:21] <salman-bhai> no :p
+[12:12:42] <akshayrevankar> ok cool...
+[12:13:35] <akshayrevankar> so this is a list [1,2,3,4] can you tell me the most expanded way in which i can represent it in erlang ie.. composing it of a basic single sized list element..
+[12:15:05] <salman-bhai> [4|[3 | [2 | [1 | [] ] ] ]]
+[12:15:18] <salman-bhai> Did you mean this?
+[12:15:39] <salman-bhai> The order should be reversed*
+[12:15:40] <vilas_m> The order should be reverse right?
+[12:15:51] <salman-bhai> Yeah vilas_m
+[12:15:52] <akshayrevankar> yes dont you think @salman..
+[12:15:56] <akshayrevankar> ya.. correct
+[12:16:15] <akshayrevankar> [1|[2 | [3 | [4 | [] ] ] ]].
+[12:16:50] <akshayrevankar> this is how the list [1,2,3,4]. would be represented.. does any1 have a doubt how it came.. i guess it was discussed in #session 2..
+[12:17:14] <vilas_m> No Doubts.
+[12:17:19] <m_gautham> no doubts
+[12:17:20] <salman-bhai> no diubts
+[12:17:21] <akshayrevankar> please have a look through it and keep revising.. the further concepts and this will heavily involve pattern matching and lists everywhere..
+[12:17:23] <adarsh_h> nope
+[12:17:30] <aditya> no
+[12:17:36] <akshayrevankar> ok.. so lets continue..
+[12:17:36] <salman-bhai> no*
+[12:17:41] *** Joins: pratyushgr (dfb085e9@gateway/web/freenode/ip.223.176.133.233)
+[12:18:22] <akshayrevankar> ah nice timing.. pratyush did u go through the log?
+[12:18:35] <akshayrevankar> :P
+[12:18:59] <akshayrevankar> ok.. our task: ot find the number of elements in a list..
+[12:19:03] <akshayrevankar> to*
+[12:19:22] <akshayrevankar> so we have the base case length([])->0;
+[12:19:51] <akshayrevankar> so now we need to break the list [1,2,3,4] into its smaller elements..
+[12:20:13] <akshayrevankar> how can we split the list into two lists, one with a single element and the rest into another
+[12:20:16] <akshayrevankar> ?
+[12:20:34] <salman-bhai> [] and [1,2,3,4] ?
+[12:20:40] <aditya> [H|T]
+[12:20:42] <vilas_m> The header and rest of the list [ 1 | L ]
+[12:21:14] <akshayrevankar> ya correct..
+[12:21:35] <akshayrevankar> a head and the rest or the tail and the rest..
+[12:22:29] <akshayrevankar> so what will be the pattern matching applicable to extract the head and the tail given as an input to the function length
+[12:22:53] <akshayrevankar> if i have length(input) , how can i get the head and tail BY PATTERN MATCHING?
+[12:23:22] <vilas_m> Write a list as say [ _ | L ]. And find the length of L
+[12:24:04] <akshayrevankar> ok can you write the function @vilas..?
+[12:24:36] <vilas_m> length([ ] ) -> 0; length( [  _ | L ] ) -> length(L).
+[12:24:46] *** Quits: adarsh_h (6ace890c@gateway/web/freenode/ip.106.206.137.12) (Quit: Page closed)
+[12:24:51] <vilas_m> damn sorry 1 + length(L)
+[12:25:01] <akshayrevankar> ahh. thats right
+[12:25:08] <akshayrevankar> thats why i asked :D
+[12:25:51] <akshayrevankar> I know its difficult for you guys to understand how to get the functions, but with more examples, you will get the trick to do it..
+[12:26:27] <akshayrevankar> so our function is length([])->0; length([_|L])->1+length(L).
+[12:26:32] <akshayrevankar> so lets trace this..
+[12:26:47] <akshayrevankar> length([1,2,3,4]) = length([1 | [2,3,4])
+[12:27:16] <akshayrevankar>                = 1 + length([2 | [3,4]])
+[12:27:23] <akshayrevankar>                = 1 + 1 + length([3 | [4]])
+[12:27:27] <akshayrevankar>                = 1 + 1 + 1 + length([4 | []])
+[12:27:33] <akshayrevankar>                = 1 + 1 + 1 + 1 + length([])
+[12:27:37] <akshayrevankar>                = 1 + 1 + 1 + 1 + 0
+[12:27:41] <akshayrevankar>                = 1 + 1 + 1 + 1
+[12:27:46] <akshayrevankar>                = 1 + 1 + 2
+[12:27:50] <akshayrevankar>                = 1 + 3
+[12:27:55] <akshayrevankar>                = 4
+[12:28:22] <akshayrevankar> right? did u guys understand how the pattern matching n recursion worked?
+[12:28:28] <salman-bhai> Yes.
+[12:28:29] <aditya> yup!
+[12:28:45] <vilas_m> Yes
+[12:28:50] <akshayrevankar> others...
+[12:29:07] <akshayrevankar> its very important to understand till this much..
+[12:29:21] <akshayrevankar> we are 2/3rd done :)
+[12:29:28] <m_gautham> yes but what will be export??
+[12:29:40] <akshayrevankar> ya what will be the export..?
+[12:29:58] <m_gautham> length/1 doesnt work
+[12:30:05] <akshayrevankar> is it ?
+[12:30:21] <vilas_m> length/1 should work right? One list as one element?
+[12:30:30] <vilas_m> argument*
+[12:30:31] <m_gautham> sorry it does
+[12:31:09] <akshayrevankar> yes it does. :D
+[12:31:40] <akshayrevankar> so now can anyone tell me what is the disadvantage of the above way of doing the recursion?
+[12:32:33] <vilas_m> Order N for finding the length of a list?
+[12:32:56] <akshayrevankar> ok.. do you have a lower order for doing it? o.O
+[12:32:58] <vilas_m> Ok No :P Sorry
+[12:33:15] <akshayrevankar> :D
+[12:33:25] <vilas_m> Na. Was thinking in terms of log N lines :P
+[12:33:35] <akshayrevankar> ok..
+[12:34:02] <akshayrevankar> you very need to know the existence of all elements :D so it cant be lower... :P
+[12:34:17] <vilas_m> Yea xD
+[12:34:20] <akshayrevankar> so ya.. what could be the major disadvantage...
+[12:34:49] <aditya> No idea!
+[12:35:01] <akshayrevankar> so you can see that to get the final result you need to travel till the last recursive call and start returning all the values back.. right?
+[12:35:15] <akshayrevankar> the initial 1 + length([2 | [3,4]]) wontget complete
+[12:35:25] <akshayrevankar> till u reach the length([])
+[12:36:10] <akshayrevankar> but you know that you can  do the 1+1 and then next stage the 2+1 and so on..
+[12:36:55] <akshayrevankar> see the 1+1 computation wont happen, because the second line has to return (1+ length([3 | [4]]))..
+[12:37:18] <akshayrevankar> it cant just say that.. for now you take the 1, and then i will send the rest for you to calculate later.. right? :D
+[12:37:46] <akshayrevankar> a return means the computation in that part is done and value is completely returned..
+[12:38:38] <akshayrevankar> did u understand that?
+[12:38:42] <vilas_m> Yup
+[12:39:31] <akshayrevankar> it looks above as if the 1 +1 and 1+ 1 + 1could be calculated.. but it cant as the the 1+ is bound to the next function call.. it has to be calculated and then only it can be returned..
+[12:39:59] <akshayrevankar> so can you tell me which memory areas are gettings utilised in this process.?
+[12:40:16] <akshayrevankar> getting*
+[12:41:18] <akshayrevankar> ?
+[12:41:52] <vilas_m> Heap?
+[12:42:48] <akshayrevankar> an intelligent answer.. dont be so generic :P
+[12:43:30] <akshayrevankar> anyone...
+[12:44:26] <salman-bhai> No idea sir.
+[12:44:50] <akshayrevankar> i guess the term "area" i used was a bit misleading..
+[12:45:15] <akshayrevankar> ohk.. mainly the two things where we are utilising the memory is the temporary 1+ part
+[12:45:24] <akshayrevankar> and the stack..
+[12:45:33] <akshayrevankar> can anyone tell me where we are using the stack here?
+[12:45:56] <aditya> function call?
+[12:45:59] <salman-bhai> the function
+[12:46:02] <salman-bhai> call
+[12:46:10] <akshayrevankar> absolutely correct...
+[12:46:29] <akshayrevankar> so you can see as N increases the function call stack becomes too huge...
+[12:47:04] <akshayrevankar> and also we need to take care of the 1+ addition when it returns
+[12:47:11] <akshayrevankar> so its a huge computation work right?
+[12:47:26] <akshayrevankar> so thats where we inttroduce the concept of tail recursion..
+[12:48:03] <akshayrevankar> so.. i will start of with the example so that its easier for you guys to understand..
+[12:48:13] <akshayrevankar> we had length([])->0;
+[12:48:27] <akshayrevankar> length([_|L])->1+length(L).
+[12:48:38] <akshayrevankar> IN CASE OF TAIL RECURSION, we will have
+[12:48:49] <akshayrevankar> tail_length(L) -> tail_length(L,0).
+[12:49:04] <akshayrevankar> tail_length([], past) -> past;
+[12:49:24] <akshayrevankar> tail_len([_|L], past) -> tail_len(L,past+1).
+[12:49:46] <akshayrevankar> tail_length([_|L], past) -> tail_length(L,past+1).      ***correct the len to length
+[12:50:07] <akshayrevankar> ok so now lets trace the function..
+[12:50:42] <akshayrevankar> can someone write the first 2 trace for tail_length([1,2,3,4]).
+[12:50:50] <akshayrevankar> @vilas
+[12:51:31] <vilas_m> tail_length([1,2,3,4],0) = tail_length([2,3,4],1).
+[12:51:56] <vilas_m> tail_length([2,3,4], 1) = tail_length([3,4] , 2).
+[12:52:26] <akshayrevankar> ok salman bhai..  the next two
+[12:53:25] <salman-bhai> tsil_length([3,4], 2) = tail-length([4], 3).
+[12:53:42] <salman-bhai> tsil_length([3,4], 2) = tail_length([4], 3). *
+[12:53:51] <salman-bhai> tail_length([3,4], 2) = tail_length([4], 3). **
+[12:54:56] <salman-bhai> taile_length([4], 3) = tail_length(4).
+[12:55:07] <salman-bhai> oh sorry
+[12:55:17] <akshayrevankar> ya do correct it
+[12:55:18] <salman-bhai> tail_length([4], 3) = 4.
+[12:55:32] <akshayrevankar> still not right..
+[12:55:44] <akshayrevankar> :\
+[12:55:50] <salman-bhai> Ya one sec
+[12:55:53] <salman-bhai> Wait
+[12:56:36] <salman-bhai> tail_length([4], 3) = tail_length([], 4).
+[12:56:46] <salman-bhai> How about now?
+[12:56:51] <akshayrevankar> ah good :D
+[12:57:03] <salman-bhai> SHould I continue
+[12:57:11] <salman-bhai> ?
+[12:57:12] <akshayrevankar> so the final result is tail_length([],4)->4.
+[12:57:15] <akshayrevankar> which is our result
+[12:57:20] <salman-bhai> yeah
+[12:57:52] <akshayrevankar> ok.. now do you find a reduction in call stack or the function local variable or both?
+[12:59:24] <salman-bhai> function local variable
+[12:59:35] <akshayrevankar> ok others..
+[12:59:40] <salman-bhai> You still have to call the function the same number of times
+[13:00:13] <akshayrevankar> others.. do you agree to salman?
+[13:00:37] <akshayrevankar> 's statement
+[13:00:38] <akshayrevankar> :D
+[13:01:07] <vilas_m> Not really. The operations of 1+1.. have been reduced. So i feel there's a reduction in call stack.
+[13:01:54] <akshayrevankar> ok vilas why do you think so.. still the return values will propagate from the last calculation right.. it has to return the values to the previous functions even though there is no addition work.
+[13:03:03] <vilas_m> Yea, the function is called the same number of times, but you are storing only 2 variables in the stack each time
+[13:03:24] <akshayrevankar> uh.. no.. and yes..
+[13:03:26] <akshayrevankar> ok see
+[13:03:42] <akshayrevankar> 1: tail_length([1,2,3,4],0) = tail_length([2,3,4],1).
+[13:03:49] <akshayrevankar> 2: tail_length([2,3,4], 1) = tail_length([3,4] , 2).
+[13:03:57] <akshayrevankar> 3: tail_length([3,4], 2) = tail_length([4], 3).
+[13:04:10] <akshayrevankar> 4: tail_length([4], 3) = tail_length([], 4).
+[13:04:18] <akshayrevankar> 5:  tail_length([],4)->4.
+[13:04:31] <akshayrevankar> ok so see in function 4, the value is the result of function 5..
+[13:04:42] <akshayrevankar> so when 4 is returned, it will be returned to the call of function 4..
+[13:05:02] <akshayrevankar> then function 4 will return the value to its call at function 3..
+[13:05:23] <akshayrevankar> though we have 2 values stored.. the function call will till need to propagate N times right?
+[13:05:49] <vilas_m> Yup
+[13:06:09] <akshayrevankar> okay can we extend for 15 - 20 more mins..?
+[13:06:22] <vilas_m> No problem :)
+[13:06:29] <aditya> yes!
+[13:06:31] <m_gautham> ok :)
+[13:06:38] <salman-bhai> sure
+[13:06:40] <akshayrevankar> ok
+[13:07:37] <akshayrevankar> as salman said as you guys have learnt C, thats what would happen.. the function call stack keeps increasing
+[13:07:47] <akshayrevankar> only the local calculation is reduced..
+[13:08:27] <akshayrevankar> but the entire concept of tail recursion is so beautifully designed in erlang that.. if u have no intermediate calulations on return.. it just chucks the call stack..
+[13:08:38] <akshayrevankar> meaning if you just have some function call = another function call
+[13:08:58] <akshayrevankar> then we ignore it..
+[13:09:04] <akshayrevankar> to explain it briefly
+[13:09:14] <akshayrevankar> think of the function call 1: above
+[13:09:21] <akshayrevankar> it calls to function 2:
+[13:09:28] <akshayrevankar> which is again equal to function 3:
+[13:09:37] <akshayrevankar> so when we know all of these are just equal..
+[13:10:02] <akshayrevankar> why should i remember to return the value from function 3 to function 2, when i can just return it to function 1 directly
+[13:10:42] <akshayrevankar> and then when function 5 is executed.. it knows that it is equal to the value to be returned at function 1, because there are no intermediate calculations at all
+[13:11:11] <salman-bhai> Sorry to interrupt
+[13:11:13] <akshayrevankar> so the same value 4 instead of senselessly propagting back N times, is just sent returned to the function 1
+[13:11:19] <akshayrevankar> ya go on..
+[13:11:25] <salman-bhai> But how is it equal
+[13:11:31] <salman-bhai> WHat do u mean by equal?
+[13:11:52] <akshayrevankar> i mean see
+[13:11:56] <akshayrevankar> consider function 3
+[13:12:06] <akshayrevankar> tail_length([3,4], 2) = tail_length([4], 1+2).
+[13:12:20] <akshayrevankar> you already did this 1+2 calulation and called the function 4 right?
+[13:12:27] <salman-bhai> yess
+[13:12:47] <akshayrevankar> now whatever value the function 4 returns will be equation to the value function 3 returns
+[13:12:49] <akshayrevankar> correct?
+[13:13:29] <akshayrevankar> so obviously you will have a order N function call.. but the return wouldnt need to propagate back in the same way as it came
+[13:13:34] <aditya> In d earlier recursion it was func1=1+func2 so they werent equal?
+[13:13:58] <akshayrevankar> ya is the value returned by func1 same as func 2
+[13:14:01] <akshayrevankar> no right
+[13:14:11] <akshayrevankar> if the value returned by func2 was 4
+[13:14:17] <akshayrevankar> the value by func1 will be 5
+[13:14:29] <akshayrevankar> so i need to go back in the reverse and start adding up one by one...
+[13:14:30] <aditya> ok! understood
+[13:14:35] <akshayrevankar> but here i neednt do that
+[13:14:41] <akshayrevankar> did u get it @ salman?
+[13:14:49] <salman-bhai> No
+[13:14:56] <akshayrevankar> ohk..
+[13:15:01] <salman-bhai> I didn't understand over here
+[13:15:08] <salman-bhai> i.e. in Tail recursion
+[13:15:11] <akshayrevankar> ok see..
+[13:15:17] <akshayrevankar> now i have function 1:
+[13:15:22] <akshayrevankar> tail_length([1,2,3,4],0)
+[13:15:35] <akshayrevankar> which will call tail_length([2,3,4],1+0)
+[13:15:37] <akshayrevankar> right?
+[13:16:01] <salman-bhai> yes
+[13:16:11] <akshayrevankar> so what should the tail_length([1,2,3,4],0) return? the same value which will be returned by tail_length([2,3,4],1+0)
+[13:16:20] <akshayrevankar> correct?
+[13:16:29] <salman-bhai> yes
+[13:16:34] <akshayrevankar> now the next call is tail_length([2,3,4],1+0)
+[13:16:45] <akshayrevankar> which calls ail_length([3,4],1+1).
+[13:16:59] <salman-bhai> Ah .... understood
+[13:17:04] <akshayrevankar> so what will tail_length([2,3,4],1+0) return, the same value as tail_length([3,4],2+1).
+[13:17:50] <akshayrevankar> so basically tail_length([1,2,3,4],0) will return the same value as tail_length([2,3,4],1) which will again be the same as tail_length([3,4],2+1)
+[13:17:53] <akshayrevankar> and so on..
+[13:18:11] <akshayrevankar> so basically the return of the first call will be equal to the return of the last call.
+[13:18:15] <salman-bhai> So tail_length([1,2,3,4],0) will return what tail_length([],4).
+[13:18:28] <salman-bhai> returns*
+[13:18:37] <akshayrevankar> ya exactly..
+[13:18:44] <salman-bhai> Awesome...
+[13:19:23] <akshayrevankar> so i neednt tell my tail_length([],4) to remember from where it was called. i just say go till the last call you can and then you return it to the first call.. i dont care about the intermediate calls anymore once they are executed..
+[13:19:29] <akshayrevankar> there is no need to trace back..
+[13:20:13] <akshayrevankar> but if u try to implement tail recursion in C, it just doesnt matter.. because it does implement this intelligent thinking on not doing a complete retrace even if the values returned as same..
+[13:20:46] <akshayrevankar> thats why actually vilas's intuition was right.. and salman's C concept was perfect :D
+[13:21:03] <akshayrevankar> ok before we wind up..
+[13:21:18] <akshayrevankar> can you write the tail recursion for factorial
+[13:21:39] <akshayrevankar> @gautham?
+[13:22:00] *** Quits: pratyushgr (dfb085e9@gateway/web/freenode/ip.223.176.133.233) (Ping timeout: 250 seconds)
+[13:22:00] <akshayrevankar> follow the exact same pattern as length
+[13:22:32] <akshayrevankar> if anyone doesnt know how to do it.. then they can freely tell..
+[13:22:41] <akshayrevankar> you will need more examples to understand..
+[13:24:06] <akshayrevankar> this was your original length function:
+[13:24:13] <akshayrevankar> length([]) -> 0; length([_|T]) -> 1 + length(T).
+[13:24:21] <akshayrevankar> ##
+[13:24:27] <akshayrevankar> the new tail recursion became:
+[13:24:59] <salman-bhai> wAIT
+[13:25:05] <akshayrevankar> tail_length(L) -> tail_length(L,0).
+[13:25:09] <akshayrevankar> tail_length([], last) -> last;
+[13:25:10] <akshayrevankar>  tail_length([_|L], last) -> tail_length(L,last+1).
+[13:25:22] <akshayrevankar> so NOW.. FOR FACTORIAL
+[13:25:36] <akshayrevankar> we had:
+[13:25:41] <akshayrevankar> fac(0) -> 1; fac(N) -> N*fac(N-1).
+[13:25:48] <akshayrevankar> SO TAIL RECURSION FUNCTION IS?
+[13:27:00] <salman-bhai> tail_factorial(L) -> tail_factorial(L,0).
+[13:27:15] <vilas_m> L,1 i think.
+[13:27:18] <aditya> fac(N) -> fac(N,1). fac(0,past) -> past; fac(N,past) -> fac(N-1,N*past).
+[13:27:20] <salman-bhai> tail_factorial(L) -> tail_factorial(L,0).
+[13:28:16] <salman-bhai> tail_factorial(N, past) -> tail_factorial(N-1,N*past).
+[13:28:39] <salman-bhai> tail_factorial(0, past) -> past;
+[13:28:49] <salman-bhai> Ya aditya is ryt
+[13:28:56] <salman-bhai> Mine's all jumbled up
+[13:29:54] <akshayrevankar> yep..
+[13:30:04] <akshayrevankar> aditya's answer is perfect
+[13:30:29] <akshayrevankar> so you saw that the pattern to convert a normal recursion to tail recursion is nearly the same..
+[13:30:44] <salman-bhai> tail_factorial(N) -> tail_factorial(N,0). tail_factorial(0,past) -> past; tail_factorial(N,past
+[13:31:03] <akshayrevankar> the last thing we will do today is as aditya mentioned in beginning.. the fibonacci numbers
+[13:31:16] <akshayrevankar> and this will give you an insight into the importance of tail recursion
+[13:31:19] <salman-bhai> -> tail_factorial(N-1,N*past)
+[13:31:28] <salman-bhai> Ah okay
+[13:32:26] <akshayrevankar> ok @vilas, can u write the fibonacci function using recursion (normal)
+[13:32:37] <salman-bhai> DO we have to generate 1,1,2,3,5,8,13...
+[13:32:39] <salman-bhai> ?
+[13:32:45] <akshayrevankar> 0 1 1 2 3 5
+[13:32:48] <akshayrevankar> yeah
+[13:32:53] <salman-bhai> Till how many numbers?
+[13:32:53] <akshayrevankar> so what are the base cases
+[13:33:10] <akshayrevankar> sorry i mean the Nth fibonacci number
+[13:33:10] <salman-bhai> Oh any N
+[13:33:21] <salman-bhai> Yeah yeah..
+[13:33:38] <akshayrevankar> fibonacci sequence: 0 1 1 2 3 5 8 13 21 ...
+[13:33:47] <akshayrevankar> so what's the base case
+[13:33:52] <aditya> fib(1)->0; fib(2)->1;
+[13:34:22] <salman-bhai> fib(1) -> 0; fib(1) -> 1;
+[13:34:27] <salman-bhai> fib(1) -> 0; fib(2) -> 1;
+[13:35:32] <akshayrevankar> ya..
+[13:35:32] <salman-bhai> fib(N) -> fib(N-1) + fib(N-2).
+[13:36:18] <salman-bhai> fib(N) when N > 2 -> fib(N-1) + fib(N-2).
+[13:36:32] <salman-bhai> That's it.
+[13:36:44] <akshayrevankar> ok cool
+[13:36:52] <akshayrevankar> N>2 doesnt matter
+[13:36:56] <akshayrevankar> the previous one will do
+[13:37:17] <akshayrevankar> now can you design the tail recursion which is a challenge
+[13:37:18] <akshayrevankar> ;)
+[13:37:24] <akshayrevankar> its simple :P
+[13:37:26] <akshayrevankar> still
+[13:38:02] *** Quits: vilas_m (3b5b10ee@gateway/web/freenode/ip.59.91.16.238) (Ping timeout: 250 seconds)
+[13:38:28] *** Quits: aditya (75d8ec6f@gateway/web/freenode/ip.117.216.236.111) (Ping timeout: 250 seconds)
+[13:39:06] *** Joins: aditya (75c04892@gateway/web/freenode/ip.117.192.72.146)
+[13:40:20] <akshayrevankar> ok so did any1 figure it out?
+[13:40:38] <salman-bhai> wait
+[13:40:41] <salman-bhai> Almost done
+[13:40:45] <akshayrevankar> ya ok
+[13:41:34] <salman-bhai> fib(N) -> fib([ ],N).
+[13:41:42] <salman-bhai> Is this how we start?
+[13:42:09] *** Joins: pratyuushgr (dfb74f1e@gateway/web/freenode/ip.223.183.79.30)
+[13:42:17] <salman-bhai> ??
+[13:42:21] <akshayrevankar> uh.. i dont think so
+[13:42:28] <salman-bhai> Oh okay
+[13:42:32] <akshayrevankar> it depends on how you implemeny
+[13:42:35] <akshayrevankar> t*
+[13:42:41] <akshayrevankar> might turn out to be correct
+[13:42:58] <salman-bhai> OKay then wait till 11.15
+[13:43:01] <salman-bhai> 3 more minutes
+[13:45:43] <salman-bhai> Ah damn... no couldn't get it
+[13:45:46] <salman-bhai> Sorry
+[13:46:10] <akshayrevankar> ok
+[13:46:24] <akshayrevankar> so i will give a solution of mine.. there might be different ways
+[13:46:30] <akshayrevankar> tell me what you notice in my solution
+[13:46:44] <akshayrevankar> fib2(N) -> tail_fib(N, 0, 1).
+[13:46:53] <akshayrevankar>  tail_fib(1, Result, _) -> Result;
+[13:46:54] <akshayrevankar> tail_fib(N, Result, Next) -> tail_fib(N-1, Next, Result+Next).
+[13:47:04] <akshayrevankar> so what do you notice here
+[13:50:00] <akshayrevankar> ?
+[13:50:15] <salman-bhai> I didn't understand
+[13:50:18] <salman-bhai> How?
+[13:50:52] <akshayrevankar> ya see.. now in this you need the last two values for your next computation
+[13:50:54] <akshayrevankar> right?
+[13:51:05] <akshayrevankar> so your function call needs to keep in two values..
+[13:52:17] <akshayrevankar> you can write a trace and try to understand.. i know for one previous value tail recursion seemed easy.. but the more you practice you will get this..
+[13:52:38] <akshayrevankar> so salman. trace it out.. try to understand.. and then you can get back to me after the session is over..
+[13:53:01] <akshayrevankar> ok so everyone.. create an erl file called fib.erl
+[13:53:06] <salman-bhai> tail_fib(1, _, Result) -> Result;
+[13:53:13] <salman-bhai> WOuldn't this be right?
+[13:53:39] <akshayrevankar> it depends on your initial case actually..
+[13:54:11] <akshayrevankar> like fib(1) can be taken by some as 0, some as 1.. eventually the final result for fib(5) can be 3 or 5
+[13:54:19] <akshayrevankar> its just a matter of how you wanna take it
+[13:54:42] <salman-bhai> Oh okay
+[13:54:51] <salman-bhai> PLease continue
+[13:54:54] <akshayrevankar> ok..
+[13:55:04] <akshayrevankar> so now make a file fib.erl
+[13:55:59] <akshayrevankar> -module(fib).
+[13:56:03] <akshayrevankar>  -export([fib/1,fib2/1]).
+[13:56:14] <akshayrevankar> fib(1) -> 0; fib(2) -> 1; fib(N) -> fib(N-1) + fib(N-2).
+[13:56:21] <akshayrevankar>  fib2(N) -> tail_fib(N, 0, 1).
+[13:56:26] <akshayrevankar>  tail_fib(1, Result, _) -> Result;
+[13:56:28] <akshayrevankar>  tail_fib(N, Result, Next) -> tail_fib(N-1, Next, Result+Next).
+[13:56:45] <akshayrevankar> #### COPY THE ABOVE TO IT.. ITS THE SAME AS WE WROTE BEFORE..
+[13:57:39] <akshayrevankar> is everyone done with saving the file?
+[13:58:56] <aditya> 1 min
+[13:59:01] <akshayrevankar> ok
+[13:59:07] <salman-bhai> Ya done
+[13:59:53] <aditya> ya done
+[13:59:59] <akshayrevankar> ok others..?
+[14:00:07] <akshayrevankar> i presume its done..
+[14:00:28] <akshayrevankar> ok so open your erlang shell and load the module using c('fib').
+[14:01:16] <akshayrevankar> done?
+[14:01:21] <aditya> yes
+[14:01:25] <salman-bhai> yes
+[14:02:35] <akshayrevankar> ok 1 min
+[14:02:44] <akshayrevankar> ok now run fib:fib(43).
+[14:03:15] <salman-bhai> Hang.
+[14:03:19] <akshayrevankar> ofcourse
+[14:03:20] <akshayrevankar> wait
+[14:03:25] <aditya> ya
+[14:03:29] <salman-bhai> 267914296
+[14:03:39] <akshayrevankar> ok finally.. phew..
+[14:03:50] <akshayrevankar> now dont even try fib(44)
+[14:04:00] <salman-bhai> Is that the 43rd fibonacci number?
+[14:04:05] <akshayrevankar> ya
+[14:04:12] <salman-bhai> Oh God
+[14:04:17] <akshayrevankar> now try fib:fib2(43)
+[14:04:20] <akshayrevankar> .
+[14:04:33] <aditya> fast!
+[14:04:38] <salman-bhai> Immediate
+[14:04:39] <akshayrevankar> now try fib:fib2(10000).
+[14:04:56] <salman-bhai> Immediate
+[14:04:59] <salman-bhai> Woah
+[14:05:07] <salman-bhai> 20793608237133498072112648988642836825087036094015903119682945866528501423455686648927456034305226515591757343297190158010624794267250973176133810179902738038231789748346235556483191431591924532394420028067810320408724414693462849062668387083308048250920654493340878733226377580847446324873797603734794648258113858631550404081017260381202919943892370942852601647398213554479081823593715429566945149312993664846779090437799284773
+[14:05:07] <akshayrevankar> dont even try fib:fib(10000).
+[14:05:13] <aditya> faster
+[14:05:14] <akshayrevankar> you can wait till ur death i guess
+[14:05:15] <salman-bhai> For the record :p
+[14:05:15] <akshayrevankar> LOL
+[14:05:41] <akshayrevankar> so you saw the power of tail recursion
+[14:05:43] <akshayrevankar> right
+[14:05:52] <aditya> yes!
+[14:06:02] <akshayrevankar> ya now a quick tool
+[14:06:11] <akshayrevankar> you can
+[14:06:35] <akshayrevankar> use the timer:tc function to check the time.. it takes in argument: module, function name, list of parameters
+[14:06:45] <akshayrevankar> timer:tc(fib,fib,[43]).
+[14:06:50] <akshayrevankar> timer:tc(fib,fib2,[43]).
+[14:06:53] <akshayrevankar> try both
+[14:07:44] <akshayrevankar> and outputs here please :D
+[14:07:59] <salman-bhai> 23> timer:tc(fib,fib,[43]). {20561328,267914296} 24> timer:tc(fib,fib2,[43]). {2,267914296}
+[14:08:11] <salman-bhai> Meaning please?
+[14:08:18] <akshayrevankar> ya waiting for aditya
+[14:08:21] <salman-bhai> Is that milli-second?
+[14:08:29] <akshayrevankar> absolutely correct
+[14:08:42] <aditya> still waiting..
+[14:08:44] <akshayrevankar> {16009370,267914296}, {1,267914296}
+[14:08:59] <akshayrevankar> sorry
+[14:09:02] <akshayrevankar> its in microseconds dude
+[14:09:03] <aditya> {55874862,267914296}{0,267914296}
+[14:09:05] <akshayrevankar> not milli
+[14:09:20] <akshayrevankar> so you get the time required in microseconds and the results
+[14:09:34] <akshayrevankar> so its a handy tool to check your code runtime
+[14:09:44] <salman-bhai> Why is it different?
+[14:10:06] *** Quits: pratyuushgr (dfb74f1e@gateway/web/freenode/ip.223.183.79.30) (Ping timeout: 250 seconds)
+[14:10:08] <akshayrevankar> output is same na
+[14:10:18] <salman-bhai> Too much whhutespace in my code?
+[14:10:19] <akshayrevankar> depends on processor how much time it takes to run
+[14:10:23] <salman-bhai> Aree time
+[14:10:32] <salman-bhai> whitespace*
+[14:10:37] <salman-bhai> Oh okay
+[14:10:40] <akshayrevankar> it has a million more tasks to do at same time na
+[14:10:52] <salman-bhai> Lol haa :p
+[14:11:03] <akshayrevankar> so a big here and there.
+[14:11:23] <akshayrevankar> like i cant imagine adityas fib took 55 seconds
+[14:11:27] <akshayrevankar> yours 20 and mine 16
+[14:11:38] <akshayrevankar> but his fib2 took 0 and mine 1 and yours 2
+[14:11:44] <akshayrevankar> weird..
+[14:11:51] <akshayrevankar> but ya fib2 wins over fib1.. :P
+[14:11:58] <aditya> :P
+[14:12:13] <akshayrevankar> fib*
+[14:12:16] <akshayrevankar> so next time we will continue a bit with recursion..
+[14:12:16] <salman-bhai> Aditya 5.5*
+[14:12:35] <salman-bhai> Oh nahi
+[14:12:39] <akshayrevankar> 55 bhai
+[14:12:39] <salman-bhai> SOrry ignore
+[14:13:02] <salman-bhai> SO aaj ka done?
+[14:13:04] <akshayrevankar> awesome 2.75 hours sessions... aaj raat sab gaali marenge mujhe .. :D
+[14:13:07] <akshayrevankar> yaa
+[14:13:19] <akshayrevankar> 1 se 1.5 se 2.75 kara diya
+[14:13:21] <akshayrevankar> :P
+[14:13:43] <akshayrevankar> anyway it was a nice session.. would have liked others to participate..
+[14:13:53] <aditya> %%Thnx!  No problem! :P
+[14:14:03] <akshayrevankar> assignment mein dekhte hai ;)
+[14:14:06] *** Quits: m_gautham (75dd6f0f@gateway/web/freenode/ip.117.221.111.15) (Quit: Page closed)
+[14:14:08] <salman-bhai> No problem nice session
+[14:14:09] <akshayrevankar> ;)
+[14:14:14] <salman-bhai> LOl gautam
+[14:14:22] <akshayrevankar> chalo good night everyone.. if anyone has doubt
+[14:14:25] <salman-bhai> m_gautham*
+[14:14:37] <akshayrevankar> you can ask me.. now or whatsapp pm or group
+[14:14:46] <salman-bhai> Arre ek doubt tha
+[14:14:51] <salman-bhai> Come on WHatsapp
+[14:14:57] <akshayrevankar> okay.. :D
+[14:15:01] *** Quits: salman-bhai (b63a5fb3@gateway/web/freenode/ip.182.58.95.179) (Quit: Page closed)
+[14:15:09] <akshayrevankar> vshan bhai..
+[14:15:12] <akshayrevankar> good night...
+[14:15:56] *** Quits: aditya (75c04892@gateway/web/freenode/ip.117.192.72.146) (Quit: Page closed)
+[14:16:25] <vinayb> good night people
+[14:16:43] <akshayrevankar> ██████╗ ███████╗ ██████╗██╗   ██╗██████╗ ███████╗██╗ ██████╗ ███╗   ██╗
+[14:16:49] <akshayrevankar> ██╔══██╗██╔════╝██╔════╝██║   ██║██╔══██╗██╔════╝██║██╔═══██╗████╗  ██║
+[14:16:56] <akshayrevankar> ██████╔╝█████╗  ██║     ██║   ██║██████╔╝███████╗██║██║   ██║██╔██╗ ██║
+[14:17:03] <akshayrevankar> ██╔══██╗██╔══╝  ██║     ██║   ██║██╔══██╗╚════██║██║██║   ██║██║╚██╗██║
+[14:17:08] <akshayrevankar> ██║  ██║███████╗╚██████╗╚██████╔╝██║  ██║███████║██║╚██████╔╝██║ ╚████║
+[14:17:13] <akshayrevankar> ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+[14:19:15] *** Quits: akshayrevankar (67157d53@gateway/web/freenode/ip.103.21.125.83) (Quit: Page closed)
