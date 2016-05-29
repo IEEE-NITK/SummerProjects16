@@ -1,0 +1,150 @@
+[20:30] == anand16 [67157d50@gateway/web/freenode/ip.103.21.125.80] has joined #IEEE-SP-CP
+[20:41] == Aswanth [75e76cf9@gateway/web/freenode/ip.117.231.108.249] has joined #IEEE-SP-CP
+[20:45] == Aswanth [75e76cf9@gateway/web/freenode/ip.117.231.108.249] has quit [Ping timeout: 250 seconds]
+[20:47] == bharath [3d030c6d@gateway/web/freenode/ip.61.3.12.109] has joined #IEEE-SP-CP
+[20:48] == aditya_a [3d031604@gateway/web/freenode/ip.61.3.22.4] has joined #IEEE-SP-CP
+[20:48] == bharath [3d030c6d@gateway/web/freenode/ip.61.3.12.109] has quit [Client Quit]
+[20:49] == abhi_ [673951cf@gateway/web/freenode/ip.103.57.81.207] has joined #IEEE-SP-CP
+[20:53] == bharath [3d030c6d@gateway/web/freenode/ip.61.3.12.109] has joined #IEEE-SP-CP
+[20:55] == nihalakp [01273cfb@gateway/web/freenode/ip.1.39.60.251] has joined #IEEE-SP-CP
+[20:58] <salman-bhai> Hi everyone!
+[20:58] <aditya_a> Hi Sallu Bhai! :P
+[21:00] <anand16> hello everyone
+[21:00] == rupashi [67c15f77@gateway/web/freenode/ip.103.193.95.119] has joined #IEEE-SP-CP
+[21:00] <anand16> i'll start in 5 minutes
+[21:00] == m_gautham [3b5b1104@gateway/web/freenode/ip.59.91.17.4] has joined #IEEE-SP-CP
+[21:00] <anand16> ask your friends to join :)
+[21:01] == varsh [0e633b89@gateway/web/freenode/ip.14.99.59.137] has joined #IEEE-SP-CP
+[21:03] == Prerana [25e7fe82@gateway/web/freenode/ip.37.231.254.130] has joined #IEEE-SP-CP
+[21:06] <anand16> okay before we start any doubts from the previous sessions ?
+[21:07] == suraksha [75c87502@gateway/web/freenode/ip.117.200.117.2] has joined #IEEE-SP-CP
+[21:07] == bharath_ [3d030c6d@gateway/web/freenode/ip.61.3.12.109] has joined #IEEE-SP-CP
+[21:10] == bharath [3d030c6d@gateway/web/freenode/ip.61.3.12.109] has quit [Ping timeout: 250 seconds]
+[21:10] == bharath_ [3d030c6d@gateway/web/freenode/ip.61.3.12.109] has quit [Client Quit]
+[21:10] <m_gautham> has the session started??
+[21:11] == bharah [3d030c6d@gateway/web/freenode/ip.61.3.12.109] has joined #IEEE-SP-CP
+[21:11] == Aswanth [75e71e15@gateway/web/freenode/ip.117.231.30.21] has joined #IEEE-SP-CP
+[21:11] <anand16> taking the silence as a no and moving on
+[21:11] == arvind97 [2d76d05a@gateway/web/freenode/ip.45.118.208.90] has joined #IEEE-SP-CP
+[21:11] <anand16> so today we'll see some more stl containers
+[21:12] <anand16> 1. stacks
+[21:13] <anand16> stacks follow LIFO
+[21:13] <anand16> LIFO - Last In First Out
+[21:14] <anand16> visualize them as a stack of books .. you can place a book on top and remove a book which is on top
+[21:14] == ABHISHEKS [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has joined #IEEE-SP-CP
+[21:14] == Prateek [75c671da@gateway/web/freenode/ip.117.198.113.218] has joined #IEEE-SP-CP
+[21:14] <anand16> syntax
+[21:14] <anand16> stack<data_type> s;
+[21:15] <anand16> functions
+[21:15] <anand16> s.size() - returns the size of the stack
+[21:15] == nihalakp [01273cfb@gateway/web/freenode/ip.1.39.60.251] has quit [Quit: Page closed]
+[21:15] == arvind97 [2d76d05a@gateway/web/freenode/ip.45.118.208.90] has quit [Ping timeout: 250 seconds]
+[21:16] <anand16> s.empty() - returns true if the stack is empty and false otherwise
+[21:16] <anand16> s.push(a) - pushes a on top of the stack
+[21:16] <anand16> s.top() - returns the top element
+[21:16] == nihalakp [01273cfb@gateway/web/freenode/ip.1.39.60.251] has joined #IEEE-SP-CP
+[21:17] <anand16> s.pop() - returns the top element and removes it from the stack
+[21:18] <nihalakp> a
+[21:20] == Prerana [25e7fe82@gateway/web/freenode/ip.37.231.254.130] has quit [Quit: Page closed]
+[21:21] == Prateek [75c671da@gateway/web/freenode/ip.117.198.113.218] has quit [Ping timeout: 250 seconds]
+[21:21] == Prerana [25e7fe82@gateway/web/freenode/ip.37.231.254.130] has joined #IEEE-SP-CP
+[21:23] <anand16> basic problems on stacks
+[21:23] == Bharath [3d030c6d@gateway/web/freenode/ip.61.3.12.109] has joined #IEEE-SP-CP
+[21:23] == Bharath [3d030c6d@gateway/web/freenode/ip.61.3.12.109] has left #IEEE-SP-CP []
+[21:25] == nihalakp [01273cfb@gateway/web/freenode/ip.1.39.60.251] has quit [Ping timeout: 250 seconds]
+[21:26] <anand16> 1. balanced parenthesis
+[21:26] <anand16> given a string containing '(' and ')' check whether it's balanced or not
+[21:27] == nihalakp [01273cfb@gateway/web/freenode/ip.1.39.60.251] has joined #IEEE-SP-CP
+[21:28] <anand16> solution - maintain a stack .. whenever you encounter a '(' push it into the stack and whenever  you encounter a ')' pop a '('. if the stack is empty and you encounter a ')' then the string is unbalanced
+[21:30] == rajgauri [3b5f7460@gateway/web/freenode/ip.59.95.116.96] has joined #IEEE-SP-CP
+[21:31] <anand16> 2. infix to postfix expression
+[21:31] <anand16> *conversion
+[21:32] == Noobie_ [6f7dc466@gateway/web/freenode/ip.111.125.196.102] has joined #IEEE-SP-CP
+[21:32] == nihalakp [01273cfb@gateway/web/freenode/ip.1.39.60.251] has quit [Ping timeout: 250 seconds]
+[21:33] == suraksha [75c87502@gateway/web/freenode/ip.117.200.117.2] has quit [Quit: Page closed]
+[21:33] <anand16> before that .. expressions can be represented in three ways
+[21:34] <anand16> infix - all the operators are inbetween operands ex - a+b
+[21:34] <anand16> postfix - all the operators are after the operands ex - ab+
+[21:34] <anand16> prefix - all the operands are before the operands ex - +ab
+[21:35] == mohitreddy1996 [uid85309@gateway/web/irccloud.com/x-xgjghjhsnynyirrw] has joined #IEEE-SP-CP
+[21:35] <anand16> now given an infix expression we have to convert it into postfix
+[21:36] <anand16> (a+b)*c would become ab+c*
+[21:36] <anand16> (a+b)*(c+d) would become ab+cd+*
+[21:38] <anand16> solution -
+[21:38] <anand16> maintain a stack of operators
+[21:38] <anand16> traverse the input string
+[21:40] <anand16> if you come across -
+[21:40] <anand16> i. a '(' push it
+[21:43] == Aswanth [75e71e15@gateway/web/freenode/ip.117.231.30.21] has quit [Ping timeout: 250 seconds]
+[21:43] <anand16> ii. an operator pop all the operators of lower precedence and output them , stop if you come across a  '(' or an operator of higher precedence and push the present operator onto the stack
+[21:44] <anand16> iii. an operand output it
+[21:45] <anand16> iv. a ')' pop all operators and output them until you find a '('
+[21:45] <anand16> solving for (a+b*c)*(d+e)
+[21:47] == arvind97 [2d76d05a@gateway/web/freenode/ip.45.118.208.90] has joined #IEEE-SP-CP
+[21:47] <anand16> *ii. an operator pop all the operators of higher precedence and output them , stop if you come across a  '(' or an operator of lower precedence and push the present operator onto the stack
+[21:48] <anand16> stack - empty output - empty
+[21:49] <anand16> stack - ( output - empty
+[21:49] <anand16> stack - ( output - a
+[21:49] <anand16> stack - (+ output - a
+[21:49] <anand16> stack - (+ output - ab
+[21:50] <anand16> stack - (+* output - ab
+[21:50] <anand16> stack - (+* output - abc
+[21:50] <anand16> stack - empty output - abc*+
+[21:50] <anand16> stack - * output - abc*+
+[21:51] <anand16> stack - *( output - abc*+
+[21:51] <anand16> stack - *( output - abc*+d
+[21:51] == arvind97 [2d76d05a@gateway/web/freenode/ip.45.118.208.90] has quit [Ping timeout: 250 seconds]
+[21:51] <anand16> stack - *(+ output - abc*+d
+[21:51] <anand16> stack - *(+ output - abc*+de
+[21:51] <anand16> stack - * output - abc*+de+
+[21:51] <anand16> stack - empty output - abc*+de+*
+[21:52] <anand16> the final postfix expression is abc*+de+*
+[21:52] <anand16> read upon application of stacks to evaluate these expressions
+[21:52] == ABHISHEK_ [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has joined #IEEE-SP-CP
+[21:52] <anand16> next we have queues
+[21:52] <anand16> syntax -
+[21:52] == ABHISHEK_ has changed nick to Guest52885
+[21:52] <anand16> queue<data_type> q;
+[21:53] == Noobie_ [6f7dc466@gateway/web/freenode/ip.111.125.196.102] has quit [Quit: Page closed]
+[21:53] <anand16> queues follow FIFO - First In First Out
+[21:54] <anand16> you push elements at the back of the queue and pop elements from the front
+[21:54] <anand16> functions -
+[21:55] == ABHISHEKS [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has quit [Ping timeout: 250 seconds]
+[21:55] == rajgauri [3b5f7460@gateway/web/freenode/ip.59.95.116.96] has quit [Quit: Page closed]
+[21:56] <anand16> q.empty() - returns true if the queue is empty
+[21:57] <anand16> and false otherwise
+[21:57] <anand16> q.size() - returns the size of the queue
+[21:59] <anand16> q.push(a) - pushes a to the back of the queue
+[21:59] <anand16> q.pop() - pops the front element
+[21:59] <anand16> q.front() - returns the front element
+[21:59] <anand16> q.back() - returns the back element
+[22:01] == rakshith [~hehaichi@103.194.14.43] has joined #IEEE-SP-CP
+[22:05] <anand16> we'll be using queues in graph algorithms
+[22:10] <anand16> there's another variant of queues called priority queues
+[22:12] == rakshith [~hehaichi@103.194.14.43] has left #IEEE-SP-CP ["Leaving"]
+[22:13] == Ramu [67c20fb7@gateway/web/freenode/ip.103.194.15.183] has joined #IEEE-SP-CP
+[22:13] <anand16> priority queues have a property to keep the element with the top priority at the top of the queue
+[22:14] <anand16> syntax -
+[22:14] <anand16> priority_queue<data_type> p;
+[22:14] <anand16> p.push(a) - push a into the queue
+[22:15] == anirudhgp [androirc@nat/google/x-nppxyzcnszmsrqxi] has joined #IEEE-SP-CP
+[22:15] <anand16> p.top() - returns the element with the highest priority
+[22:15] <anand16> p.pop() - pops the element with the highest priority
+[22:18] == Guest52885 [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has quit [Ping timeout: 250 seconds]
+[22:18] <anand16> that's all for today
+[22:18] <anirudhgp> Yay!
+[22:19] <anand16> solve problems using these containers
+[22:19] == aditya_a [3d031604@gateway/web/freenode/ip.61.3.22.4] has quit [Quit: Page closed]
+[22:20] == Ramu [67c20fb7@gateway/web/freenode/ip.103.194.15.183] has left #IEEE-SP-CP []
+[22:20] <anand16> there will be a contest this weekend
+[22:20] <anand16> good luck
+[22:20] <anand16> and good night
+[22:22] == Prerana [25e7fe82@gateway/web/freenode/ip.37.231.254.130] has quit [Quit: Page closed]
+[22:22] <salman-bhai> logs?
+[22:22] == m_gautham [3b5b1104@gateway/web/freenode/ip.59.91.17.4] has quit [Quit: Page closed]
+[22:22] == Abhi__ [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has joined #IEEE-SP-CP
+[22:23] == bharah [3d030c6d@gateway/web/freenode/ip.61.3.12.109] has quit [Quit: Page closed]
+[22:25] == rupashi [67c15f77@gateway/web/freenode/ip.103.193.95.119] has quit [Quit: Page closed]
+[22:26] == varsh [0e633b89@gateway/web/freenode/ip.14.99.59.137] has quit [Ping timeout: 250 seconds]
+[22:29] == Abhi__ [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has quit [Ping timeout: 250 seconds]
+[22:34] <anand16> logs will be posted
