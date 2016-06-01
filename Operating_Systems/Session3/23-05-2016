@@ -1,0 +1,168 @@
+**** BEGIN LOGGING AT Thu May 26 21:18:28 2016
+
+May 26 21:18:28 *	Now talking on #ieee-os
+May 26 21:29:13 *	Shivani (~Shivani@122.161.70.58) has joined
+May 26 21:29:22 *	trish (~Trish@116.75.27.196) has joined
+May 26 21:29:31 <trish>	Hey!
+May 26 21:30:08 <sangi>	Hello
+May 26 21:30:23 <sangi>	5 min buffer for late comers
+May 26 21:30:24 *	snigdha (~snigdha@183.82.217.200) has joined
+May 26 21:35:36 <sangi>	Any doubts from previous session?
+May 26 21:35:56 <Shivani>	Nope..
+May 26 21:36:11 <trish>	Nope
+May 26 21:36:32 *	himadri (~himadripa@182.57.82.183) has joined
+May 26 21:36:58 <sangi>	Cool!
+May 26 21:37:14 <sangi>	So today let us talk about Synchronization
+May 26 21:38:07 <sangi>	Why do we need synchronization ? - It is necessary to coordinate between processes.
+May 26 21:38:14 <sangi>	What does that mean ? 
+May 26 21:38:44 <sangi>	Suppose 2 processes are running and they share a common data structure
+May 26 21:39:53 <sangi>	Suppose process p1 goes to waiting state after modifying value of shared data.
+May 26 21:40:14 <sangi>	Now p2 is brought to the processor. p2 modifies the shared data.
+May 26 21:41:11 <sangi>	After the I/O p1 comes back to the processor. But it uses the data without knowing that it has been manipulated. It works on the value of the shared data modified by p2. 
+May 26 21:41:32 <sangi>	Thus this is avoided when p1 and p2 are synchronized
+May 26 21:41:54 <sangi>	How is it done? First solution - locks
+May 26 21:42:18 <sangi>	what are locks? Suppose 2 processes share a variable 
+May 26 21:43:23 <sangi>	The shared variable will have a boolean lock which will initially be set to 'free' (0).
+May 26 21:43:53 <sangi>	Say p1 wants to access the shared data. It has to first acquire the lock. 
+May 26 21:45:00 <sangi>	Acquiring the lock ? - Check if the lock value is 'free'. If yes set it to 'locked' and then use it. After using it set it to 'free' again.
+May 26 21:45:37 <sangi>	Now the section of code between setting lock to 'locked' to setting it 'free' is called critical section.
+May 26 21:46:12 <sangi>	Now say during critical section, due to some reason p1 vacates the processor and p2 comes back.
+May 26 21:47:21 <sangi>	Now if p2 wants to access the shared data, it keeps waiting at the statement - while (lock == 'locked')  ; 
+May 26 21:47:53 <sangi>	So for the whole time that it is on the processor, it keeps waiting. 
+May 26 21:48:04 <sangi>	This is called BUSY WAITING or SPIN LOCK
+May 26 21:48:20 <sangi>	It is very bad since the resources are wasted. 
+May 26 21:49:13 <sangi>	We know what the producer consumer problem is right?
+May 26 21:49:20 <Shivani>	yeah
+May 26 21:49:34 <trish>	yes
+May 26 21:49:40 *	shashibhushankan (~shashibhu@122.167.54.31) has joined
+May 26 21:49:43 <sangi>	So people first proposed the solution to this problem using locks.
+May 26 21:49:55 <himadri>	Ya
+May 26 21:50:37 <sangi>	But then they realised it was very unefficient. Since one of the producer threads or consumer threads are busy waiting on the processor for a significant amount of time
+May 26 21:52:04 <sangi>	We have standard terms like test_and_set(lock) for checking if the lock is free but such things aren't necessary to be learnt now. The only thing we have to know is the concept used to make such functions.
+May 26 21:52:23 <sangi>	 How is it done? First solution - locks Second Solution - Semaphores.
+May 26 21:53:38 <sangi>	When people realized locks are not good enough, they said let us not make locks boolean. Instead let us make the semaphore (evolved lock) have a count of the number of processes waiting to acquire it. 
+May 26 21:55:02 <sangi>	So what happens in semaphore is - every shared data will have a semaphore linked to it. Only when the semaphore is 'free' (0) can a process access the data ie. enter the critical section
+May 26 21:55:31 <sangi>	Say p1 acquires the lock. semaphore becomes 1. 
+May 26 21:56:45 <sangi>	Say p2 comes to the processor and says check_if_shared_data_is_free(); Now semaphore value is incremented. The thread (ie process) p2 is made to sleep.
+May 26 21:56:54 <sangi>	sleep is a system call 
+May 26 21:57:19 <sangi>	It suspends the execution of a process by saving its current state
+May 26 21:58:14 <sangi>	The identifier for thread p2 is pushed into the waiting queue of the semaphore.
+May 26 21:59:00 <trish>	each semaphore has is own queue??
+May 26 21:59:12 <sangi>	When the semaphore becomes free, that is p1 decrements it, the thread waiting in the queue is woken up and given the semaphore for that process.
+May 26 21:59:19 <sangi>	*data
+May 26 21:59:24 <sangi>	Yes Trisha
+May 26 21:59:54 <sangi>	So now technical terms - 
+May 26 22:00:24 <sangi>	incrementing value of a semaphore is done by wait() function of the semaphore class. 
+May 26 22:00:47 <sangi>	 decrementing value of a semaphore is done by signal() function of the semaphore class. 
+May 26 22:01:34 <sangi>	Each semaphore has an integer that acts as the lock and a queue to keep track of the waiting processes. 
+May 26 22:02:05 <sangi>	Semaphores that use values 0 and 1 are called MUTEX LOCKS. 
+May 26 22:02:22 <sangi>	ie, MUTEX LOCKS are BINARY SEMAPHORES.
+May 26 22:02:36 <sangi>	Clear?
+May 26 22:02:53 <snigdha>	ya..
+May 26 22:03:08 <sangi>	2 min to digest all this.
+May 26 22:03:11 <trish>	each thread acquires its own semapjore and this same semaphore exchanges hands when the thread frees it and another pthread acuires it
+May 26 22:03:35 <trish>	??
+May 26 22:03:39 <trish>	*semaphores
+May 26 22:03:43 <trish>	*threads
+May 26 22:04:58 <himadri>	Mutex locks are the normal locks..?
+May 26 22:05:24 <sangi>	Each thread acquires the semaphore for the shared data before using it and releases it after using it. When shared data is not free thread goes to sleep. Clear Trisha?
+May 26 22:06:17 <trish>	Clear
+May 26 22:06:18 <sangi>	Yeah Himadri. Except that mutex locks have a queue to store processes that are waiting for a particular resource.
+May 26 22:07:10 <sangi>	I hope all of you have watched the lecture where Dr.Prashanth Shenoy explains too much milk problem.  
+May 26 22:07:32 <himadri>	So.. in mutex locks.. the process with the active using the processor actively has the value 0 and all others 1
+May 26 22:08:00 <himadri>	Yeah.. that was an interesting way to explain it. :P
+May 26 22:08:21 <sangi>	Good question - There is a semaphore per shared data himadri NOT per process accessing it.
+May 26 22:08:30 <himadri>	*the processes using the processor actively
+May 26 22:08:52 <himadri>	Oh..
+May 26 22:08:55 <himadri>	Got it
+May 26 22:09:35 <sangi>	If a process acquires lock for shared data first, the semaphore for that DATA will be 1. When it is freed, the semaphore becomes 0. Any waiting threads are woken up for them to access shared data
+May 26 22:09:46 <sangi>	Any more doubts? 
+May 26 22:11:55 <trish>	nope
+May 26 22:12:09 <sangi>	I'll discuss the classical problems of Synchronization in brief and then go to pthreads. 
+May 26 22:12:26 <sangi>	producer consumer problem was one such problem.
+May 26 22:12:33 <sangi>	Reader writer problem
+May 26 22:13:10 <sangi>	Say there is a file and I have r reader threads trying to read and w writer threads wanting to write.
+May 26 22:13:48 <sangi>	For the readers alone, I do not have to issue any semaphore for that file since readers will never change the data. 
+May 26 22:14:25 <sangi>	But if write occurs, no other thread can access the data. 
+May 26 22:14:50 <sangi>	So there is one semaphore for the shared data file. 
+May 26 22:15:54 <sangi>	Based on our needs we can modify the code keeping in mind that writer has to acquire lock. But readers only have to see that writer isn't using the resource. 
+May 26 22:16:12 <sangi>	Third Problem - Dining philosopher problem
+May 26 22:16:51 <sangi>	https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQN7GJMwvlKH6Q_F1B9DKgWraB7VxY3bcsFPUqICPaDsHquVl5E
+May 26 22:16:59 <sangi>	Look at the picture 
+May 26 22:17:16 <sangi>	5 people on a circular dining table. 5 forks.
+May 26 22:17:35 <sangi>	Actually 5 chopsticks :P
+May 26 22:17:54 <sangi>	to eat a philosopher needs two chopsticks.
+May 26 22:18:12 <sangi>	he can only take the chopsticks placed to the right and left
+May 26 22:19:38 <sangi>	So we have to see to it that at any point of time maximum number of philosophers are eating and every philosopher eventually gets a chance to eat.
+May 26 22:21:15 <sangi>	Now I seriously do not know why this problem is discussed everywhere.
+May 26 22:21:40 *	shashibhushankan has quit (Ping timeout: 260 seconds)
+May 26 22:22:17 <trish>	:)
+May 26 22:22:37 <sangi>	But there have been many solutions for this. One of which is make every philosopher except 1 pick the left fork. The one with both forks starts eating. after some time make him put down both forks and pick another philosopher.
+May 26 22:23:28 <sangi>	The philosophers can either EAT THINK or be HUNGRY. 3 states of a philosopher. 
+May 26 22:23:43 <sangi>	Fourth is Sleeping Barber Problem 
+May 26 22:24:03 *	shashibhushankan (~shashibhu@122.167.54.31) has joined
+May 26 22:24:23 <sangi>	There is one barber with one barber chair and a couple of chairs in waiting room.
+May 26 22:24:58 <sangi>	The barber is either cutting hair or sleeping.
+May 26 22:25:32 <sangi>	Now we have to code a solution where everyone coming to the barber gets their hair cut.
+May 26 22:25:52 <sangi>	Note that waiting room chairs are limited in number. 
+May 26 22:27:29 <sangi>	This is very brief of Sleeping Barber and Dining philosopher. What I want you guys to do over the weekend is - Google the C code for implementing all these 4 problems and understand how to use semaphores.
+May 26 22:28:43 <sangi>	Please Note - Next week there will be evaluation => I might ask one of you to write a code using semaphores. So please try to run some code you find online and understand it. 
+May 26 22:28:52 <sangi>	I will also give some reference links
+May 26 22:28:58 <shashibhushankan>	Monday ?
+May 26 22:29:00 <trish>	*thumbs up emoji*
+May 26 22:29:50 <sangi>	I will inform dates later. But for now it is on wednesday.
+May 26 22:30:18 <sangi>	Great.
+May 26 22:30:28 <sangi>	So any doubts in Synchronization?
+May 26 22:31:12 <Shivani>	Can you please explain the minimal busy waiting concept mentioned in the video?
+May 26 22:31:26 <sangi>	Sure
+May 26 22:32:24 <trish>	Are we going into Monitors as well??
+May 26 22:32:43 <sangi>	Say p1 acquires the lock 
+May 26 22:33:08 <sangi>	p2 comes to the processor and sees that the data is locked. 
+May 26 22:33:15 <sangi>	It doesn't wait.
+May 26 22:33:51 <sangi>	A context switch is done and the next process in queue is brought up.
+May 26 22:33:59 <sangi>	Thus minimal busy waiting.
+May 26 22:34:11 <sangi>	But this is extremely costly.
+May 26 22:34:36 <sangi>	Hence avoided.
+May 26 22:34:36 <Shivani>	clear... Thank you
+May 26 22:34:43 <sangi>	Clear Shivani?
+May 26 22:34:49 <Shivani>	yup
+May 26 22:34:50 <sangi>	Cool
+May 26 22:36:29 <sangi>	Trisha, Monitors are Cleaner implementations of semaphores. They have ready made methods that can be used to implement synchronization. As of now we will not be going into the details but I will provide a resource tomorrow along with the logs.
+May 26 22:36:50 <sangi>	You can read it if you wish to know more about monitors. 
+May 26 22:37:29 <trish>	okay
+May 26 22:37:39 <sangi>	Okay, so deadlocks is pretty big and I want to share some resource with you guys before starting deadlocks. So we'll push it to monday. 
+May 26 22:37:53 <sangi>	Meanwhile, did you guys read about co scheduling?
+May 26 22:38:25 <himadri>	 
+May 26 22:38:32 <himadri>	Yeah
+May 26 22:38:43 <trish>	Yes
+May 26 22:39:17 <snigdha>	ya
+May 26 22:39:37 <sangi>	Snigdha, could you tell us about co scheduling?
+May 26 22:39:37 <Shivani>	yes
+May 26 22:39:51 <trish>	are there predefined semaphore data structures in C/C++??
+May 26 22:40:05 <trish>	sorry, my question is breaking the flow
+May 26 22:40:38 <snigdha>	co-scheduling allows processors to run on other processors at the same time
+May 26 22:41:25 <sangi>	Snigdha I didn't get you. Could you please explain?
+May 26 22:42:23 <himadri>	Good question @trisha
+May 26 22:42:44 <sangi>	No problem Trisha :) And yes. 
+May 26 22:43:27 <sangi>	Every language that supports synchronization has pre defined semaphore structures that can be used.
+May 26 22:43:27 <snigdha>	ya if an application consists of processes ..some executing and some not executing ..the executing processes can communicate with the non executing processes causing them to block
+May 26 22:44:50 <sangi>	Does anyone have anything more to add to what snigdha said?
+May 26 22:45:41 <trish>	To prevent the scenario Snigdha discussed Co scheduling is implemented.
+May 26 22:46:31 <trish>	Co-Scheduling schedules all proceeses that might want to communicate with each other together
+May 26 22:47:11 <sangi>	I have one doubt - Can one group of processes on one processor talk to another group on another processor? 
+May 26 22:47:27 *	shashibhushankan has quit (Ping timeout: 246 seconds)
+May 26 22:47:38 <trish>	They should be able to 
+May 26 22:47:49 <himadri>	Yes..
+May 26 22:48:13 <himadri>	Otherwise coscheduling will be a redundant process
+May 26 22:48:26 <trish>	true
+May 26 22:48:51 <sangi>	Great!!
+May 26 22:49:58 <trish>	can process threads be scheduled on different processors
+May 26 22:50:02 <trish>	??
+May 26 22:50:12 <trish>	like threads of the same process
+May 26 22:51:28 <sangi>	No. It is usually not done because threads access whole of the process memory. By putting two threads one 2 separate processors we'll be wasting the cache used.
+May 26 22:52:35 <trish>	okay
+May 26 22:52:47 <sangi>	So yeah. Tomorrow I will send a mail with logs, post details about next week and Rutwij has prepared instructions for XV6 installation. 
+May 26 22:53:45 <sangi>	If you guys do not have anymore doubts, the session is over. Reminder - Give me your github handles. complete your assignment. Any doubts please tell me
+May 26 22:56:00 <sangi>	Session is over for the day! Sorry for postponing it yesterday! Thanks for joining :) Bye!
+**** ENDING LOGGING AT Thu May 26 22:56:12 2016
+
