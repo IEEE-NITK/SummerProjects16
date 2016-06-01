@@ -1,0 +1,222 @@
+**** BEGIN LOGGING AT Mon May 30 21:27:01 2016
+
+May 30 21:27:01 *	Now talking on #ieee-os
+May 30 21:27:13 <sangi>	Hello :)
+May 30 21:27:21 *	trisha (~Trish@45.124.247.94) has joined
+May 30 21:28:06 <trisha>	Hi
+May 30 21:28:30 <sangi>	Any doubts from previous session?
+May 30 21:30:34 *	hrily (~hrily@106.77.60.95) has joined
+May 30 21:30:53 *	shivani (~shivani@122.161.111.59) has joined
+May 30 21:31:19 <trisha>	nope
+May 30 21:33:08 <sangi>	Ok Let's start now :)
+May 30 21:33:21 <sangi>	Today we'll discuss deadlock
+May 30 21:33:47 <sangi>	Does anyone remember what I had told about deadlocks?
+May 30 21:34:14 <sangi>	If so, can someone summarize what was told?
+May 30 21:35:21 <sangi>	Okay. Deadlock is a condition where no process is able to make progress due to interlock created by the resources shared between processes.
+May 30 21:35:42 <trisha>	a deadlock situation arises when say thread A had a lock of some common resource A and thread B has the lock of common resource B, but each want the other rcource
+May 30 21:35:56 <trisha>	*resource
+May 30 21:36:01 <sangi>	Cool! Thanks Trisha :)
+May 30 21:36:41 <sangi>	So we all know that Synchronization provides a great mechanism to assist resource sharing. 
+May 30 21:36:49 <sangi>	But the same can lead to deadlocks
+May 30 21:36:59 <sangi>	How can deadlocks happen?
+May 30 21:37:28 <sangi>	Four conditions when hold true simultaneously leads to deadlocks
+May 30 21:37:36 <sangi>	1. Mutual Exclusion
+May 30 21:38:10 <sangi>	At least one resource must be held in a non-sharable mode; If any other process requests this resource, then that process must wait for the resource to be released.
+May 30 21:38:25 <sangi>	2. Hold and wait 
+May 30 21:39:07 <sangi>	A process must be simultaneously holding at least one resource and waiting for at least one resource that is currently being held by some other process.
+May 30 21:39:18 <sangi>	3. No preemption
+May 30 21:39:44 <sangi>	hrily could you tell us what preemption is ? 
+May 30 21:39:59 <sangi>	(w.r.t CPU scheduling)
+May 30 21:41:20 <sangi>	Okay, preemption is a situation where a process can interrupt execution of another process and start its execution.
+May 30 21:41:49 <sangi>	May be due to priority of the process / urgent need of execution etc..
+May 30 21:42:06 <sangi>	Now the third condition is NO PREEMPTION
+May 30 21:42:20 <sangi>	Once a process is holding a resource ( i.e. once its request has been granted ), then that resource cannot be taken away from that process until the process voluntarily releases it.
+May 30 21:42:41 <sangi>	4. Circular Wait
+May 30 21:44:02 <sangi>	As the name suggests, the set of processes in deadlock must exist such that every process is waiting for the next process to finish and the last process is waiting for the first
+May 30 21:44:12 <shivani>	How is No Preemption different from mutual exclusion?
+May 30 21:45:02 <sangi>	i.e a set P1 to Pn such that every Pi is waiting for P[(i+1)%(n+1)] to complete.
+May 30 21:45:23 <sangi>	Good question! 
+May 30 21:45:56 <sangi>	Mutual exclusion says that a resource can belong to only one process at a time
+May 30 21:45:56 *	himadri (~himadripa@182.57.91.44) has joined
+May 30 21:46:26 <sangi>	No Preemption says that no process can interrupt a process. 
+May 30 21:46:43 <shivani>	clear..
+May 30 21:46:49 <sangi>	Mutual exclusion - No process can interrupt a resource and take it. 
+May 30 21:46:53 <sangi>	Cool!
+May 30 21:47:13 <sangi>	So when these 4 conditions hold true simultaneously deadlock occurs.
+May 30 21:47:37 <sangi>	Any questions?
+May 30 21:48:49 <sangi>	Okay. So till now there have been preventive measures against deadlocks but many OSs just ignore deadlocks and proceed with execution
+May 30 21:48:54 <sangi>	Sometimes our PC hangs due to deadlock. 
+May 30 21:49:25 <sangi>	So to learn how to prevent/avoid/solve deadlocks 
+May 30 21:49:38 <sangi>	we need to know some technical terms 
+May 30 21:50:07 <sangi>	Resource Instance - Instances of a particular resource 
+May 30 21:50:42 <sangi>	Resource Allocation Graph
+May 30 21:51:11 <sangi>	It is a diagramatic representation of the processes present and the resources they own or are requesting. 
+May 30 21:51:26 <sangi>	In the graph , process is a circle.
+May 30 21:51:33 <sangi>	Resource is a rectangle
+May 30 21:52:00 <sangi>	The instances of the resource are shown as dots inside the rectangle
+May 30 21:52:54 <sangi>	Request edge - A line between process and an instance of a resource where the process requests for that instance.
+May 30 21:53:25 <sangi>	It is always from P to R
+May 30 21:53:29 <sangi>	Process to Resource
+May 30 21:54:03 <sangi>	Assignment Edge - From R to P. A line that shows which process owns which instance of which resource
+May 30 21:54:15 <sangi>	https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter7/7_03_CycleNoDeadlock.jpg
+May 30 21:54:18 <trisha>	what do you mean by instance of a resource?
+May 30 21:54:19 <sangi>	Refer the pciture
+May 30 21:55:18 <sangi>	Instance of a resource is one copy of a resource. Say there is a printer - a resource. There are 4 buffers to store what is to be printed. They are the 4 instances of printer resource
+May 30 21:55:36 <sangi>	Clear?
+May 30 21:55:42 <trisha>	clear
+May 30 21:56:28 <sangi>	Cool. All of you take a look at the picture
+May 30 21:57:02 <sangi>	Why we need this RAG?
+May 30 21:57:22 <sangi>	From the RAG we can conclude the following
+May 30 21:57:46 <sangi>	If there is no cycle then there is no deadlock in the current state of the processes.
+May 30 21:58:12 <sangi>	Remember cycles are formed by nodes - Resource and Process. 
+May 30 21:58:27 <sangi>	Instances of a resource are not considered as nodes.
+May 30 21:58:59 <sangi>	The pic above shows no cycle => no deadlock
+May 30 21:59:17 <sangi>	If it contains a cycle then , 
+May 30 21:59:38 <sangi>	if every resource has multiple instances, then deadlock may/may not exist.
+May 30 21:59:54 <trisha>	p1, r1, p3 and r2 dont form a cycle??
+May 30 22:00:09 *	snigdha has quit (Quit: Leaving)
+May 30 22:00:39 <sangi>	You mean p2 and not p3 right?
+May 30 22:01:22 <trisha>	no p3 only
+May 30 22:01:23 <sangi>	p1 r1 p2 and r2 do not form a cycle. The graph is a directed graph (egdes have a direction)
+May 30 22:02:06 <trisha>	p1 request r2 and has r1 whereas p3 is the opposite
+May 30 22:02:11 <sangi>	I gave the wrong link :P
+May 30 22:02:16 *	pramod (~prmdb@117.192.51.167) has joined
+May 30 22:02:33 <sangi>	https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter7/7_03_CycleNoDeadlock.jpg - CYCLE WITH NO DEADLOCK
+May 30 22:02:54 <sangi>	Here when p4 finishes p3 gets an instance of R2
+May 30 22:03:14 <shivani>	its same right?
+May 30 22:03:25 <sangi>	https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter7/7_02_Deadlock.jpg - RAG with no cycle
+May 30 22:03:42 *	saurabh (~saurabh@156.snat-111-91-40.hns.net.in) has joined
+May 30 22:03:51 <sangi>	yeah links got messed up :P Sorry!
+May 30 22:04:30 <sangi>	If there is a cycle and every resource has only 1 instance => DEADLOCK
+May 30 22:05:11 <sangi>	https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter7/7_02_Deadlock.jpg - Cycle and DEADLOCK
+May 30 22:05:26 <sangi>	Have a look at these 3 pcitures.
+May 30 22:06:05 <trisha>	there are only 2 different pictures
+May 30 22:06:57 <shivani>	one with no cycle is missing, I guess?
+May 30 22:07:21 <sangi>	Yeah as in 3 cases 
+May 30 22:08:40 <sangi>	A part of pic1 p1 r1 p2 r2 is no cycle!
+May 30 22:08:55 <shivani>	ooh okay.. :P
+May 30 22:09:21 <trisha>	its no cycle because r2 has 2 instances??
+May 30 22:10:10 <sangi>	No. The edge r2-p2 makes it acyclic
+May 30 22:10:30 <trisha>	ahh
+May 30 22:10:39 <trisha>	i just noticed that
+May 30 22:10:46 <sangi>	Cool!
+May 30 22:11:13 <sangi>	So now how to handle this situation?
+May 30 22:11:21 <sangi>	3 ways 
+May 30 22:11:39 <sangi>	prevent / avoid => do not allow deadlock to occur
+May 30 22:11:56 <sangi>	Ignore the problem (as i said earlier)
+May 30 22:12:20 <sangi>	Both WINDOWS AND UNIX say IGNORE!
+May 30 22:13:07 <sangi>	Detect and Recover => Stop a process / take away a resource when you identify that a deadlock has happened.
+May 30 22:14:12 <sangi>	To avoid deadlocks we need to have additional info about all processes. Deadlock can be avoided only if it can be predicted.
+May 30 22:14:19 <trisha>	is the deadlock situation a kind of probability situation
+May 30 22:14:33 <sangi>	Trisha what do you mean?
+May 30 22:14:41 <sangi>	It is the way code it written
+May 30 22:14:49 <sangi>	and the resource available
+May 30 22:14:57 <sangi>	is
+May 30 22:15:02 <sangi>	*
+May 30 22:15:35 <trisha>	like how can we predict when it will occur?
+May 30 22:15:43 <sangi>	Exactly 
+May 30 22:15:59 <himadri>	By finding out what resources the process is after?
+May 30 22:16:03 <trisha>	so how can we predict it??
+May 30 22:16:29 <sangi>	so, Prediction can happen only when we know what process requires which resource well in advance 
+May 30 22:16:42 <sangi>	even before it starts executing
+May 30 22:17:09 <sangi>	That is we need a complete resource-request map  
+May 30 22:17:22 <sangi>	for all the processes ready to be executed
+May 30 22:18:19 <sangi>	So to avoid deadlocks, there is a famous Algo called BANKER'S algo
+May 30 22:18:51 <shivani>	is scheduling is avoided, then can deadlocks be avoided?
+May 30 22:18:59 <shivani>	if*
+May 30 22:19:07 <sangi>	Which analyses the state of a system if some resources are allocated and only if the state is safe, the resources are allocated.
+May 30 22:19:27 <sangi>	What do you mean by scheduling is avoided, Shivani?
+May 30 22:19:47 *	himadri_ (~himadri@182.57.91.44) has joined
+May 30 22:19:49 *	himadri_ has quit (Client Quit)
+May 30 22:20:03 <shivani>	As in if timer is not set up for particular process to execute then can deadlocks be avoided?
+May 30 22:20:36 <sangi>	No that way the computer will never check once it starts
+May 30 22:20:45 <shivani>	okay..
+May 30 22:21:26 <sangi>	Timer is like an alarm. Every time the alarm goes the Computer sees if the system is working fine => is the processor empty
+May 30 22:21:32 <sangi>	Clear?
+May 30 22:21:38 <shivani>	clear..
+May 30 22:21:46 <sangi>	Cool
+May 30 22:21:52 <sangi>	So now Banker's Algo
+May 30 22:21:59 <sangi>	What is safe state
+May 30 22:22:27 <sangi>	A state is safe if the system can allocate all resources requested by all processes ( up to their stated maximums ) without entering into a deadlock state.
+May 30 22:23:38 <sangi>	What is stated maximum - A process might require 4 instances initially and later might need one more => 5. So we need to be in safe state even after giving 5 instances
+May 30 22:24:00 <sangi>	there must be no deadlock even after giving 5 resources.
+May 30 22:24:49 <sangi>	How to assess if a there is going to be a deadlock by assigning a resource instance to a process?
+May 30 22:25:08 <sangi>	That is why we have RAGA - Resource Allocation Graph Algorithm
+May 30 22:26:02 <sangi>	In this case, unsafe states can be recognized and avoided by adding to the resource-allocation graph - claim edges, noted by dashed lines, which point from a process to a resource that it may request in the future.
+May 30 22:26:33 <sangi>	In order for this technique to work, all claim edges must be added to the graph for any particular process before that process is allowed to request any resources. 
+May 30 22:27:12 <sangi>	What I mean is, processes make requests only for resources for which they have established a claim eldge
+May 30 22:27:17 <sangi>	*edge
+May 30 22:28:01 <sangi>	I hope all of you by now have realized that claim edges cannot be added to any process that is currently holding resources.
+May 30 22:29:04 <trisha>	the resource request map can only contain which resource the process need and not when it might call for it and also the map is created before execution so maybe by the time the process comes into execution the resource is freed. how does the algo handle this
+May 30 22:29:07 <sangi>	When a process makes a request, the claim edge Pi- - ->Rj is converted to a request edge Pi----->Rj. Same way when a resource is released, the assignment reverts back to a claim edge.
+May 30 22:29:43 <sangi>	I think this point answered your question
+May 30 22:30:26 <trisha>	clear
+May 30 22:30:34 <sangi>	That's how RAGA gives us state of a system. 
+May 30 22:30:48 <sangi>	https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter7/7_07_DeadlockAvoidance.jpg
+May 30 22:30:54 <sangi>	Refer the pic 
+May 30 22:31:02 <sangi>	Dotted lines - Claim edges
+May 30 22:31:31 <sangi>	We know from the pic that p1 holds r1 and p2 is waiting for r2
+May 30 22:31:38 <sangi>	r1
+May 30 22:31:41 <sangi>	*
+May 30 22:31:45 <sangi>	not r2
+May 30 22:32:05 <sangi>	What if p2 now requests r2?
+May 30 22:32:29 <sangi>	Assuming r1 and r2 have single instances
+May 30 22:33:05 <sangi>	The claim edge p2-r2 becomes assignment egde r2-p2
+May 30 22:33:28 <sangi>	Now the system is in UNSAFE State
+May 30 22:33:51 <sangi>	Cos there is a cycle in the graph
+May 30 22:34:45 <sangi>	So giving r2 to p2 when it is waiting for r1 is a bad choice. 
+May 30 22:35:05 <sangi>	That's how deadlock is theoretically predicted and avoided. 
+May 30 22:35:33 <sangi>	Banker's algo gives the same picture with some MATH
+May 30 22:37:33 <sangi>	It'll take a lot of time to explain banker's algo here. It is explained clearly in the video.
+May 30 22:38:17 <sangi>	There are 2 parts - safety algo and then resource-request algo.
+May 30 22:39:03 <sangi>	Once you guys watch the video we'll solve a problem next session for better understanding.
+May 30 22:40:03 <sangi>	The algo uses matrices and vectors which are nothing but 2 dimensional arrays that hold the number of instances of a resource that each process needs
+May 30 22:41:14 <sangi>	That was about avoidance. Now detection 
+May 30 22:41:31 <sangi>	We modify the graph a little 
+May 30 22:42:05 <sangi>	Instead of having info about resources in the RAG 
+May 30 22:42:20 <sangi>	We have a wait-for-graph
+May 30 22:42:51 <sangi>	It is made from a resource-allocation graph by eliminating the resources and collapsing the associated edges
+May 30 22:43:20 <sangi>	example p1-->r1-->p2 in RAG will be p1---->p2 in WFG
+May 30 22:43:25 <sangi>	Wait for Graph
+May 30 22:44:20 <sangi>	But observe that this holds for resources with single instance
+May 30 22:44:47 <sangi>	https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter7/7_09_TwoGraphs.jpg - Example for building WFG from RAG
+May 30 22:45:28 <sangi>	Any time you guys feel this is too much to handle please let me know. I understand that there are too many things going on
+May 30 22:46:41 <sangi>	As before, cycles in the wait-for graph indicate deadlocks.
+May 30 22:46:41 <sangi>	Note that this algorithm must maintain the wait-for graph, and periodically search it for cycles. Then detect deadlock and abort a process or take away a resource.
+May 30 22:47:54 <sangi>	For detecting deadlocks in resources with multiple instances, there is a modification of banker's algo which can be considered as further reading. I will give the resources with logs.
+May 30 22:48:28 <sangi>	Now recovery
+May 30 22:48:41 <trisha>	WFG algo runs real time??
+May 30 22:49:09 <sangi>	YES. Some OSs with micro kernel architecture use WFG 
+May 30 22:49:43 *	shashibhushankan has quit (Quit: Leaving)
+May 30 22:49:46 <sangi>	But it takes up too much RAM and there is a limit on number of processes. If not WFG gets too bug
+May 30 22:49:52 <sangi>	*big
+May 30 22:50:33 <sangi>	How to recover after detecting deadlock? 
+May 30 22:50:41 <sangi>	1. user can take action 
+May 30 22:51:33 <sangi>	2. Abort process - Terminate all processes involved in the deadlock. This definitely solves the deadlock, but at the we'll be terminating more processes than would be absolutely necessary.
+May 30 22:51:37 <sangi>	OR
+May 30 22:52:06 <sangi>	Terminate processes one by one until the deadlock is broken. This is more conservative, but requires doing deadlock detection after each step.
+May 30 22:52:42 <sangi>	There are many other factors that have to be considered before aborting each process. It is very costly.
+May 30 22:52:56 <sangi>	3. Resource Preemption
+May 30 22:54:25 <sangi>	3 STEPS 1. Select which resource to preempt. 2. RollBack - all the way to the beginning 3. Make sure no process starves. 
+May 30 22:55:10 <sangi>	How to make sure starving does not occur ?  use a priority system, and increase the priority of a process every time its resources get preempted. Eventually it should get a high enough priority that it won't get preempted any more.
+May 30 22:55:23 <sangi>	This increasing priority method is AGING
+May 30 22:56:16 <shivani>	RollBack as in?
+May 30 22:56:50 <sangi>	Rollback means undo all the changes to the process and resource and bring it back to original state
+May 30 22:57:18 <shivani>	okay..
+May 30 22:57:19 <sangi>	Something similar to what we dicussed in pipelining when Stalling happens
+May 30 22:57:55 <sangi>	Okay so we finish deadlocks apart from Banker's Algo. We'll solve a problem next session. 
+May 30 22:58:18 <sangi>	Some of you still haven't given me github handles. Please do so by tomorrow. 
+May 30 22:58:58 <sangi>	Okay I think this is enought for today! Any doubts please ask me anytime
+May 30 22:59:36 <sangi>	NOTE - Install XV6 by wednesday. If instructions in mail doesn't work youtube it :)
+May 30 22:59:46 <himadri>	What about the OS which don't use WFG
+May 30 22:59:54 <himadri>	?
+May 30 23:00:14 <sangi>	Also this week there will be eval. Please be present. More info on google group tomorrow
+May 30 23:00:42 <sangi>	The OSs that don't use WFG ignore deadlocks or prevent it (highly unlikely)
+May 30 23:00:57 <sangi>	Windows and UNIX ignore
+May 30 23:01:12 <sangi>	So session over for the day
+May 30 23:01:20 <sangi>	Thanks for attending :) 
+May 30 23:01:25 <shivani>	thank you..
+May 30 23:01:31 <trisha>	Thank you
+May 30 23:01:42 <sangi>	No problem :) Bye Good night :)
+**** ENDING LOGGING AT Mon May 30 23:01:45 2016
+
