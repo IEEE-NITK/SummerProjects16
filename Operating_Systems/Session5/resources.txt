@@ -1,0 +1,4 @@
+Resources -
+1. PFA attached a pdf which summarizes yesterday's discussion.
+2. http://williamstallings.com/OS/Animation/Animations.html - A link that helps you visualize the concepts discussed till now.
+3. Banker's Algorithm - https://www.youtube.com/watch?v=w0LwGqffUkg
