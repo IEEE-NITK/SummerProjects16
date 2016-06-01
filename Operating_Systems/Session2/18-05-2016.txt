@@ -1,0 +1,268 @@
+**** BEGIN LOGGING AT Wed May 18 20:03:18 2016
+
+May 18 21:24:45 *	shashibhushankan (~shashibhu@117.198.117.244) has joined
+May 18 21:26:03 *	himadri (~himadripa@182.57.66.245) has joined
+May 18 21:26:38 *	snigdha (~snigdha@183.82.217.200) has joined
+May 18 21:30:19 <sangi>	Hello :) We'll wait for 5 min for others to join and start the session. 
+May 18 21:30:55 <snigdha>	ya sure!
+May 18 21:30:57 *	hrily (~hrily@106.77.31.3) has joined
+May 18 21:31:10 <sangi>	Say hello to our IEEE COMPSOC (not python :P) head, Chinmay
+May 18 21:31:40 <hrily>	Hie
+May 18 21:31:40 <snigdha>	hi chinmay :)
+May 18 21:33:11 *	trish (~Trish@116.75.8.48) has joined
+May 18 21:33:18 <trish>	Hi
+May 18 21:33:35 <sangi>	Hello :)
+May 18 21:33:49 <trish>	Have i missed anything?
+May 18 21:34:02 <shashibhushankan>	ya a lot
+May 18 21:34:30 <trish>	oh i was having dinner :(
+May 18 21:34:55 <sangi>	Lol no we haven't started the session yet :P
+May 18 21:35:20 *	dude (~Lenovo@59.88.221.27) has joined
+May 18 21:35:20 <shashibhushankan>	i din have dinner yet :/
+May 18 21:35:22 <shashibhushankan>	:P
+May 18 21:35:30 <shashibhushankan>	dude ? o.O 
+May 18 21:35:37 <sangi>	Okay guys let's start
+May 18 21:35:57 *	dude has quit (Client Quit)
+May 18 21:36:08 <sangi>	Before starting session 2, I'll clear some doubts. Registers are a group of flip-flops or latches that store information. Think of them as a group of boxes that store either 0 or 1. Now, PC (Program Counter) is a register that acts as a pointer to the next instruction to be fetched. Registers can be shift registers or parallel load registers. So such registers are present in the processor to help VERY fast and easy access of data. I'll answer the other 
+May 18 21:36:08 <sangi>	doubts about Page Replacement Algorithms when we discuss it.
+May 18 21:36:40 <sangi>	I hope all of you have watched the 4 lectures shared with you guys. If not please finish it by tomorrow. More lectures are coming up.
+May 18 21:36:44 <hrily>	Okay :D
+May 18 21:36:56 *	pramod (~Lenovo@59.88.221.27) has joined
+May 18 21:37:02 *	saurabh (~saurabh@143.snat-111-91-40.hns.net.in) has joined
+May 18 21:37:12 <sangi>	To know more about registers, read this link - https://www.cs.umd.edu/class/sum2003/cmsc311/Notes/CompOrg/register.html
+May 18 21:37:37 <sangi>	Till now, we have seen how a processor is designed to run a program. With this very brief basics let's see what an OS is. An operating system is a recursive program that runs on bare hardware and is designed to control it. Kernel is the heart of the OS. OS also has device drivers (specific to each OS) to communicate with the hardware devices connected to the CPU (ex - keyboard, mouse etc..). File System is also a part of the OS
+May 18 21:37:54 *	Shivani (~Shivani@117.196.195.96) has joined
+May 18 21:38:39 <sangi>	Two main areas when we study an OS is process management and coordination and Memory management.
+May 18 21:39:03 <sangi>	First two weeks we'll look at process management and coordination
+May 18 21:39:07 <trish>	i couldnt understand Pipelining.
+May 18 21:39:48 <sangi>	oh okay. Sorry I forgot to ask!! Any doubts from previous session, please ask :)
+May 18 21:40:21 <sangi>	Pipelining is a method to utilize the resources in every clock cycle. 
+May 18 21:41:38 <sangi>	Every processor's hardware is also divided into 5 stages. In every clock, based on the stage of the instruction, that particular hardware will be occupied
+May 18 21:41:49 <sangi>	followed till here?
+May 18 21:42:05 <trish>	yep
+May 18 21:43:06 <sangi>	Say first instruction starts at clock 1. The IF (Instruction Fetch) hardware is used. Clock 2 , instruction 1 uses the ID (Instruction decode hardware). 
+May 18 21:43:33 <sangi>	But during clock 2 IF hardware is not doing any work. Wastage of resources.  
+May 18 21:44:11 <sangi>	So, what people did was when the Ins 1 moves from IF to ID, perform IF for the next Instruction and so on
+May 18 21:44:46 <sangi>	Thus the image - https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/5_Stage_Pipeline.svg/300px-5_Stage_Pipeline.svg.png
+May 18 21:45:17 *	Shivani has quit (Ping timeout: 276 seconds)
+May 18 21:45:22 <sangi>	When Ins 1 is in EXEC stage, INS 2 will be in ID stage and INS 3 will be in IF stage
+May 18 21:45:55 <sangi>	So, without pipelining, a program with 3 instructions would take 15 clocks!
+May 18 21:46:31 <sangi>	But with pipelining - it'll take 7 clocks
+May 18 21:46:50 <sangi>	Better performance achieved :D Got it?
+May 18 21:47:36 <trish>	yes
+May 18 21:48:02 <sangi>	One more thing is that, suppose Ins X was a branch instruction. Only in the ID stage and the EXEC stage does the processor get to know the ACTUAL NEXT INS to be executed.
+May 18 21:48:07 <snigdha>	so when ins 1 shifts from if to id if will be done?
+May 18 21:48:28 <shashibhushankan>	ok :D 
+May 18 21:48:28 <shashibhushankan>	got it
+May 18 21:48:47 <sangi>	Snigdha I didn't get your question! Could you explain>
+May 18 21:49:16 <saurabh>	what is branch instruction?
+May 18 21:49:23 <snigdha>	sorry but i didnt understand how it works
+May 18 21:49:59 <sangi>	Branch instruction - is like goto statement, if else condition etc...
+May 18 21:50:08 <saurabh>	ok..
+May 18 21:50:30 <sangi>	No problem Snigdha. What I meant was in every clock we want to utilize full hardware.
+May 18 21:50:46 *	Received a CTCP PING 1463538446950 from trish (to #ieee-os)
+May 18 21:51:42 <sangi>	So when the INS 1 finishes IF stage and goes to ID stage (which happens in CLOCK CYCLE 1), in the next CLOCK CYCLE, apart from Ins 1 getting executed in the ID stage, the Ins 2 is executed in the IF stage.
+May 18 21:51:53 <sangi>	Am i clear now ?
+May 18 21:52:04 <pramod>	yep..
+May 18 21:52:07 <hrily>	Yup
+May 18 21:52:16 <snigdha>	ya :)
+May 18 21:52:44 <trish>	but the processor can only handle one step/stage at a time, right?
+May 18 21:53:26 <shashibhushankan>	each individual hardware one process at a time , 
+May 18 21:53:31 <sangi>	Why do you think so trisha?
+May 18 21:54:39 <trish>	because at the every evry basic level, i thought it can only do one micro instruction at a time.
+May 18 21:55:32 <sangi>	Hardware for every stage is exclusive. Even the buses used to transfer info between the stages are separate. The processor is made up of all the 5 hardware stages and the beauty is that they can work independently. After each stage is done, the result is sent to the bus and the hardware stage is ready for the next Ins
+May 18 21:55:40 <trish>	for example in CLOCK CYCLE 2. If the processor is controlling the ID stage for inst1 then who is controlling the IF stage for INST2
+May 18 21:56:44 <sangi>	The processor does not control the stages Trisha.  The processor is made up of all the 5 hardware stages and the beauty is that they can work independently.
+May 18 21:56:46 <trish>	okay now i get it
+May 18 21:56:50 <sangi>	Cool
+May 18 21:57:08 <sangi>	Okay going back to what I was saying
+May 18 21:57:17 <sangi>	One more thing is that, suppose Ins X was a branch instruction. Only in the ID stage and the EXEC stage does the processor get to know the ACTUAL NEXT INS to be executed.
+May 18 21:58:13 <sangi>	But by then INS X+1 and X+2 would have already been through 2 and 1 stages of execution respectively.
+May 18 21:58:27 <sangi>	But that's not what was supposed to happen.
+May 18 21:59:02 <sangi>	So the next clock cycle is wasted undoing the changes done while exceuting INS X+1 and X+2
+May 18 21:59:45 <sangi>	The processor is STALLED
+May 18 22:00:01 <sangi>	This is a disadvantage of pipelining.
+May 18 22:00:13 <sangi>	And that covers pipelining.
+May 18 22:00:19 <sangi>	any other doubts?
+May 18 22:01:25 <sangi>	I'm assuming that's a no. 
+May 18 22:01:36 <sangi>	So let's proceed into OS.
+May 18 22:01:46 <sangi>	Many Operating Systems have been written and they follow different architectures. In the lectures, the different types of architectures have been discussed. I will not go into the details of each architecture since it is explained clearly in the video lectures. The architectures are : Monolithic(DOS), Microkernel(contiki, xv6, riot), Modular(Solaris),Layered(MULTICS - has 8 layers!)
+May 18 22:02:42 <sangi>	We'll be working with Contiki and XV6! Contiki is an OS written specially for IOT domain
+May 18 22:02:55 <sangi>	It is a networking OS and very light.
+May 18 22:03:39 <sangi>	It has micro kernel architecture and runs inside Ubuntu (the reason why I wanted you guys to install Ubuntu)
+May 18 22:04:20 <sangi>	So that's about the intro to OS. As we study parts of it, we will understand how it works. 
+May 18 22:04:20 <sangi>	So now let's get back to processes.  
+May 18 22:04:36 <sangi>	Is everyone awake? :P
+May 18 22:04:43 <hrily>	Aye
+May 18 22:04:49 <himadri>	Yep
+May 18 22:04:49 <saurabh>	 yeah
+May 18 22:04:49 <snigdha>	ya! 
+May 18 22:05:12 <trish>	yep
+May 18 22:05:36 <sangi>	what about shashi, pramod?
+May 18 22:06:21 <shashibhushankan>	i am writing
+May 18 22:06:25 <shashibhushankan>	i cant keep track other wise
+May 18 22:06:33 <shashibhushankan>	i ll send at the end if required 
+May 18 22:06:35 <shashibhushankan>	:)
+May 18 22:06:54 *	Shivani (~Shivani@103.61.85.14) has joined
+May 18 22:06:57 <sangi>	Cool. You have the logs but :)
+May 18 22:07:10 <sangi>	okay. Suppose two processes want to communicate with each other. 
+May 18 22:07:16 <Shivani>	I am sorry.. There was a power cut and I didn't have back up..
+May 18 22:07:43 <sangi>	No problem. We discussed pipelining till now. Go through the logs :)
+May 18 22:07:50 <Shivani>	okay..
+May 18 22:08:11 <sangi>	OS has 2 solutions - Shared Memory and Message Passing
+May 18 22:08:34 <sangi>	Shivani, can you guess what shared memory is?
+May 18 22:09:01 <sangi>	Snigdha, can you guess what message passing is?
+May 18 22:09:01 <Shivani>	between 2 processes?
+May 18 22:09:06 <sangi>	Yes
+May 18 22:09:44 <snigdha>	passing instructions through messages like busses i guess
+May 18 22:09:47 *	hrily has quit (Read error: Connection reset by peer)
+May 18 22:10:04 <Shivani>	I dont remember..
+May 18 22:10:37 *	hrily (~hrily@106.77.9.14) has joined
+May 18 22:10:37 <Shivani>	its between process and kernel?
+May 18 22:10:56 <sangi>	No problem. I knew an amazing link. I wanted time to search for it!
+May 18 22:11:03 <sangi>	Didn't find it :P
+May 18 22:11:46 <sangi>	Anyways - shared mem as the name suggests implies that a region in the main memory is shared between the processes that want to communicate
+May 18 22:12:41 <sangi>	Elaborating on that - say for example I want to add 1000 numbers and I use fork() system call to create 2 processes - parent and child process
+May 18 22:13:20 <sangi>	If i ask the parent to add first 500 and child to add next 500
+May 18 22:13:22 <sangi>	then
+May 18 22:13:42 <sangi>	the two processes will need to communicate 
+May 18 22:13:57 *	pramod has quit (Quit: Leaving)
+May 18 22:14:10 <sangi>	We can reserve a block in the Main Mem for this purpose. 
+May 18 22:14:52 <shashibhushankan>	ok (Y)
+May 18 22:15:19 <sangi>	In message passing, every process has a mail box and say process A wants to talk to B. It says SEND(msg,B's pid-process ID).
+May 18 22:15:35 <sangi>	Now that's the formal definition. 
+May 18 22:15:57 <sangi>	The link I was looking for explains the concept this way 
+May 18 22:16:21 <sangi>	Suppose 2 people live in a room and have 2 boards, one for each. 
+May 18 22:16:52 *	Shivani has quit (Ping timeout: 260 seconds)
+May 18 22:17:26 <sangi>	In message passing, person A has permission to put a note on B's board. But only B has the right to read it and throw the note 
+May 18 22:19:37 <sangi>	But In shared memory, A can put whatever it wants on B's board and B can do whatever it wants to the info. A can also change it
+May 18 22:20:00 <sangi>	I'll find the link for your better understanding and send it later
+May 18 22:20:06 <sangi>	Any doubts?
+May 18 22:20:18 <sangi>	Please see this image - https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter3/3_12_CommunicationsModels.jpg
+May 18 22:20:32 <himadri>	Its because both are sharing the same board right?
+May 18 22:20:47 <trish>	what do these messages contain?
+May 18 22:21:34 <shashibhushankan>	ya , its coz of shared memory ?
+May 18 22:21:52 <sangi>	Himadri, you can take it that way too :) Even with 2 boards one will have full control on the other's board. That's how the link explains it :)
+May 18 22:22:00 <sangi>	Trisha, good question
+May 18 22:22:48 <himadri>	 got it
+May 18 22:23:13 <sangi>	Message might contain a variable. Say I have 2 files whose execution depend on each other. Say one file has rules for adding 2 numbers and the other has the 2 numbers to be added.
+May 18 22:23:24 *	Shivani (~Shivani@223.227.164.121) has joined
+May 18 22:23:30 <sangi>	Your message can be any of these two depending on what you call first :)
+May 18 22:23:58 <sangi>	Message passing is used by server - client system
+May 18 22:24:35 <sangi>	What happens is that a client sends a message to the server asking for some information
+May 18 22:24:49 <sangi>	using the IP address of the server
+May 18 22:25:10 <sangi>	Server sends the response to the Client using it's IP
+May 18 22:25:20 <sangi>	widely used for websites and apps.
+May 18 22:25:24 <sangi>	clear?
+May 18 22:25:42 <trish>	Yep
+May 18 22:25:46 <sangi>	Cool
+May 18 22:26:04 <shashibhushankan>	no. why do we need to use the server, because OS communicates just with user no ?
+May 18 22:26:19 <shashibhushankan>	server means on network right ?
+May 18 22:27:16 <sangi>	Shashi, server doesn't mean a remote computer always. The same system can run both server and client
+May 18 22:27:33 <shashibhushankan>	ok , thank you , its clear now. :)
+May 18 22:27:50 <sangi>	OS is not involved in the communication unless some resource is needed 
+May 18 22:28:08 <sangi>	resource like a port of a computer.\
+May 18 22:28:12 <sangi>	Okay cool
+May 18 22:28:12 *	Shivani has quit (Ping timeout: 276 seconds)
+May 18 22:28:19 *	Shivani_ (~Shivani@59.93.221.66) has joined
+May 18 22:28:40 <Shivani_>	I am so sorry.. There is something really wrong with power cuts here.. :(
+May 18 22:29:04 <sangi>	So now, we know - How a computer executes a program, how they communicate with each other.
+May 18 22:29:26 <sangi>	But what we assumed till now is that process does all the work by itself.
+May 18 22:29:45 <sangi>	But that's not how it happens. 
+May 18 22:30:08 <sangi>	A thread is a light-weight process.
+May 18 22:31:28 <sangi>	What I mean by that is, a thread is not a process but performs the task that completes execution of the process. Every process when started, has one thread. Depending on the user code, other threads can be created and used.
+May 18 22:31:51 <sangi>	Okay it's a bit confusing now but I'll clear it for you.
+May 18 22:32:46 <sangi>	OS has what is called thread pool. A thread may be User thread - works for processes running in user mode. Kernel thread - works for processes in Kernel Mode
+May 18 22:33:21 <sangi>	I hope all of you remember what a system call is.
+May 18 22:33:45 <sangi>	It is a function used when the process wants to switch from user mode to kernel mode.
+May 18 22:34:39 <sangi>	What happens is that the user thread in the process communicates with a kernel thread. And the kernel thread continues the program execution - Thus the kernel mode
+May 18 22:35:28 <sangi>	Now there are many models used to implement communication between User Threads and Kernel Threads.  
+May 18 22:35:47 <sangi>	One to One - One user thread talks to one kernel thread.
+May 18 22:36:18 <sangi>	many to one - many user threads talk to one kernel thread (one by one ofc).
+May 18 22:37:08 <sangi>	One to many - One user thread, many kernel threads. - not preferred since kernel operations are costly (in terms of mem and clocks)
+May 18 22:38:25 <sangi>	Hybrid model - Many to One and One to One together. The type of model to be used is decided by the priority given to the user thread.
+May 18 22:38:43 <sangi>	Okay that was technical. Let's simplify things a bit
+May 18 22:38:53 <sangi>	Why do we need threads?
+May 18 22:39:46 <shashibhushankan>	to complete our process by communicating to each other
+May 18 22:40:04 <sangi>	Consider a text editor. One process - has it's memory in the RAM. Two main functions are - Take text input second - May be a spell check
+May 18 22:40:24 <sangi>	Umm shashi you are close :)
+May 18 22:41:05 <sangi>	Now we can have one thread taking input and the other running in the background as a spell checker
+May 18 22:41:12 <sangi>	that's why we need threads.
+May 18 22:41:40 <trish>	to make execution of the entire process faster
+May 18 22:42:10 <sangi>	yes trisha, and to parallelize the execution.
+May 18 22:42:42 <sangi>	VERY IMPORTANT - Threads that belong to a process do not have separate memory segments of their own and have access to the mem of the entire process in the RAM
+May 18 22:43:47 <shashibhushankan>	so can threads get destroyed and process get hamapered ?
+May 18 22:44:36 <sangi>	Yes. That depends on you taking care that a thread does not get destroyed!
+May 18 22:45:00 <Shivani_>	Can multiple threads be active at a time?
+May 18 22:45:21 <sangi>	FOOD FOR THOUGHT - What is the significance of thread pool? I want you guys to tell me in the next session!
+May 18 22:46:07 <sangi>	Nice question Shivani. 
+May 18 22:46:45 <sangi>	Every language has its own thread library. This library decides the answer to your question
+May 18 22:47:02 <Shivani_>	okay.. :)
+May 18 22:47:02 <sangi>	The library used by C is called POSIX. 
+May 18 22:47:30 <sangi>	The library schedules the threads and prevents deadlock 
+May 18 22:49:41 <sangi>	What is deadlock? - deadlock is a condition where one thread (say A) holds a particular resource (r1) and waits for the other resource(r2) held by (say B). But B holds (r2) and is waiting to get r1
+May 18 22:49:53 <sangi>	here we have a deadlock
+May 18 22:49:59 <sangi>	any questions?
+May 18 22:50:12 <trish>	So when a process creates a thread only the relevant info from the process is copied into the thread. Not the whole process correct??
+May 18 22:51:53 <sangi>	No Trisha, when a thread is created it has access to all the memory of the process.
+May 18 22:52:08 <sangi>	Nothing is copied anywhere
+May 18 22:52:24 <sangi>	cos thread does not have memory of it's own
+May 18 22:52:30 <sangi>	*its
+May 18 22:52:40 <sangi>	clear? 
+May 18 22:53:20 <sangi>	Some reference - http://unboltingbinary.in/wp-content/uploads/2015/04/Multithreading-Models.png
+May 18 22:54:07 <trish>	clear. And also the processor is essentially executing only threads.
+May 18 22:54:21 <trish>	??
+May 18 22:54:23 <sangi>	Yes. That's right
+May 18 22:55:03 <sangi>	So threads are used to explain producer-consumer problem.
+May 18 22:55:29 <sangi>	In OS, there are many problems (an alternative word for situations)
+May 18 22:55:35 <sangi>	One such is producer.
+May 18 22:55:43 <sangi>	-consumer problem
+May 18 22:57:23 <sangi>	The producer produces items and the consumer consumes them. To speeden the process of production and consumption, multi threading is done. But care has to be taken to see that the producer threads stop producing when the buffer is full and the consumer stops consuming when the buffer is empty
+May 18 22:57:52 <sangi>	This is the problem. The solution to achieve this will be discussed next week!
+May 18 22:58:49 <sangi>	Okay any doubts?
+May 18 22:59:13 <hrily>	Nope
+May 18 22:59:21 <trish>	https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter4/4_01_ThreadDiagram.jpg
+May 18 23:00:15 <trish>	its a nice picture i found illustrating threads
+May 18 23:00:24 <Shivani_>	Could you please discuss passing parameters to system call?
+May 18 23:00:45 <Shivani_>	and the difference between trap and interrupt?
+May 18 23:02:11 <sangi>	Trisha, in that picture you need to understand one thing. In the multi threaded model, each thread is shown to have a stack and registers of its own. The thing is that the threads are restricted to some part of the memory. It does not mean that the threads have their own memory
+May 18 23:02:45 <sangi>	System calls is your assignment. But still parameters can be passed as command line arguments. 
+May 18 23:03:06 <Shivani_>	okay..
+May 18 23:03:12 <trish>	Also can Shared Memory and Message Passing not be used to solve the Producer-consumer problem??
+May 18 23:03:59 <trish>	Okay, you mean to say they dont have any special hardware assigned to threads??
+May 18 23:04:12 <sangi>	Message passing is used :) But the implementation is very different and this problem is discussed in detail under the Deadlocks chapter
+May 18 23:04:19 <sangi>	Yes Trisha
+May 18 23:04:29 <trish>	Okay, cool
+May 18 23:04:33 <trish>	Thanks
+May 18 23:05:45 <shashibhushankan>	ok (Y)
+May 18 23:05:47 <sangi>	Traps and Interrupts will be discussed next week. 
+May 18 23:05:55 <shashibhushankan>	ok :)
+May 18 23:06:11 <Shivani_>	Okay.. Thank you..
+May 18 23:06:15 <sangi>	Last thing for the day - What is assembly code?
+May 18 23:06:30 <shashibhushankan>	its a code written in symbols ? 
+May 18 23:06:31 <shashibhushankan>	:P
+May 18 23:07:42 <trish>	is it the code the processor can comprehend? 
+May 18 23:07:46 <sangi>	LOL no. When we compile a source code, first generated is the assembly code and then the executable. Assembly language is the language understood by hardwrae
+May 18 23:07:51 <sangi>	hardware
+May 18 23:07:55 <sangi>	Yes Trisha
+May 18 23:08:02 <sangi>	It is processor specific
+May 18 23:08:18 <shashibhushankan>	ok 
+May 18 23:08:47 <sangi>	Assembly Language for INTEL is X8086. For MIPS R2000 Processor is MIPS etc..
+May 18 23:09:37 <sangi>	Each instruction in Assembly code (Say ADD R1,R2,R3) is the same size. 
+May 18 23:10:18 <sangi>	irrespective of the type of instruction ie, branch instruction and arithmetic instuctions, all have the same size (32 bits in MIPS)
+May 18 23:10:40 <sangi>	That was a doubt from previous session that I forgot to answe
+May 18 23:10:45 <sangi>	r
+May 18 23:11:02 <sangi>	Okay the session is over. Remember to see why Thread pools are needed.
+May 18 23:11:14 <sangi>	Good night :D
+May 18 23:11:22 <hrily>	GN
+May 18 23:11:29 <Shivani_>	Good night..
+May 18 23:11:36 <himadri>	Gn
+May 18 23:11:42 <snigdha>	good night :)
+May 18 23:11:43 <hrily>	Had great learning today :)
+May 18 23:11:45 <saurabh>	gn
+May 18 23:12:12 <shashibhushankan>	gn :)
+May 18 23:12:19 <shashibhushankan>	thank you 
+May 18 23:12:26 <shashibhushankan>	waiting for next session :)
+May 18 23:12:37 <sangi>	Logs, lectures and the resources will be shared by tomorrow night latest. Please make sure all of you watch them
+May 18 23:12:46 <sangi>	Bye :)
+**** ENDING LOGGING AT Wed May 18 23:12:50 2016
+
