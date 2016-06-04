@@ -1,0 +1,512 @@
+﻿#ieeespnetworking
+[2016-05-13 18:44:16] → gautham__ joined (3b58c5d4@gateway/web/freenode/ip.59.88.197.212)
+[2016-05-13 18:47:35] → Harita_Reddy joined (653f85be@gateway/web/freenode/ip.101.63.133.190)
+[2016-05-13 18:54:51] → rakshith joined (~rakshith@61.3.24.225)
+[2016-05-13 18:56:14] → shamitha joined (dfe452c1@gateway/web/freenode/ip.223.228.82.193)
+[2016-05-13 18:56:30] → Ravali joined (73628794@gateway/web/freenode/ip.115.98.135.148)
+[2016-05-13 18:58:32] → Aneesh_ joined (75c661a5@gateway/web/freenode/ip.117.198.97.165)
+[2016-05-13 19:00:50] → abhi_ joined (6a4f1dd7@gateway/web/freenode/ip.106.79.29.215)
+[2016-05-13 19:01:10] ⇐ abhi_ quit (6a4f1dd7@gateway/web/freenode/ip.106.79.29.215): Client Quit
+[2016-05-13 19:01:31] <Sheetal> Hello everyone! :)
+[2016-05-13 19:01:44] <Ravali> Hello
+[2016-05-13 19:02:13] <Aneesh_> Hi
+[2016-05-13 19:02:13] <Sheetal> I will be starting the session in 5 mins
+[2016-05-13 19:02:20] → Shantanu joined (6a4d1af9@gateway/web/freenode/ip.106.77.26.249)
+[2016-05-13 19:02:41] → abhi_ joined (6a4f1dd7@gateway/web/freenode/ip.106.79.29.215)
+[2016-05-13 19:02:49] <rakshith> Hi
+[2016-05-13 19:03:13] → mohitreddy1996 joined (uid85309@gateway/web/irccloud.com/x-zdkvablpecqlvacc)
+[2016-05-13 19:03:35] <abhi_> Hi
+[2016-05-13 19:03:48] <Harita_Reddy> Hi!
+[2016-05-13 19:04:18] <shamitha> Hi!
+[2016-05-13 19:05:06] <gautham__> hi!
+[2016-05-13 19:06:37] <Sheetal> So lets begin...
+[2016-05-13 19:06:48] <Sheetal> In the previous session, pooja had taught you the basics of networking and physical layer.
+[2016-05-13 19:07:05] <Sheetal> Now I'll be continuing with data link layer and network layer. 
+[2016-05-13 19:07:37] <Sheetal> So everyone is clear with the basics of networking yeah??
+[2016-05-13 19:07:40] <Shantanu> okay
+[2016-05-13 19:07:47] <rakshith> yeah
+[2016-05-13 19:07:48] <Shantanu> yup
+[2016-05-13 19:07:49] <Ravali> yeah
+[2016-05-13 19:07:50] <abhi_> Hi
+[2016-05-13 19:07:59] <Aneesh_> yeah
+[2016-05-13 19:08:04] <abhi_> Ya
+[2016-05-13 19:08:06] <Harita_Reddy> Yeah
+[2016-05-13 19:08:09] <Sheetal> Good!
+[2016-05-13 19:08:13] <abhi_> Yea
+[2016-05-13 19:08:15] <Sheetal> So we learnt how data is converted into signal by the physical layer and transmitted over the transmission medium.
+[2016-05-13 19:08:33] <Sheetal> Now what if this data gets corrupted during the transmission?
+[2016-05-13 19:08:47] <Sheetal> Now what do i exactly mean by corrupted data?
+[2016-05-13 19:09:00] <Sheetal> Like suppose the sender sends data xyz and the receiver receives it as xyaz
+[2016-05-13 19:09:11] <Sheetal> so there is an extra bit been added to the data.
+[2016-05-13 19:09:27] <Sheetal> This means that the data which was sent and the data received do not match. So we say that the data has been corrupted. 
+[2016-05-13 19:09:57] <Sheetal> Now This is when the data link layer comes into the picture. It ensures that data transmission takes place without any errors. 
+[2016-05-13 19:10:23] <Sheetal> The data link layer has 5 main responsibilities.
+[2016-05-13 19:10:36] <Sheetal> Framing
+[2016-05-13 19:10:50] <Sheetal> Addressing
+[2016-05-13 19:10:54] <Sheetal> Flow Control
+[2016-05-13 19:10:58] <Sheetal> Error Control
+[2016-05-13 19:11:02] <Sheetal> Access Control
+[2016-05-13 19:11:25] <Sheetal> I'll brief u about each of them 
+[2016-05-13 19:11:39] <Sheetal> Framing - The data link layer divides the stream of bits received from the network layer into manageable data units called frames. 
+[2016-05-13 19:12:02] <Sheetal> Addressing - It adds a header to the frame to define the addresses of the sender and receiver of the frame. 
+[2016-05-13 19:12:34] <Sheetal> Flow Control - If the rate at which the data are absorbed by the receiver is less than the rate at which data are produced in the sender, the data link layer imposes a flow control mechanism to avoid overwhelming the receiver. 
+[2016-05-13 19:13:06] <Sheetal> Any doubts so far?
+[2016-05-13 19:13:15] <Harita_Reddy> No
+[2016-05-13 19:13:21] <Aneesh_> no
+[2016-05-13 19:13:27] <abhi_> No 
+[2016-05-13 19:14:17] <Sheetal> Others??...
+[2016-05-13 19:14:21] <Ravali> manageable data units??
+[2016-05-13 19:14:26] <rakshith> no doubts
+[2016-05-13 19:14:41] <Ravali> what does it mean
+[2016-05-13 19:15:04] <Sheetal> We dont want to send the entire data as a unit
+[2016-05-13 19:15:16] <Sheetal> so we break it down into further smaller units and send it
+[2016-05-13 19:15:25] <Ravali> okay
+[2016-05-13 19:15:29] <Sheetal> suppose we send the entire data at once
+[2016-05-13 19:15:45] <Sheetal> and 1 but gets corrupted, then the entire data will get corrupter
+[2016-05-13 19:15:51] <Sheetal> *corrupted
+[2016-05-13 19:15:58] <Sheetal> but we dont want that
+[2016-05-13 19:16:06] <Sheetal> now if we break the data into small units
+[2016-05-13 19:16:27] <Sheetal> if a bit in any 1 unit gets corrupted, only that unit gets affected
+[2016-05-13 19:16:31] <Sheetal> *1 bit
+[2016-05-13 19:16:37] <Ravali> yeah got it
+[2016-05-13 19:16:45] <Sheetal> Okay good!
+[2016-05-13 19:16:58] <Sheetal> So moving on to error and access control
+[2016-05-13 19:17:44] <Sheetal> This layer provides ways of detecting and correcting frames that arrive with errors
+[2016-05-13 19:17:57] <Sheetal> I'll be explaining this in detail in a while
+[2016-05-13 19:18:09] <Sheetal> Media Access Control - When two or more devices are connected to the same link, data link layer protocols are necessary to determine which device has control over the link at any given time.
+[2016-05-13 19:18:55] <Sheetal> As I just said, 
+[2016-05-13 19:19:11] <Sheetal> A major function of this layer is error detection and correction
+[2016-05-13 19:19:28] <Sheetal> Networks must be able to transfer data from one device to another with acceptable accuracy.
+[2016-05-13 19:19:47] <Sheetal> For most applications, a system must guarantee that the data received is identical to the data transmitted.
+[2016-05-13 19:20:02] <Harita_Reddy> What exactly do you mean by link?
+[2016-05-13 19:20:14] <Sheetal> Now the data can get corrupted anytime during transmission
+[2016-05-13 19:20:39] <Sheetal> Here, link means medium over which the data is tranmitted
+[2016-05-13 19:20:52] → aswin_ joined (5c604682@gateway/web/freenode/ip.92.96.70.130)
+[2016-05-13 19:21:16] <Sheetal> Many factors can alter one or more bits of a message.
+[2016-05-13 19:21:46] <Sheetal> Now different types of applications can tolerate different levels of error
+[2016-05-13 19:21:53] <Sheetal> Some applications require a mechanism for detecting and correcting errors.
+[2016-05-13 19:22:08] <Sheetal> whereas
+[2016-05-13 19:22:15] <Sheetal> Some can tolerate a small level of error.
+[2016-05-13 19:22:21] <Sheetal> For example
+[2016-05-13 19:22:38] <Sheetal> random errors in audio or video transmissions may be tolerable
+[2016-05-13 19:22:50] <Sheetal> but when we transfer text, we expect a very high level of accuracy.
+[2016-05-13 19:23:20] <Sheetal> So that is why there are techniques for both, detecting as well as correcting errors. 
+[2016-05-13 19:23:21] → aswin__ joined (5c604682@gateway/web/freenode/ip.92.96.70.130)
+[2016-05-13 19:23:37] <Sheetal> And not all applications use techniques for both 
+[2016-05-13 19:24:07] <Sheetal> Some need only detecting techniques, whereas some need the error to be corrected as well
+[2016-05-13 19:24:19] <Sheetal> Clear till now?
+[2016-05-13 19:24:34] <abhi_> No
+[2016-05-13 19:24:50] <Sheetal> Ask doubts 
+[2016-05-13 19:24:58] ⇐ aswin_ quit (5c604682@gateway/web/freenode/ip.92.96.70.130): Ping timeout: 250 seconds
+[2016-05-13 19:25:02] <abhi_> Yes
+[2016-05-13 19:25:20] <abhi_> Sorry yes
+[2016-05-13 19:26:02] <Sheetal> Others? I need all of u to respond...
+[2016-05-13 19:26:14] <Ravali> clear
+[2016-05-13 19:26:28] <Aneesh_> clear
+[2016-05-13 19:26:31] <Harita_Reddy> Clear
+[2016-05-13 19:26:36] <shamitha> clear
+[2016-05-13 19:26:44] <rakshith> yes
+[2016-05-13 19:27:00] <gautham__> clear
+[2016-05-13 19:27:24] <Sheetal> Cool!
+[2016-05-13 19:27:31] <Sheetal> So there are 2 types of errors
+[2016-05-13 19:27:37] <Sheetal> Single bit error 
+[2016-05-13 19:27:43] <Sheetal> Burst error 
+[2016-05-13 19:28:15] <Sheetal> Burst error means more than 1 bit is corrupted during transmission
+[2016-05-13 19:28:52] <Sheetal> Now can anyone tell me the difference between error detection and correction?
+[2016-05-13 19:30:07] <rakshith> how is the error detected?
+[2016-05-13 19:30:09] <Aneesh_> error detection is just searching for errors and not fixing them?
+[2016-05-13 19:30:26] <Sheetal> I'll be coming to that rakshith
+[2016-05-13 19:30:30] <abhi_> Sorry
+[2016-05-13 19:30:37] <Sheetal> Correct!
+[2016-05-13 19:30:48] <Sheetal> In error detection, we are looking only to see if any error has occurred. The answer is a simple yes or no. We are not even interested in the number of errors. A single-bit error is the same for us as a burst error.
+[2016-05-13 19:31:09] <Harita_Reddy> correction means sending a fresh request back to the sender?
+[2016-05-13 19:31:10] <Sheetal> In error correction, we need to know the exact number of bits that are corrupted and more importantly, their location in the message. The number of the errors and the size of the message are important factors.
+[2016-05-13 19:32:04] <Sheetal> The central concept in detecting or correcting errors is redundancy. 
+[2016-05-13 19:32:13] <Sheetal> To be able to detect or correct errors, we need to send some extra bits with our data. 
+[2016-05-13 19:32:26] <Sheetal> These redundant bits are added by the sender and removed by the receiver. Their presence allows the receiver to detect or correct corrupted bits.
+[2016-05-13 19:33:10] <Sheetal> Now u might be thinking whats the need to add extra bits to detect errors..
+[2016-05-13 19:33:31] <Aneesh_> How do these redundant bits actually hep? and what kind of data do they contain?
+[2016-05-13 19:33:36] <Aneesh_> *help
+[2016-05-13 19:33:40] <Sheetal> Well I will be explaining a detection technique to u.. and this question will be answered
+[2016-05-13 19:33:41] <Aneesh_> yeah
+[2016-05-13 19:34:38] <Sheetal> So now...the question is..how do we add these extra bits?
+[2016-05-13 19:34:40] <Sheetal> in other words
+[2016-05-13 19:34:47] <Sheetal> how do we achieve redundancy?
+[2016-05-13 19:34:58] <Sheetal> Redundancy is achieved through various coding schemes. 
+[2016-05-13 19:35:16] <rakshith> Some kind of a checksum?
+[2016-05-13 19:35:25] <Sheetal> The sender doesn't add any random bits 
+[2016-05-13 19:35:42] <Sheetal> it adds bits which have some relation with the existing data
+[2016-05-13 19:36:29] <Sheetal> yes you're right! 
+[2016-05-13 19:37:10] <Shantanu> could you possibly give an example?
+[2016-05-13 19:37:42] <Sheetal> Yea i'm coming to that
+[2016-05-13 19:37:50] <Sheetal> So there are various coding schemes
+[2016-05-13 19:38:00] <Sheetal> One of them is called Block Coding
+[2016-05-13 19:38:09] <Sheetal> This is a very simple one..
+[2016-05-13 19:38:31] <Sheetal> Here, we divide our message into blocks
+[2016-05-13 19:38:39] <Sheetal> each of 'k' bits
+[2016-05-13 19:38:59] <Sheetal> And each such block is called a dataword
+[2016-05-13 19:39:13] <Sheetal> Now
+[2016-05-13 19:39:15] <Sheetal> We add 'r' redundant bits to each block
+[2016-05-13 19:39:16] ⇐ Ravali quit (73628794@gateway/web/freenode/ip.115.98.135.148): Ping timeout: 250 seconds
+[2016-05-13 19:39:24] → Ravali joined (73628794@gateway/web/freenode/ip.115.98.135.148)
+[2016-05-13 19:39:44] <Sheetal> So the total length of a block becomes n=k+r
+[2016-05-13 19:40:04] <Sheetal> The resulting n-bit blocks are called codewords.
+[2016-05-13 19:40:36] <Sheetal> So initially, the raw data is divided into blocks..and they are called datawords. After adding extra bits to each, they are called codewords
+[2016-05-13 19:40:46] <Sheetal> Clear?
+[2016-05-13 19:40:53] <rakshith> yes
+[2016-05-13 19:41:00] <shamitha> yes
+[2016-05-13 19:41:01] <aswin__> yes
+[2016-05-13 19:41:08] <Aneesh_> yes
+[2016-05-13 19:41:08] <abhi_> Corrections means fixing them
+[2016-05-13 19:41:09] <Sheetal> We have a set of datawords, each of size k. 
+[2016-05-13 19:41:37] <Sheetal> So how many combinations of datawords can be created?
+[2016-05-13 19:42:01] <abhi_> Yes
+[2016-05-13 19:42:22] <abhi_> 2^k
+[2016-05-13 19:42:31] <Sheetal> Correct!
+[2016-05-13 19:42:34] <Sheetal> Similarly
+[2016-05-13 19:42:43] <Sheetal> We have a set of codewords, each of size n 
+[2016-05-13 19:42:57] <Sheetal> So 2^n combinations of codewords can be created
+[2016-05-13 19:43:08] <Sheetal> Now since n>k
+[2016-05-13 19:43:32] <Sheetal> There are 2^n-2^k extra codewords, which do not match any of the datawords
+[2016-05-13 19:43:53] <Sheetal> We call these codewords invalid or illegal.
+[2016-05-13 19:44:04] <Sheetal> Now you must be wondering how this is used to detect errors. 
+[2016-05-13 19:44:13] <Sheetal> I'll explain this with an example. 
+[2016-05-13 19:44:23] <Sheetal> Consider this table of datawords and their corresponding codewords.
+[2016-05-13 19:44:35] <Sheetal> 00 - 000
+[2016-05-13 19:44:42] <Sheetal> 01 - 011
+[2016-05-13 19:44:50] <Sheetal> 10 - 101
+[2016-05-13 19:44:56] <Sheetal> 11 - 110
+[2016-05-13 19:45:08] <Sheetal> Here, 1 extra bit has been added to the datawords for redundancy.
+[2016-05-13 19:45:28] <Sheetal> So 8 different codewords are possible.
+[2016-05-13 19:45:39] <Sheetal> 000, 001, 010, 011, 100, 101, 110 and 111.
+[2016-05-13 19:45:50] <Sheetal> But here, the valid codewords are only 000, 011, 101 and 110.
+[2016-05-13 19:46:00] <Sheetal> The rest 4 are invalid. 
+[2016-05-13 19:46:25] <Sheetal> Now..
+[2016-05-13 19:46:28] <Sheetal> Assume the sender encodes the dataword 01 as 011 and sends it to the receiver.
+[2016-05-13 19:46:45] <Sheetal> Consider the following 3 cases:
+[2016-05-13 19:46:48] <Sheetal> Case 1:
+[2016-05-13 19:47:02] <Sheetal> The receiver receives O11. It is a valid codeword. The receiver extracts the dataword 01 from it.
+[2016-05-13 19:47:23] <Sheetal> Correct transmission has taken place . So no error here
+[2016-05-13 19:47:25] <Sheetal> Case 2:
+[2016-05-13 19:47:43] <Sheetal> The codeword is corrupted during transmission, and 111 is received (the leftmost bit is corrupted). This is not a valid codeword and is discarded.
+[2016-05-13 19:48:17] <Sheetal> So this is an error. and it has been correctly discarded...So no problem here.
+[2016-05-13 19:48:20] <rakshith> so how is the error corrected? It has to be sent again by the sender right?
+[2016-05-13 19:48:38] <rakshith> We can only verify its integrity here isn't it?
+[2016-05-13 19:49:28] <Sheetal> This is just error detection. I'll be coming to correction later...Patience! :)
+[2016-05-13 19:49:48] <Sheetal> Case 3:
+[2016-05-13 19:50:05] <Sheetal> The codeword is corrupted during transmission, and 000 is received (the right two bits are corrupted). This is a valid codeword. The receiver incorrectly extracts the dataword 00. Two corrupted bits have made the error undetectable.
+[2016-05-13 19:50:29] <Sheetal> Even though 000 is a valid codeword
+[2016-05-13 19:50:44] <Sheetal> It is not the correct codeword for that particular dataword
+[2016-05-13 19:50:55] <Sheetal> So it should have been discarded. 
+[2016-05-13 19:50:57] <Sheetal> But..
+[2016-05-13 19:51:03] <Sheetal> it has been accepted. 
+[2016-05-13 19:51:03] <abhi_> 010 is also a possible case
+[2016-05-13 19:51:11] <Sheetal> Which is a fault with this scheme 
+[2016-05-13 19:51:30] <Sheetal> Yes ure right!
+[2016-05-13 19:51:36] <Sheetal> Now can anyone tell me..
+[2016-05-13 19:51:47] <Sheetal> What type of errors can this scheme detect?
+[2016-05-13 19:52:00] <Sheetal> As u saw, this scheme failed in Case 3
+[2016-05-13 19:52:31] <Sheetal> So there is only a certain type of error which this scheme can detect
+[2016-05-13 19:52:43] <Sheetal> Can anyone tell me what tht is?...
+[2016-05-13 19:53:08] <aswin__> only when one bit is corrupted
+[2016-05-13 19:53:32] <Shantanu> single bit errors
+[2016-05-13 19:53:37] <Sheetal> Good! Everyone understood right?
+[2016-05-13 19:53:46] <Ravali> yeah
+[2016-05-13 19:53:52] <shamitha> yes
+[2016-05-13 19:53:54] <abhi_> Yes
+[2016-05-13 19:54:06] <Harita_Reddy> yeah
+[2016-05-13 19:54:12] <rakshith> yes
+[2016-05-13 19:54:30] <gautham__> yep
+[2016-05-13 19:54:51] <Sheetal> Cool! 
+[2016-05-13 19:55:29] <Sheetal> So there is another detection scheme, i'll explain that and u guys have to tell me what type of errors it detects
+[2016-05-13 19:55:53] <abhi_> Burst
+[2016-05-13 19:56:04] <Sheetal> Nope..
+[2016-05-13 19:56:13] <Shantanu> lol
+[2016-05-13 19:56:22] <Shantanu> two bit?
+[2016-05-13 19:56:22] <Sheetal> Patience....
+[2016-05-13 19:56:27] <Shantanu> bits*
+[2016-05-13 19:56:28] <Sheetal> Noo
+[2016-05-13 19:56:33] <Shantanu> damn
+[2016-05-13 19:56:50] <Sheetal> In this scheme,
+[2016-05-13 19:56:58] <Sheetal> a k-bit dataword is changed to an n-bit codeword where n = k + 1.
+[2016-05-13 19:57:17] <Sheetal> So only 1 redundant bit is added
+[2016-05-13 19:57:44] <Shantanu> so does the number of redundant bits equal to the number of error bits that can be detected?
+[2016-05-13 19:57:54] <Sheetal> The extra bit, called the parity bit, is selected to make the total number of 1's in the codeword even
+[2016-05-13 19:58:07] <Sheetal> No...not necessary
+[2016-05-13 19:58:15] <Shantanu> okay
+[2016-05-13 19:58:25] <Sheetal> So now, each codeword that is sent has even number of 1's.
+[2016-05-13 19:58:38] <Sheetal> Now they r sent to the receiver. 
+[2016-05-13 19:58:58] <Sheetal> If one of the bits gets corrupted, then the no.of 1's wont remain even.
+[2016-05-13 19:59:07] <Sheetal> For example, I send the codeword 0110.
+[2016-05-13 19:59:20] <Sheetal> Now here if a 0 changes to 1, it will become 1110 where no.of 1's is odd. Similarly, if a 1 changes to 0, it will become 0010 where no.of 1's is again odd.
+[2016-05-13 19:59:38] <Sheetal> So what type of errors can this scheme detect?
+[2016-05-13 20:00:15] <aswin__> corruption of odd no of bits
+[2016-05-13 20:00:58] <abhi_> Distortion in single bit
+[2016-05-13 20:01:49] <Sheetal> Correct!
+[2016-05-13 20:02:09] <Sheetal> Odd no.of bits
+[2016-05-13 20:02:30] <Sheetal> So everyone got how this works right?
+[2016-05-13 20:02:38] <rakshith> yeah
+[2016-05-13 20:03:06] <Sheetal> There are other error detection and correction codes like 2-D parity check code, Hamming code, cyclic Redundancy check (CRC) and Checksum, which u will be learning in 2nd year. 
+[2016-05-13 20:03:10] <abhi_> Yes
+[2016-05-13 20:03:46] <Sheetal> Now coming back to the main responsibilities of the Data link layer,
+[2016-05-13 20:04:02] <Sheetal> Framing separates a message from one source to a destination, or from other messages to other destinations, by adding a sender address and a destination address.
+[2016-05-13 20:04:16] <Sheetal> The destination address defines where the packet is to go; the sender address helps the recipient acknowledge the receipt.
+[2016-05-13 20:04:32] <Sheetal> Frames can be of fixed or variable size.
+[2016-05-13 20:04:49] <Sheetal> In fixed-size framing, there is no need for defining the boundaries of the frames
+[2016-05-13 20:05:00] <Sheetal> In variable-size framing, we need a way to define the end of the frame and the beginning of the next.
+[2016-05-13 20:05:19] <Sheetal> So there are 2 approaches used for this :
+[2016-05-13 20:05:28] <Sheetal> 1. Character-oriented 
+[2016-05-13 20:05:36] <Sheetal> 2. Bit-oriented
+[2016-05-13 20:06:06] <Sheetal> In character-oriented
+[2016-05-13 20:06:10] <Sheetal> To separate one frame from the next, an 8-bit (1-byte) flag is added at the beginning and the end of a frame. The flag, composed of protocol-dependent special characters, signals the start or end of a frame.
+[2016-05-13 20:06:35] <Sheetal> The problem here was that any pattern used for the flag could also be part of the information.
+[2016-05-13 20:06:51] <Sheetal> If this happens, the receiver, when it encounters this pattern in the middle of the data, thinks it has reached the end of the frame.
+[2016-05-13 20:07:07] <Sheetal> To fix this problem, a byte-stuffing strategy was used
+[2016-05-13 20:07:36] <Sheetal> In byte stuffing (or character stuffing), a special byte is added to the data section of the frame when there is a character with the same pattern as the flag.
+[2016-05-13 20:07:49] <Sheetal> This byte is usually called the escape character (ESC)
+[2016-05-13 20:08:12] <Sheetal> Now whenever the receiver encounters the ESC character, it removes it from the data section and treats the next character as data, not a flag.
+[2016-05-13 20:08:34] <Sheetal> Clear?
+[2016-05-13 20:09:28] <Ravali> clear
+[2016-05-13 20:09:53] <rakshith> clear
+[2016-05-13 20:10:08] <aswin__> yeah
+[2016-05-13 20:10:12] <Sheetal> Cool!
+[2016-05-13 20:10:15] <abhi_> Clear
+[2016-05-13 20:10:20] <Sheetal> Now coming to bit-oriented
+[2016-05-13 20:10:45] <Sheetal> Most protocols use a special 8-bit pattern flag 01111110 to define the beginning and the end of the frame.
+[2016-05-13 20:11:07] <Sheetal> Now a similar problem arises here
+[2016-05-13 20:11:17] <Sheetal> If this flag pattern appears in the data, we need to somehow inform the receiver that this is not the end of the frame.
+[2016-05-13 20:11:34] <Sheetal> We do this by stuffing 1 single bit (instead of 1 byte) to prevent the pattern from looking like a flag.
+[2016-05-13 20:11:44] <Sheetal> The strategy is called bit stuffing.
+[2016-05-13 20:11:59] <Sheetal> In bit stuffing, if a 0 and five consecutive I bits are encountered, an extra 0 is added.
+[2016-05-13 20:12:23] <Sheetal> so if theres 011111 anywhere in the data
+[2016-05-13 20:12:36] <Sheetal> it will become 0111110 and then get transmitted to the receiver
+[2016-05-13 20:12:53] <Sheetal> so that its not mis-interpreted as the flag
+[2016-05-13 20:14:43] <Sheetal> Now when a frame is sent to the receiver, how will the sender know whether the receiver has received it successfully or not?
+[2016-05-13 20:15:40] <Sheetal> The receiver sends something called an Acknowledgement (ACK)
+[2016-05-13 20:15:48] <Sheetal> after it receives the frame successfully
+[2016-05-13 20:16:18] <Sheetal> So if the sender receives the ACK, it understands that the frame has successfully reached the receiver
+[2016-05-13 20:16:49] <Sheetal> Now there are 3 protocols to manage this in a noisy channel
+[2016-05-13 20:17:11] <Sheetal> 1. Stop and wait 
+[2016-05-13 20:17:13] <Sheetal> 2. Go Back N 
+[2016-05-13 20:17:19] <Sheetal> 3. Selective Repeat
+[2016-05-13 20:17:43] <Sheetal> I will be explaining just the first one to u guys... the rest 2 u can go through it yourselves
+[2016-05-13 20:17:57] <Sheetal> In stop and wait
+[2016-05-13 20:17:59] <Sheetal> The sender sends one frame at a time.
+[2016-05-13 20:18:12] <Sheetal> After sending each frame, it doesn't send any further frames until it receives an acknowledgement (ACK) signal.
+[2016-05-13 20:18:26] <Sheetal> Now After receiving the frame, the receiver sends an ACK.
+[2016-05-13 20:18:40] <Sheetal> If the ACK does not reach the sender before a certain time, known as the timeout, the sender sends the same frame again. 
+[2016-05-13 20:19:11] <Sheetal> And Timer is set after each frame transmission. 
+[2016-05-13 20:19:53] <Sheetal> So again if the frame or the ACK gets lost, the sender re-sends the same frame after timeout
+[2016-05-13 20:20:13] <Sheetal> and it doesnt continue to the next frame until this one is successfully received
+[2016-05-13 20:20:16] <Sheetal> clear?
+[2016-05-13 20:20:23] <rakshith> yeah
+[2016-05-13 20:20:34] <Ravali> yeah
+[2016-05-13 20:20:34] <abhi_> Yes
+[2016-05-13 20:20:46] <aswin__> yes
+[2016-05-13 20:20:52] <gautham__> yep
+[2016-05-13 20:20:59] <Aneesh_> yeah
+[2016-05-13 20:21:06] <shamitha> yes
+[2016-05-13 20:21:24] <Sheetal> Good! So just go through the other 2 protocols later, and if u dont understand it, u can always ping me,pooja or isha!
+[2016-05-13 20:21:30] <Shantanu> yeah
+[2016-05-13 20:21:49] <Ravali> okay
+[2016-05-13 20:21:54] <Sheetal> Now this was all about the basics and a little insight into the data link layer...
+[2016-05-13 20:22:02] <Sheetal> Now i'll be starting with network layer
+[2016-05-13 20:22:46] <Sheetal> The network layer is concerned with getting packets from the source all the way to the destination. 
+[2016-05-13 20:22:59] <Sheetal> It divides the data received from the transport layer at the sender into packets, and then ensures that each packet reaches its destination correctly.
+[2016-05-13 20:23:09] <Sheetal> But these packets may reach out of order. 
+[2016-05-13 20:23:18] <Sheetal> Like suppose the data has been divided into packets 1,2 and 3.
+[2016-05-13 20:23:30] <Sheetal> Each of these packets are sent from the source to the destination.
+[2016-05-13 20:23:35] <Sheetal> individually
+[2016-05-13 20:23:48] <Sheetal> How they are sent and on what basis, I will explain later. 
+[2016-05-13 20:24:00] <Sheetal> Now there is no assurance that the packets will arrive in the same order 1,2,3.
+[2016-05-13 20:24:10] <Sheetal> They might arrive in any random order like 2,3,1 or 3,1,2 or anything.
+[2016-05-13 20:24:24] <Sheetal> Now arranging these packets in the correct order is dealt with, by the transport layer at the receiver.
+[2016-05-13 20:24:37] <Sheetal> Which will be explained by isha in the next session. 
+[2016-05-13 20:24:51] <Sheetal> So network layer only makes sure that each packet is sent successfully..
+[2016-05-13 20:25:03] <Sheetal> The basic idea is 
+[2016-05-13 20:25:12] <Sheetal> There are many networks across the world.
+[2016-05-13 20:25:22] <Sheetal> And each network consists of many computers. 
+[2016-05-13 20:25:37] <Sheetal> As pooja had mentioned in the previous session, can anyone tell me
+[2016-05-13 20:25:46] <Sheetal> which address is used to identify a network ? 
+[2016-05-13 20:25:55] <Sheetal> Which one to identify the computer on a network?
+[2016-05-13 20:25:56] <aswin__> MAC
+[2016-05-13 20:26:02] <abhi_> Mac
+[2016-05-13 20:26:07] <Sheetal> And which one to identify a process on that computer?
+[2016-05-13 20:26:14] <rakshith> port
+[2016-05-13 20:26:16] <abhi_> Ip
+[2016-05-13 20:26:40] <aswin__> port for processs
+[2016-05-13 20:27:14] <abhi_> Sorry port
+[2016-05-13 20:27:44] <Sheetal> okay cool. So Mac for network, IP for computer on a network, and port for a particular process
+[2016-05-13 20:28:05] <Sheetal> Now each of these computers in a network is referred to as a node.
+[2016-05-13 20:28:21] <Sheetal> Suppose packet A has to be delivered from Node 1 in Network 1 to Node 3 in Network 4.
+[2016-05-13 20:28:34] <Sheetal> Now, each node is connected to some nodes, both in the same network as well as in different networks. 
+[2016-05-13 20:28:48] <Sheetal> So obviously there will be multiple paths to go from one node on a network to another node on the same or different network.
+[2016-05-13 20:29:02] <Sheetal> Now who decides which path a packet will follow to go from one node to another ..
+[2016-05-13 20:29:12] <Sheetal> And on what basis is this decided..
+[2016-05-13 20:29:23] <Sheetal> This is where network layer comes into the picture
+[2016-05-13 20:29:37] <Sheetal> It deals with end-to-end delivery of each packet, by choosing the best path possible.
+[2016-05-13 20:29:52] <Sheetal> There are 2 main terms to be understood before i go further.
+[2016-05-13 20:30:03] <Sheetal> Switch and router.
+[2016-05-13 20:30:11] <Sheetal> Can anyone tell me the difference between them?
+[2016-05-13 20:31:54] <rakshith> a switch receives a packet, sees the destination and forwards the packet to the destination. A router gives the groundwork of connecting different nodes
+[2016-05-13 20:32:05] <rakshith> am i right?
+[2016-05-13 20:32:35] <Sheetal> correct!
+[2016-05-13 20:33:00] <Sheetal> So which address is used while switching, and which one while routing?
+[2016-05-13 20:33:45] <aswin__> ip for switch
+[2016-05-13 20:33:56] <abhi_> Ip while sw
+[2016-05-13 20:34:23] <abhi_> *switching
+[2016-05-13 20:34:23] <aswin__> mac for router
+[2016-05-13 20:34:58] <Shantanu> how can you tell?
+[2016-05-13 20:35:07] <Shantanu> not exactly sure
+[2016-05-13 20:36:09] <Sheetal> Nope.
+[2016-05-13 20:36:30] <Sheetal> Switch is used for connecting nodes in the same network or different network. So it uses MAC address. 
+[2016-05-13 20:36:48] <Sheetal> Router directs data in a network, like from one node to another. So it uses IP address.
+[2016-05-13 20:37:20] <Sheetal> When a router receives a packet, it sends it to the next node where it has to be sent. So it deals with the IP address
+[2016-05-13 20:37:57] <Sheetal> Switch only establishes connections and uses MAC address
+[2016-05-13 20:38:08] <Sheetal> U will understand it better when i explain the routing table
+[2016-05-13 20:38:24] <Sheetal> So moving on..
+[2016-05-13 20:38:28] <Sheetal> Now how does a router direct data from one node to another..
+[2016-05-13 20:38:37] <Sheetal> Using a routing table. 
+[2016-05-13 20:38:50] <Sheetal> Every router will have a routing table associated with it. 
+[2016-05-13 20:39:00] <Sheetal> Now each packet will have a header attached to it.
+[2016-05-13 20:39:10] <Sheetal> And that header will contain the destination address for that packet.
+[2016-05-13 20:39:27] <Sheetal> When a router receives a packet, it first checks the destination address of that packet.
+[2016-05-13 20:39:36] <Sheetal> Now I'll tell you what the routing table contains. 
+[2016-05-13 20:39:46] <Sheetal> The routing table is basically of this format :
+[2016-05-13 20:40:00] <Sheetal> Destination Address (IP address) - Output Port 
+[2016-05-13 20:40:12] <Sheetal> Destination Address for a particular packet remains the same during the entire process.
+[2016-05-13 20:40:23] <Sheetal> But at each node, the output port against the destination address will change. 
+[2016-05-13 20:40:40] <Sheetal> Now the router checks the destination address in the routing table against the output port mentioned, and forwards the packet to that particular port.
+[2016-05-13 20:41:05] <Sheetal> This is what happens at each port, until the packet reaches its destination. 
+[2016-05-13 20:41:26] <Sheetal> Now how are these port numbers fed into the routing table and on what basis..
+[2016-05-13 20:41:36] <Sheetal> Basically, as i told u, there are multiple paths from one node to another. 
+[2016-05-13 20:41:47] <Sheetal> Now based on the path decided, the port numbers are mentioned in the routing table, against each destination address. 
+[2016-05-13 20:42:10] <Sheetal> So how is this path decided?...
+[2016-05-13 20:42:21] <Sheetal> Deciding the path is done by routing algorithms. 
+[2016-05-13 20:42:37] <Sheetal> Any doubts so far?
+[2016-05-13 20:42:54] <rakshith> nope
+[2016-05-13 20:43:07] <abhi_> No
+[2016-05-13 20:43:23] <Aneesh_> no
+[2016-05-13 20:44:18] <Sheetal> Others?...
+[2016-05-13 20:45:05] <aswin__> no
+[2016-05-13 20:45:17] <gautham__> no
+[2016-05-13 20:45:45] <Sheetal> Cool!
+[2016-05-13 20:46:08] <Sheetal> So there are again 2 terms which need to be understood.
+[2016-05-13 20:46:15] <Sheetal> Forwarding and Routing
+[2016-05-13 20:46:24] <Sheetal> Can anyone guess the difference between them?
+[2016-05-13 20:47:14] <rakshith> forwarding is the destination to be reached. routing is the path taken?
+[2016-05-13 20:47:30] → Aneesh__ joined (75c661a5@gateway/web/freenode/ip.117.198.97.165)
+[2016-05-13 20:47:36] <Sheetal> Not exactly
+[2016-05-13 20:47:58] <Sheetal> When a packet arrives at a router
+[2016-05-13 20:48:47] → Harita_Reddy_ joined (73f12d06@gateway/web/freenode/ip.115.241.45.6)
+[2016-05-13 20:48:52] <Sheetal> Forwarding is to look up in the routing table and decide which port the packet has to be transmitted to
+[2016-05-13 20:49:12] <Sheetal> Routing is to fill in and update the routing tables.
+[2016-05-13 20:49:23] <Sheetal> A routing algorithm decides which output line an incoming packet should be transmitted on.
+[2016-05-13 20:49:46] <Sheetal> Cool?
+[2016-05-13 20:49:52] <rakshith> yeah
+[2016-05-13 20:49:54] ⇐ Aneesh_ quit (75c661a5@gateway/web/freenode/ip.117.198.97.165): Ping timeout: 250 seconds
+[2016-05-13 20:50:07] <aswin__> yes
+[2016-05-13 20:50:13] <Ravali> yeah
+[2016-05-13 20:50:14] <abhi_> Yup
+[2016-05-13 20:50:20] ⇐ Harita_Reddy quit (653f85be@gateway/web/freenode/ip.101.63.133.190): Ping timeout: 250 seconds
+[2016-05-13 20:50:26] <shamitha> yes
+[2016-05-13 20:50:28] <Sheetal> So moving onto routing algorithms
+[2016-05-13 20:50:31] <Sheetal> Desirable properties of a routing algorithm :
+[2016-05-13 20:50:57] <Sheetal> Correctness
+[2016-05-13 20:51:04] <Sheetal> Simplicity
+[2016-05-13 20:51:09] <Sheetal> Robustness
+[2016-05-13 20:51:15] <Sheetal> Stability
+[2016-05-13 20:51:18] <Sheetal> Fairness
+[2016-05-13 20:51:21] <Sheetal> Efficiency
+[2016-05-13 20:51:37] <Sheetal> All these terms are self-explanatory.
+[2016-05-13 20:51:57] <Sheetal> So I will be covering one algorithm.
+[2016-05-13 20:52:07] <Sheetal> It is called Dijkstra's Algorithm or shortest path algorithm.
+[2016-05-13 20:52:16] <Sheetal> It is used to find the optimal or the shortest path between 2 nodes. 
+[2016-05-13 20:52:42] <Sheetal> Everyone open this link
+[2016-05-13 20:52:45] <Sheetal> https://lh3.googleusercontent.com/-zmnVGnjPv6E/VzVnoAe2JoI/AAAAAAAAExc/NV1dGIyCu4gzw84yLPJDFVWMUhizOK0xgCCo/s720/dijkstra.png
+[2016-05-13 20:53:01] <Sheetal> And refer to the diagram there, as i explain
+[2016-05-13 20:53:28] <Sheetal> Here, all the nodes are represented as vertices of a graph. 
+[2016-05-13 20:54:09] <Sheetal> So I'm gonna use the term vertices to refer to nodes
+[2016-05-13 20:54:16] <Sheetal> Suppose we need to go from Vertex A to Vertex D.
+[2016-05-13 20:54:41] <Sheetal> We as in, the packet has to be transmitted from vertex A to D
+[2016-05-13 20:55:07] <Sheetal> Here, the numbers written along the edges indicate the edge weights.
+[2016-05-13 20:55:21] <Sheetal> In this case, they indicate the distance from one node to another along an edge.
+[2016-05-13 20:55:31] <Sheetal> So we need to minimize this distance.
+[2016-05-13 20:55:47] <Sheetal> Initially, consider the distance to each node from A as infinity. 
+[2016-05-13 20:56:15] <Sheetal> So everyone's able to see the diagram and understand this right?
+[2016-05-13 20:56:34] <rakshith> yes
+[2016-05-13 20:56:35] <Aneesh__> yeah
+[2016-05-13 20:56:44] <Ravali> yeah
+[2016-05-13 20:56:44] <Harita_Reddy_> yes
+[2016-05-13 20:56:44] <aswin__> yup
+[2016-05-13 20:57:04] <Shantanu> yup
+[2016-05-13 20:57:11] <Sheetal> Good!
+[2016-05-13 20:57:21] <Sheetal> First step :
+[2016-05-13 20:57:31] <Sheetal> We write the distance of the nodes directly connected to A.
+[2016-05-13 20:58:12] <Sheetal> So as u can see in the 2nd figure, distance to B and G has been assigned as 2 and 6 respectively. 
+[2016-05-13 20:58:22] <Sheetal> (2,A) indicates the distance 2 from the vertex A.
+[2016-05-13 20:58:49] <Sheetal> We dont know yet if these are the shortest distances from A to that node. 
+[2016-05-13 20:59:01] <Sheetal> Second step :
+[2016-05-13 20:59:18] <Sheetal> We take the shortest distance among the distances assigned, and find distances of vertices connected to that particular vertex. 
+[2016-05-13 21:00:00] <Sheetal> Here, only distances 2 and 6 have been assigned to B and G respectively.
+[2016-05-13 21:00:16] <Sheetal> The shortest one among them is distance of 2 to B.
+[2016-05-13 21:00:31] <Sheetal> So we consider that as the shortest distance between A and B, and then find out distances of vertices directly connected to B.
+[2016-05-13 21:01:30] <Sheetal> They are E and C.
+[2016-05-13 21:01:43] <Sheetal> The distance from A to E via B is 4, and the distance from A to C via B is 9.
+[2016-05-13 21:01:54] <Sheetal> So we write those distances.
+[2016-05-13 21:02:11] <Sheetal> Now among these written distances, again we need to find the minimum distance except for the ones already considered.
+[2016-05-13 21:02:26] <Sheetal> Like here, distance of 2 from A-B has already been considered.
+[2016-05-13 21:02:37] <Sheetal> The next shortest distance is 4 from A-E.
+[2016-05-13 21:02:52] <Sheetal> So now we take the next target vertex as E, and find out the distance of vertices directly connected to it.
+[2016-05-13 21:03:03] <Sheetal> Now here, initially, a distance of 6 was assigned to A-G.
+[2016-05-13 21:03:14] <Sheetal> But through E, the distance we get is 2+2+1 = 5. So the distance at G changes to 5. 
+[2016-05-13 21:03:28] <Sheetal> Is everyone getting it?
+[2016-05-13 21:03:38] <Shantanu> yes
+[2016-05-13 21:03:44] <aswin__> yes
+[2016-05-13 21:03:45] <Harita_Reddy_> yes
+[2016-05-13 21:03:47] <Ravali> yes
+[2016-05-13 21:03:48] <shamitha> yes
+[2016-05-13 21:03:53] <gautham__> yes
+[2016-05-13 21:03:53] <Aneesh__> yeah
+[2016-05-13 21:04:06] <abhi_> Yes
+[2016-05-13 21:04:06] <Shantanu> how are these distances assigned initirally?
+[2016-05-13 21:04:11] <Shantanu> initially*
+[2016-05-13 21:05:29] <Sheetal> They are assigned while the connection is setup
+[2016-05-13 21:05:43] <Shantanu> okay
+[2016-05-13 21:05:47] <Sheetal> So when we proceed in the same manner, we will finally get the shortest distance from A-D. 
+[2016-05-13 21:07:06] <Sheetal> Go through the diagram and the workflow once more after the session. It is tough to understand it in the first go.
+[2016-05-13 21:07:17] <Sheetal> So its completely OK if u didn't. Jus go through it once more, and I'm sure u'll get it.
+[2016-05-13 21:07:27] <Sheetal> If u have any doubts, u can always ask me, Pooja or Isha. 
+[2016-05-13 21:08:45] <Sheetal> So this was about the network layer!
+[2016-05-13 21:08:59] <Sheetal> One more thing...
+[2016-05-13 21:09:43] <Sheetal> Before every session, we will be announcing the topic to be covered well in advance. So if u guys want any specific sub-topic to be covered, u can tell us beforehand!
+[2016-05-13 21:10:04] <Sheetal> Also,
+[2016-05-13 21:10:50] <Sheetal> during the session, if u want an extension of any topic also, u can PM us later and we will try covering it in the next session. 
+[2016-05-13 21:11:38] <Sheetal> So did everyone understand what was taught today? 
+[2016-05-13 21:11:48] <Sheetal> I tried to make it as less theoretical as possible..
+[2016-05-13 21:12:03] <Shantanu> yeah
+[2016-05-13 21:12:09] <Shantanu> it was good
+[2016-05-13 21:12:10] <Harita_Reddy_> Yes
+[2016-05-13 21:12:13] <aswin__> yeah
+[2016-05-13 21:12:20] <abhi_> Yeah
+[2016-05-13 21:12:20] <Ravali> yeah
+[2016-05-13 21:12:22] <shamitha> yes
+[2016-05-13 21:12:42] <gautham__> yes
+[2016-05-13 21:13:03] <Sheetal> Cool! 
+[2016-05-13 21:13:23] <Sheetal> So thanks for attending! 
+[2016-05-13 21:13:35] <Sheetal> Goodnight everyone! :)
+[2016-05-13 21:13:53] <Ravali> Goodnight, Thank you
+[2016-05-13 21:13:57] <Sheetal> I will upload the log in a while
+[2016-05-13 21:14:06] <Harita_Reddy_> Thank You
+[2016-05-13 21:14:14] <Aneesh__> thank you
+[2016-05-13 21:14:22] <aswin__> thanks
+[2016-05-13 21:14:28] <shamitha> Thank you!
+[2016-05-13 21:14:29] <abhi_> Gdni8.    to
+[2016-05-13 21:14:36] <Shantanu> night night!
+[2016-05-13 21:14:43] <Shantanu> adios
+[2016-05-13 21:14:49] ⇐ Shantanu quit (6a4d1af9@gateway/web/freenode/ip.106.77.26.249): Quit: Page closed
+[2016-05-13 21:14:59] ⇐ abhi_ quit (6a4f1dd7@gateway/web/freenode/ip.106.79.29.215): Quit: Page closed
+[2016-05-13 21:15:07] ⇐ Ravali quit (73628794@gateway/web/freenode/ip.115.98.135.148): Quit: Page closed
+[2016-05-13 21:15:13] <gautham__> thank you
+[2016-05-13 21:15:26] ← shamitha left (dfe452c1@gateway/web/freenode/ip.223.228.82.193)
+[2016-05-13 21:15:33] ← Aneesh__ left (75c661a5@gateway/web/freenode/ip.117.198.97.165)
