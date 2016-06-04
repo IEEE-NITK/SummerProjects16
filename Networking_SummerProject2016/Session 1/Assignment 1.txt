@@ -1,0 +1,8 @@
+Assignment 1:
+1.What is MAC address? Understand it's usage and why it is required.
+2.How is Digital data converted to digital signal? Understand the various types and subtypes.
+3.What are the different types of transmission mediums? Understand which is useful where.
+4.Differentiate between OSI model and TCP/IP suite. Understand which is better in which requirement.
+5.If you were allowed to modify the OSI model, what changes would you bring in? Understand where the model is lacking.
+6.How is networking and communication field advancing in today's world? Understand why is it so necessary to know aspects of networking.
+7.Why can't there be a standard like only Analog data to Analog Signal, why do we need all four main types of conversions? ( Analog data to analog signal, Analog data to digital signal, Digital data to digital signal, Digital data to analog signal) Understand where which conversion is useful.
