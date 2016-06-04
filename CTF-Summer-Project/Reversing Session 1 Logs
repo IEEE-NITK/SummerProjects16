@@ -1,0 +1,290 @@
+20:35 < PrabhanjanPM> Hi guys!
+20:35 < arunraj> hi
+20:35 < rahul_kummi> hello
+20:36 -!- akshayub [~Akshay@117.223.38.129] has joined #ieee-ctf
+20:36 < PrabhanjanPM> We will wait for five more mins. 
+20:36 < Tarun> hi
+20:36 < PrabhanjanPM> Until any doubts from the previous sessions?
+20:36 < PrabhanjanPM> *until then
+20:42 -!- Rohan_ [~IceChat9@49.128.160.54] has joined #ieee-ctf
+20:42 < Rohan_> hey
+20:43 -!- sripathi [~sripathi@106.216.147.153] has joined #ieee-ctf
+20:47 < PrabhanjanPM> okay. We'll get started!
+20:47 < PrabhanjanPM> So today we'll discuss about reversing!!
+20:48 < PrabhanjanPM> What is reversing(Reverse Engineering) ?
+20:48 < PrabhanjanPM> Any guesses?
+20:48 < Tarun> find out how something works
+20:48 < Tarun> *finding
+20:49 -!- sripathi [~sripathi@106.216.147.153] has quit [Ping timeout: 240 seconds]
+20:49 < PrabhanjanPM> Tarun: Sort of. Can you explain it in this context ?
+20:51 < Tarun> i didnt get you.
+20:51 -!- nat96 [~nat@117.192.44.21] has joined #ieee-ctf
+20:51 < PrabhanjanPM> Okay. Let me explain
+20:52 < PrabhanjanPM> Basically reversing is the art of converting binary executables into source code. 
+20:53 < PrabhanjanPM> By source code, we mean to say that we can figure out what the executable does exactly 
+20:54 < Tarun> what is a binary executable?
+20:55 < PrabhanjanPM> Tarun: We write programs in high level languages like C, Java, etc
+20:55 < Tarun> oh ok
+20:55 -!- Sreeps [~Sripathi@117.192.19.132] has joined #ieee-ctf
+20:56 < PrabhanjanPM> These cannot be directly run on the computer, so they are compiled in to executable files which the computer can run
+20:56 < PrabhanjanPM> Such executable files are called binaries
+20:58 < PrabhanjanPM> is this clear ?
+20:58 < Rohan_> yes
+20:58 < arunraj> yes
+20:59 < Sreeps> yes
+20:59 < ranjith> yes
+21:00 < PrabhanjanPM> So can you think of any applications of reversing ?
+21:00 -!- Tarun [~IceChat9@117.192.70.108] has quit [Ping timeout: 276 seconds]
+21:01 < akshayub> to modify or tweak?
+21:01 -!- Tarun [~IceChat9@117.192.78.179] has joined #ieee-ctf
+21:01 < Sreeps> to replicate?
+21:01 < PrabhanjanPM> akshayub,Sreeps : you are both right 
+21:02 < PrabhanjanPM> People have reverse engineered expensive software and distributed them for free !!
+21:03 < Sreeps> like?
+21:03 -!- amithmkini [01273c11@gateway/web/freenode/ip.1.39.60.17] has joined #ieee-ctf
+21:03 < Rohan_> is that legal?
+21:04 < PrabhanjanPM> Technically i dont think so!
+21:05 < Sreeps> apparently if u dont violate the fair use law in the us copyright law it is
+21:05 -!- swati_ [~swati@117.200.118.18] has quit [Quit: Leaving]
+21:05 -!- akshayub [~Akshay@117.223.38.129] has quit [Ping timeout: 240 seconds]
+21:06 -!- swati [~swati@117.200.118.18] has joined #ieee-ctf
+21:07 -!- amithmkini [01273c11@gateway/web/freenode/ip.1.39.60.17] has quit [Ping timeout: 250 seconds]
+21:07 < PrabhanjanPM> Sreeps: Go through- http://www.catb.org/~esr/faqs/hacker-howto.html
+21:08 < Sreeps> Prabhanjan PM : go through https://en.wikipedia.org/wiki/Reverse_engineering#Reverse_engineering_of_software
+21:08 -!- amithmkini [~AndChat52@1.39.60.17] has joined #ieee-ctf
+21:09 < PrabhanjanPM> Sreeps: Okay fine xP There are other applications to reversing as well!
+21:09 -!- akshayub [~Akshay@117.223.38.142] has joined #ieee-ctf
+21:10 < PrabhanjanPM> for example you have recieved a package which has some malware content
+21:10 < PrabhanjanPM> you cant run it as it is dangerous 
+21:10 < PrabhanjanPM> but the package might also contain some useful information 
+21:11 < PrabhanjanPM> You can reverse the package to understand how it works, and maybe circumvent it to extract the information 
+21:12 -!- nat96 [~nat@117.192.44.21] has quit [Ping timeout: 260 seconds]
+21:12 -!- swati [~swati@117.200.118.18] has quit [Ping timeout: 260 seconds]
+21:12 < Rohan_> right
+21:12 < PrabhanjanPM> We'll get started with x86 architecture !
+21:13 < Sreeps> ya
+21:13 < PrabhanjanPM> Have you heard of terms like x86, ARM, x86-64 ? 
+21:13 < Sreeps> yes
+21:14 < arunraj> yes
+21:14 < amithmkini> Ya
+21:14 < Samvid> heard yeah
+21:15 < rahul_kummi> ya
+21:15 < PrabhanjanPM> Cool  
+21:16 < PrabhanjanPM> So architecture is basically the defines how a microprocessor will run a set of instructions(in binary)
+21:16 < PrabhanjanPM> Before we go into this, I would like to discuss stack.
+21:17 < PrabhanjanPM> So what is a stack 
+21:17 < Sreeps> a list/array of items stacked one upon another
+21:18 < arunraj> it is lifo data structure
+21:18 -!- nat96 [~nat@117.192.44.21] has joined #ieee-ctf
+21:18 < PrabhanjanPM> well, its just items stacked on top of one another.
+21:18 < PrabhanjanPM> arunraj: what do you mean by lifo?
+21:18 < Tarun> last in first out
+21:18 < arunraj> last in first out
+21:19 < PrabhanjanPM> Okay so consider a stack of plates, numbered from one to ten 
+21:19 < PrabhanjanPM> say ten is at the top and one is at the bottom. 
+21:19 < PrabhanjanPM> can i take plate 5 out directly ?
+21:20 < Sreeps> no
+21:20 < arunraj> no
+21:20 < amithmkini> No
+21:20 < Tarun> no
+21:20 < Rohan_> 10 9 8 7 6 5
+21:20 < PrabhanjanPM> How do i take out plate 5? 
+21:20 < Rohan_> ?
+21:20 < Sreeps> after taking out the plates above it first
+21:21 < PrabhanjanPM> Yeah so this is how a stack works 
+21:21 -!- ask123 [uid134655@gateway/web/irccloud.com/x-iybvyrzdmbayzpyb] has joined #ieee-ctf
+21:21 < PrabhanjanPM> whichever plate goes in last, is taken out first 
+21:23 < PrabhanjanPM> For this discussion- In a computer, we have numbered address locations, where we store data in such a manner that it forms a stack
+21:24 < PrabhanjanPM> Instead of plates,we have data(bits), and the numbers are the address of the memory locations where that data is stored 
+21:24 < PrabhanjanPM> clear ?
+21:24 < Sreeps> yes
+21:24 < amithmkini> Ya
+21:24 < arunraj> yes
+21:25 < akshayub> yes
+21:25 < PrabhanjanPM> But the numbering of the memory locations  is quite weird. Its opposite to what one might assume normally
+21:26 < PrabhanjanPM> Suppose the addresses are numbered 0-100. And I insert numbers 1,2,3,4 into the stack. At what addresses do you think these will be stored?
+21:27 < Rohan_> randomly?
+21:27 < akshayub> x, x+1, x+2 etc?
+21:27 < akshayub> or increasing by size of input data?
+21:28 < PrabhanjanPM> All the numbers are of the same size which is equal to the size of each memory location  
+21:28 < Sreeps> its consecutive but from random address onwards
+21:29 < Rohan_> ya..i agree with sreeps
+21:30 < PrabhanjanPM> Okay so if its stored at random places, what happens when i insert some more numbers say- 5,6,7,8 later ?
+21:30 < PrabhanjanPM> How will they be stored ?
+21:31 < Rohan_> a similar random allocation?
+21:31 < PrabhanjanPM> No. 
+21:31 < akshayub> registers?
+21:31 < Sreeps> allocation at the consecutive locations
+21:32 < Sreeps> ?
+21:32 < rahul_kummi> won't there be a memory location holding the address of the previous entry
+21:32 < PrabhanjanPM> akshayub: registers are an entirely different thing 
+21:32 < PrabhanjanPM> rahul_kummi: yes. 
+21:33 -!- rahul_kummi [~Rahul@117.231.236.75] has quit [Read error: Connection reset by peer]
+21:33 < PrabhanjanPM> So similar to a stack of plates, the numbers are stored at consecutive locations. If i add more numbers to the stack, the will still be stored consecutive to the previous numbers
+21:33 < PrabhanjanPM> and we store the the location of the "Top of stack" 
+21:33 -!- rahul_kummi [~Rahul@117.237.162.107] has joined #ieee-ctf
+21:34 < PrabhanjanPM> So im storing 1,2,3,4 in the locations 0-100
+21:34 < Rohan_> oh..
+21:34 < PrabhanjanPM> what is the address of the top of stack 
+21:34 < ranjith> 3?
+21:34 < arunraj> 3
+21:35 < PrabhanjanPM> Haha. Thats what one assumes normally.
+21:35 < Rohan_> it coul be anything from 3 to 100 right?
+21:35 < Tarun>     is it 100?
+21:35 < PrabhanjanPM> But stack is addressed in the opposite manner
+21:35 < PrabhanjanPM> Address 100 - 1
+21:35 < PrabhanjanPM> Address 99 - 2
+21:35 < PrabhanjanPM> Address 98 - 3
+21:36 < PrabhanjanPM> Address 97 - 4
+21:36 < Rohan_> wierd :P
+21:36 < PrabhanjanPM> hink of this stack as a book with pages numbered from 0-100.
+21:36 < PrabhanjanPM> But you start writing from page 100 and move the other way
+21:36 < PrabhanjanPM> Each page is a memory location of the size of the number 
+21:37 < PrabhanjanPM> is this clear ?
+21:37 < Rohan_> yes
+21:37 < jeshventh> yes
+21:37 < rahul_kummi> yes
+21:38 < PrabhanjanPM> Where do you think stacks are stored in a computer ?
+21:38 < Tarun> in the registers?
+21:39 < PrabhanjanPM> Tarun: no. registers are something different 
+21:39 < rahul_kummi> the RAM
+21:39 < Tarun> ok
+21:39 < PrabhanjanPM> rahul_kummi: you are right 
+21:40 < akshayub> i've a doubt .. when we write programs, any kind of data, is stored in the ram itself right?
+21:40 < PrabhanjanPM> akshayub: depends
+21:41 < PrabhanjanPM> If you write a program and store it, it will usually be stored in secondary memory
+21:41 < akshayub> not the program itself.. the variables.
+21:41 < PrabhanjanPM> When you are running the program, it is loaded to the RAM
+21:42 < akshayub> Ohh alright..
+21:42 < PrabhanjanPM> akshayub: yes. the local variables are stored in the stack 
+21:42 < PrabhanjanPM> I assume that you now have a fair understanding about the stack and the addressing of the stack 
+21:44 < PrabhanjanPM> We'll move on to the x86 architecture 
+21:44 < PrabhanjanPM> 8086 was one of the first commercially marketable microprocessors by Intel. Following this they had 80186 which has similar architecture.
+21:45 < PrabhanjanPM> Roughly the same architecture exists till today, and gets its name from the first few processors which implemented the architecture- 80*86*, 801*86* 
+21:46 < Rohan_> i have a doubt
+21:46 < Rohan_> in stacks
+21:47 < PrabhanjanPM> Rohan_: yes. tell 
+21:47 < Rohan_> int the example you gave the last in is 4
+21:47 < PrabhanjanPM> yes. last in is 4
+21:47 < PrabhanjanPM> top of the stack is at 97
+21:48 < Rohan_> so will that be the first out
+21:48 < PrabhanjanPM> first out will be 4 and the top of the stack will be updated to 98
+21:48 < Rohan_> ok..got it
+21:48 < PrabhanjanPM> I thought the book analogy would make it clear 
+21:49 < Rohan_> got a lil confused :P
+21:49 < PrabhanjanPM> For now, let us assume the microprocessor consists of only two parts 
+21:49 -!- arvind [~arvind@122.172.225.80] has joined #ieee-ctf
+21:49 < PrabhanjanPM> A unit to perform arithmetic and logic operations, and load and store data from the RAM
+21:50 < PrabhanjanPM> and a set of "registers" to store data. This is needed because processor cannot perform operations directly on the data present in the RAM
+21:51 < PrabhanjanPM> So what are registers? Quite a few people already know 
+21:51 -!- nat96 [~nat@117.192.44.21] has quit [Ping timeout: 246 seconds]
+21:53 < Rohan_> series of flip-flops?
+21:53 < Rohan_> or parallel
+21:54 < jeshventh> memory which users cant access or use...used by cpu for its operations
+21:54 < Rohan_> D flip-flops usually
+21:54 < PrabhanjanPM> Rohan_: Yes. They are a combination of flipflops. But we wont go into the specifics
+21:54 < PrabhanjanPM> jeshventh: You are not entirely right 
+21:55 < PrabhanjanPM> Registers are hardware in the processor which can store small amount of data
+21:55 < PrabhanjanPM> You might have heard of 32bit processors, 64 bit processors
+21:56 < Sreeps> yes
+21:56 < PrabhanjanPM> These are the size of the registers in the processor 
+21:57 < PrabhanjanPM> In order of decreasing speed and increasing amount of storage: registers > cache > primary memory > secondary memory
+21:57 < Sreeps> so the number of bits indicate they can process in one go right?
+21:57 < PrabhanjanPM> Sreeps: Registers dont process data. They just store it.
+21:58 < PrabhanjanPM> A 32 bit register can store a maximum of 32 bits of data
+21:58 < Sreeps> okay
+21:58 < Sreeps> i meant does a 64bit processor process 64bits of data in one shot?
+21:59 < PrabhanjanPM> Sreeps: It depends on the process. Can you be more specific?
+22:00 < PrabhanjanPM> Let me give you an example
+22:00 < PrabhanjanPM> Say we have two 32 bit numbers A and B 
+22:00 < PrabhanjanPM> I load them into registers 1 and 2 of a 32 bit processor 
+22:01 < PrabhanjanPM> I use the "ALU" to add the numbers and store it in register 3
+22:01 < PrabhanjanPM> Is this relevant to what you asked
+22:01 < Sreeps> kind of
+22:02 < Sreeps> but anyways please proceed to next part in this discussion
+22:04 < PrabhanjanPM> check out the main registers in x86 -http://www.cs.virginia.edu/~evans/cs216/guides/x86-registers.png
+22:05 -!- rahul_kummi [~Rahul@117.237.162.107] has quit [Ping timeout: 250 seconds]
+22:07 < jeshventh> how is number of registers determined?
+22:07 < PrabhanjanPM> That depends on the manufacturer of the processor 
+22:08 -!- rahul_kummi [~Rahul@117.235.216.164] has joined #ieee-ctf
+22:08 -!- AndChat|526161 [~AndChat52@1.39.60.17] has joined #ieee-ctf
+22:08 -!- AndChat|526161 [~AndChat52@1.39.60.17] has quit [Client Quit]
+22:08 < PrabhanjanPM> As you can see x86 has 6 general purpose registers- eax,ebx,ecx,edx,esi,edi
+22:08 < jeshventh> okk
+22:09 < PrabhanjanPM> By convention esi and edi are called source index and destination index as the store the adderesses of the input and output of a function 
+22:10 < PrabhanjanPM> ebp and esp are base pointer and stack pointer. They store the address of the base of the stack and the top of the stack 
+22:10 -!- Swathi_bhat [~androirc@1.39.62.165] has joined #ieee-ctf
+22:11 -!- Swathi_s_bhat [~androirc@116.202.163.194] has quit [Ping timeout: 250 seconds]
+22:11 -!- nat96 [~nat@117.192.44.21] has joined #ieee-ctf
+22:11 -!- amithmkini [~AndChat52@1.39.60.17] has quit [Ping timeout: 244 seconds]
+22:12 -!- amithmkini [~AndChat52@1.39.60.17] has joined #ieee-ctf
+22:12 -!- Swathi [~androirc@116.202.70.143] has joined #ieee-ctf
+22:13 < PrabhanjanPM> we are now acquainted with the register set part. Now we'll move on to the processing unit part
+22:13 < akshayub> that link you sent... what is the picture?
+22:13 < Rohan_> are ebp and esp also registers?
+22:13 < PrabhanjanPM> Rohan_: yes. ebp and esp are also registers
+22:14 < Sreeps> why are the first four partitioned?
+22:14 < PrabhanjanPM> akshayub: The picture contains the 6 general purpose registers in x86 and esp and ebp
+22:15 < akshayub> so this is common for every x86 system?
+22:15 < PrabhanjanPM> akshayub: More or less
+22:15 < PrabhanjanPM> Sreeps: The partition allows you to use only 16 bits/8bits at time 
+22:15 < PrabhanjanPM> instead of the whole 32 bits
+22:16 < PrabhanjanPM> this saves memory and might save processing time also 
+22:16 -!- Swathi_bhat [~androirc@1.39.62.165] has quit [Ping timeout: 250 seconds]
+22:16 < Sreeps> okay
+22:16 < PrabhanjanPM> The nomenclature is convention. you can go through it in the resources that ill post 
+22:17 < jeshventh> so the first register can be used as three sub registers too?
+22:17 < PrabhanjanPM> jeshventh: I think it can but thats not how it is used 
+22:18 < PrabhanjanPM> If you need to store only 16 bits, you use AL AH
+22:18 < PrabhanjanPM> If you are storing 16 more bits, you'll use BL BH
+22:19 < Sreeps> so after filling AL AH BL BH and so on..it moves to AX BX..?
+22:19 < PrabhanjanPM> Sreeps: No
+22:20 < PrabhanjanPM> If i want to store a 32 bit number, itll be stored in eax 
+22:20 < PrabhanjanPM> I use one register to store only one variable(entity)
+22:20 -!- Suraj [~IceChat78@223.238.170.126] has joined #ieee-ctf
+22:20 < PrabhanjanPM> If the number is 64 bits long, ill need to use two registers
+22:21 < jeshventh> ok
+22:21 < Sreeps> ok
+22:22 < PrabhanjanPM> Moving on to assembly language !
+22:22 < PrabhanjanPM> any ideas about assembly language ?
+22:22 < Suraj> what was the topic we just did? sorry wasnt there
+22:23 < PrabhanjanPM> Suraj: We are doing reversing 
+22:23 < Suraj> cool. will look it up later
+22:24 < PrabhanjanPM> Okay tell me about high level language and machine language atleast 
+22:24 < Suraj> machine language is binary
+22:25 < PrabhanjanPM> Suraj: You are right !
+22:26 < PrabhanjanPM> So what we are looking for here is that machine language is processor specific
+22:26 < PrabhanjanPM> I cant run a program compiled for an x86 processor on an ARM 
+22:27 < PrabhanjanPM> Similarly even assembly language is processor specific
+22:27 < PrabhanjanPM> It has a strong relationship with the architecture of the processor 
+22:28 < PrabhanjanPM> Any doubts?
+22:28 < Suraj> whats an ARM?
+22:28 < Sreeps> no
+22:28 < arunraj> no
+22:29 < PrabhanjanPM> ARM is another architecture.
+22:29 < Suraj> oh okay
+22:30 < PrabhanjanPM> A basic x86 assembly instruction is of the form - opcode operand/operands
+22:31 < PrabhanjanPM> Since it is already 10.30, we'll stop here
+22:31 < Sreeps> as in?
+22:31 < PrabhanjanPM> Sreeps: for example mov A,B copies the value of the register B into register A
+22:31 < PrabhanjanPM> here mov is the opcode 
+22:31 < PrabhanjanPM> A and B are operands 
+22:32 < akshayub> cant we continue?
+22:32 < PrabhanjanPM> akshayub: I have other stuff to do! 
+22:32 < PrabhanjanPM> ill post some links 
+22:32 < PrabhanjanPM> go through them 
+22:32 -!- arvind [~arvind@122.172.225.80] has quit [Ping timeout: 252 seconds]
+22:32 < PrabhanjanPM> we'll continue this discussion in the next session
+22:32 < akshayub> lol ok then!
+22:33 < PrabhanjanPM> Go through these- 
+22:33 < PrabhanjanPM> http://grayhash.com/beist_seminar/x86_basic_re.pdf
+22:33 < rahul_kummi>  okay thank you PrabhanjanPM
+22:33 < PrabhanjanPM> http://www.tenouk.com/Bufferoverflowc/Bufferoverflow1.html
+22:33 < akshayub> can you post the logs of today's and yesterday's as well?
+22:33 < PrabhanjanPM> akshayub: They will be up by tomorrow
+22:35 < PrabhanjanPM> Thats it for today! Goodnight all. 
+22:35 < Sreeps> good night
+22:35 -!- arunraj [~arun97@45.124.232.118] has quit [Quit: Good night]
+22:35 < akshayub> Goodnight then!
+22:35 -!- akshayub [~Akshay@117.223.38.142] has quit [Quit: Leaving]
+22:35 < Rohan_> goog night

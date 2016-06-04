@@ -1,0 +1,291 @@
+20:25 -!- Irssi: #ieee-ctf: Total of 10 nicks [2 ops, 0 halfops, 0 voices, 8 normal]
+20:25 -!- Irssi: Join to #ieee-ctf was synced in 4 secs
+20:26 -!- swathi_s_bhat [~swathi_s_@116.202.116.31] has joined #ieee-ctf
+20:26 -!- ranjith [~ranjith@106.51.19.191] has joined #ieee-ctf
+20:27 -!- amithmkini [~amithmkin@1.39.63.6] has joined #ieee-ctf
+20:27 -!- pun [~AndChat14@117.198.119.117] has joined #ieee-ctf
+20:29 -!- guest12345 [~androirc@61.3.19.22] has joined #ieee-ctf
+20:30 -!- Rohan_ [~IceChat9@49.128.160.54] has joined #ieee-ctf
+20:31 < PrabhanjanPM> Hi all !
+20:31 < Rohan_> hi
+20:31 < arunraj> hi
+20:31 < Tarun> hi
+20:31 < amithmkini> Hi
+20:32 < Samvid> hi
+20:32 < PrabhanjanPM> Today we will be going through a bit of assembly language
+20:32 < PrabhanjanPM> N later we'll disassemble a simple Hello World program
+20:34 < PrabhanjanPM> We will be using radare2 for reversing 
+20:34 -!- dhir [~dhir@117.203.216.1] has quit [Ping timeout: 244 seconds]
+20:34 < PrabhanjanPM> You can clone radare2 using- git clone https://github.com/radare/radare2 
+20:35 < PrabhanjanPM> And install it using- 
+20:36 < PrabhanjanPM> cd radare2
+20:36 < PrabhanjanPM> sys/install.sh
+20:36 < PrabhanjanPM> I am assuming are of you are on linux systems
+20:36 < PrabhanjanPM> *all of you
+20:37 < Tarun> im using windows, i have given my laptop for repair
+20:38 < Rohan_> even i am on windowa
+20:38 < Rohan_> *windows
+20:38 < PrabhanjanPM> Its fine 
+20:39 < PrabhanjanPM> Ill post the disassembly of the file in the group or in a gist 
+20:40 -!- arunraj [~arun97@59.88.221.37] has quit [Ping timeout: 264 seconds]
+20:40 < PrabhanjanPM> Rest of you on linux install radare2. We will be using a pre existing utility objdump also to reverse the HelloWorld file
+20:41 -!- Nandini [~Nandini@202.144.145.5] has joined #ieee-ctf
+20:43 -!- amithmki1i [~amithmkin@117.249.151.98] has joined #ieee-ctf
+20:43 -!- Nandini [~Nandini@202.144.145.5] has quit [Read error: Connection reset by peer]
+20:43 -!- amithmki1i [~amithmkin@117.249.151.98] has quit [Client Quit]
+20:43 < PrabhanjanPM> If anybody missed whatever just happened, check this- http://pastebin.com/FRsY3AR0
+20:44 < PrabhanjanPM> Should i wait, or can we get started ?
+20:44 -!- akini [~amithmkin@117.249.151.98] has joined #ieee-ctf
+20:45 < Samvid> I guess we can get started..is there anyone else left to come?
+20:45 -!- amithmkini [~amithmkin@1.39.63.6] has quit [Ping timeout: 250 seconds]
+20:46 < PrabhanjanPM> okay cool lets get started 
+20:46 -!- akini [~amithmkin@117.249.151.98] has quit [Read error: Connection reset by peer]
+20:46 -!- Nandini [~Nandini@202.144.145.5] has joined #ieee-ctf
+20:46 -!- amithmkini [~amithmkin@117.246.185.199] has joined #ieee-ctf
+20:47 -!- dhir [~dhir@117.203.211.234] has joined #ieee-ctf
+20:48 < PrabhanjanPM> Did any of you go through the links i posted ?
+20:48 -!- akini [~amithmkin@117.246.185.199] has joined #ieee-ctf
+20:49 -!- akini [~amithmkin@117.246.185.199] has quit [Client Quit]
+20:49 -!- amithmkini [~amithmkin@117.246.185.199] has quit [Client Quit]
+20:50 -!- Nandini [~Nandini@202.144.145.5] has quit [Read error: Connection reset by peer]
+20:51 < PrabhanjanPM> So let us understand how an assembly file is executed. In the process ill explain few of the instructions also 
+20:52 -!- arunraj [~arun97@117.192.51.99] has joined #ieee-ctf
+20:53 -!- amithmkini [~amithmkin@117.219.172.139] has joined #ieee-ctf
+20:53 < PrabhanjanPM> To convert an assembly file into binary, each of the instructions in the assembly file is encoded by certain number of bytes
+20:55 -!- amithmkini [~amithmkin@117.219.172.139] has quit [Client Quit]
+20:56 -!- HoloIRCUser3 [~holoirc@117.223.38.6] has joined #ieee-ctf
+20:56 -!- HoloIRCUser3 is now known as akshayub
+20:56 < PrabhanjanPM> The instruction push rbp can be encoded as 55(decimal)
+20:57 -!- amithmkini [~amithmkin@117.219.172.139] has joined #ieee-ctf
+20:59 -!- HoloIRCUser3 [~holoirc@117.223.38.6] has joined #ieee-ctf
+20:59 < PrabhanjanPM> whoever joined late, check this out- http://pastebin.com/FVq0aFm5
+21:00 -!- akshayub [~holoirc@117.223.38.6] has quit [Read error: Connection reset by peer]
+21:00 < Rohan_> what is push rbp?
+21:00 < Rohan_> just an exampe?
+21:00 < PrabhanjanPM> push rbp is an instruction
+21:00 < PrabhanjanPM> it is encoded as 55
+21:00 -!- hdkjdb [~androirc@61.3.19.75] has joined #ieee-ctf
+21:00 < Rohan_> k
+21:01 -!- guest12345 [~androirc@61.3.19.22] has quit [Ping timeout: 244 seconds]
+21:01 -!- HoloIRCUser3 is now known as akshayub
+21:01 < PrabhanjanPM> Okay. By encoding i mean each of the instructions is assigned a number. The assembler replaces each of the instructions with their corresponding encodings(numbers)
+21:02 < PrabhanjanPM> is this clear ?
+21:02 -!- gaurab_ [~gaurab.ra@117.215.169.170] has joined #ieee-ctf
+21:02 -!- arunraj [~arun97@117.192.51.99] has quit [Ping timeout: 240 seconds]
+21:02 < Rohan_> yes
+21:02 -!- akshayub [~holoirc@117.223.38.6] has quit [Read error: Connection reset by peer]
+21:02 < ranjith> yes
+21:03 < PrabhanjanPM> When the binary file is being executed, the sequence of bits is sent to the processor 
+21:03 -!- djd [~androirc@61.3.23.221] has joined #ieee-ctf
+21:03 -!- Tarun [~IceChat9@61.3.19.22] has quit [Ping timeout: 276 seconds]
+21:03 -!- gaurab [~gaurab.ra@117.221.6.2] has quit [Ping timeout: 260 seconds]
+21:03 < PrabhanjanPM> the processor decodes the numbers into instructions
+21:03 < PrabhanjanPM> The execution of the program can happen in two ways- 
+21:04 -!- Tarun [~IceChat9@61.3.23.221] has joined #ieee-ctf
+21:04 < PrabhanjanPM> 1. The processor is hardwired, such that the hardware is capable of performing the enitre operation on its own once the instruction is decoded
+21:05 -!- hdkjdb [~androirc@61.3.19.75] has quit [Ping timeout: 260 seconds]
+21:06 -!- djd [~androirc@61.3.23.221] has left #ieee-ctf []
+21:06 -!- djd [~androirc@61.3.23.221] has joined #ieee-ctf
+21:06 < PrabhanjanPM> 2. The processor is micro programmed- the processor has a small memory which consists of set of instructions. A micro programmed processor calls the corresponding micro program(in the small memory unit) according to the decoded instruction
+21:06 < PrabhanjanPM> The first one is called the RISC architecture 
+21:07 < PrabhanjanPM> The second is the CISC architecture 
+21:07 < PrabhanjanPM> RISC- Reduced Instruction Set Computer 
+21:07 < PrabhanjanPM> CISC- Complex Instruction Set Computer 
+21:08 < PrabhanjanPM> The major difference between the two is that RISC has fixed instruction set encoding- Each instruction is assigned a 32 bit number 
+21:09 < PrabhanjanPM> CISC has variable length encoding- Instructions are assigned numbers anywhere between 7 bits to 32 bits
+21:09 < PrabhanjanPM> x86 has CISC architecture 
+21:09 < PrabhanjanPM> Any doubts ?
+21:09 < amithmkini> No
+21:10 < Rohan_> no
+21:11 < PrabhanjanPM> check this if you missed anything- http://pastebin.com/FVq0aFm5
+21:12 < PrabhanjanPM> In assembly, each instruction is of the form- opcode operand/operands(maybe 0)
+21:13 < PrabhanjanPM> opcode is a mnemonic which indicates what operation you want to perform 
+21:14 < PrabhanjanPM> operands are numbers you want to perform the operation on 
+21:14 < PrabhanjanPM> for example - 
+21:14 < PrabhanjanPM> add eax,0x200
+21:15 < PrabhanjanPM> this adds the number 512(decimal) to the number present in the register and stores the result back in eax 
+21:15 < PrabhanjanPM> *in the register eax 
+21:16 < PrabhanjanPM> Here add is the opcode 
+21:16 < PrabhanjanPM> eax and 0x200 are the operands 
+21:16 -!- arunraj [~arun97@59.88.220.90] has joined #ieee-ctf
+21:16 < PrabhanjanPM> the operands can be specified in mulitple ways
+21:17 < PrabhanjanPM> called addressing modes 
+21:18 < PrabhanjanPM> We will be following intel format in which the instructions are of this form- opcode <destination> <register>
+21:18 < PrabhanjanPM> so xor eax, ecx
+21:18 < PrabhanjanPM> will bitwise xor the numbers in eax and ecx and store it in ecx
+21:18 < PrabhanjanPM> coming back to addressing modes 
+21:19 -!- anand [~anand@61.3.23.221] has joined #ieee-ctf
+21:19 -!- anand [~anand@61.3.23.221] has quit [Client Quit]
+21:19 < PrabhanjanPM> We have immediate addressing mode 
+21:20 < PrabhanjanPM> Immediate means the number itself is present in the instruction 
+21:20 < PrabhanjanPM> Example- mov eax,0x00 -0x00 is immediate operand
+21:21 < PrabhanjanPM> Register addressing mode- The register where the number is stored is specified in the instruction
+21:21 < Rohan_> doubt
+21:21 < PrabhanjanPM> Rohan_: yah
+21:21 < PrabhanjanPM> *yeah 
+21:21 < Rohan_> why is it called destination?
+21:22 < PrabhanjanPM> I just told. The result is stored in the first operand 
+21:22 < PrabhanjanPM> so its called destination 
+21:22 < Rohan_> you said it will be stored in ecx
+21:22 < PrabhanjanPM> Oh 
+21:22 < PrabhanjanPM> Im sorry
+21:22 < Rohan_> which is the second operand !
+21:22 < Rohan_> ok cool
+21:22 < PrabhanjanPM> Thanks for pointing out the mistake 
+21:23 < PrabhanjanPM> Example- add eax,ecx- ecx and eax are both register operands
+21:24 < PrabhanjanPM> Register indirect- The register which contains the memory location of the number is specified in the instruction
+21:25 < PrabhanjanPM> Example- mov esi,[eax]- this stores the number present in the address stored in eax in the register esi
+21:25 < PrabhanjanPM> eax is a register indirect operand
+21:25 < PrabhanjanPM> Base+/-offset-
+21:26 < PrabhanjanPM> A register and an offset is used to specify the location of the number
+21:26 -!- amithmkini [~amithmkin@117.219.172.139] has quit [Read error: Connection reset by peer]
+21:26 < PrabhanjanPM> example- mov esi,[eax+0x2000]
+21:27 < PrabhanjanPM> this stores the number present in the location (number stored in eax + 0x2000) to register esi 
+21:27 < PrabhanjanPM> are we clear ?
+21:27 < arunraj> yes
+21:28 < PrabhanjanPM> okay so we'll get onto disassembling out first Hello World program 
+21:28 < PrabhanjanPM> head here- https://gist.github.com/PrabhanjanPM/2c67e31e8e8946f3192b613f67340892
+21:29 < PrabhanjanPM> Copy the content into a file and name it HelloWorld
+21:29 < PrabhanjanPM> use -file HelloWorld
+21:29 < PrabhanjanPM> Tell me what output u get 
+21:30 < PrabhanjanPM> This applies only to linux machines 
+21:31 < PrabhanjanPM> Paste of this session till 2130- http://pastebin.com/FVq0aFm5
+21:31 < PrabhanjanPM> Is anyone done 
+21:31 < PrabhanjanPM> ?
+21:32 < Rohan_> wont work in windows, right?
+21:32 -!- anand [~anand@61.3.23.221] has joined #ieee-ctf
+21:32 < PrabhanjanPM> haha no 
+21:32 < PrabhanjanPM> You can use virtual machine 
+21:33 -!- anand [~anand@61.3.23.221] has quit [Client Quit]
+21:33 < PrabhanjanPM> VMWare Player or Virtualbox are good options
+21:33 -!- amithmkini [~amithmkin@1.39.63.97] has joined #ieee-ctf
+21:33 < Samvid> HelloWorld: ASCII text - this is what i got
+21:33 < PrabhanjanPM> Samvid: try posting RAW of the file 
+21:35 < Samvid> ?
+21:35 < PrabhanjanPM> Im sorry. I  skipped a step
+21:35 < PrabhanjanPM> The file that ive uploaded is in base64 
+21:35 -!- amithmki1i [~amithmkin@1.39.63.97] has joined #ieee-ctf
+21:36 < PrabhanjanPM> we need to convert it into binary 
+21:36 < PrabhanjanPM> Use- cat HelloWorld|base64 -d>temp
+21:36 < PrabhanjanPM> mv HelloWorld temp
+21:36 < PrabhanjanPM> file HelloWorld
+21:36 < PrabhanjanPM> Whats the output now ?
+21:37 < PrabhanjanPM> *mv temp HelloWorld
+21:37 -!- amithmkini [~amithmkin@1.39.63.97] has quit [Client Quit]
+21:37 -!- amithmki1i [~amithmkin@1.39.63.97] has quit [Client Quit]
+21:38 < Samvid> got this: HelloWorld: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.24, BuildID[sha1]=c7383447a56cc761a73f2e35395ba9cd72d4c951, not stripped
+21:38 < PrabhanjanPM> Samvid: yeah
+21:38 < PrabhanjanPM> ELF means this a executable file 
+21:39 < PrabhanjanPM> The rest of the stuff indicates more information about the file 
+21:39 -!- pun [~AndChat14@117.198.119.117] has quit [Remote host closed the connection]
+21:39 < PrabhanjanPM> okay so now we run the file 
+21:39 < PrabhanjanPM> use chmod +x HelloWorld
+21:39 < PrabhanjanPM> ./HelloWorld
+21:39 < PrabhanjanPM> Try running the file without using chmod +x 
+21:39 < PrabhanjanPM> tell output 
+21:40 < Samvid> Without giving it the permission, permission denied, with permission, Hello World
+21:40 < PrabhanjanPM> Samvid: you are right 
+21:40 -!- amithmkini [~amithmkin@117.219.161.106] has joined #ieee-ctf
+21:41 < PrabhanjanPM> so the all the program does is print Hello World
+21:41 < PrabhanjanPM> Lets see what goes on actually in the processor 
+21:44 < PrabhanjanPM> use- objdump -D -M intel HelloWorld|grep -A20 \<main.
+21:44 < PrabhanjanPM> For the windows ppl, this is the output-https://gist.github.com/PrabhanjanPM/c7bd93178716c674436d54a7abc6550e
+21:45 < PrabhanjanPM> can I continue?
+21:46 < Samvid> yup
+21:46 < PrabhanjanPM> did everyone follow all the linux commands i used ?
+21:48 < PrabhanjanPM> you can go through this if you missed anything- http://pastebin.com/FVq0aFm5
+21:48 < Tarun> i have a doubt
+21:48 < PrabhanjanPM> Yes 
+21:49 < Tarun> does mv means rename ?
+21:49 < PrabhanjanPM> mv means move 
+21:49 < PrabhanjanPM> mv fileA fileB 
+21:49 < PrabhanjanPM> moves all the content of fileA to fileB
+21:49 < PrabhanjanPM> so now fileB has nothing/is not present
+21:49 < Tarun> after that when i typed file HelloWorld
+21:50 < PrabhanjanPM> is you want to keep fileB use cp fileA fileB
+21:50 < Tarun> it says cannot open helloworld
+21:50 < PrabhanjanPM> linux commands are case sensitive unlike windows 
+21:51 < PrabhanjanPM> use the exact file name uve used to save your file 
+21:51 < Tarun> ok
+21:51 < PrabhanjanPM> okay so ill quickly go through the commands
+21:51 < PrabhanjanPM> cat HelloWorld|base64 -d>temp
+21:52 < PrabhanjanPM> cat <file1> <file2> ... concatenates the contents of the files and prints it to stdout
+21:52 < PrabhanjanPM> | is called a pipe. It redirects stdout to another command
+21:53 < PrabhanjanPM> base64 -d decodes a file stored in base64
+21:53 < PrabhanjanPM> to encode, use base64 without option -d
+21:53 < PrabhanjanPM> > saves stdout to a file 
+21:54 < PrabhanjanPM> file HelloWorld displays the type of the file 
+21:54 < PrabhanjanPM> chmod +x HelloWorld is used to elevate permissions of the HelloWorld file so that it can be executed 
+21:54 < PrabhanjanPM> ./HelloWorld executes the HelloWorld file 
+21:55 < PrabhanjanPM> objdump -D -M intel HelloWorld|grep -A20 \<main. 
+21:55 < PrabhanjanPM> objdump -D <file1> is used to disassemble the file 
+21:56 < PrabhanjanPM> -M intel specifies that the output should be in intel assembly syntax
+21:56 < PrabhanjanPM> grep is used to search patterns.
+21:57 < PrabhanjanPM> grep -A20 \<main. prints the twenty lines after the regular expression <main. is found 
+21:57 < PrabhanjanPM> this is the output- https://gist.github.com/PrabhanjanPM/c7bd93178716c674436d54a7abc6550e
+21:57 < PrabhanjanPM> Any doubts ?
+21:58 -!- arunraj [~arun97@59.88.220.90] has quit [Ping timeout: 246 seconds]
+21:58 < Samvid> What do you mean by Intel assembly syntax?
+21:59 < Samvid> Assembly language syntax varies for different manufacturers?
+21:59 < PrabhanjanPM> Samvid: yes
+21:59 < PrabhanjanPM> There is AT&T syntax
+21:59 < PrabhanjanPM> that has the form- opcode register destination
+21:59 < PrabhanjanPM> example- add %eax,%ebx
+22:00 -!- arunraj [~arun97@117.192.39.180] has joined #ieee-ctf
+22:00 < PrabhanjanPM> adds numbers in the register eax and ebx and stores it in ebx 
+22:00 < PrabhanjanPM> Now we'll go through the disassembly of main 
+22:01 < PrabhanjanPM> Can anyone tell me what the first three instructions do ?
+22:01 < PrabhanjanPM> push rbp 
+22:01 < PrabhanjanPM> mov rbp,rsp
+22:01 < PrabhanjanPM> sub rsp,0x10
+22:03 < PrabhanjanPM> okay 
+22:03 -!- amithmkini [~amithmkin@117.219.161.106] has quit [Read error: Connection reset by peer]
+22:03 < PrabhanjanPM> let me explain- 
+22:03 < PrabhanjanPM> push rbp stores the number in rbp on top of the stack in RAM
+22:04 < PrabhanjanPM> mov rbp,rsp stores the number in rsp in rbp 
+22:04 -!- amithmkini [~amithmkin@117.230.70.177] has joined #ieee-ctf
+22:05 < PrabhanjanPM> sub rsp,0x10 subtracts 16(decimal) from the number stored in rsp and stores it back to rsp
+22:05 < PrabhanjanPM> So what did it achieve ?
+22:06 -!- nat96 [~nat@117.231.98.137] has joined #ieee-ctf
+22:06 < Samvid> Question, what is there initially in the rbp?
+22:07 < PrabhanjanPM> These three instructions push the base pointer of the previous instructions onto the stack and allocates 16 bytes of space for this 'main' function
+22:07 < PrabhanjanPM> Samvid: rpb stands for base pointer
+22:07 < PrabhanjanPM> so it will contain the address of the base of the stack 
+22:07 < Samvid> ah alright
+22:08 < Samvid> so we push it up, then subtract 16 giving us 16 bytes of space?
+22:08 < Rohan_> got it
+22:09 < PrabhanjanPM> Rohan_: Can you explain it to Samvid 
+22:09 < Rohan_> i think Samvid got it
+22:10 < PrabhanjanPM> So basically mov rbp,rsp pushes the base of the stack to the location just after the end of the stack of the previous function
+22:10 < PrabhanjanPM> sub rsp,0x10
+22:10 -!- amithmki1i [~amithmkin@117.230.158.18] has joined #ieee-ctf
+22:10 < PrabhanjanPM> subtracts 16 from the number stored in rsp
+22:11 < PrabhanjanPM> now this means we have 16 bytes of free space in the addresses between the locations contained in rsp,rbp
+22:12 < PrabhanjanPM> mov DWORD PTR [rbp-0x4],edi stores the number present in edi in the memory at the location rbp-0x4
+22:13 < PrabhanjanPM> DWORD PTR indicates that only one "word" of data should be accessed 
+22:13 -!- amithmkini [~amithmkin@117.230.70.177] has quit [Ping timeout: 252 seconds]
+22:13 < PrabhanjanPM> In x86 one word is usually 32bits 
+22:14 < PrabhanjanPM> *16 bits
+22:14 -!- amithmkini [~amithmkin@117.246.6.204] has joined #ieee-ctf
+22:14 < PrabhanjanPM> so DWORD PTR specifies 32 bits
+22:14 -!- amithmki1i [~amithmkin@117.230.158.18] has quit [Read error: Connection reset by peer]
+22:15 < PrabhanjanPM> mov DWORD PTR [rbp-0x4],edi stores the 32 bits of the number stored in edi in the memory location rbp-0x4
+22:15 -!- amithmki1i [~amithmkin@117.246.6.204] has joined #ieee-ctf
+22:16 < PrabhanjanPM> similarly mov QWORD PTR [rbp-0x10],rsi stores 64 bits of the number(the whole register) present in rsi in the memory location rbp-0x10
+22:16 -!- amithmki1i [~amithmkin@117.246.6.204] has quit [Client Quit]
+22:16 -!- amithmkini [~amithmkin@117.246.6.204] has quit [Client Quit]
+22:16 < PrabhanjanPM> you will encounter these two instructions again in the excercises i give 
+22:17 < PrabhanjanPM> so try to figure out what they actually imply. You can write your own C programs. Compile them and compare the assemnly
+22:17 < PrabhanjanPM> *assembly
+22:18 < PrabhanjanPM> mov edi,0x4005d4 stores the number 0x4005d4(hex number) in the register edi 
+22:19 < PrabhanjanPM> call 400410 <puts@plt> calls the function at address 400410
+22:19 < PrabhanjanPM> this function is <puts@plt>. As the name says, this prints the output to the screen
+22:20 < PrabhanjanPM> The argument to be printed is present at the location 0x4005d4. This is stored in edi so that the function <puts@plt> can access it 
+22:21 < PrabhanjanPM> mov eax 0,0
+22:21 < PrabhanjanPM> leave
+22:21 < PrabhanjanPM> ret
+22:21 < PrabhanjanPM> nop DWORD PTR [rax]
+22:21 < PrabhanjanPM> these form cleanup code 
+22:21 -!- akshayub [~akshayub@61.1.253.20] has joined #ieee-ctf
+22:21 < PrabhanjanPM> thats it for today 
+22:22 < PrabhanjanPM> you can ask doubts if you want 

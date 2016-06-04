@@ -1,0 +1,624 @@
+
+
+Session Start: Thu May 19 20:31:54 2016
+Session Ident: #ieee-ctf
+03[20:31] * Now talking in #ieee-ctf
+03[20:31] * Topic is 'Channel for IEEE Summer Project for Capture the Flag Contests'
+03[20:31] * Set by chinmay_dd!~chinmay_d@2604:a880:800:10::153:1001 on Mon May 09 17:36:58 2016
+02[20:32] * dhaval (75e92c17@gateway/web/freenode/ip.117.233.44.23) Quit (Ping timeout: 250 seconds)
+01[20:34] <nat96> Hey guys!
+[20:34] <Rohan_> hey
+01[20:34] <nat96> we'll start in another five minutes
+[20:34] <sripathi> hey
+[20:34] <arunraj> hi
+01[20:34] <nat96> all of you were able to do the sorting question?
+[20:35] <Tarun> yes
+[20:35] <akshayub> yup
+03[20:35] * amithmkini (~amithmkin@106.206.158.38) has joined #ieee-ctf
+[20:35] <arunraj> yes
+03[20:35] * yuvaraj (~yuvaraj@49.249.63.251) has joined #ieee-ctf
+[20:35] <sripathi> yes
+[20:35] <Rohan_> turns out there is an in built function for sorting lists :P
+[20:36] <Samvid> So wait, we weren't supposed to use the built-in function? :P
+[20:36] <Rohan_> i used it :P
+[20:36] <sripathi> me too
+01[20:36] <nat96> umm...whats the point of the exercise then :P
+03[20:37] * shreya (0e6050e7@gateway/web/freenode/ip.14.96.80.231) has joined #ieee-ctf
+01[20:38] <nat96> anyways please try doing it without the built in function
+[20:38] <akshayub> were you telling us to implement the different algorithms?
+[20:38] <akshayub> oh ok xD
+02[20:38] * shreya (0e6050e7@gateway/web/freenode/ip.14.96.80.231) Quit (Client Quit)
+01[20:39] <nat96> ok cool we'll start today's session
+01[20:39] <nat96> hope you guys have seen the course plan on the group
+03[20:39] * ranjith (6a3384b4@gateway/web/freenode/ip.106.51.132.180) has joined #ieee-ctf
+01[20:40] <nat96> so you'll have some idea of what is going to be done today
+01[20:41] <nat96> ok i hope all of you know what cryptography is
+01[20:41] <nat96> like have some basic idea
+01[20:41] <nat96> right? anyone who doesn't know what it is?
+01[20:43] <nat96> cryptography is basically ways to hide information or secure data
+01[20:44] <nat96> you have two basic processes generally: encryption and decryption
+01[20:44] <nat96> all of you know what that is ?
+[20:45] <gaurab> yes
+[20:45] <akshayub> yup
+[20:45] <Samvid> yup
+[20:45] <Suraj> yeah
+[20:45] <rahul_kummi> yeah
+[20:45] <amithmkini> ya
+[20:45] <ranjith> yes
+[20:45] <arunraj> yes
+[20:45] <Rohan_> encryption is converting lain text to cipher text..right?
+[20:46] <Rohan_> *plain
+[20:46] <gaurab> yep
+01[20:46] <nat96> now encryption and decryption is one part of cryptography. there is another subfield called steganography
+01[20:46] <nat96> yes rohan
+[20:46] <Rohan_> ok...cool
+01[20:46] <nat96> do you guys know what steganography is?
+03[20:46] * pun (75dd68ef@gateway/web/freenode/ip.117.221.104.239) has joined #ieee-ctf
+[20:46] <Suraj> nope
+[20:47] <akshayub> nop
+[20:47] <akshayub> *nope
+[20:47] <gaurab> nope
+[20:47] <rahul_kummi> hiding the data?
+[20:47] <swathi_s_bhat> no
+01[20:47] <nat96> rahul is right
+[20:47] <gaurab> yeah i guess something related to hiding the data
+01[20:47] <nat96> ok so the difference between encryption and steganography is 
+01[20:48] <nat96> in encryption you convert your message or data into a form which cannot be understood by others
+02[20:48] * yuvaraj (~yuvaraj@49.249.63.251) Quit (Ping timeout: 276 seconds)
+01[20:48] <nat96> but in steganography, you hide your message, the existence of your message is not known
+01[20:49] <nat96> got it?
+[20:49] <gaurab> okay
+[20:49] <Samvid> yup
+[20:49] <Rohan_> yep
+[20:49] <Suraj> got it
+[20:49] <ranjith> yes
+[20:49] <arunraj> okay
+01[20:49] <nat96> ok cool!!
+[20:49] <sripathi> okay
+[20:49] <Tarun> yes
+[20:49] <rahul_kummi> yes
+[20:49] <amithmkini> ya
+[20:50] <pun> yep
+01[20:50] <nat96> you guys might be aware of the very basic way of encrypting i.e. you map ypour characters to other characters so that when anyone tries to peek into your message ,they can't make sense of it
+01[20:50] <nat96> one example is the cipher wheel
+01[20:51] <nat96> here each character is mapped to another which is at a fixed offset from your character
+01[20:51] <nat96> example being say every character is mapped to the third character from itself
+01[20:52] <nat96> so 'a' will be mapped to 'd' and so on 
+01[20:52] <nat96> this is very easy to crack as if you can find one mapping you can get the whole message from your ciphertext
+[20:53] <gaurab> yeah
+01[20:53] <nat96> everyone understood what i mean right?
+01[20:53] <nat96> any doubts
+[20:53] <Jeshventh> Yeah
+[20:53] <akshayub> nah
+[20:53] <arunraj> no
+[20:53] <gaurab> no
+[20:53] <Suraj> no doubts chief
+[20:53] <amithmkini> no doubts..
+[20:53] <Tarun> nope
+[20:53] <sripathi> no doubts
+[20:53] <rahul_kummi> nope
+[20:53] <ranjith> no
+03[20:53] * kbhat (~kbhat@ec2-52-88-50-237.us-west-2.compute.amazonaws.com) has joined #ieee-ctf
+03[20:53] * ChanServ sets mode: +o kbhat
+[20:53] <pun> nope
+[20:53] <Rohan_> chief :P
+03[20:53] * dhaval (75e46db1@gateway/web/freenode/ip.117.228.109.177) has joined #ieee-ctf
+[20:54] <Samvid> cool
+[20:54] <Suraj> anything wrong with chief? :P
+[20:54] <Rohan_> nothing at all :P
+01[20:54] <nat96> ok so to make it more complicated you can have your own mapping defined. both you (the sender) and your friend(the reciever) are aware of the mapping
+[20:54] <gaurab> okay!
+[20:54] <akshayub> Hey someone had a doubt
+01[20:55] <nat96> sorry what was the doubt
+[20:55] <Suraj> jeshventh. i think he meant he understood
+01[20:55] <nat96> yeah :P
+[20:55] <akshayub> oh my bad sorry.
+[20:55] <Jeshventh> I bad answered the first ques
+[20:55] <Jeshventh> *had
+01[20:55] <nat96> we'll continue akshay?
+[20:56] <akshayub> yes :|
+01[20:56] <nat96> ok getting back
+[20:56] <Jeshventh> Sorry.cool
+01[20:56] <nat96> i have a question for you guys
+[20:56] <Suraj> its not your fault. if its anyones it akshay's :P
+[20:56] <akshayub> thanks suraj ... :P
+01[20:57] <nat96> how will you share this common code between you and your friend?
+01[20:57] <nat96> remotely share
+[20:57] <Rohan_> github
+01[20:57] <nat96> don't tell me you guys will meet up and shit :P
+[20:57] <Rohan_> ?
+[20:57] <Samvid> lol
+[20:57] <gaurab> yeah github
+[20:57] <gaurab> ?
+[20:58] <sripathi> maybe the first few characters sent becomes the key to solve the rest of the message
+02[20:58] * dhaval (75e46db1@gateway/web/freenode/ip.117.228.109.177) Quit (Ping timeout: 250 seconds)
+01[20:58] <nat96> it should be shared such that if anyone taps your message in between the transaction they don't get the common key
+01[20:58] <nat96> i'm calling the mapping key here
+[20:58] <Rohan_> i lost you
+01[20:59] <nat96> ok all of you familiar with alice bob and eve right?
+[20:59] <Rohan_> i am not
+[20:59] <Tarun> noo
+01[20:59] <nat96> okok
+[20:59] <Suraj> i think you mean adam? lol.
+[20:59] <Suraj> but no clue
+[20:59] <gaurab> nope
+[20:59] <Samvid> haha, the 3 characters used in teaching programming right?
+[20:59] <arunraj> no
+01[21:00] <nat96> alice is you, bob is your friend, eve is that evil guy who wants to know what alice and bob share with each other :P
+[21:00] <rahul_kummi> okay, i will share a key to the encryption with the reciever through a secret channel or a trusted channel and the message in an open one pronr to tapping
+01[21:00] <nat96> its common example in crypto
+[21:00] <Samvid> ah alright
+[21:00] <Suraj> i see.
+[21:01] <gaurab> okay!
+01[21:01] <nat96> rahul_kummi this secret channel need not always be trustworthy :P
+01[21:01] <nat96> ok guys think of basic addition operation
+01[21:02] <nat96> alice sends to bob, on the way eve looks at what is sent but he should not get the key
+[21:02] <rahul_kummi> yeah and thats there...
+01[21:02] <nat96> got the question right?
+03[21:02] * yuvaraj (~yuvaraj@49.249.63.251) has joined #ieee-ctf
+[21:03] <Rohan_> maybe the key is hidden in the message
+01[21:03] <nat96> ok look at it on a smaller scale
+[21:03] <Tarun> by hiding the key
+[21:03] <Rohan_> like the steganography thingy
+[21:03] <Tarun> steganography??
+01[21:03] <nat96> alice wants to send a number to bob,but eve should not get it
+01[21:04] <nat96> umm...not really. something on the lines of encryption
+01[21:04] <nat96> ok i'll tell you one way of doing it
+[21:04] <Rohan_> one digit at a time?
+01[21:04] <nat96> let alice and bob have their respective passwords
+01[21:04] <nat96> alice doesnt know bob's password and bob doesn't know alice's
+01[21:05] <nat96> so if alice is sending the key,she'll add her password and send it across
+[21:05] <rahul_kummi> okay run it through some sort of a equation
+01[21:05] <nat96> now even if eve sees it ,he can't find out the key
+[21:06] <rahul_kummi> known only to alice and bob
+01[21:06] <nat96> but now even bob doesn't can't get the key right cause he doesn't know alice's password
+01[21:06] <nat96> got it till here?
+[21:06] <ranjith> yes
+[21:06] <Tarun> yeah
+[21:06] <pun> yea
+[21:06] <arunraj> yes
+[21:06] <gaurab> yep
+[21:06] <Samvid> yup
+[21:06] <sripathi> yes
+[21:06] <akshayub> oh then bob sends it back with his password?
+[21:06] <akshayub> like 2 passwords?
+01[21:06] <nat96> now bob adds his password and sends it back, alice subtracts her password and the bob subtracts his
+01[21:07] <nat96> so bob gets the key
+01[21:07] <nat96> got it?
+[21:07] <ranjith> yes
+[21:07] <arunraj> yes
+[21:07] <Rohan_> no
+[21:07] <Tarun> didnt get the last part
+[21:07] <gaurab> didnt get
+[21:08] <Rohan_> bob subtrats the password ,sends it to alice and then what?
+01[21:08] <nat96> no wait
+01[21:08] <nat96> bob added his password correct
+[21:08] <Rohan_> yes
+01[21:08] <nat96> now the message has key+alice_pass+bob_pass
+01[21:08] <nat96> correct?
+[21:08] <Tarun> yea
+[21:08] <gaurab> yes
+[21:08] <Rohan_> yes
+01[21:08] <nat96> this goes to alice
+[21:09] <Suraj> so doesnt alice have to send it again to bob?
+01[21:09] <nat96> she subtracts her password
+[21:09] <Suraj> right
+[21:09] <gaurab> okay okay got it
+01[21:09] <nat96> now message is key+bob_pass
+[21:09] <gaurab> :P
+[21:09] <Rohan_> oh..ok
+[21:09] <Tarun> got it
+01[21:09] <nat96> undertanding the happening? :P
+[21:09] <gaurab> yeah
+01[21:09] <nat96> *understanding
+[21:09] <Rohan_> yes
+[21:09] <arunraj> yes
+[21:09] <Suraj> yesh chief
+01[21:10] <nat96> awesome!
+01[21:10] <nat96> now all the methods we have seen, each character has a unique mapping
+[21:10] <rahul_kummi> yes
+[21:11] <sripathi> basically there are two keys to the same lock?
+01[21:11] <nat96> that is all 'a' in the message will be written as say 'e', all the 'h' will be written as say 'g' or something like that
+01[21:12] <nat96> now this is easy to crack, cause once you know the mapping you just replace all 'e' with 'a', all 'g' with 'h'.....and so on
+01[21:12] <nat96> now comes the concept of one time pad to solve this
+01[21:12] <nat96> anyone know what that is?
+[21:12] <gaurab> no
+[21:13] <sripathi> no
+[21:13] <Samvid> nope
+[21:13] <rahul_kummi> no
+[21:13] <Rohan_> i dont
+[21:13] <arunraj> no
+[21:13] <ranjith> no
+[21:13] <pun> maximum number of chars is probably mapped to e?
+01[21:13] <nat96> yeah punit
+01[21:13] <nat96> that's frequency analysis
+01[21:14] <nat96> but that's not what one time pad is :P
+[21:14] <pun> ah ok
+[21:14] <Tarun> every message is mapped differently
+[21:14] <Tarun> ??
+01[21:15] <nat96> ok like punit said, if you perform a frequency analysis of your ciphertext you'll see that some characters appear very frequently 
+[21:15] <akshayub> so whats time pad?
+01[21:15] <nat96> it is known that e is most frequently used so you can map this charcter from your ciphertext to e
+01[21:15] <nat96> just a second akshay
+01[21:16] <nat96> and tarun yes that is what one time pad essentially does
+01[21:16] <nat96> everyone got this frequency thing right?
+[21:16] <rahul_kummi> yeah
+[21:16] <sripathi> explain it once again pls
+[21:16] <ranjith> ciphertext is the original message?
+01[21:16] <nat96> sripathi: frequency analysis?
+[21:16] <gaurab> yeah the frequescy analysis
+[21:17] <gaurab> please explain again
+01[21:17] <nat96> no no plaintext is original
+01[21:17] <nat96> ranjith ciphertext is the encrpted message
+[21:17] <sripathi> time pad
+01[21:17] <nat96> just a second sripathi, let me clear gaurab's doubt
+01[21:17] <nat96> ok gaurab
+[21:18] <gaurab> yeah
+[21:18] <rahul_kummi> i have a doubt: how do we analyse the language the text is sent in the first place to apple frequency analysis
+[21:18] <rahul_kummi> *apply
+[21:18] <rahul_kummi> my bad
+02[21:19] * Suraj (~IceChat78@1.39.21.235) Quit (Ping timeout: 260 seconds)
+01[21:19] <nat96> rahul: all are characters right? just perform a simple find in text, and see how many times the character appears
+[21:19] <gaurab> okay i got it!
+03[21:19] * Suraj (~IceChat78@117.192.193.33) has joined #ieee-ctf
+01[21:20] <nat96> accha ok 
+[21:20] <akshayub> to do that search, shouldnt every character be in a particular unicode?
+01[21:20] <nat96> so now sripathi
+[21:20] <akshayub> @nat
+[21:20] <Rohan_> but that may be wrong
+[21:20] <rahul_kummi> okay just observing the frequency of occurance?
+01[21:20] <nat96> yeah
+[21:20] <ranjith> how do we first convert plaintext to ciphertext?
+01[21:21] <nat96> it's just a probablity that the most frequent occuring charcter is e
+01[21:21] <nat96> ok rohan? 
+[21:21] <Rohan_> e is the most commony used letter on an average...but a message may not hve e as the most frequent char
+[21:21] <Rohan_> oh ..ok
+[21:21] <Rohan_> carry on...got it
+01[21:21] <nat96> cool
+01[21:22] <nat96> now one time pad
+01[21:22] <nat96> what you do here is you have say a set of numbers which is the size of your message
+01[21:22] <nat96> simple way consider an array of n numbers
+01[21:22] <nat96> where n is size of message
+01[21:22] <nat96> ok?
+[21:22] <gaurab> okay
+[21:23] <sripathi> ok
+[21:23] <arunraj> ok
+[21:23] <rahul_kummi> okay
+01[21:23] <nat96> generate these numbers randomly
+[21:23] <rahul_kummi> okay
+01[21:24] <nat96> so i have a set of randomly generated numbers which i call my one time pad
+[21:24] <gaurab> okay
+01[21:24] <nat96> one time because i don't want to use the same set again and again for security sake
+01[21:25] <nat96> now add say the ascii values of each charcter in your message to the corresponding number in your array
+03[21:25] * PrabhanjanPM (~prabhanja@117.192.198.201) has joined #ieee-ctf
+01[21:26] <nat96> convert these numbers that you get back to the characters and you will get your ciphertext
+[21:26] <Rohan_> ok
+[21:26] <sripathi> ok
+[21:26] <gaurab> okay
+[21:26] <arunraj> ok
+01[21:26] <nat96> so one character need not be mapped to the same character in your ciphertext
+03[21:26] * amithmki1i (~amithmkin@117.235.44.215) has joined #ieee-ctf
+02[21:26] * amithmkini (~amithmkin@106.206.158.38) Quit (Ping timeout: 276 seconds)
+01[21:27] <nat96> if you do frequency analysis here it will fail
+[21:27] <gaurab> got it
+[21:27] <sripathi> now suppose i do frequency analysis?
+01[21:27] <nat96> yeah sripathi, you might get some character which occurs most freuqently
+[21:27] <Rohan_> e can be encoded as any alphabet now
+01[21:28] <nat96> but that's not necessarily 'e'
+[21:28] <Rohan_> yes
+01[21:28] <nat96> cause all 'e' are not the same character
+01[21:28] <nat96> got it?
+01[21:28] <nat96> everyone understood?
+[21:28] <Tarun> yes
+[21:28] <pun> yea
+[21:28] <arunraj> yes
+[21:28] <Samvid> yes
+[21:29] <sripathi> yes
+[21:29] <Suraj> yes
+[21:29] <akshayub> yes
+[21:29] <rahul_kummi> yeah
+01[21:30] <nat96> so that is one time pad
+[21:30] <amithmki1i> ya
+02[21:30] * amithmki1i (~amithmkin@117.235.44.215) Quit (Client Quit)
+01[21:31] <nat96> now you can think of your one time pads as images, each pixel has some rgb value which will act as your Random number array
+[21:31] <Rohan_> how to decrypt this?
+01[21:31] <nat96> yeah to decrpyt you need to know the one time pad
+03[21:31] * amithmkini (~amithmkin@117.235.44.215) has joined #ieee-ctf
+01[21:31] <nat96> i.e. the number array
+01[21:31] <nat96> just do reverse
+01[21:32] <nat96> now to share this array you can probably use the adding password technique that we saw earlier
+01[21:32] <nat96> cool rohan?
+[21:32] <Rohan_> k..one the array is known..its done
+01[21:32] <nat96> yes!!!!
+[21:32] <Rohan_> cool
+01[21:33] <nat96> now later you guys will learn about rsa and stuff where even this issue is solved. there is no single key and all. you'll learn that later
+[21:33] <rahul_kummi> reverse the rgb?
+[21:33] <sripathi> to send our messages can we send the key and the ciphertext along different channels?
+01[21:34] <nat96> you could. why not? channel doesn't matter as long as alice and bob can communicate securelt
+01[21:34] <nat96> *securely
+[21:34] <rahul_kummi> @nat
+01[21:34] <nat96> yes?
+[21:34] <rahul_kummi> reverse what?
+[21:35] <rahul_kummi> the rgb of the pixels solves for the time pad
+[21:35] <Rohan_> the encoding process
+[21:35] <rahul_kummi> the random array?
+01[21:35] <nat96> rahul to get your plaintext i.e. you message from the ciphertext, you just subtract your one time pad
+01[21:35] <nat96> that's what i meant by reverse, basically go ulta
+01[21:35] <nat96> :P
+[21:35] <rahul_kummi> haha okay
+01[21:36] <nat96> rgb values is just another way of getting your one time pad
+01[21:36] <nat96> instead of generating random numbers, you can use an image
+01[21:36] <nat96> this image is known to both alice and bob
+01[21:37] <nat96> now you'll be learning about hashing and number systems
+01[21:38] <nat96> are you readyyyyy? :P
+[21:38] <arunraj> yes
+[21:38] <Rohan_> hopefully :P
+[21:38] <Samvid> yeaahhhhh bring it onnn
+[21:38] <yuvaraj> Hii guys
+01[21:38] <nat96> hahaha chill. it's fun :P
+[21:39] <yuvaraj> You'll learn about hashng and encryption later
+[21:39] <sripathi> ssup
+[21:39] <yuvaraj> let's now discuss abt number system
+[21:40] <yuvaraj> i suppose all know what decimal number system and binary number system
+[21:40] <Rohan_> yes
+[21:40] <ranjith> yes
+[21:40] <arunraj> yes
+[21:40] <sripathi> yes
+[21:41] <yuvaraj> also similar to that there are octal and hexadecimal number systems.
+[21:41] <yuvaraj> is there anyone doesn't know about them??
+[21:44] <yuvaraj> okk in decimal system numbers are represented by digits 0 to 9
+[21:44] <yuvaraj> in binary 0 to 2
+[21:44] <yuvaraj> similar to above two
+[21:45] <yuvaraj> in octal 0 to 7
+[21:45] <yuvaraj> but in hexadecimal its not from 0 to 15
+[21:46] <yuvaraj> to represent 10 we use 'a', 'b' to 12
+[21:46] <rahul_kummi> 0-9+a-f
+02[21:46] * gaurab (~gaurab.ra@117.241.1.67) Quit (Ping timeout: 246 seconds)
+[21:46] <yuvaraj> rahul: exactly
+[21:46] <yuvaraj> so on till 'f' to 15
+02[21:46] * arunraj (~arun97@117.192.57.28) Quit (Ping timeout: 260 seconds)
+[21:47] <yuvaraj> did everyone understand??
+[21:47] <pun> yea
+[21:47] <ranjith> yes
+[21:47] <Rohan_> yes
+[21:47] <Tarun> yes
+[21:47] <sripathi> yes
+[21:47] <yuvaraj> Now lets discuss conversions
+02[21:47] * nandini (~Nand@182.48.233.25) Quit (Ping timeout: 252 seconds)
+[21:48] <yuvaraj> does everyone know how to convert decimal to binary and viceversa??
+[21:48] <amithmkini> ya
+[21:48] <Tarun> yes
+[21:48] <yuvaraj> OK....Cool
+[21:48] <akshayub> yep
+03[21:49] * arunraj (~arun97@59.88.221.95) has joined #ieee-ctf
+[21:49] <Suraj> yup
+[21:49] <yuvaraj> similarly to convert decimal to octal and hexadecimal, we just divide number with 8 and 16 respectively instead of 2
+[21:50] <yuvaraj> and in conversion of octal or hexadecimal to decimal, we use 8 or 16 to multiply digits instead of 2
+[21:51] <yuvaraj> do i need to elaborate??
+[21:51] <yuvaraj> or everyone undersood??
+[21:51] <yuvaraj> understood*
+[21:51] <Rohan_> understood
+[21:51] <amithmkini> ya understood..
+[21:51] <arunraj> understood
+[21:51] <sripathi> understood
+[21:52] <ranjith> yes
+[21:52] <yuvaraj> Does anyone know conversions for binary to octal and hexadecimal??
+02[21:52] * rahul_kummi (~Rahul@117.249.151.227) Quit (Ping timeout: 250 seconds)
+[21:52] <Tarun> yes
+[21:52] <arunraj> yes
+[21:52] <Rohan_> yep
+[21:53] <yuvaraj> Is there anyone who doesn't know??
+[21:54] <pun> i dont
+[21:54] <yuvaraj> well..ok then
+[21:54] <yuvaraj> alright
+[21:55] <yuvaraj> in conversion from binary to octal
+[21:55] <yuvaraj> add sufficient 0's to ur binary number to make it a multiple of three
+[21:56] <yuvaraj> like if ur number is 1011
+[21:56] <yuvaraj> then make it 001 011
+[21:57] <yuvaraj> now divide number into groups of three digits
+[21:57] <yuvaraj> like 001|011
+[21:57] <pun> so its 1|3 in octal?
+[21:58] <yuvaraj> now we know 011 is 3 and 001 is 1
+03[21:58] * nandini (~Nand@182.48.232.26) has joined #ieee-ctf
+[21:58] <yuvaraj> so number in octal is 13
+[21:58] <yuvaraj> pun: clear
+[21:58] <pun> yep
+[21:59] <yuvaraj>  to convert from octal to binary
+02[21:59] * amithmkini (~amithmkin@117.235.44.215) Quit (Read error: Connection reset by peer)
+[21:59] <yuvaraj> if ur number is 13
+03[22:00] * amithmkini (~amithmkin@117.249.236.169) has joined #ieee-ctf
+[22:00] <yuvaraj> then represent 3 in binary and make it into 3 digits
+[22:00] <yuvaraj> 3 as 011
+[22:00] <yuvaraj> then 1 as 001
+[22:00] <yuvaraj> now join and u have binary number 1011
+[22:01] <yuvaraj> is it clear??
+[22:01] <ranjith> yes
+[22:01] <arunraj> yes
+[22:01] <Suraj> yes chief
+[22:01] <Rohan_> yes
+[22:01] <Samvid> yup
+[22:01] <yuvaraj> similarly in conversion of binary to hexadecimal
+03[22:02] * gaurab (~gaurab.ra@117.241.1.67) has joined #ieee-ctf
+[22:02] <pun> yea got it
+[22:02] <yuvaraj> divide number into group of 4 digits
+[22:03] <yuvaraj> now conversion of octal to hexadecimal??
+[22:03] <yuvaraj> does everyone know it??
+[22:03] <Tarun>      yes
+[22:04] <pun> yea got it
+[22:04] <yuvaraj> please say no if anyone doesn't know or has doubts
+[22:05] <amithmkini> got it
+[22:05] <sripathi> no
+[22:06] <yuvaraj> Sripathi: octal to hexadecimal ?? or u have doubt
+[22:06] <ranjith> i don't know octal to hexadecimal
+[22:06] <sripathi> octal to hexadecimal
+[22:07] <yuvaraj> okk
+02[22:08] * amithmkini (~amithmkin@117.249.236.169) Quit (Read error: Connection reset by peer)
+[22:08] <yuvaraj> sorry for confusing
+03[22:08] * amithmkini (~amithmkin@117.231.171.104) has joined #ieee-ctf
+[22:09] <yuvaraj> there doesn't exist a shortcut method for it
+[22:09] <yuvaraj> as above ones
+[22:09] <yuvaraj> just convert it to binary and then hexadecimal
+[22:10] <yuvaraj> hope it is clear
+[22:10] <ranjith> ok
+[22:10] <sripathi> yes
+[22:11] <yuvaraj> now we want all of u to write python script to convert from decimal to all these systems and binary to remaining number systems
+02[22:11] * amithmkini (~amithmkin@117.231.171.104) Quit (Read error: Connection reset by peer)
+[22:11] <yuvaraj> and push it to repo that u have created in the previous session
+[22:11] <Tarun> without using built in functions?
+[22:12] <yuvaraj> Yep
+[22:12] <sripathi> thts it for today?
+03[22:12] * amithmkini (~amithmkin@117.246.255.122) has joined #ieee-ctf
+[22:12] <Tarun> ok
+[22:12] <yuvaraj> nope
+[22:12] <akshayub> convert  to binary without built in functions?
+[22:12] <yuvaraj> not only binary but also remaining ones
+[22:13] <yuvaraj> if still u have any doubts u can contact any of the mentors
+03[22:13] * rahul_kummi (~Rahul@117.250.136.2) has joined #ieee-ctf
+[22:13] <yuvaraj> or u can go through http://www.tutorialspoint.com/computer_logical_organization/number_system_conversion.htm
+03[22:14] * amithmki1i (~amithmkin@117.246.255.122) has joined #ieee-ctf
+[22:14] <PrabhanjanPM> We'll start off with hashing vs encryption? or do you guys need a break ?
+02[22:14] * amithmkini (~amithmkin@117.246.255.122) Quit (Client Quit)
+02[22:14] * amithmki1i (~amithmkin@117.246.255.122) Quit (Client Quit)
+03[22:14] * amithmkini (~amithmkin@117.246.255.122) has joined #ieee-ctf
+[22:16] <Samvid> We'll carry on?
+02[22:16] * amithmkini (~amithmkin@117.246.255.122) Quit (Read error: Connection reset by peer)
+[22:16] <sripathi> lets finish it off
+03[22:17] * Jeshventh_ (6a331b9e@gateway/web/freenode/ip.106.51.27.158) has joined #ieee-ctf
+02[22:17] * arunraj (~arun97@59.88.221.95) Quit (Ping timeout: 276 seconds)
+02[22:18] * PrabhanjanPM (~prabhanja@117.192.198.201) Quit (Ping timeout: 246 seconds)
+03[22:20] * PrabhanjanPM (~prabhanja@59.93.77.13) has joined #ieee-ctf
+02[22:20] * Jeshventh (6a331b9e@gateway/web/freenode/ip.106.51.27.158) Quit (Ping timeout: 250 seconds)
+03[22:21] * nan971 (~Nand@182.48.232.26) has joined #ieee-ctf
+02[22:21] * nandini (~Nand@182.48.232.26) Quit (Ping timeout: 260 seconds)
+03[22:22] * nandini (~Nand@182.48.232.26) has joined #ieee-ctf
+02[22:23] * Suraj (~IceChat78@117.192.193.33) Quit (Ping timeout: 240 seconds)
+[22:26] <Tarun> shall we start??
+[22:26] <rahul_kummi> yes
+[22:26] <PrabhanjanPM> Okay cool
+[22:26] <PrabhanjanPM> So, you might have used your credit card to buy stuff online.
+[22:27] <PrabhanjanPM> You enter your card number and pin in the browser.
+[22:27] <Rohan_> yes
+[22:27] <PrabhanjanPM> Now how do you make sure that the merchant(the guy you're paying) doesnt misuse this info
+[22:28] <rahul_kummi> OTP
+[22:28] <PrabhanjanPM> okay.
+03[22:29] * Suraj (~IceChat78@117.192.193.33) has joined #ieee-ctf
+[22:29] <PrabhanjanPM> Let me give another example
+03[22:29] * arunraj (~arun97@117.192.45.191) has joined #ieee-ctf
+[22:30] <PrabhanjanPM> The gmail database contains your usename and password. So that data can be comprimised or accessed by Google itself, right?
+[22:31] <gaurab> yeah
+[22:31] <akshayub> yes
+[22:31] <Samvid> The passwords are encrypted in such a way that they cannot be decrypted?
+[22:31] <arunraj> yes
+[22:31] <rahul_kummi> yes
+[22:32] <Samvid> And whenever we enter the password, it is enrypted with the same algorithm and it is checked if the ciphers match?
+[22:32] <PrabhanjanPM> Samvid: you're right!
+[22:32] <PrabhanjanPM> We refer to this kind of 'encryption' as hashing
+[22:33] <sripathi> do they use fourier series to encrypt it
+[22:34] <PrabhanjanPM> sripathi: No :P
+[22:34] <pun> the algorithm used to encrypt is a one time one? or is it the same everytime?
+[22:34] <PrabhanjanPM> Fourier series is a completely different
+[22:34] <PrabhanjanPM> pun: I will explain
+[22:35] <PrabhanjanPM> So basically a hash is a one way function.
+[22:36] <PrabhanjanPM> for example if X is the input to the hash f() which produces an output y,then it is computationally infeasible to obtain a f^-1()
+[22:36] <PrabhanjanPM> such that f^-1(y)=X
+[22:36] <akshayub> computationally infeasible?
+[22:36] <akshayub> meaning?
+[22:36] <PrabhanjanPM> akshayub: good question
+[22:37] <akshayub> its theoretically possible to get it back?
+[22:37] <rahul_kummi> does that mean there is a way but thats infeasible
+[22:37] <rahul_kummi> ?
+[22:37] <PrabhanjanPM> theoritically yes. given enough time and resources, we can reverse it
+[22:38] <PrabhanjanPM> how many of you know an algorithm to calculate the prime factors of a number ?
+[22:38] <PrabhanjanPM> okay. what are the prime factors of 24?
+[22:38] <gaurab> me
+[22:39] <Rohan_> 2 and 3
+[22:39] <gaurab> 2,3
+[22:39] <arunraj> 2,3
+[22:39] <PrabhanjanPM> so all of you know how to calculate the prime factors of a number.
+[22:39] <gaurab> yep
+[22:40] <PrabhanjanPM> But right now prime factorisation is one of the hardest problems that we face.
+[22:40] <PrabhanjanPM> When the algorithm is so simple, then why is it hard to factorise large numbers (especially ones with large prime factors)?
+[22:41] <akshayub> takes a lot of time?
+[22:41] <PrabhanjanPM> well. yes.
+[22:41] <PrabhanjanPM> takes a lot of time and resources
+[22:42] <PrabhanjanPM> even though the function(of finding prime factors) is quite simple, we dont have any efficient algorithms to implement that function
+[22:44] <sripathi> isnt that a 0(root n) problem..so doesnt it take less time?
+[22:44] <PrabhanjanPM> We say that finding prime factors of a large number is computationally infeasible.
+[22:45] <PrabhanjanPM> sripathi: we measure the time complexity in terms of size of the input and not its value
+[22:45] <sripathi> oh okay
+03[22:46] * AndChat|740025 (~AndChat74@117.241.1.67) has joined #ieee-ctf
+[22:47] <PrabhanjanPM> as in if 100000000 is the input, then its of size 9. size!=256 which is the value of the number
+02[22:48] * AndChat|740025 (~AndChat74@117.241.1.67) Quit (Client Quit)
+[22:48] <PrabhanjanPM> Okay so back to hashing vs encryption, do you guys still have any doubts regarding "computationally infeasible" ?
+[22:48] <rahul_kummi> no
+[22:48] <arunraj> no
+[22:48] <gaurab> no
+22:50 < PrabhanjanPM> Now we know that our passwords, pin numbers and other sensitive information is hashed and then stored in the databases
+22:50 -!- nandini [~Nand@182.48.232.26] has quit [Ping timeout: 240 seconds]
+22:50 -!- nan971 [~Nand@182.48.232.26] has quit [Ping timeout: 240 seconds]
+22:50 < PrabhanjanPM> Do you know any other applications of hashes? 
+22:50 < Tarun> indexing
+22:51 < PrabhanjanPM> Tarun: can you elaborate?
+22:52 < Samvid> To generate checksums?
+22:52 < Tarun> it can be used to search for something as searching using indexing is faster and efficient
+22:52 < sripathi> i guess there is something called MD5 hashing in messaging
+22:52 -!- nat96 [nat96@117.192.56.231] has quit [Ping timeout: 240 seconds]
+22:52 < Rohan_> while sharing files on a LAN i get the message hashing files
+22:52 < Rohan_> files can be shared without hashing
+22:53 < Rohan_> *cant
+22:53 -!- nat96 [~nat@117.230.86.60] has joined #ieee-ctf
+22:55 -!- AndChat|740025 [~AndChat74@117.241.1.67] has joined #ieee-ctf
+22:55 -!- AndChat|740025 [~AndChat74@117.241.1.67] has quit [Client Quit]
+22:56 -!- nat96 [~nat@117.230.86.60] has quit [Client Quit]
+22:56 < PrabhanjanPM> Tarun: That is a hash table. Quite different 
+22:57 < Tarun> oh okay
+22:58 < PrabhanjanPM> MD5 is a kind of a hash. Hashes aren't used to share files
+22:58 < PrabhanjanPM> They are used to verify shared files
+22:58 < sripathi> okay
+22:59 < Rohan_> hmm..makes sense
+22:59 < akshayub> I didn't get the indexing part
+22:59 < PrabhanjanPM> Hash is a many to one function
+22:59 < PrabhanjanPM> akshayub: Ull have data structures next semester 
+22:59 -!- nan971 [~Nand@182.48.232.26] has joined #ieee-ctf
+22:59 -!- nandini [~Nand@182.48.232.26] has joined #ieee-ctf
+23:00 < PrabhanjanPM> A hashtable is a data structure
+23:02 < PrabhanjanPM> So if hash function is many to one, isnt security comprimised?
+23:06 -!- rahul_kummi [~Rahul@117.250.136.2] has left #ieee-ctf ["Leaving"]
+23:08 < Rohan_> if hashed data cant be decrypted...then it wont be an issue right?
+23:09 < arunraj> it is difficult to reconstruct input values just by knowing the stored hash values
+23:09 < pun> it seems as though 2 plaintexts can have the same cipher texts so there are technically 2 or more passwords instead of one right?
+23:09 < PrabhanjanPM> pun : no
+23:09 < PrabhanjanPM> 2 or more passwords have the same hash
+23:10 < PrabhanjanPM> This is not much of a concern, as even a small change in the input introduces drastic changes in the output
+23:11 < PrabhanjanPM> So it would be hard to find the input which gives the same hash
+23:11 < Rohan_> but why is it many to one
+23:12 < PrabhanjanPM> We call such inputs- collisions
+23:12 < PrabhanjanPM> Rohan_: consider the verifying of files using hashes. 
+23:13 < PrabhanjanPM> We hash the file and send that hash for verification. Since hash is many to one, the size of the hash is much smaller than the size of the file
+23:15 < Rohan_> how does that affect the size...didnt get u
+23:15 -!- akshayub [~Akshay@61.1.239.37] has quit [Quit: Leaving]
+23:16 < PrabhanjanPM> Rohan_: Say the file has size- X bits
+23:16 < PrabhanjanPM> so it can have 2^X values. 
+23:17 -!- nan971 [~Nand@182.48.232.26] has quit [Ping timeout: 246 seconds]
+23:17 -!- nandini [~Nand@182.48.232.26] has quit [Ping timeout: 246 seconds]
+23:17 < ranjith> if there are 10 passwords encrypted into 5 hashes, and first and last passwords' hashes are same. does that mean i can login using any of the two passwords?
+23:17 < PrabhanjanPM> The hash function maps these 2^X values to say 2^N values
+23:18 < PrabhanjanPM> such that 4 of the files are mapped to the same hash
+23:18 < Rohan_> oh....got it
+23:18 -!- akshayub [~Akshay@61.1.239.37] has joined #ieee-ctf
+23:18 < PrabhanjanPM> So in this case N=X-2 
+23:19 < PrabhanjanPM> So the hash has lesser size than the file
+23:19 < PrabhanjanPM> ranjith: yes
+23:19 < PrabhanjanPM> But this is highly improbable
+23:20 < PrabhanjanPM> Any more doubts?
+23:20 < arunraj> no
+23:21 < ranjith> i didnt understand how security is compromised
+23:21 < PrabhanjanPM> More about it here- http://stackoverflow.com/questions/4948322/fundamental-difference-between-hashing-and-encryption-algorithms
+23:21 < PrabhanjanPM> ranjith: The security is not really "comprimised". 
+23:22 < PrabhanjanPM> But if there is a large number of passwords but a small hash size is chosen, then the chances of collision are high
+23:22 < PrabhanjanPM> So the hashes are always chosen to be large enough to avoid this situation 
+23:23 < ranjith> okay
+23:23 < PrabhanjanPM> Okay guys, thats it for today ! 
+23:24 -!- swati [~swati@59.93.238.52] has quit [Ping timeout: 276 seconds]
+23:24 < PrabhanjanPM> Have a goodnight
+

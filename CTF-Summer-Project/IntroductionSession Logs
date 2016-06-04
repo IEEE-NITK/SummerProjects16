@@ -1,0 +1,302 @@
+17:44 -!- PrabhanjanPM changed the topic of #ctf-ieee to: Introduction Session at 1900 hours- IEEE Summer Project 2016:CTF
+18:55 < Prabhanjan> Hi all 
+18:56 < tarun> HI
+18:56 < RohanSurve> hello
+18:56 < Arunraj> hi
+18:56 < Shreya> hi
+18:56 < Samvid> hey
+18:56 < arvind> hello!
+18:56 < jeshventh> hi
+18:56 < swati> hello
+18:56 < pun> hello
+18:56 < Swathi_s_97> hi
+18:56 < Prabhanjan> Check out basic IRC commands here 
+18:56 < Prabhanjan> http://www.ircbeginner.com/ircinfo/ircc-commands.html
+18:58 < Sreeps> hello
+18:58  * RohanSurve is awesome
+18:59 -!- Suraj [~IceChat78@59.93.77.45] has joined #ctf-ieee
+18:59  * RohanSurve is trying out irc commands
+19:00 < natasha96> hey guys! let's just wait for some more time. i think some people are yet to join
+19:00 -!- swati [~swati@14.99.117.188] has quit [Ping timeout: 240 seconds]
+19:00 -!- DHIR [~DHIR@117.203.210.148] has joined #ctf-ieee
+19:01 < natasha96> and rohansurve? what exactly are you upto :P
+19:01 -!- dhaval [40e9adc5@gateway/web/freenode/ip.64.233.173.197] has joined #ctf-ieee
+19:02 -!- swati [~swati@14.99.117.188] has joined #ctf-ieee
+19:02 -!- DHIR [~DHIR@117.203.210.148] has quit [Client Quit]
+19:02 < Shreya> why r people quitting?
+19:02 -!- nan97 [~Nand@14.97.99.159] has joined #ctf-ieee
+19:02 < Prabhanjan> Net is bad xP
+19:03 -!- DHIR [~DHIR@117.203.210.148] has joined #ctf-ieee
+19:03 < Shreya> lol okay
+19:05 -!- Prabhanjan [~Prabhanja@49.200.215.207] has quit [Quit: Bye]
+19:05 <@PrabhanjanPM> We'll start around 7.10 ?
+19:05 < tarun> okay
+19:06 < natasha96> yeah 7:10
+19:07 < Sreeps> cool
+19:08 < natasha96> all of you are new to irc?
+19:08 < RohanSurve> i am
+19:08 < Shreya> me too
+19:08 < Arunraj> yes
+19:08 < Samvid> used it once or twice before thats all
+19:08 < nan97> yes
+19:08 < Suraj> new
+19:09 < tarun> yes
+19:09 < Swathi_s_97> new
+19:09 < ranjith> yes
+19:09 < natasha96> haha ok cool!
+19:09 < Sreeps> used it once before
+19:09 < akshayub> new-bie here :p
+19:09 -!- dhaval_ [75e43f2d@gateway/web/freenode/ip.117.228.63.45] has joined #ctf-ieee
+19:11 <@PrabhanjanPM> Get used to it today. We'll have all further sessions on IRC oly.  
+19:11 <@PrabhanjanPM> You can all try stuff like RohanSurve xP
+19:12 -!- Arun97 [~Arunraj97@117.192.43.147] has joined #ctf-ieee
+19:12 -!- dhaval [40e9adc5@gateway/web/freenode/ip.64.233.173.197] has quit [Ping timeout: 250 seconds]
+19:12 <@PrabhanjanPM> Anwyay guys, lets get started!
+19:14 -!- Arunraj [~Arunraj97@117.192.43.147] has quit [Ping timeout: 240 seconds]
+19:14 < natasha96> ok guys just introduce yourselves, we can see only nicknames so:P
+19:14 -!- nan97 is now known as nandini97
+19:14 < natasha96> name branch and why ctf perhaps? :P
+19:15  * Sreeps is Sripathi.M , ECE
+19:15 < pun> Puneet U here! computer science branch :)
+19:15 < Suraj> suraj IT. 
+19:15 < Swathi_s_97> swathi here.IT
+19:15 < Samvid> Samvid, CSE! :)
+19:15 < Arun97> Arunraj here CSE 
+19:15 < ranjith> Ranjith here, CSE
+19:15 < jeshventh> jeshventh comp science
+19:15 < akshayub> Akshay here, IT
+19:15 < Shreya> Shreya here - IT
+19:15 < nandini97> Nandini EC
+19:15 < DHIR> Rajeswari Dhir. EEE
+19:15 < swati> Swati here. Information Technology.
+19:16 < tarun> Tarun EEE
+19:16 < amithmkini> Amith here, from IT
+19:16 < arvind> arvind here, CSE
+19:16  * RohanSurve ECE
+19:17 < natasha96> ok i am natasha from comp science
+19:17 <@PrabhanjanPM> Im Prabhanjan Mannari- ECE 
+19:19 <@PrabhanjanPM> Ok so how many of you know about CTF ?
+19:20 -!- dhaval_ [75e43f2d@gateway/web/freenode/ip.117.228.63.45] has quit [Ping timeout: 250 seconds]
+19:20 < natasha96> guys??? anyone?
+19:20 < RohanSurve> a little bit
+19:21 -!- amithmkini [~amithmkin@106.206.148.61] has quit [Read error: Connection reset by peer]
+19:21 < natasha96> ok we are taking that as a no from everyone
+19:21 <@PrabhanjanPM> RohanSurve: Tell us about it 
+19:21 < Sreeps> i have heard of it..better if u could give a comprehensive intro of it
+19:21 < pun> heard of it.
+19:21 <@PrabhanjanPM> OK. So CTF stands for Capture The Flag
+19:21 < RohanSurve> i believe it consists of information security competitions
+19:22 -!- amithmkini [~amithmkin@117.250.201.37] has joined #ctf-ieee
+19:23 <@PrabhanjanPM> CTF's are security competitions, in which you'll have to retrieve flags. Flags are usually strings of the form flag{'string'}
+19:24 <@PrabhanjanPM> There are mainly two styles of CTF- Jeopardy and Attack Defense
+19:25 <@PrabhanjanPM> In Jeopardy, you'll be given challenges from various categoried such as Crypto, Web, Reversing, Recon, Pwning
+19:26 <@PrabhanjanPM> In attack-defense, the participants are assigned computers running vulnerable services. 
+19:26 -!- DHIR [~DHIR@117.203.210.148] has quit [Ping timeout: 265 seconds]
+19:27 <@PrabhanjanPM> So each team has to attack other teams' services to get flags and patch their own services to prevent others from getting their flags
+19:27 -!- DHIR [~DHIR@59.93.129.31] has joined #ctf-ieee
+19:27 <@PrabhanjanPM> Do you guys have any questions ?
+19:27 < Suraj> so far so good
+19:27 < Sreeps> so far so good
+19:27 < ranjith> nope
+19:27 < Samvid> all cool
+19:27 < akshayub> nope, go on
+19:27 < tarun> nope
+19:28 < pun> nope
+19:28 < Swathi_s_97> no
+19:28 < amithmkini> nope
+19:28 <@PrabhanjanPM> Check this out -http://www.catb.org/~esr/faqs/hacker-howto.html
+19:28 -!- swati [~swati@14.99.117.188] has quit [Ping timeout: 252 seconds]
+19:29 <@PrabhanjanPM> Take 10 mins. Just go through it 
+19:29 -!- aniketrege [~aniketrg7@106.51.13.238] has joined #ctf-ieee
+19:30 -!- swati [~swati@14.99.117.188] has joined #ctf-ieee
+19:31 < Shreya> i'm not able to open it
+19:32 < natasha96> copy the link 
+19:32 <@PrabhanjanPM> http://goo.gl/BjKht5
+19:32 <@PrabhanjanPM> Try this. Its the same though 
+19:32 -!- dhaval [40e9adc5@gateway/web/freenode/ip.64.233.173.197] has joined #ctf-ieee
+19:33 < Shreya> yeah this one opens. thx
+19:34 <@PrabhanjanPM> Reply after ur done going through the article 
+19:34 <@PrabhanjanPM> \
+19:34 -!- pun [3b58c602@gateway/web/freenode/ip.59.88.198.2] has quit [Ping timeout: 250 seconds]
+19:38 -!- pun [3b58c602@gateway/web/freenode/ip.59.88.198.2] has joined #ctf-ieee
+19:40 < Suraj> \
+19:43 < akshayub> \
+19:44 <@PrabhanjanPM> Dude that was by mistake !
+19:44  * pun waits
+19:44 <@PrabhanjanPM> U can tell that you're done xP
+19:46 -!- Suraj [~IceChat78@59.93.77.45] has quit [Ping timeout: 240 seconds]
+19:46 -!- dhaval [40e9adc5@gateway/web/freenode/ip.64.233.173.197] has quit [Quit: Page closed]
+19:47 <@PrabhanjanPM> Okay cool. We'll continue. You can finish reading that later!
+19:47 < Samvid> done
+19:47 < Arun97> done
+19:47 < arvind> done
+19:47 -!- dhaval [75e91a32@gateway/web/freenode/ip.117.233.26.50] has joined #ctf-ieee
+19:47 <@PrabhanjanPM> The agenda for today is first to decide the slots for the sessions 
+19:47 <@PrabhanjanPM> I hope you have gone through the schedule 
+19:48 < Arun97> yes
+19:48 < tarun> yes
+19:48 <@PrabhanjanPM> For those who havent- https://goo.gl/hVpDSk
+19:48 <@PrabhanjanPM> Thats the schedule 
+19:48 -!- pun [3b58c602@gateway/web/freenode/ip.59.88.198.2] has quit [Ping timeout: 250 seconds]
+19:49 < Sreeps> yes
+19:50 < RohanSurve> yes
+19:50 < jeshventh> yes
+19:51 <@PrabhanjanPM> So we need to decide when to have the sessions. We will be having three sessions per week
+19:51 <@PrabhanjanPM> Is Monday,Wednesday, Friday okay with all of you 
+19:51 < Sreeps> evenings on weekdays?
+19:51 < Sreeps> splendid
+19:51 < Arun97> Fine
+19:51 < tarun> what about timings?
+19:51 < arvind> ok!
+19:52 < ranjith> fine
+19:52 < Shreya> okay
+19:52 < RohanSurve> i am a little tied up this wednesday
+19:52 < amithmkini> fine
+19:52 < nandini97> ok
+19:52 < Samvid> any other day except friday? Might be busy on fridays :/
+19:52 -!- Suraj [~IceChat78@59.93.77.45] has joined #ctf-ieee
+19:52 < Swathi_s_97> fine
+19:52 < jeshventh> fine
+19:52 < akshayub> fine
+19:52 < swati> fine
+19:52 < Shreya> i think its best if we keep it in the evenings only
+19:52 < akshayub> and time, probably late in the evenings?
+19:52 < natasha96> yeah all sessions will be in the evening itself
+19:53 < natasha96> we have our internships in the morning ,so
+19:53 < Sreeps> at 7?
+19:54 < akshayub> probably 8?
+19:54 <@PrabhanjanPM> 7 is too early for me!
+19:54 < Sreeps> 9?
+19:54 <@PrabhanjanPM> 9?
+19:54 < natasha96> 8 and beyond :P
+19:54 < ranjith> 9 is fine
+19:54 < arvind> 9!
+19:54 <@PrabhanjanPM> Is 9 fine with everyone ?
+19:54 < Sreeps> yup
+19:54 < Swathi_s_97> 9
+19:54 < Arun97> yeah
+19:54 < DHIR> yeah
+19:54 < Suraj> 9 is cool
+19:54 < swati> yeah
+19:54 <@PrabhanjanPM> Sessions will usually take around 2-3 hours 
+19:55 < nandini97> yeah
+19:55 < Suraj> thats fine
+19:55 < akshayub> yeah sure!
+19:55 < jeshventh> yeah
+19:55 < Sreeps> thats not a problem
+19:55 < Shreya> not a prb
+19:56 < ranjith> starts tomo?
+19:56 < RohanSurve> since the sessions will take around 2-3 hours,could we start a little earlier?
+19:56 < RohanSurve> 9 seems too late
+19:57 <@PrabhanjanPM> I live far away from my internship
+19:57 <@PrabhanjanPM> Ill be home only by 9
+19:57 <@PrabhanjanPM> Okay. How about we start at 8.30?
+19:57 < RohanSurve> 9 pm?
+19:57 < RohanSurve> ok
+19:57 <@PrabhanjanPM> You can IRC from your phones also.
+19:58 <@PrabhanjanPM> This week lets have the sessions on wednesday, Friday, Saturday?
+19:58 < Samvid> Hmm guys, Friday might be a problem for me, is any other day cool?
+19:59 < Suraj> cool.
+19:59 < Sreeps> cool
+19:59 < Swathi_s_97> cool
+19:59 < Shreya> how abt thursday?
+19:59 < akshayub> sure.
+19:59 <@PrabhanjanPM> Okay so what should the final schedule be ?
+20:00 < tarun> can we change the days to tue thur and sat?
+20:00 -!- pun [3b58c602@gateway/web/freenode/ip.59.88.198.2] has joined #ctf-ieee
+20:00 < Sreeps> i agree with tarun
+20:00 < Samvid> I'm fine with any day other than Friday so the others can decide the other day
+20:00 < nandini97> what about mon wed sat ?
+20:00 <@PrabhanjanPM> Is everyone cool with Tuesday Thursday Saturday ?
+20:00 -!- dhaval [40e9ad99@gateway/web/freenode/ip.64.233.173.153] has joined #ctf-ieee
+20:00 < Arun97> ya
+20:00 < Swathi_s_97> yes
+20:00 < DHIR> yeah
+20:00 < nandini97> yeah
+20:00 < RohanSurve> yes
+20:00 < pun> yea
+20:00 < ranjith> yes
+20:00 < Samvid> yes
+20:01 < akshayub> why saturday?
+20:01 -!- swati [~swati@14.99.117.188] has quit [Ping timeout: 246 seconds]
+20:01 < akshayub> not that it's not fine, some weekday might be better .. :p
+20:01 < arvind> yes
+20:01 <@PrabhanjanPM> Anyway if you cant attend any session, dont worry.
+20:02 < Sreeps> this schedule is only for this week right?
+20:02 <@PrabhanjanPM> Ill put up logs and resources the next day 
+20:02 < Suraj> will we be missing out on alot if we dont attend a session?
+20:02 <@PrabhanjanPM> No this is the permanent schedule.
+20:03 <@PrabhanjanPM> You will miss some stuff. But you can read up logs and ask doubts via mail or the group
+20:03 < Suraj> cool
+20:04 <@PrabhanjanPM> This week, Im not free on tuesday. So we'll shift it to monday or wednesday ?
+20:04 < jeshventh> not this thursday please
+20:04 < Sreeps> wednesday
+20:04 < Suraj> wednesday
+20:05 <@PrabhanjanPM> Done. 
+20:05 < amithmkini> any day is cool...
+20:05 -!- dhaval_ [a8ebced1@gateway/web/freenode/ip.168.235.206.209] has joined #ctf-ieee
+20:05 < Shreya> so what r the days?
+20:05 < tarun> so what will be the final schedule?
+20:05 <@PrabhanjanPM> https://goo.gl/hVpDSk
+20:06 <@PrabhanjanPM> U can check this link for the schedule 
+20:06 < Sreeps> the final verdict on days and timings?
+20:06 -!- dhaval [40e9ad99@gateway/web/freenode/ip.64.233.173.153] has quit [Ping timeout: 250 seconds]
+20:07 -!- Suraj [~IceChat78@59.93.77.45] has quit [Quit: If you think nobody cares, try missing a few payments]
+20:07 < Arun97> is it done for today
+20:07 <@PrabhanjanPM> I already posted the link for the schedule. Please refer that 
+20:08 < jeshventh> is it possible to shift this week's session on thursday to any other day?
+20:08 < akshayub> at least the time is establlished as 9 pm onwards right?
+20:08 -!- Dhaval [a8ebced1@gateway/web/freenode/ip.168.235.206.209] has joined #ctf-ieee
+20:08 <@PrabhanjanPM> 8.30 om onwards 
+20:08 < akshayub> cool...
+20:09 < ranjith> cool
+20:09 < akshayub> and the days are monday wednesday friday?
+20:09 < Swathi_s_97> cool
+20:09 < nandini97> cool
+20:09 <@PrabhanjanPM> akshayub: Check the schedule link 
+20:09 < Sreeps> cool
+20:09 < Shreya> so tom we at 8:30 right?
+20:09 -!- dhaval_ [a8ebced1@gateway/web/freenode/ip.168.235.206.209] has quit [Ping timeout: 250 seconds]
+20:09 < akshayub> ohh cool..
+20:09 -!- RohanSurve [IceChat9@150.107.166.7] has left #ctf-ieee []
+20:09 <@PrabhanjanPM> This week- Wednesday. Thursday. Saturday. 
+20:10 < tarun> the next weeks tuesday session is shifted to wednesday right?
+20:10 <@PrabhanjanPM> Rest of the weeks- https://goo.gl/hVpDSk
+20:10 < tarun> okay..
+20:10 <@PrabhanjanPM> So one last thing for today- How many of you are using linux ?
+20:10 < arvind> me!
+20:10 < Arun97> me
+20:10 < tarun> me
+20:10  * Samvid is using linux
+20:10 < ranjith> i have ubuntu but not using it right now
+20:11 < Sreeps> have to install
+20:11 < akshayub> will be, next session onwards.
+20:11 <@PrabhanjanPM> I suggest all of you use linux!
+20:12 <@PrabhanjanPM> you can dual boot or use it on a virtual machine such as VMWare Player or Virtualbox
+20:12 -!- ask123 [uid134655@gateway/web/irccloud.com/x-qjlkzytwmxkfhxtx] has joined #ctf-ieee
+20:12 -!- Arun97 [~Arunraj97@117.192.43.147] has quit [Quit: Leaving]
+20:14 -!- swati [~swati@14.99.117.188] has joined #ctf-ieee
+20:14 <@PrabhanjanPM> Ok guys, any more questions ?
+20:14 < Sreeps> nope
+20:14 -!- Sreeps [~Sripathi@106.216.183.111] has quit [Quit: Leaving]
+20:14 < tarun> no
+20:14 < natasha96> cool we'll end it here
+20:14 <@PrabhanjanPM> Cool. We are done for the day !
+20:14 -!- Swathi_s_97 [~wth@116.202.20.95] has quit []
+20:14 <@PrabhanjanPM> Cheers. Have a goodnight!
+20:14 -!- Dhaval [a8ebced1@gateway/web/freenode/ip.168.235.206.209] has quit []
+20:14 -!- Shreya [0e638c7e@gateway/web/freenode/ip.14.99.140.126] has quit []
+20:14 < pun> Bye
+20:14 < natasha96> see you guys in the next session! cheers!
+20:14 -!- pun [3b58c602@gateway/web/freenode/ip.59.88.198.2] has quit []
+20:15 -!- Samvid [~Samvid@176.205.64.107] has quit [Quit: Goodnight!]
+20:15 -!- swati [~swati@14.99.117.188] has quit [Client Quit]
+20:15 -!- tarun [~IceChat9@61.3.22.222] has quit [Quit: byee]
+20:15 -!- amithmkini [~amithmkin@117.250.201.37] has quit [Quit: Bye!]
+20:16 -!- ranjith [75fa6025@gateway/web/freenode/ip.117.250.96.37] has quit [Quit: good night!!]
+20:16 -!- akshayub [1b22f0da@gateway/web/freenode/ip.27.34.240.218] has quit []
+20:16 -!- nandini97 [~Nand@14.97.99.159] has quit [Quit: Leaving]
+20:17 -!- akshayub [1b22f0da@gateway/web/freenode/ip.27.34.240.218] has joined #ctf-ieee
+20:17 -!- akshayub [1b22f0da@gateway/web/freenode/ip.27.34.240.218] has quit [Client Quit]
+20:17 -!- aniketrege [~aniketrg7@106.51.13.238] has quit []
+20:17 -!- PrabhanjanPM [~prabhanja@106.51.13.238] has left #ctf-ieee []

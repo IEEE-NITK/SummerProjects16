@@ -1,0 +1,86 @@
+Session Start: Tue May 31 20:32:35 2016
+Session Ident: #ieee-ctf
+03[20:32] * Now talking in #ieee-ctf
+03[20:32] * Topic is 'Channel for IEEE Summer Project for Capture the Flag Contests'
+03[20:32] * Set by chinmay_dd!~chinmay_d@2604:a880:800:10::153:1001 on Mon May 09 17:36:58 2016
+03[20:35] * swathi_s (~androirc@116.202.25.74) has joined #ieee-ctf
+03[20:35] * ranjith (~ranjith@106.51.23.110) has joined #ieee-ctf
+03[20:38] * Rohan_ (~IceChat9@150.107.184.62) has joined #ieee-ctf
+03[20:39] * Suraj (~IceChat78@117.192.202.136) has joined #ieee-ctf
+03[20:40] * sripathi (~sripathi@106.216.146.217) has joined #ieee-ctf
+01[20:40] <nat96> Hey guys! today's session is going to be pretty short. We'll be giving you some links you could go through.
+01[20:41] <nat96> Also the reversing problems for you guys to solve will be put up by tonight
+01[20:43] <nat96> Ok so I think we'll start today's session
+01[20:44] <nat96> last time we saw some ciphers mainly substitution ciphers where each character in your msg was substituted by some other character using different schemes
+01[20:45] <nat96> we talked about one time pads, frequency analysis, shift ciphers
+01[20:45] <nat96> hope you guys are fine with all of that
+[20:45] <sripathi> yes
+[20:45] <Rohan_> yes
+[20:46] <dhir> yes
+01[20:46] <nat96> one thing i forgot to mention was, simple ciphers like shift cipher are monoalphabetic ciphers
+02[20:46] * swathi_s (~androirc@116.202.25.74) Quit (Ping timeout: 240 seconds)
+01[20:46] <nat96> that means every character has a unique mapping throughout the msg
+01[20:47] <nat96> but ciphers like the one time pad are polyalphabetic ciphers
+01[20:47] <nat96> monoalpha ciphers are susceptible to attacks using frequency analysis like we already saw
+01[20:48] <nat96> now there are some more polyalpha ciphers which we'll see today
+03[20:48] * yuvaraj (~yuvaraj@49.249.53.179) has joined #ieee-ctf
+01[20:48] <nat96> one such cipher is the playfair cipher
+01[20:49] <nat96> now its difficut to explain this without an example. i'm posting a link here, go through it and see if you understand. it's pretty simple
+01[20:49] <nat96> http://www.tutorialspoint.com/cryptography/traditional_ciphers.htm
+01[20:49] <nat96> i want all of you to look at this right now
+01[20:51] <nat96> once you are done with this , also see vignere cipher
+01[20:51] <nat96> its just after playfair
+01[20:53] <nat96> oh and on a side note: there is this book called "the codebreakers" by david kahn. Anyone interested could check it out :)
+01[20:55] <nat96> done? or still reading?:P
+[20:56] <sripathi> still reading
+01[20:57] <nat96> wokay, let me know when done
+01[21:01] <nat96> you guys can continue reading it later and probably try it out to understand better
+01[21:02] <nat96> ok so i'll continue, I'll take like 5 more mins and you guys can continue with your reading
+01[21:02] <nat96> cool?
+03[21:02] * Samvid (~Samvid@94.59.21.211) has joined #ieee-ctf
+[21:03] <sripathi> yes
+[21:03] <Samvid> Sorry for being late and interrupting...how much did I miss?
+01[21:04] <nat96> nothing much
+01[21:04] <nat96>  i have posted a link, check the logs later
+01[21:04] <nat96> everyone is reading that now, you can read it later
+01[21:05] <nat96> others are you with us here?
+[21:05] <Rohan_> yep
+[21:05] <Arunraj> yes
+[21:06] <sripathi> yes
+[21:06] <Suraj> yeah
+[21:06] <Rohan_> out of curiosity...what was the encryption alan turing was trying to decode during the world war?
+01[21:10] <nat96> i'm not aware of that :P
+01[21:10] <nat96> you could google it
+01[21:11] <nat96> ok so we have seen substitution ciphers, now there is something called Transposition Cipher
+[21:11] <sripathi> its a polyalphabetic substitution cipher
+[21:11] <sripathi> for the enigma machine
+01[21:12] <nat96> here you change the order in which the characters appear in the plaintext. so its basically rearrangement
+01[21:12] <nat96> thanks @sripathi
+01[21:13] <nat96> the easiest way is to write everything backwards
+03[21:13] * Arun97 (~Arunraj97@117.192.62.139) has joined #ieee-ctf
+[21:13] <sripathi> so longer the message..harder to disassemble
+[21:14] <sripathi> decrypt i mean
+01[21:14] <nat96> just go ahead with the link, there are examples of transposition ciphers
+01[21:14] <nat96> yeah correct @sripathi
+01[21:15] <nat96> there are many other ciphers, you guys can explore them
+01[21:15] <nat96> so like i said earlier, its gonna be a really short session :P
+02[21:15] * Arunraj (~Arunraj97@117.192.62.139) Quit (Ping timeout: 244 seconds)
+01[21:16] <nat96> these ciphers are really easy to understand, so don't worry about it much
+01[21:16] <nat96> now we want you guys to start trying out crypto challenges on cryptopal. its this website where you get ctf like challenges.
+01[21:17] <nat96> https://cryptopals.com/
+01[21:17] <nat96> try matasano challenges, they will be difficult, but its worth giving it a try
+01[21:17] <nat96> it'll help you guys get accustomed to some crypto challenges
+01[21:18] <nat96> also reversing problems will be posted by tonight, do try them out
+01[21:18] <nat96> so things to do: 
+01[21:19] <nat96> see the links i gave you
+01[21:19] <nat96> try the crypto problems, may be difficult, don't get all worked up.its fine,its just for practice :P
+01[21:19] <nat96> do reversing problems
+01[21:20] <nat96> ok so thats it for today. you can contact one of us if you have any doubts, we'll try our best to solve them
+01[21:20] <nat96> goodnight! see you guys at the next session!
+02[21:20] * Suraj (~IceChat78@117.192.202.136) Quit (Quit: Some folks are wise, and some otherwise.)
+02[21:22] * Rohan_ (~IceChat9@150.107.184.62) Quit (Quit: Copywight 2016 Elmer Fudd. All wights wesewved.)
+02[21:23] * yuvaraj (~yuvaraj@49.249.53.179) Quit (Quit: Leaving)
+02[21:24] * sripathi (~sripathi@106.216.146.217) Quit (Quit: Leaving)
+02[21:25] * Arun97 (~Arunraj97@117.192.62.139) Quit (Quit: good night people)
+02[21:25] * Samvid (~Samvid@94.59.21.211) Quit (Quit: Goodnight!)
+03[21:30] * swathi_s (~androirc@180.215.45.194) has joined #ieee-ctf
