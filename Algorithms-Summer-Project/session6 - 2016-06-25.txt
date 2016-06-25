@@ -1,0 +1,107 @@
+[21:07] == anand16 [3bb67517@gateway/web/freenode/ip.59.182.117.23] has joined #IEEE-SP-CP
+[21:07] == varsh [0e635282@gateway/web/freenode/ip.14.99.82.130] has joined #IEEE-SP-CP
+[21:07] <anand16> hi !
+[21:07] == naksha [7ab33339@gateway/web/freenode/ip.122.179.51.57] has joined #IEEE-SP-CP
+[21:07] <anand16> sorry for the delay ... was stuck in traffic
+[21:07] <anand16> can someone tell me what was covered in the last session ?
+[21:08] <gautham_> greedy algo basics
+[21:08] <Tushaar> we covered as to what greedy algorithm actually was!
+[21:08] <anand16> nothing about dp right ?
+[21:09] <Tushaar> Dijkshatra's algorithm was covered.
+[21:09] <aditya_a> no
+[21:09] <naksha> along with time intervals..
+[21:10] <anand16> okay so let's get started with basics of dp
+[21:10] <anand16> dp - dynamic programming
+[21:12] <anand16> our job is to find a solution to the problem as a function of the solution to it's subproblems
+[21:13] <anand16> and store the solutions to the problems that you've already solved
+[21:13] <anand16> in short remember the past :P
+[21:14] <anand16> let's start with the simplest example
+[21:14] <anand16> Fibonacci series
+[21:14] <anand16> we know that f(n) = f(n-1) + f(n-2)
+[21:15] <anand16> using simple recursion will yield a solution of complexity O(2^n)
+[21:15] <anand16> O(golden ratio ^ n) to be precise
+[21:16] <anand16> now there are two ways to solve this using dp
+[21:16] <anand16> the first is called top down or memorization
+[21:17] <anand16> in this we create an array say m which stores -1 if the problem hasn't been solved for a particular index and the answer otherwise
+[21:18] <anand16> and our recursive function will reduce to
+[21:18] <anand16> int fibo(n)
+[21:18] <anand16> {
+[21:19] <anand16>   if(m[n] != -1) { return m[n]; } // return the answer if present
+[21:19] <anand16> if (n==1 || n==2) { return 1} // base cases
+[21:20] <anand16> return m[n] = fibo(n-1) + fibo(n-2)
+[21:20] <anand16> ^recursive call
+[21:20] <anand16> }
+[21:21] <anand16> any doubt so far ?
+[21:21] <gautham_> no
+[21:22] <anand16> okay before i proceed . how many of you know about dp already ? ( everyone respond )
+[21:23] <Tushaar> Not clue before this session.
+[21:23] <gautham_> not me
+[21:23] <Tushaar> *a
+[21:23] <varsh> me neither
+[21:23] <aditya_a> Dont know
+[21:24] <anand16> okay :P
+[21:24] <anand16> moving on
+[21:24] == Prerana1997 [25e76375@gateway/web/freenode/ip.37.231.99.117] has quit [Ping timeout: 250 seconds]
+[21:25] <anand16> second way is called bottom up ( not to be mistaken with bottoms up )
+[21:25] <anand16> this is a little bit harder than the first way :P
+[21:26] <anand16> though it may look simple for the Fibonacci problem
+[21:27] <anand16> here too we keep an array to store the answer .. but we build the solution in a bottom up manner
+[21:27] <anand16> int fibo(n)
+[21:27] <anand16> {
+[21:27] <anand16>   int i;
+[21:27] <anand16>  m[1] = 1
+[21:27] <anand16>  m[2] = 1
+[21:28] <anand16> for(i==3;i<=n;i++)
+[21:28] <anand16> m[i] = m[i-1] + m[i-2]
+[21:28] <anand16> return m[n]
+[21:28] <anand16> }
+[21:28] <anand16> here the final answer required is m[n]
+[21:29] <anand16> but the way we came to that solution is by solving for all m[i] less than n in a bottom up fashion
+[21:31] == pramod [75c02e8c@gateway/web/freenode/ip.117.192.46.140] has joined #IEEE-SP-CP
+[21:31] <anand16> now for a problem to have a dp solution it must have the optimum substructure property
+[21:32] <anand16> that means an optimal solution can be constructed efficiently from optimal solutions of its subproblems
+[21:32] <anand16> read more on the property here https://en.wikipedia.org/wiki/Optimal_substructure
+[21:34] <anand16> any doubts ?
+[21:37] <anand16> i assume tha
+[21:37] <anand16> *that's a no
+[21:37] <anand16> moving on
+[21:37] <anand16> there are a few standard dp problems
+[21:38] <anand16> one of them is the LIS - Longest Increasing Subsequence problem
+[21:39] <anand16> Problem statement - given a sequence find the length of the longest subsequence in which the subsequence's elements are in increasing order
+[21:41] <anand16> straight forward way will be to check for all subsequences of the sequence and check if it's sorted and find the maximum length
+[21:41] <anand16> yielding a solution of order O(2^n) which is not what we want
+[21:42] <anand16> so we solve this using dp
+[21:43] == gautham_ [75ca215c@gateway/web/freenode/ip.117.202.33.92] has quit [Ping timeout: 250 seconds]
+[21:43] <anand16> let's exploit the optimal substructure of the problem being that the LIS ending at an index i can be obtained by appending the element a[i] to any of the LIS ending at index 1 to i-1 provided a[i] is greater than the last element
+[21:44] <anand16> top down approach -
+[21:44] <anand16> let l[i] be the answer array
+[21:44] <anand16> lis(n)
+[21:44] <anand16> {
+[21:45] <anand16>  if(l[i] != -1) return l[i]
+[21:45] <anand16> l[i] = 1 // single element subsequence - base case
+[21:46] <anand16> if (i==1) return l[i]
+[21:46] <anand16> ^ another base case
+[21:46] <anand16> replace all the i's by n .. my bad
+[21:47] <anand16> now the recursive call
+[21:47] <anand16> int i;
+[21:47] <anand16> for(i=1;i<n;i++)
+[21:47] <anand16>  if(a[n] >= a[i])
+[21:47] == pramod [75c02e8c@gateway/web/freenode/ip.117.192.46.140] has quit [Quit: Page closed]
+[21:48] <anand16>  l[i] = max(l[i], 1 + lis(i))
+[21:48] <anand16> return l[i];
+[21:48] <anand16> }
+[21:48] <anand16> understood ?
+[21:50] <anand16> :/
+[21:50] <anand16> bottom up approach
+[21:52] <anand16> lis(n) { int i,j; l[1] = 1 for(i=2;i<=n;i++) { l[i] = 1; for(j=1;j<i;j++) if(a[i]>=a[j]) l[i] = max(l[i],1+l[j]) } return l[n]; }
+[21:53] == Tushaar [75c0c3a0@gateway/web/freenode/ip.117.192.195.160] has quit [Ping timeout: 250 seconds]
+[21:53] == Tushaar [73758941@gateway/web/freenode/ip.115.117.137.65] has joined #IEEE-SP-CP
+[21:54] <anand16> lis(n) { int i,j; l[1] = 1 for(i=2;i<=n;i++) { l[i] = 1; for(j=1;j<i;j++) if(a[i]>=a[j]) l[i] = max(l[i],1+l[j]) } return l[n]; }
+[21:54] <anand16> okay see this - http://ideone.com/wsC3AS
+[21:55] == gautham__ [75ca215c@gateway/web/freenode/ip.117.202.33.92] has joined #IEEE-SP-CP
+[21:55] <anand16> so that's the bottom up approach to solve the LIS problem
+[21:56] <anand16> that's about it
+[21:57] <anand16> for more standard problems see - http://codeforces.com/blog/entry/325
+[21:57] <anand16> and ping me if you have any doubts
+[21:57] <anand16> end of session
+[21:57] <anand16> good night :)
