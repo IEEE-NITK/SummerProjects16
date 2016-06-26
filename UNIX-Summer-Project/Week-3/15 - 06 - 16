@@ -1,0 +1,323 @@
+19:25 ::: soundaryaramesh [~soundarya@117.202.71.231] has joined #ieee-UNIX
+19:25 ::: Irssi: #ieee-UNIX: Total of 3 nicks [0 ops, 0 halfops, 0 voices, 3 normal]
+19:25 ::: Irssi: Join to #ieee-UNIX was synced in 2 secs
+19:46 ::: Siddhanth [8b053085@gateway/web/freenode/ip.139.5.48.133] has joined #ieee-UNIX
+19:50 ::: Varsh [0e6051bb@gateway/web/freenode/ip.14.96.81.187] has joined #ieee-UNIX
+19:51 ::: kaushik_sk [~kaushik21@43.247.156.179] has joined #ieee-UNIX
+19:55 ::: kaushiksk [~kaushik21@43.247.156.179] has joined #ieee-UNIX
+19:55 ::: kaushiksk [~kaushik21@43.247.156.179] has quit [Client Quit]
+19:58 ::: swati [~swati@117.208.155.221] has joined #ieee-UNIX
+20:01 < soundaryaramesh> Hey guys.
+20:01 ::: Harita_Reddy [744a7e3d@gateway/web/freenode/ip.116.74.126.61] has joined #ieee-UNIX
+20:01 < soundaryaramesh> So we'll start the session now.
+20:01 ::: gautham_ [75dd6b76@gateway/web/freenode/ip.117.221.107.118] has joined #ieee-UNIX
+20:01 < kaushik_sk> hey
+20:01 < soundaryaramesh> Did you guys do the tasks?
+20:01 < soundaryaramesh> Task 2: Try to print the number 28 using the cal command.
+20:02 < kaushik_sk> could do it for the present month
+20:02 < soundaryaramesh> You guys got this? 
+20:02 < kaushik_sk> Don't know how o do it for any month in general
+20:02 < soundaryaramesh> @kaushik, Okay so how did you do it?
+20:02 < soundaryaramesh> That's fine.How did u do it?
+20:02 < kaushik_sk> cal|grep 28|cut -d' ' -f 3
+20:03 < kaushik_sk> 28 was in 3rd column so
+20:03 < Harita_Reddy> cal | grep -o "28"
+20:04 < soundaryaramesh> Okay, good both of you :D
+20:04 < soundaryaramesh> @Harita So what does -o option do?
+20:05 < Harita_Reddy> prints only matched part
+20:05 < kaushik_sk> Oh ! That's awesome. 
+20:05 ::: swati [~swati@117.208.155.221] has quit [Read error: Connection reset by peer]
+20:06 < soundaryaramesh> @kaushik, Okay, now do u think you can apply your logic to print any number in the cal? 
+20:06 < soundaryaramesh> For eg: can you print 11?
+20:07 < soundaryaramesh> @Harita, good job :) I like the fact that you explored the man page 
+20:07 < kaushik_sk> like i said, it was a naive solution
+20:07 ::: swati [~swati@61.1.211.131] has joined #ieee-UNIX
+20:07 < kaushik_sk> Harita's solution is the appropriate one
+20:08 < kaushik_sk> with mine you'll have to change two parameters and know which column the number is in, which is bad
+20:08 < soundaryaramesh> No, even after that tell me if it will work.
+20:11 < kaushik_sk> oh
+20:11 < kaushik_sk> it's treating those additional whitespaces as a column
+20:11 < soundaryaramesh> Exactly! And why is that happening?
+20:12 < kaushik_sk> it's not specifically looking for numbers ?
+20:12 < kaushik_sk> but characters ?
+20:12 < kaushik_sk> '5' and ' 5' are different ?
+20:13 < soundaryaramesh>  echo `cal| grep 11`| cut -d' ' -f 7
+20:13 < soundaryaramesh> This works.
+20:13 < soundaryaramesh> Yes, they are different.
+20:13 < soundaryaramesh> The problem lies with the initial space which causes all the confusion. 
+20:14 < soundaryaramesh> If it was '5 6 7...11' instead of ' 5 6 7...11' it would not have been an issue.
+20:14 < soundaryaramesh> That's exactly wat echo does here.
+20:15 < soundaryaramesh> echo command basically removes all the spaces in the beginning of text.
+20:15 < soundaryaramesh> i.e the output of echo        hello is same as echo hello
+20:16 < soundaryaramesh> It's shell that does this while parsing the command actually, not echo.
+20:16 < kaushik_sk> ok ! cool
+20:16 < soundaryaramesh> Did you guys get what i'm saying? 
+20:16 < swati> yeah
+20:17 < Siddhanth> yes
+20:17 < gautham_> yes
+20:17 < Harita_Reddy> yes
+20:17 < soundaryaramesh> I'm still not sure why cut does that with the beginning spaces though. I shall try to find out. You guys can also tell me if you got it.
+20:18 < soundaryaramesh> So any more doubts with this task?
+20:19 < soundaryaramesh> Actually i wanted to introduce u to two more commands with the help of this task
+20:19 < soundaryaramesh> Those are head and tail commands.
+20:19 < soundaryaramesh> cal| head -4 will print the top four lines of cal
+20:19 < soundaryaramesh> and cal| tail -4 will print the bottom 4 lines
+20:20 < soundaryaramesh> So using these commands, can you try to replicate what kaushik did without using grep?
+20:21 < soundaryaramesh> i.e can you realise cal | grep "28" using head and/or tail only?
+20:23 < soundaryaramesh> Are you guys trying or gave up? :P
+20:23 < soundaryaramesh> PING :P
+20:28 ::: soundaryaramesh [~soundarya@117.192.104.177] has joined #ieee-UNIX
+20:28 ::: Irssi: #ieee-UNIX: Total of 9 nicks [0 ops, 0 halfops, 0 voices, 9 normal]
+20:28 ::: Irssi: Join to #ieee-UNIX was synced in 2 secs
+20:28 < soundaryaramesh> Sorry abt that :/
+20:29 < soundaryaramesh> So did you guys get it?
+20:29 < Siddhanth> yeah,we need to know the line in which the date is present for it
+20:29 < soundaryaramesh> yeah, that true. So wat's the command for 28 of this month? 
+20:30 < Siddhanth>  cal | head -7 | tail -1 | cut -d' ' -f 3
+20:30 ::: AdithyaBhat [dfe377e5@gateway/web/freenode/ip.223.227.119.229] has joined #ieee-UNIX
+20:30 < soundaryaramesh> @siddhanth, perfect!
+20:31 < soundaryaramesh> So now you know how to extract a particular line using head and tail if you know the line number.
+20:31 < soundaryaramesh> So, coming to your next task.
+20:31 < soundaryaramesh> Use ls -l command to display all files created in the month May and sort them according to the file size.
+20:32 < kaushik_sk> ls -l|grep 'May'|sort -n -t' ' -k 5
+20:32 < swati> ls -l|grep 'May'|sort -k 5 -n
+20:34 < soundaryaramesh> @kaushik, did you really have to change the delimiter?
+20:34 < soundaryaramesh> Are you sure it's working fine?
+20:35 < soundaryaramesh> @swati, you're right!
+20:36 < soundaryaramesh> The spaces between the columns is not exactly one space right.
+20:36 < soundaryaramesh> It's one or more spaces depending on the text.
+20:39 < kaushik_sk> \oh yeah
+20:39 < soundaryaramesh> Seems like sort takes spaces(1 or more) as the default delimiter.
+20:40 < soundaryaramesh> but if you want to use single space as delimiter
+20:40 < soundaryaramesh> you can try the following-
+20:40 < soundaryaramesh> IFS=“ “
+20:40 < soundaryaramesh> echo `ls -l`|grep Jun|sort -t’ ‘ -nk5
+20:40 ::: gauthan-m [~androirc@103.253.130.49] has joined #ieee-UNIX
+20:40 < soundaryaramesh> unset IFS
+20:41 < soundaryaramesh> It's -t' ' 
+20:42 < soundaryaramesh> But what swati did is the best solution to this problem.
+20:42 < soundaryaramesh> So are you guys clear about everything till now?
+20:43 < Siddhanth> yes
+20:44 < soundaryaramesh> Okay, so let's start with shell scripting :)
+20:45 < soundaryaramesh> Basically if you combine many commands and want to execute many of them one after the other, you would store it in a file and execute them
+20:45 < soundaryaramesh> This file is called a script.
+20:46 < soundaryaramesh> Because you have shell commands, it's called shell script. Similarly you have python script etc.
+20:47 < soundaryaramesh> To find out which interpreter you're using, you can type echo $SHELL
+20:47 ::: mgautham [~androirc@103.253.130.49] has joined #ieee-UNIX
+20:48 ::: gauthan-m [~androirc@103.253.130.49] has quit [Ping timeout: 244 seconds]
+20:48 < soundaryaramesh> Okay, now to start off, write a shell script that prints today's date and the month's cal
+20:49 < soundaryaramesh> So, i'll give you step by step instruction since this is your first shell script
+20:50 < soundaryaramesh> Create a file, preferably with .sh extension.(this will only make it easier for you to find these scripts later). 
+20:51 < soundaryaramesh> Type in echo `date`, followed by echo `cal`
+20:51 < soundaryaramesh> As you havent mentioned any interpreter, it will use the default one. 
+20:52 < soundaryaramesh> You can specify the interpreter by specifying the path to it, in your first line.
+20:52 < soundaryaramesh> u should type #!/bin/bash for eg.
+20:53 < soundaryaramesh> so after typing all the commands you want to execute it.
+20:53 < soundaryaramesh> So what do you need to execute a file?
+20:53 < soundaryaramesh> You need execute access, right?
+20:54 < kaushik_sk> yup
+20:54 < soundaryaramesh> But by default all files have only 644 access permissions.
+20:54 < soundaryaramesh> That is rw for user, r for group and others
+20:54 < Harita_Reddy> but we can do it with bash <filename>, right?
+20:54 < soundaryaramesh> So, to get execute access, you need to type chmod +x <filename>
+20:55 < soundaryaramesh> @harita, yep, that works even without +x permission
+20:56 < soundaryaramesh> and then you could execute it in the normal way, i.e ./<filename>
+20:58 < kaushik_sk> but the newlines are all removed
+20:58 < kaushik_sk> in output'
+20:58 < kaushik_sk> when i execute that
+20:58 < Harita_Reddy> Isn't that due to command substitution?
+20:59 < soundaryaramesh> Yes, you're right. More precisely because of shell parsing.
+21:00 < kaushik_sk> ah 
+21:00 < kaushik_sk> my bad
+21:00 < soundaryaramesh> @kaushik, check the previous mail for further details regarding this
+21:00 < kaushik_sk> yes yes now i remember. my bad
+21:01 < soundaryaramesh> But to execute all your commands, you just had to type the name of the file right, but here you need to prepend ./ right? why is that?
+21:02 < soundaryaramesh> remember that the shell searches for the commands in all the directories mentioned in the PATH variable
+21:02 < soundaryaramesh> So, if the PATH variable contained the current directory, then you could just type the filename.
+21:03 < soundaryaramesh> So, to modify the PATH variable, type PATH=$PATH:.
+21:03 < soundaryaramesh> The value remains changed only for this process (and also it's child processes). But one you close this terminal window, default values are restored.
+21:04 < soundaryaramesh> Here, . specifies the current directory. and : is the delimiter between the several directories.
+21:04 < soundaryaramesh> Getting it?
+21:04 < Siddhanth> so this command searches for commands only in the given directory?
+21:05 < kaushik_sk> *also in the current directory
+21:06 < soundaryaramesh> @kaushik, you're right.
+21:06 < soundaryaramesh> echo $PATH
+21:07 < soundaryaramesh> type this to see all the directories that the shell checks for the file
+21:07 < soundaryaramesh> to comment a line in shell, use #
+21:08 < soundaryaramesh> Now to make the script more interactive, you might use the read command
+21:09 < soundaryaramesh> read a; stores the value typed on the terminal into variable a.
+21:10 < soundaryaramesh> multiple values also can be read using this command.
+21:10 ::: AdithyaBhatK [dfe377e5@gateway/web/freenode/ip.223.227.119.229] has joined #ieee-UNIX
+21:10 < soundaryaramesh> Let's see how command line arguments work now 
+21:11 ::: mgautham [~androirc@103.253.130.49] has quit [Ping timeout: 264 seconds]
+21:11 < soundaryaramesh> All the arguments specified in the command line are assigned to special variables called "positional params"
+21:12 < soundaryaramesh> i.e the first argument can be accessed as $1, second as $2 and so on
+21:13 < soundaryaramesh> Also $# stores the total number of params
+21:13 < soundaryaramesh> Can you guess what $0 stores?
+21:13 ::: AdithyaBhat [dfe377e5@gateway/web/freenode/ip.223.227.119.229] has quit [Ping timeout: 250 seconds]
+21:14 < Harita_Reddy> filename?
+21:14 < kaushik_sk> command name?
+21:14 < soundaryaramesh> @harita, correct! 
+21:14 < AdithyaBhatK> Both of the above.
+21:15 < soundaryaramesh> As a small task, try to take a filename and pattern as arguments and try to grep using scripts.
+21:16 < soundaryaramesh> And there's one very useful shell param called $?
+21:16 < soundaryaramesh> This returns the exit status of the previously executed command.
+21:17 < soundaryaramesh> exit status tells you if a given command was executed successfully or not.
+21:17 < soundaryaramesh> The defintion of success depends on the command itself. 
+21:18 < soundaryaramesh> For grep command, if a pattern is not found it considers it as a failure.
+21:19 < soundaryaramesh> In general for all commands, if it succeeds the exit status is 0, else it is a non-zero number
+21:19 < soundaryaramesh> Hence, for grep, execute grep "pattern" <fname>; echo $? both when the pattern is found and not found 
+21:20 < soundaryaramesh> See that the values returned by $? in both the cases is different
+21:22 < soundaryaramesh> the value of $? is used extensively by the if stat and while loops
+21:22 < Siddhanth> it's returning the same value for me
+21:23 < soundaryaramesh> @siddhanth, retuned wat? and what did you try?
+21:23 < Siddhanth> no got it :)
+21:23 < soundaryaramesh> Cool :)
+21:23 < soundaryaramesh> But sed command regards success and failure differently
+21:24 < soundaryaramesh> i.e, even if the pattern is not found it considers it as a success.
+21:25 < soundaryaramesh> task 1: figure out how logical operators && and || works with commands.
+21:26 < soundaryaramesh> Now i will talk about if statement
+21:27 < soundaryaramesh> if statement executes the statements following it only if the command(i.e the condition) is "successful"
+21:27 < soundaryaramesh> i.e it uses exit values of commands.
+21:28 < soundaryaramesh> http://www.freeos.com/guides/lsst/ch03sec03.html
+21:28 < soundaryaramesh> check this for syntax
+21:29 < soundaryaramesh> it always ends with fi, and begins with if <command>; then
+21:31 < soundaryaramesh> So, this can easily be used with commands as they return exit values
+21:32 < soundaryaramesh> But with expressions involving relational operators, this cannot work.
+21:33 < soundaryaramesh> so we use an additional statement called test for the same purpose.
+21:33 < soundaryaramesh> this is because the t/f value returned by the expressions cant be directly handled by if
+21:34 < soundaryaramesh> test works for comparing two numbers, two strings and file attributes.
+21:36 < soundaryaramesh> instead of the relational operators ==,<=,>=,>,<,!= that u use in C, shell uses -eq(equal),-le(less than or eq),-ge,-gt,lt,-ne etc 
+21:36 < soundaryaramesh> hence, if x=5,y=5, then test $x -eq $y; echo $? prints 1
+21:37 < soundaryaramesh> sorry, 0
+21:37 < soundaryaramesh> because it is successful, i.e the expr is true
+21:38 < soundaryaramesh> also shell truncates the decimal digits, ie 7 -eq 7.8 is true
+21:40 < soundaryaramesh> task: take two numbers as arguments and find which of them is greater using if.
+21:42 < soundaryaramesh> a short-hand for if test $x -eq $y is if [ $x -eq $y ]
+21:42 < soundaryaramesh> And those spaces matter; it might throw errors without them.
+21:44 < soundaryaramesh> while loop works in a very similar fashion.
+21:44 < soundaryaramesh> it uses the exit values too.
+21:44 < soundaryaramesh> http://www.freeos.com/guides/lsst/ch03sec07.html
+21:45 < soundaryaramesh> Do you guys want me to explain about the various loops, switch case and everything?
+21:45 < soundaryaramesh> Because I think it's only syntax and it'll be better if you guys try to read them up and try it out yourself
+21:46 < soundaryaramesh> Rather than me typing out everything.
+21:46 < AdithyaBhatK> http://stackoverflow.com/questions/5163144/what-are-the-special-dollar-sign-shell-variables
+21:46 < AdithyaBhatK> Some special variables.
+21:48 < AdithyaBhatK> A task for now.
+21:48 < AdithyaBhatK> Write a program that takes 3 arguements.
+21:49 < AdithyaBhatK> Using if conditions print the largest number.
+21:53 ::: AdithyaBhatK [dfe377e5@gateway/web/freenode/ip.223.227.119.229] has quit [Ping timeout: 250 seconds]
+21:54 < soundaryaramesh> Got it guys?
+21:54 < soundaryaramesh> Fine maybe, it will take you guys sometime to get it. Do it before the next session.
+21:54 ::: AdithyaBhat [dfe377e5@gateway/web/freenode/ip.223.227.119.229] has joined #ieee-UNIX
+21:55 < AdithyaBhat> Done?
+21:56 ::: gautham_ [75dd6b76@gateway/web/freenode/ip.117.221.107.118] has quit [Ping timeout: 250 seconds]
+21:57 < kaushik_sk> Done
+21:57 < swati> yes
+21:57 < soundaryaramesh> Awesome!
+21:57 < Siddhanth> done
+21:57 < AdithyaBhat> The reason behind the spacing is that they are parameters to the test program. 
+21:58 < AdithyaBhat> if [ 5 -eq 5 ]
+21:59 < kaushik_sk> ah
+21:59 < kaushik_sk> it gave errors without even one of those spaces
+22:00 < soundaryaramesh> Now let's look at the case statement.
+22:00 < soundaryaramesh> It is not exactly the same as the switch case you studied in C
+22:00 < soundaryaramesh> It's more powerful infact. 
+22:01 < soundaryaramesh> It finds matching patterns instead of a fixed char/int.
+22:02 < soundaryaramesh> You can look up the syntax. There's nothing more to it
+22:02 < soundaryaramesh> and ;; is used after every case(in place of break stat in C)
+22:03 < soundaryaramesh> And you guys should try the problems under Linux Shell domain on hackerrank 
+22:03 < soundaryaramesh> Most of them are quite simple. Should be doable with what you guys know till now.
+22:04 < soundaryaramesh> Try to finish as much as you can before the next session.
+22:04 < soundaryaramesh> try to look at the syntax of for loop as well.
+22:05 < soundaryaramesh> it is again a little different from that in C
+22:05 < AdithyaBhat> for((i=0;i<10;i++))
+22:06 < soundaryaramesh> or for var in list
+22:06 < AdithyaBhat> C like syntax for FOR loop.
+22:07 < soundaryaramesh> e.g: for file in abc def rtg; do; something; done
+22:07 < AdithyaBhat> statements to be executed in for loop must be enclosed within do and done.
+22:07 < soundaryaramesh> In each iteration file takes the value abc, def and rtg resp.
+22:07 < AdithyaBhat> You can do something like for file in `ls`
+22:08 < AdithyaBhat> do
+22:08 < AdithyaBhat> ...
+22:08 < AdithyaBhat> echo $file
+22:08 < AdithyaBhat> ...
+22:08 < AdithyaBhat> done
+22:09 < kaushik_sk> in one of those reference sites
+22:09 < kaushik_sk> for value increment
+22:09 < kaushik_sk> they used
+22:09 < kaushik_sk> i=`expr $i + 1
+22:09 < kaushik_sk> i=`expr $i + 1`
+22:09 < kaushik_sk> wouldnt i = $i + 1 work ?
+22:09 < AdithyaBhat> the shell works with strings.
+22:10 < AdithyaBhat> It doesnt know the meaning of $i + 1
+22:10 < kaushik_sk> alright
+22:10 < soundaryaramesh> Try it out. You'll know what's happening.
+22:10 < AdithyaBhat> So you call external programs to do integer arithmetic for you.
+22:10 < AdithyaBhat> expr evaluates expressions.
+22:11 < soundaryaramesh> if i was initially 3, now i would be 3+1
+22:11 < AdithyaBhat> It returns the value of the expression.
+22:12 < soundaryaramesh> Also, don't give spaces in between the operator and operands, ie $i + 1 is invalid, $i+1 will work.
+22:12 < AdithyaBhat> Spaces are needed.
+22:13 < AdithyaBhat> Again these are parameters to the expr command.
+22:13 < AdithyaBhat> You can also do this.
+22:13 < AdithyaBhat> i=`bc<<<$i+1`
+22:14 < soundaryaramesh> @adithya,I was not talking about expr. just that expression in general.
+22:17 ::: gautham_ [75dd244f@gateway/web/freenode/ip.117.221.36.79] has joined #ieee-UNIX
+22:17 < soundaryaramesh> one more important thing which i think you guys should understand properly is file descriptors.
+22:17 < soundaryaramesh> There is one good link for this. Please do read it up.
+22:17 < soundaryaramesh> http://www.michael--martinez.com/computers/controlterm.html
+22:18 < soundaryaramesh> fine so, i think we are done for the day.
+22:18 < kaushik_sk> expr 1+1 return 1+1
+22:18 < kaushik_sk> expr 1 + 1 returns 2
+22:19 < kaushik_sk> ould you pls sum that up. That bit about spaces and no spaces was a bit confusing
+22:19 ::: Varsh [0e6051bb@gateway/web/freenode/ip.14.96.81.187] has quit [Ping timeout: 250 seconds]
+22:19 < kaushik_sk> Could*
+22:19 < soundaryaramesh> @kaushik, Yes, but i meant something different.
+22:19 < AdithyaBhat> You pass each operator and operand as a parameter to expr command.
+22:20 < AdithyaBhat> I have a question for you guys.
+22:20 < AdithyaBhat> Pay attention.
+22:20 < AdithyaBhat> The positional parameters are $0 $1 $2 ... $9.
+22:21 < AdithyaBhat> $10 is not included.
+22:21 < AdithyaBhat> Now what to do if your program has more than 9 arguements.
+22:22 < AdithyaBhat> (Highly unlikely but what if?)
+22:22 < AdithyaBhat> Any ideas?
+22:23 < kaushik_sk> $$1?
+22:23 < AdithyaBhat> Nice try. But no.
+22:24 < AdithyaBhat> For starters, write a script to print $# a.k.a the number of arguements.
+22:24 < AdithyaBhat> Let's see if it supports more than 10 arguements.
+22:24 < AdithyaBhat> The file should have `echo $#`
+22:25 < AdithyaBhat> ./filename random random ...(more than 10 arguements)
+22:26 < AdithyaBhat> What happens?
+22:27 < Harita_Reddy> It prints the number of arguments we pass
+22:27 < swati> it prints total number of arguments
+22:27 < AdithyaBhat> Even if the arguements are more than 10?
+22:27 < swati> yeah
+22:27 < Harita_Reddy> yes
+22:28 < AdithyaBhat> Now you can use only $1 to $9 positional parameters.
+22:29 < AdithyaBhat> If you wish to use more than 9 you have to SAVE $1 variable in your script and then use the `shift' command.
+22:29 < AdithyaBhat> To illustrate:
+22:30 < AdithyaBhat> change your script to contain these lines.
+22:30 < AdithyaBhat> echo $9
+22:30 < AdithyaBhat> shift
+22:30 < AdithyaBhat> echo $9
+22:30 < AdithyaBhat> Now pass more than 10 arguements and see what happens.
+22:33 < Siddhanth> prints 9th arguments and then the 10th arguments
+22:33 < Siddhanth> *argument
+22:33 ::: Varsh [0e63d65a@gateway/web/freenode/ip.14.99.214.90] has joined #ieee-UNIX
+22:33 < AdithyaBhat> The whole arguement list gets left shifted.
+22:34 < AdithyaBhat> $1 now contains the $2 and so on.
+22:35 < AdithyaBhat> However $0 is always unaffected.
+22:38 < AdithyaBhat> That's it for today.
+22:38 < AdithyaBhat> Your next session will be tomorrow at 8.
+22:39 < AdithyaBhat> Some more scripting examples, in bash and python.
+22:39 < AdithyaBhat> And Project discussion. It's high time you guys started working on projects.
+22:43 < soundaryaramesh> So, now it's feedback time. Do you guys find these irc sessions useful?
+22:43 < soundaryaramesh> Any suggestions?
+22:44 ::: Irssi: #ieee-UNIX: Total of 10 nicks [0 ops, 0 halfops, 0 voices, 10 normal]
+22:45 < soundaryaramesh> Guys, reply :P
+22:46 < AdithyaBhat> I guess most of them find it irritating when the page times out all of a sudden.
+22:46 < AdithyaBhat> Including myself.
+22:46 < soundaryaramesh> Fine, in that case, let's end the session now. 
+22:46 < soundaryaramesh> Good night guys!
+22:46 ::: soundaryaramesh [~soundarya@117.192.104.177] has left #ieee-UNIX []

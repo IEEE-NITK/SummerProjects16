@@ -1,0 +1,167 @@
+**** BEGIN LOGGING AT Mon Jun 06 21:26:05 2016
+
+Jun 06 21:26:05 *	Now talking on #ieee-os
+Jun 06 21:28:45 *	Shivani (~Shivani@117.196.198.192) has joined
+Jun 06 21:30:21 *	trisha has quit (Ping timeout: 240 seconds)
+Jun 06 21:30:24 <sangi>	Hello :)
+Jun 06 21:30:30 <Shivani>	Hey!
+Jun 06 21:31:03 <sangi>	5 min buffer for late comers :)
+Jun 06 21:31:08 <snigdha>	Hi!
+Jun 06 21:32:36 *	himadri (~himadripa@182.57.78.121) has joined
+Jun 06 21:36:57 <sangi>	Any doubts till now?
+Jun 06 21:37:15 <Shivani>	I have from the last 2 videos..
+Jun 06 21:37:16 <sangi>	Anything you want me to explain>
+Jun 06 21:37:32 <sangi>	You mean Memory management?
+Jun 06 21:37:36 <Shivani>	yup.
+Jun 06 21:37:59 <sangi>	Shoot
+Jun 06 21:38:32 <Shivani>	Does each page entry require a register or the page table requires a single register?
+Jun 06 21:39:06 *	trisha (~Trish@122.167.128.21) has joined
+Jun 06 21:39:20 <trisha>	Hi
+Jun 06 21:39:25 <sangi>	I will answer your doubt at the end Shivani :)
+Jun 06 21:39:30 <Shivani>	okay..
+Jun 06 21:39:31 <sangi>	So let's start
+Jun 06 21:39:52 <sangi>	Till now we've seen processes and how they work. 
+Jun 06 21:40:08 <sangi>	Now let's see where they are stored during execution. 
+Jun 06 21:40:30 <sangi>	ie Memory Management during Process Execution. 
+Jun 06 21:40:54 <sangi>	We all know the programs are stored in the hard disk of a computer. 
+Jun 06 21:41:29 <sangi>	When we run them, the executable source code of these programs come into the RAM. 
+Jun 06 21:41:36 *	himadri has quit (Read error: Connection reset by peer)
+Jun 06 21:41:44 *	himadri (~himadripa@182.57.78.121) has joined
+Jun 06 21:42:10 <sangi>	RAM - Random Access Memory
+Jun 06 21:42:53 <sangi>	 Sometimes complete program is loaded into the memory, but some times a certain part or routine of the program is loaded into the main memory only when it is called by the program, this mechanism is called Dynamic Loading, this enhance the performance.
+Jun 06 21:44:01 <sangi>	Sometimes, one program is dependent on some other program. In such cases, rather than loading all the dependent programs, CPU links the dependent programs to the main executing program when its required. This mechanism is known as Dynamic Linking.
+Jun 06 21:44:40 <sangi>	When we see our computer specs, we find something called swap memory
+Jun 06 21:46:06 *	himadri has quit (Read error: Connection reset by peer)
+Jun 06 21:46:27 <sangi>	Swap Space - sometimes there is not enough main memory to hold all the currently active processes in a timesharing system. So, excess process are kept on disk and brought in to run dynamically. In the sense some processes are swapped out of the RAM into the swap_space to make space for the executing program. On demand the swapped out data is brought back similarly.,
+Jun 06 21:46:55 <sangi>	Now, we know RAM is a big chunk of mem elements.
+Jun 06 21:47:20 <sangi>	Some part of the RAM is occupied by the OS.
+Jun 06 21:47:28 <sangi>	Could someone please tell me why
+Jun 06 21:47:31 <sangi>	?
+Jun 06 21:48:03 <Shivani>	for input-ouput functions?
+Jun 06 21:48:29 <sangi>	Shivani, could you please explain what you meant?
+Jun 06 21:49:14 <Shivani>	when program calls for the the input output functions, it might need OS.. :P
+Jun 06 21:49:59 <sangi>	That's correct! In other words, OS is always running when the computer is ON. It is a recursive PROCESS. So it needs to be present in the RAM!
+Jun 06 21:50:57 <sangi>	Now, say process A is up for execution. It is brought into the RAM. When a process is brought into the RAM, the base and limit registers are updated. 
+Jun 06 21:51:15 <sangi>	What is base register ? - has starting location of the process in RAM.
+Jun 06 21:51:24 <sangi>	Limit - End location 
+Jun 06 21:51:35 *	himadri (~himadripa@182.57.78.121) has joined
+Jun 06 21:51:47 <himadri>	Sorry network problems
+Jun 06 21:52:10 <trisha>	Base register is a hardware component?
+Jun 06 21:52:14 <sangi>	base and limit registers make sure that the processor accesses addresses within these address limits.
+Jun 06 21:52:23 <sangi>	Yes. They are all registers. 
+Jun 06 21:53:01 <sangi>	The RAM looks like this - https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter8/8_01_LogicalAddressSpace.jpg
+Jun 06 21:53:33 <sangi>	Now we look at something called address binding.
+Jun 06 21:54:12 <sangi>	When we say int x = 10, how does the processor know where x is stored?
+Jun 06 21:55:02 <sangi>	So address binding is a process in which the symbolic addresses are mapped to the physical memory addresses. 
+Jun 06 21:55:06 <Shivani>	Isn't OS allotted the higher bytes in memory?
+Jun 06 21:55:33 <sangi>	Nope. Usually it is given 0 - x bytes. 
+Jun 06 21:55:42 <Shivani>	Okay..
+Jun 06 21:55:49 <sangi>	And in most systems, OS is always given the same place,
+Jun 06 21:56:06 <sangi>	Now this linking can happen in 3 stages 
+Jun 06 21:56:23 <sangi>	By linking, i mean symbolic address to physical address.
+Jun 06 21:56:37 <sangi>	When we compile the program - COMPILE TIME.
+Jun 06 21:57:05 <sangi>	If it is known at compile time where a program will reside in physical memory, then absolute code can be generated by the compiler, containing actual physical addresses.
+Jun 06 21:58:06 <sangi>	A very old OS, DOS used compile time address binding.
+Jun 06 21:58:36 <sangi>	But the problem they faced was, every time the load address of the program changed, it had to be recompiled.
+Jun 06 21:59:04 <sangi>	So, everytime a program had to be swapped into the same location - a major drawback!
+Jun 06 21:59:34 <sangi>	Then they said - Let's generate physical address at LOAD TIME>
+Jun 06 22:00:15 <sangi>	If the location at which a program will be loaded is not known at compile time, then the compiler must generate relocatable code, which references addresses relative to the start of the program.
+Jun 06 22:01:00 <sangi>	Now that that means is: Say the code is like 
+Jun 06 22:01:05 <sangi>	int x = 0;
+Jun 06 22:01:14 <sangi>	if (x == 0) 
+Jun 06 22:01:19 <sangi>	x += 1;
+Jun 06 22:02:17 <sangi>	Now, Compiler says address 0x1000 has int x = 10. 0x1004 has if (x==0) and so on.
+Jun 06 22:03:16 <sangi>	So when the program is loaded, the base register value is added to values generated by the complier and then executed. 
+Jun 06 22:04:42 <sangi>	DRAWBACK - A lot of overhead when the process is moved around. Everytime it is written into RAM, all the relocatable addresses have to converted into physical addresses and then execution can happen
+Jun 06 22:05:41 <sangi>	Then people said, let's do it as and when we fetch an instruction. Anyways the Assembly instructions are of the same length and are generated by the compiler.
+Jun 06 22:06:01 <sangi>	That is, EXECUTION TIME address binding.
+Jun 06 22:06:16 <sangi>	This requires special hardware
+Jun 06 22:06:58 <sangi>	The relocatable address generated by the compiler is known as LOGICAL ADDRESS.
+Jun 06 22:07:22 <sangi>	Now suppose we say want to execute int x = 10;
+Jun 06 22:07:46 <sangi>	The processor gets the address 0x1000 - LOGICAL ADDRESS
+Jun 06 22:08:04 <sangi>	Say the base register has an address 0x4000000.
+Jun 06 22:08:46 <sangi>	Now the OS uses this 'special hadware' to check if (logical_addr+base_register) > (limit_reister)
+Jun 06 22:09:17 <sangi>	If so, it calls the OS by issuing a TRAP - tells the OS there is illegal memory access.
+Jun 06 22:09:45 <sangi>	If not, it fetches (logical_addr+physical_addr) and continues execution.
+Jun 06 22:10:10 <sangi>	The unit that does all this is called Memory Management Unit.
+Jun 06 22:10:30 <sangi>	The depiction is shown here - This requires special hardware
+Jun 06 22:10:48 <sangi>	Sorry! here - https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter8/8_04_DynamicRelocation.jpg
+Jun 06 22:11:18 <sangi>	2 minutes to digest all this and ask doubts.
+Jun 06 22:13:30 <trisha>	this question is not directly related but bootloader is present in the first sector of the hard disc so is it loaded into the ram as the system boots?? the OS is also loaded into the ram at this point??
+Jun 06 22:14:26 <sangi>	Good question. BootLoader has 2 parts.
+Jun 06 22:15:15 <sangi>	A tiny Boot loader program that tells where the boot loader grub is.
+Jun 06 22:15:42 <sangi>	Now this is stored in a special hardware reserved for the purpose.
+Jun 06 22:16:34 <sangi>	Now, coming to your question, the bootloader's job is done when it knows which OS is going to be used. 
+Jun 06 22:17:09 <sangi>	So it need not be in the RAM at all. However, parts of it (some routines) are present and treated as a part of the kernel.
+Jun 06 22:18:15 <sangi>	clear?
+Jun 06 22:18:32 <trisha>	clear
+Jun 06 22:18:58 <sangi>	Further the place where BootLoaderGrub is stored is PROM - Programmable ROM. 
+Jun 06 22:19:32 <trisha>	or EEPROM
+Jun 06 22:20:08 <sangi>	yeah. A slight difference which I'll explain individually if you want :)
+Jun 06 22:20:23 <sangi>	Now coming back, 
+Jun 06 22:21:30 <sangi>	Address binding happens in this way. In the lectures, Mr.Prashant Shenoy cleary explains the adv and disadvantages of these binding w.r.t swapping of processes.
+Jun 06 22:22:00 <sangi>	Now let's see how memory is allocated to each process.
+Jun 06 22:22:34 <sangi>	One method of allocating contiguous memory is to divide all available memory into equal sized partitions, and to assign each process to their own partition. This restricts both the number of simultaneous processes and the maximum size of each process, and is no longer used.
+Jun 06 22:24:03 *	trisha has quit (Ping timeout: 240 seconds)
+Jun 06 22:24:22 <sangi>	An alternate approach is to keep a list of unused ( free ) memory blocks ( holes ), and to find a hole of a suitable size whenever a process needs to be loaded into memory.
+Jun 06 22:25:18 <sangi>	The three most commonly discussed techniques are -
+Jun 06 22:25:34 <sangi>	First Fit - Search the list of holes until one is found that is big enough to satisfy the request, and assign a portion of that hole to that process. 
+Jun 06 22:26:03 <sangi>	There might be more opmtimized holes, but the first one is given to the process.
+Jun 06 22:26:21 <sangi>	Best fit - Allocate the smallest hole that is big enough to satisfy the request.
+Jun 06 22:27:02 <sangi>	Worst fit - Allocate the largest hole available, considered as thereby increasing the likelihood that the remaining portion will be usable for satisfying future requests.
+Jun 06 22:27:41 <sangi>	It is quite obvious that first fit is faster. 
+Jun 06 22:27:59 <sangi>	First and Best fit are good in terms of space utilization.
+Jun 06 22:28:36 <sangi>	Now there is a disadvantage 
+Jun 06 22:28:39 <sangi>	called
+Jun 06 22:28:40 <sangi>	External fragmentation means that the available memory is broken up into lots of little pieces, none of which is big enough to satisfy the next memory requirement, although the sum total could.
+Jun 06 22:28:53 *	trisha (~Trish@122.167.128.21) has joined
+Jun 06 22:29:45 <sangi>	To explain external fragmentation clearly
+Jun 06 22:30:17 <sangi>	- http://i.stack.imgur.com/V0S4Y.gif
+Jun 06 22:30:40 <sangi>	The empty unsued spaces in each fragment is shaded.
+Jun 06 22:31:16 <sangi>	All this space put together will be enough to fit process 7. 
+Jun 06 22:31:31 <sangi>	But process 7 will have to wait for a swap to occur.
+Jun 06 22:31:51 <sangi>	So, can anyone tell me how they want to solve this issue?
+Jun 06 22:32:37 <sangi>	himadri , what do you think?
+Jun 06 22:32:52 <himadri>	Changing the base limits appropriately
+Jun 06 22:32:56 <himadri>	?
+Jun 06 22:33:52 <sangi>	Correct! In other words, we can shift all the programs so that the holes come together.
+Jun 06 22:34:18 *	trisha has quit (Ping timeout: 272 seconds)
+Jun 06 22:34:37 *	trish (~Trish@117.192.21.18) has joined
+Jun 06 22:34:57 <sangi>	Any doubts?
+Jun 06 22:35:25 <himadri>	Nope
+Jun 06 22:35:27 <sangi>	Sorry for the delay in messages! There is some lag. 
+Jun 06 22:35:40 <trish>	sorry, network issues
+Jun 06 22:35:48 <Shivani>	What if even after compaction, enough space is not there?
+Jun 06 22:35:51 <sangi>	Cool. But what himadri suggested is very costly. 
+Jun 06 22:36:06 <sangi>	Then it is not a case of external fragmentation.
+Jun 06 22:36:16 <Shivani>	Okay..
+Jun 06 22:37:29 <sangi>	Cool. So since we spoke about external fragmentation, let's see what internal fragmentation is.
+Jun 06 22:38:13 <sangi>	Now, the main memory is divided into frames. Say a process wants 2.5 frames. The 0.5 frame is not used by any process.
+Jun 06 22:38:30 <sangi>	Now this is called internal fragmentation
+Jun 06 22:39:49 <sangi>	these are the basics of memory management.
+Jun 06 22:40:20 <sangi>	A picture of the swap space looks like - https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter8/8_05_ProcessSwapping.jpg
+Jun 06 22:41:08 <sangi>	Okay this is enough for today. Any doubts?
+Jun 06 22:41:38 <sangi>	Next session we'll talk about measures taken to solve fragmentation - segmentation and paging
+Jun 06 22:41:50 <Shivani>	Okay.. Thank you!!
+Jun 06 22:42:20 <trish>	Cool.. Thanks :)
+Jun 06 22:42:24 <snigdha>	Thanks .. nd gud nite!
+Jun 06 22:42:33 <himadri>	Thanks!
+Jun 06 22:42:44 <sangi>	Is anyone unable to install XV6?
+Jun 06 22:42:51 <Shivani>	me..
+Jun 06 22:42:57 <sangi>	Apart from Shivani
+Jun 06 22:43:00 <snigdha>	me..
+Jun 06 22:43:03 <Shivani>	Okay.. :P
+Jun 06 22:43:19 <sangi>	LOL okay! I'll give you both another OS :)
+Jun 06 22:43:28 <Shivani>	okay..
+Jun 06 22:43:38 <snigdha>	hehe.. thnks! :P
+Jun 06 22:43:44 <sangi>	So yeah thank you for attending. If you guys need more time for assignment 2, let me know.
+Jun 06 22:43:53 <sangi>	Byee :) Goodnight
+Jun 06 22:44:05 <snigdha>	Gud nite!
+Jun 06 22:44:07 <trish>	Byee
+Jun 06 22:44:14 *	snigdha has quit (Quit: Leaving)
+Jun 06 22:44:16 *	Shivani has quit (Quit: Leaving)
+Jun 06 22:44:23 *	himadri has quit (Quit: Bye)
+Jun 06 22:44:25 *	trish has quit (Quit: Good Night)
+Jun 06 22:44:51 Update Checker plugin unloaded
+**** ENDING LOGGING AT Mon Jun 06 22:44:51 2016
+

@@ -1,0 +1,164 @@
+  @chinmay_d │ So, we will discussing Forensics today.
+           ⤷ │ Usually, these are the type of problems which are tackled first since they require considerable less amount of programming skills and more understanding of the problem
+           ⤷ │ The name forensics itself should tell you that we are talking about analysis of an event which has already happened.
+           ⤷ │ For example you can consider medical forensics which is used to extract information from the dead body regarding the events which caused death or which were instrumental in
+             │ causing harm to the victim
+           ⤷ │ Similar is the case with Digital Forensics
+           ⤷ │ This field of investigation is completely commercialised as well.
+           ⤷ │ Consider a major security breach on a server. A team is then deployed to analyze the artefacts stolen, how the intruders got in and what else they have changed
+           ⤷ │ But for the case of CTF Forensics, we will be dealing with mostly 4-5 types of challenges:
+           ⤷ │ 1. Memory forensics: Usually deals with memory disks which are corrupted or have lost data in some way or another. You have to get back the data!
+           ⤷ │ 2. Image forensics: This is one of the most interesting challenges. It is usually confused with Steganography although there is difference between the two.
+           ⤷ │ 3. Network Forensics: The most widely found category of problems. We will be discussing them in a lot of detail.
+           ⤷ │ So, any doubts so far?
+       Tarun │ no
+      Samvid │ nope
+  rahul_kumm │ no
+    akshayub │ no
+     Arunraj │ no
+  @chinmay_d │ Great. So let us discuss basic Image forensics first. Head over to https://gist.github.com/chinmaydd/1d25e77a4aa2ed82df9c2fc81268eec8 and download the first image.
+    @chinmay_d │ One of the most important aspects of solving a forensics chall, is knowing your tools. There are a looot of tools out there that can help you reach the solution
+           ⤷ │ zardus from Shellphish has organized a list of the most useful ones -> https://github.com/zardus/ctf-tools
+  @chinmay_d │ So, lets solve that challenge!
+           ⤷ │ So basically it is an image with some text in it.
+           ⤷ │ Nothing interesting on the first look.
+           ⤷ │ Anyone found anything interesting?
+           ⤷ │ So one of the first commands that you run on any kind of a file is "strings"
+           ⤷ │ Although it is very simple, but it is also very useful!
+           ⤷ │ strings is used to match printable characters in the raw blob of data.
+    akshayub │ i copy pasted the wget and the link in the terminal, and got a file as .jpg
+           ⤷ │ but it isn't opening as an image and on opening it with editor, it has some codes ..
+           ⤷ │ in html
+           ⤷ │ is that proper or weird?
+  @chinmay_d │ I updated the link, try again.
+    akshayub │ Yea now it opened ...
+  @chinmay_d │ Always remember to use "file" and "strings" on the problem binary/image/mp3/data
+           ⤷ │ The file command will tell you the type of file by matching what are known as magic constants in the header. It works most of the times, but the it may have hidden data inside
+             │ as well ;)
+           ⤷ │ https://en.wikipedia.org/wiki/Magic_number_(programming)#Magic_numbers_in_files
+  @chinmay_d │ So, any special info from the file command?
+      Samvid │ nothing, other than: copyright=h1d1ng_in_4lm0st_pla1n_sigh7
+  rahul_kumm │ h1d1ng_in_4lm0st_pla1n_sigh7
+  @chinmay_d │ rahul_kummi: Don't spoil the fun for others ;)
+           ⤷ │ Great. So I assume both of you found it through strings?
+      Samvid │ Through file command actually
+  @chinmay_d │ We will look at a better tool for this -> http://www.sno.phy.queensu.ca/~phil/exiftool/
+  @chinmay_d │ exiftool is used to read meta-information. Try running exiftool and see what you get.
+           ⤷ │ Samvid: Cool. Can you share with others how you found it?
+  rahul_kumm │ i found it through file command
+      Samvid │ Just used the file command on the .jpg file
+           ⤷ │ cd to the directory with the jpg, and then file <filename>.jpg
+  @chinmay_d │ Can you paste the output?
+      Samvid │ Forensics1.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 72x72, segment length 16, Exif Standard: [TIFF image data, big-endian, direntries=3,
+             │ resolutionunit=2, copyright=h1d1ng_in_4lm0st_pla1n_sigh7], baseline, precision 8, 600x700, frames 3
+  @chinmay_d │ Awesome. So yeah, all that information that you see is the metadata which accompanies the file
+           ⤷ │ Similar to the metadata that you find in html documents used to "better describe" it.
+           ⤷ │ Good job. Now go for the next one. That is also a simple problem.
+           ⤷ │ There is not much theory here ;). You will learn more by practice!
+           ⤷ │ And if you get the solution pm me. Let
+           ⤷ │ *Let's discuss the answer in 5-10 min
+     ranjith │ img.jpg.1: JPEG image data, JFIF standard 1.01
+           ⤷ │ i got this
+           ⤷ │ for the first one
+     Arunraj │ i didnt get what to do
+  @chinmay_d │ Right, I think the output of the file command is dependent on the OS
+           ⤷ │ That is why, I recommended that you install exiftool and run it on the image like "exiftool img.png"
+           ⤷ │ HINT: You have to construct the image! It is corrupted right now :)
+           ⤷ │ HINT2: Use magic numbers
+           ⤷ │ Any leads guys?
+           ⤷ │ Anything you feel might be important?
+           ⤷ │ Give me 5 min. Eating ;)
+           ⤷ │ So the first thing you do, obviously run "file" and "strings"
+           ⤷ │ But...
+           ⤷ │ The main issue with images is that they contain a lot of strings and hence it is tough to make sense of it!
+           ⤷ │ But, you can see strings such as "IHDR" and "IDAT" appearing a few times
+     rahul__ │ yes
+  @chinmay_d │ Google them and see what you get ;)
+           ⤷ │ Sorry, was afk.
+           ⤷ │ So.. What did you conclude? Anyone with an answer?
+           ⤷ │ No problem. Here is the official write-up -> https://github.com/ctfs/write-ups-2015/tree/master/easyctf-2015/forensics/liar
+    sripathi │ i couldnt see a ihdr
+  @chinmay_d │ Now, if we(No Internet Access) are solving this question, once we see that the headers are wrong, the first thing we do it fix them@
+           ⤷ │ We know that the file is an png
+           ⤷ │ since the file command says so. Now how is that possible? File analyzes not only the magic headers but also certain signatures which are present throughout the file
+           ⤷ │ And also the footer! Images have a specific footers also. And hence we know that it is a png. There are software which will fix it for you, but that is no fun.
+           ⤷ │ So, once you fix the header, you have the answer!
+           ⤷ │ So, all this will come to you after practice. But it is important that you persist with the problem. Sometimes you might have to spend hours trying to solve a simple question
+             │ :)
+      Samvid │ file secret
+           ⤷ │ gives me something different from the write up
+  @chinmay_d │ Yeah, that's OSX
+           ⤷ │ As I mentioned before, it depends on the operating system and the version of the tool
+           ⤷ │ Here, hexedit is any file editing tool. It is specifically useful since you can view the file in hex.
+      Samvid │ Oh..sow how do I know that the file is a png?
+  @chinmay_d │ you can view the file in hex using "xxd"
+           ⤷ │ well, it says secret.png
+      Samvid │ I just got a file named secret
+  @chinmay_d │ Unzip it
+           ⤷ │ Any doubts?
+           ⤷ │ I mean you should atleast reach the point where you realize that the header is wrong. I can forgive you if you cant fix it ;)
+           ⤷ │ But I think it was akshay who realized that there are strings such as "ihdr" and "idat" present inside the file
+           ⤷ │ Good work!
+           ⤷ │ I think we have spent a lot of time on this, doesnt make sense to start network forensics today. Let us solve another simple question
+           ⤷ │ Hmm.. I cant find a good problem for you guys.
+           ⤷ │ https://github.com/ctfs/write-ups-2015/raw/master/opentoall-ctf-2015/forensics/doggie/b927033257a4604c06e791619a4c0713.tar.bz2
+  @chinmay_d │ Download the above file. Let's discuss this together
+           ⤷ │ All ready?
+           ⤷ │ Lets do an initial analysis using file, strings and exiftool
+           ⤷ │ Can someone tell me if they found anything interesting? (After extracting the archive ofcourse :)
+      Samvid │ Its supposed to be a jpeg file?
+  @chinmay_d │ Aha, nice
+  rahul-kumm │ we have got the jeif standard
+    sripathi │ supposed to be jpg
+  @chinmay_d │ Great. So, now we know that the file has certain characteristics(header/footer/signatures) similar to a jpeg
+           ⤷ │ Check exiftool!
+     Arunraj │ type jpeg
+  @chinmay_d │ Anything interesting?
+           ⤷ │ HINT: Check the author field
+           ⤷ │ Can someone post it here?
+      Samvid │ 00ffb.01039.011a9.013e3.013e8.00ffb.01590.015cb.8a461.8a612.8a6f3.8a8a0.b24ce.b2663.b2751.b2663.a2a23.a2a37.a272d.a2742.6d677.57092.57357.36515.5d538
+     Arunraj │ yes
+  @chinmay_d │ Cool. So this is weird isnt it?
+           ⤷ │ I mean why would the author's address be something like this.
+           ⤷ │ What are your initial thoughts on the above data?
+           ⤷ │ What could it be?
+  rahul-kumm │ a flag?
+  @chinmay_d │ Well, yeah but how?
+  rahul-kumm │ the hex given seem some what like address
+           ⤷ │ inside the file
+  @chinmay_d │ interesting.. why would you think like that?
+           ⤷ │ Any specific reasons?
+  rahul-kumm │ the rgb convention might be used to encrypt data na, so i thought this might be a possibility
+  @chinmay_d │ I see. Anyone else?
+           ⤷ │ Anything weird is accepted?
+           ⤷ │ *!
+           ⤷ │ Do you think this has anything to do with any kind of network addresses?
+      Samvid │ Yeah, maybe an IP address to a link?
+           ⤷ │ webpage i mean
+  @chinmay_d │ Yeah! But how would you construct it?
+           ⤷ │ Any other crazy idea?
+           ⤷ │ maybe it is encrypted ?
+    sripathi │ since they are grouped as 5 characters each...i guess each such group us some info
+  @chinmay_d │ Nice thought. But if you look closely, there are only certain characters present.
+           ⤷ │ Maybe that gives us some info?
+           ⤷ │ We only have 0-9 and 1-f
+           ⤷ │ *a-f
+           ⤷ │ That should us some hints ;)
+           ⤷ │ what numbering system uses those characters?
+    sripathi │ hex
+  @chinmay_d │ Nice!
+       Tarun │ hex
+  @chinmay_d │ So, we know that the information is hex encoded or we have to use it directly somehow. At this point, let your imaginations run wild
+           ⤷ │ try different things. Now that actual solution is a little tricky.
+           ⤷ │ https://github.com/ctfs/write-ups-2015/tree/master/opentoall-ctf-2015/forensics/doggie
+     Arunraj │ flag{fck snow i has hat!}
+  @chinmay_d │ WOW!
+           ⤷ │ That is awesome (I am assuming that you did not look at the answer :D)
+           ⤷ │ So  as you can see you dont need a lot of pre-requisites
+           ⤷ │ It's just thinking of a solution in many different ways as possible.
+           ⤷ │ Usually these are considered very simple and there are not many twists in this category.
+           ⤷ │ This is a repo which maintains write-ups and problems to almost all CTFs https://github.com/ctfs
+           ⤷ │ Make sure you bookmark it!
+           ⤷ │ I guess that is all for today. Hope you learned something new and interesting.
+           ⤷ │ Next time we will cover either network forensics or exploits, Prabhanjan will inform you.
+

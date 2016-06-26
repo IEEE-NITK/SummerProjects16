@@ -1,0 +1,377 @@
+﻿#ieeespnetworking
+[2016-06-03 18:44:45] → Joined channel #ieeespnetworking
+[2016-06-03 18:44:46] * Channel mode is +ns
+[2016-06-03 18:44:46] * Channel timestamp is 1462792629
+[2016-06-03 18:53:52] → shamitha joined (75601736@gateway/web/freenode/ip.117.96.23.54)
+[2016-06-03 18:54:35] → rakshith joined (~hehaichi@117.192.99.8)
+[2016-06-03 18:56:54] → Aneesh_ joined (75dd2707@gateway/web/freenode/ip.117.221.39.7)
+[2016-06-03 18:59:22] → revanth joined (~revanth@106.51.235.31)
+[2016-06-03 19:00:30] → Harita_Reddy joined (3cfe7e20@gateway/web/freenode/ip.60.254.126.32)
+[2016-06-03 19:01:19] → gautham__ joined (2d7d2594@gateway/web/freenode/ip.45.125.37.148)
+[2016-06-03 19:02:16] <Sheetal> I will be starting in 5 mins
+[2016-06-03 19:02:24] <Sheetal> Ask your friends to join in fast
+[2016-06-03 19:04:03] → Ravali joined (73628794@gateway/web/freenode/ip.115.98.135.148)
+[2016-06-03 19:06:19] ⇐ Ravali quit (73628794@gateway/web/freenode/ip.115.98.135.148): Client Quit
+[2016-06-03 19:06:46] → Ravali joined (73628794@gateway/web/freenode/ip.115.98.135.148)
+[2016-06-03 19:07:16] <Sheetal> Hello everyone! :)
+[2016-06-03 19:07:31] <Ravali> Hi!
+[2016-06-03 19:07:49] <Harita_Reddy> Hello
+[2016-06-03 19:08:21] <Aneesh_> Hi
+[2016-06-03 19:08:44] <revanth> hey
+[2016-06-03 19:09:08] <Sheetal> So lets start..
+[2016-06-03 19:09:23] <Sheetal> In this session,
+[2016-06-03 19:09:25] <Sheetal> I'm going to deal with TCP socket programming in python. 
+[2016-06-03 19:09:47] <Sheetal> So, what is a socket?
+[2016-06-03 19:10:11] <rakshith> a network endpoint
+[2016-06-03 19:10:34] <Sheetal> Correct!
+[2016-06-03 19:10:39] → Ravali_ joined (73628794@gateway/web/freenode/ip.115.98.135.148)
+[2016-06-03 19:10:55] <Sheetal> A socket is an endpoint of a two-way communication link between two programs running on the network.
+[2016-06-03 19:11:13] <Sheetal> An endpoint is a combination of an IP address and a port number.
+[2016-06-03 19:11:17] <Sheetal> So every socket = IP address + Port number 
+[2016-06-03 19:11:33] <Sheetal> There are mainly 2 kinds of sockets :
+[2016-06-03 19:11:42] ⇐ Ravali quit (73628794@gateway/web/freenode/ip.115.98.135.148): Ping timeout: 250 seconds
+[2016-06-03 19:11:54] <Sheetal> Stream and Datagram sockets
+[2016-06-03 19:11:59] <Sheetal> 1. Stream Sockets
+[2016-06-03 19:12:08] ⇐ gautham__ quit (2d7d2594@gateway/web/freenode/ip.45.125.37.148): Ping timeout: 250 seconds
+[2016-06-03 19:12:15] <Sheetal> Delivery in a networked environment is guaranteed.
+[2016-06-03 19:12:24] <Sheetal> If you send through the stream socket three items "A, B, C", they will arrive in the same order − "A, B, C". 
+[2016-06-03 19:12:41] <Sheetal> These sockets use TCP (Transmission Control Protocol) for data transmission. 
+[2016-06-03 19:13:00] <Sheetal> If delivery is impossible, the sender receives an error indicator. 
+[2016-06-03 19:13:24] <Sheetal> 2. Datagram Sockets
+[2016-06-03 19:13:36] <Sheetal> Delivery in a networked environment is not guaranteed.
+[2016-06-03 19:13:52] <Sheetal> They're connectionless because you don't need to have an open connection as in Stream Sockets.
+[2016-06-03 19:14:01] <Sheetal> You just build a packet with the destination information and send it out.
+[2016-06-03 19:14:13] <Sheetal> They use UDP (User Datagram Protocol).
+[2016-06-03 19:14:29] <Sheetal> In this session we will be learning about TCP. 
+[2016-06-03 19:14:29] → gautham_ joined (2d7d2657@gateway/web/freenode/ip.45.125.38.87)
+[2016-06-03 19:14:36] <Sheetal> Isha will be covering UDP in the next session. 
+[2016-06-03 19:14:57] <Sheetal> Any doubts till now?
+[2016-06-03 19:15:01] <rakshith> nope
+[2016-06-03 19:18:01] → anirudhgp joined (androirc@nat/google/x-ipebolodceevkcii)
+[2016-06-03 19:18:12] ⇐ Ravali_ quit (73628794@gateway/web/freenode/ip.115.98.135.148): Ping timeout: 250 seconds
+[2016-06-03 19:18:14] <Sheetal> Others??
+[2016-06-03 19:18:28] <Aneesh_> no doubts
+[2016-06-03 19:18:38] ⇐ gautham_ quit (2d7d2657@gateway/web/freenode/ip.45.125.38.87): Ping timeout: 250 seconds
+[2016-06-03 19:19:14] <Sheetal> Okay so moving forward
+[2016-06-03 19:19:27] <Sheetal> What is TCP?
+[2016-06-03 19:19:47] <rakshith> a connection oriented transport layer protocol
+[2016-06-03 19:19:53] → Ravali joined (73628794@gateway/web/freenode/ip.115.98.135.148)
+[2016-06-03 19:20:20] <Sheetal> Yes!
+[2016-06-03 19:20:24] <Sheetal> TCP (Transmission Control Protocol) is a standard that defines how to establish and maintain a network conversation via which application programs can exchange data.
+[2016-06-03 19:20:36] <Sheetal> It is a connection-oriented protocol, which means a connection is established and maintained until the application programs at each end have finished exchanging messages.
+[2016-06-03 19:20:55] <Sheetal> It determines how to break application data into packets that networks can deliver
+[2016-06-03 19:21:09] <Sheetal> sends packets to and accepts packets from the network layer
+[2016-06-03 19:21:18] <Sheetal> manages flow control
+[2016-06-03 19:21:36] <Sheetal> handles retransmission of dropped or garbled packets as well as acknowledgement of all packets that arrive. 
+[2016-06-03 19:21:54] <Sheetal> Every TCP connection can be uniquely identified by its two endpoints.
+[2016-06-03 19:22:02] <Sheetal> And the 2 endpoints are the sockets.
+[2016-06-03 19:22:11] <Sheetal> And each socket = IP address + port number. 
+[2016-06-03 19:22:36] <Sheetal> So now, what is an IP address?
+[2016-06-03 19:22:48] → Ravali_ joined (dfe3e09f@gateway/web/freenode/ip.223.227.224.159)
+[2016-06-03 19:24:03] <Sheetal> Guys please be more interactive 
+[2016-06-03 19:24:16] ⇐ Ravali quit (73628794@gateway/web/freenode/ip.115.98.135.148): Ping timeout: 250 seconds
+[2016-06-03 19:24:32] ⇐ anirudhgp quit (androirc@nat/google/x-ipebolodceevkcii): Remote host closed the connection
+[2016-06-03 19:24:40] <Harita_Reddy> Unique address for a device on a network
+[2016-06-03 19:24:57] → anirudhgp joined (androirc@nat/google/x-zlcdsjeqxxkorlct)
+[2016-06-03 19:25:15] <Sheetal> Yea...it identifies a network!
+[2016-06-03 19:25:30] <Sheetal> Like suppose u have an ip address like 192.168.0.1 .
+[2016-06-03 19:25:47] → gautham_ joined (75c67091@gateway/web/freenode/ip.117.198.112.145)
+[2016-06-03 19:26:03] <Sheetal> An IP is a sequence of 4 blocks of numbers. 
+[2016-06-03 19:26:14] <Sheetal> Each of these blocks is a value between 0 and 255,
+[2016-06-03 19:26:24] <Sheetal> which means that each block has 256 possible values. 
+[2016-06-03 19:26:35] <Sheetal> So Total number of combinations possible = 256 ^ 4 = 4,294,967,296. 
+[2016-06-03 19:26:51] <Sheetal> So IPv4 allowed for around 4billion unique addresses, which seemed like a huge amount. 
+[2016-06-03 19:27:09] <Sheetal> But this was the early 1970s when computers weren’t particularly widespread, and nobody could have foreseen the growth of the internet.
+[2016-06-03 19:27:26] <Sheetal> But today, with 6 billion people in the world, millions of businesses and homes with multiple internet connections, 4 billion is nowhere near enough. 
+[2016-06-03 19:27:45] <Sheetal> So there a few solutions adopted for this 
+[2016-06-03 19:27:55] <Sheetal> Can anyone tell me what those solutions were?
+[2016-06-03 19:28:17] <rakshith> ipv6
+[2016-06-03 19:28:25] <Harita_Reddy> IPv6 128 bit
+[2016-06-03 19:28:30] → Shantanu joined (75e43cfb@gateway/web/freenode/ip.117.228.60.251)
+[2016-06-03 19:28:50] <Sheetal> Yes...but that came a little later
+[2016-06-03 19:29:07] <Sheetal> There were 2 solutions adopted before IPv6
+[2016-06-03 19:29:16] <Sheetal> They are dynamic IP's and subnets
+[2016-06-03 19:29:24] <Sheetal> So now..coming to dynamic IP's
+[2016-06-03 19:29:44] <Sheetal> If everyone had their own IP address, things wouldn't work.
+[2016-06-03 19:29:57] <Sheetal> We would have run out a long time ago. 
+[2016-06-03 19:30:07] <Sheetal> So internet providers assign IP addresses dynamically, which means that they are used in rotation. 
+[2016-06-03 19:30:25] <Sheetal> Not all IPs are always in use, so basically speaking, dynamic IPs just assign you the next free IP address instead of always giving you the same one.
+[2016-06-03 19:30:34] <rakshith> subnetting
+[2016-06-03 19:30:39] <Sheetal> This means that when an IP is not in use by one person, it can be used by another.
+[2016-06-03 19:30:54] ⇐ anirudhgp quit (androirc@nat/google/x-zlcdsjeqxxkorlct): Quit: AndroIRC - Android IRC Client ( http://www.androirc.com )
+[2016-06-03 19:31:20] <Sheetal> Now coming to subnets
+[2016-06-03 19:31:31] <Sheetal> A subnet means sub-network.
+[2016-06-03 19:31:39] <Sheetal> A network within a network.
+[2016-06-03 19:31:48] <Sheetal> Like Inception. :)
+[2016-06-03 19:32:00] <Sheetal> It basically splits up connections so IP addresses can be re-used. 
+[2016-06-03 19:32:10] <Sheetal> An example would be a house with 5 computers 
+[2016-06-03 19:32:23] <Sheetal> instead of 5 individual IP addresses for each machine, there is one main IP assigned by the internet provider.
+[2016-06-03 19:32:37] <Sheetal> This main IP is assigned to the router, which then creates its own little network and gives all the devices IP addresses from there. 
+[2016-06-03 19:32:45] <Sheetal> An example...
+[2016-06-03 19:32:52] <Sheetal> House #1
+[2016-06-03 19:33:05] <Sheetal> 5 computers, with IPs 192.168.0.1 - 192.168.0.5, are all turned on in the same house.
+[2016-06-03 19:33:14] <Sheetal> The external IP of the house is 88.100.200.50 
+[2016-06-03 19:33:24] <Sheetal> House #2
+[2016-06-03 19:33:41] <Sheetal> 5 different computers, with the same 192.168.0.1 - 192.168.0.5 addresses, are all on but in a different house.
+[2016-06-03 19:33:51] <Sheetal> The external IP is 88.100.200.51.
+[2016-06-03 19:34:06] <Sheetal> In this example we have ten computers, all connected, using only two "real" IP addresses - the ones that start with 88. 
+[2016-06-03 19:34:19] <Sheetal> The internal IPs (the 192s) are only internal, and never make it out of the subnet.
+[2016-06-03 19:34:28] <Sheetal> That's how so many home connections are managed.
+[2016-06-03 19:34:44] <Sheetal> Any doubts so far?
+[2016-06-03 19:35:09] <rakshith> no
+[2016-06-03 19:35:12] <Harita_Reddy> no
+[2016-06-03 19:36:34] <Sheetal> Others pls respond
+[2016-06-03 19:36:59] <Ravali_> no
+[2016-06-03 19:37:17] <shamitha> no
+[2016-06-03 19:37:45] <Sheetal> Cool
+[2016-06-03 19:38:15] <Sheetal> The problem here is that we are still running out of addresses 
+[2016-06-03 19:38:29] <Sheetal> any device that connects to the internet needs an IP to do so, and even with dynamics and subnets there aren't enough.
+[2016-06-03 19:38:38] <Sheetal> Mobile phones, consoles, handhelds, TVs, computers, watches, GPS... anything. 
+[2016-06-03 19:38:48] <Sheetal> We need a new standard.
+[2016-06-03 19:38:58] <Sheetal> This is where IPv6 comes in.
+[2016-06-03 19:39:10] <Sheetal> IPv6 uses a different system that allows for a lot more combinations. 
+[2016-06-03 19:39:33] <Sheetal> It uses a hexadecimal system instead of binary.
+[2016-06-03 19:39:42] <Sheetal> Binary has two states, the values 1 or 0,
+[2016-06-03 19:39:51] <Sheetal> but hexadecimal has 16,
+[2016-06-03 19:40:01] <Sheetal> which are the values 0123456789ABCDEF.
+[2016-06-03 19:40:13] <Sheetal> An IPv6 address is 8 groups of four in hex.
+[2016-06-03 19:40:25] <Sheetal> An example address would be 1234:abcd:5678:efab:9012:cdef:3456:abcd
+[2016-06-03 19:40:25] → gautham___ joined (67f62a32@gateway/web/freenode/ip.103.246.42.50)
+[2016-06-03 19:42:28] <Sheetal> This allows for way, way more combinations than 4 billion.
+[2016-06-03 19:42:28] <Sheetal> To be exact it's 3.4 * 10^38, or 340 undecillion.
+[2016-06-03 19:42:54] ⇐ gautham_ quit (75c67091@gateway/web/freenode/ip.117.198.112.145): Ping timeout: 250 seconds
+[2016-06-03 19:44:51] <Harita_Reddy> Where is IPv6 being used currently? 
+[2016-06-03 19:47:29] <Sheetal> Im so sorry...my internet is behaving weird
+[2016-06-03 19:49:18] <Sheetal> IPv6 is used in many large networks
+[2016-06-03 19:49:36] <Sheetal> But it hasnt been enabled at a global scale 
+[2016-06-03 19:50:08] <Sheetal> There are many web companies enabling IPv6 on their main websites though
+[2016-06-03 19:50:58] <Sheetal> So with IPv6,
+[2016-06-03 19:51:05] <Sheetal> The IP address allocation problem is solved!
+[2016-06-03 19:51:27] <Sheetal> So now as u would have figured out, IP address refers to the network address. 
+[2016-06-03 19:51:38] <Sheetal> Coming back to sockets,
+[2016-06-03 19:51:51] <Sheetal> An endpoint (socket) is defined by the combination of a network address and a port identifier.
+[2016-06-03 19:52:04] <Sheetal> Now what is the difference between a socket and a port?
+[2016-06-03 19:53:02] <rakshith> port refers to the process that's using the socket
+[2016-06-03 19:53:37] <Sheetal> Yea
+[2016-06-03 19:53:39] <Sheetal> So
+[2016-06-03 19:53:48] <Sheetal> A port does not completely identify a socket.
+[2016-06-03 19:53:58] <Sheetal> The purpose of ports is to differentiate multiple endpoints on a given network address. 
+[2016-06-03 19:54:10] <Sheetal> You could say that a port is a virtualised endpoint.
+[2016-06-03 19:54:23] <Sheetal> This virtualisation makes multiple concurrent connections on a single network interface possible.
+[2016-06-03 19:54:33] <Sheetal> So if a socket had only IP address,
+[2016-06-03 19:54:41] <Sheetal> we would only be able to identify the network.
+[2016-06-03 19:54:52] <Sheetal> But the port address gives us the exact host/device on that network.
+[2016-06-03 19:55:01] <Sheetal> This is the importance of a port.
+[2016-06-03 19:55:21] <Sheetal> Now coming to the implementation part of today's session
+[2016-06-03 19:55:28] <Sheetal> Client-Server architecture
+[2016-06-03 19:55:47] <Sheetal> A server is a computer program that provides services to other computer programs (and their users) in the same or other computers.
+[2016-06-03 19:56:01] <Sheetal> In the client/server programming model, a server is a program that awaits and fulfills requests from client programs in the same or other computers.
+[2016-06-03 19:56:11] <Sheetal> Specific to the Web,
+[2016-06-03 19:56:23] <Sheetal> a Web server is the computer program (housed in a computer) that serves requested HTML pages or files.
+[2016-06-03 19:56:32] <Sheetal> A Web client is the requesting program associated with the user.
+[2016-06-03 19:56:43] <Sheetal> The Web browser in your computer is a client that requests HTML files from Web servers.
+[2016-06-03 19:56:46] ⇐ Shantanu quit (75e43cfb@gateway/web/freenode/ip.117.228.60.251): Ping timeout: 250 seconds
+[2016-06-03 19:56:52] <Sheetal> So basically,  
+[2016-06-03 19:56:53] → Shantanu joined (dfc412a6@gateway/web/freenode/ip.223.196.18.166)
+[2016-06-03 19:57:05] <Sheetal> a client sends a request to the server,
+[2016-06-03 19:57:19] <Sheetal> which performs some action and sends a response back to the client,
+[2016-06-03 19:57:29] <Sheetal> typically with a result or acknowledgement.
+[2016-06-03 19:57:54] <Sheetal> Any doubts so far?
+[2016-06-03 19:58:40] <gautham___> no
+[2016-06-03 19:58:47] <Harita_Reddy> no
+[2016-06-03 19:59:25] <Sheetal> Okay moving on...
+[2016-06-03 19:59:31] <Sheetal> I'll explain the flow
+[2016-06-03 19:59:43] <Sheetal> Normally, a server runs on a specific computer and has a socket that is bound to a specific port number. 
+[2016-06-03 19:59:56] <Sheetal> The server just waits,
+[2016-06-03 20:00:05] <Sheetal> listening to the socket for a client to make a connection request.
+[2016-06-03 20:00:18] <Sheetal> Now On the client-side:
+[2016-06-03 20:00:47] <Sheetal> The client knows the hostname of the machine on which the server is running
+[2016-06-03 20:00:58] <Sheetal> and the port number on which the server is listening.
+[2016-06-03 20:01:10] <Sheetal> To make a connection request,
+[2016-06-03 20:01:22] <Sheetal> the client tries to communicate with the server on the server's machine and port.
+[2016-06-03 20:01:37] <Sheetal> The client also needs to identify itself to the server
+[2016-06-03 20:01:49] <Sheetal> so it binds to a local port number that it will use during this connection.
+[2016-06-03 20:02:02] <Sheetal> This is usually assigned by the system.
+[2016-06-03 20:03:16] <Sheetal> If everything goes well,
+[2016-06-03 20:03:26] <Sheetal> the server accepts the connection. 
+[2016-06-03 20:03:36] <Sheetal> Upon acceptance,
+[2016-06-03 20:03:42] ⇐ Shantanu quit (dfc412a6@gateway/web/freenode/ip.223.196.18.166): Ping timeout: 250 seconds
+[2016-06-03 20:03:51] <Sheetal> the server gets a new socket bound to the same local port
+[2016-06-03 20:04:04] <Sheetal> and also has its remote endpoint set to the address and port of the client.
+[2016-06-03 20:04:18] → Shantanu joined (75e410d4@gateway/web/freenode/ip.117.228.16.212)
+[2016-06-03 20:04:21] <Sheetal> It needs a new socket
+[2016-06-03 20:04:38] <Sheetal> so that it can continue to listen to the original socket for connection requests while tending to the needs of the connected client
+[2016-06-03 20:05:23] <Sheetal> On the client side,
+[2016-06-03 20:05:33] <Sheetal> if the connection is accepted,
+[2016-06-03 20:05:44] <Sheetal> a socket is successfully created
+[2016-06-03 20:05:55] <Sheetal> and the client can use the socket to communicate with the server.
+[2016-06-03 20:06:14] <Sheetal> The client and server can now communicate by writing to or reading from their sockets.
+[2016-06-03 20:07:39] <Sheetal> It is really important for you all to understand the flow
+[2016-06-03 20:07:46] <Sheetal> I will be explaining the code now
+[2016-06-03 20:07:56] <Sheetal> So everyone is clear with the flow right?
+[2016-06-03 20:09:08] <Harita_Reddy> yes
+[2016-06-03 20:09:25] <Ravali_> yeah
+[2016-06-03 20:09:42] <Aneesh_> Yeah
+[2016-06-03 20:11:12] <Sheetal> I need all 8 of u to give me an affirmative response, so that i can proceed.
+[2016-06-03 20:11:29] <revanth> yes
+[2016-06-03 20:11:45] <shamitha> yes
+[2016-06-03 20:11:59] <rakshith> yes
+[2016-06-03 20:13:22] <Sheetal> Shantanu and Gautham?
+[2016-06-03 20:13:32] <Shantanu> i kinda joined in the middle .. so i missed a few bits .. but i shall go through them in the log later
+[2016-06-03 20:13:43] <Sheetal> Okay cool!
+[2016-06-03 20:13:53] <Sheetal> So moving on..
+[2016-06-03 20:14:10] <Sheetal> Now I'm going to be covering the steps involved in establishing a socket on the server side,
+[2016-06-03 20:14:21] <Sheetal> along with its code implementation in python.
+[2016-06-03 20:15:00] <Sheetal> So this is the server side:
+[2016-06-03 20:15:28] <Sheetal> I'm gonna be writing each line of the code, and then explain what it means
+[2016-06-03 20:15:32] <Sheetal> Step 1
+[2016-06-03 20:15:42] <Sheetal> import socket  
+[2016-06-03 20:16:10] <Sheetal> This imports the socket module, which is already available in python
+[2016-06-03 20:16:26] <Sheetal> Step 2
+[2016-06-03 20:16:29] <Sheetal> s = socket.socket() 
+[2016-06-03 20:16:48] <Sheetal> This creates a socket with the socket() system call.
+[2016-06-03 20:17:16] <Sheetal> Now this socket has to have a hostname and a port number
+[2016-06-03 20:17:19] <Sheetal> Step 3
+[2016-06-03 20:17:23] <Sheetal> host = socket.gethostname() 
+[2016-06-03 20:17:30] <Sheetal> This gets the hostname
+[2016-06-03 20:17:33] <Sheetal> Step 4
+[2016-06-03 20:17:44] <Sheetal> port = 12345
+[2016-06-03 20:18:02] <Sheetal> This reserves a port for your service
+[2016-06-03 20:18:10] <Sheetal> Step 5
+[2016-06-03 20:18:26] <Sheetal> s.bind((host, port))
+[2016-06-03 20:18:46] <Sheetal> This binds the host to the port using the bind() system call.
+[2016-06-03 20:19:22] <Sheetal> Step 6
+[2016-06-03 20:19:26] <Sheetal> s.listen(5) 
+[2016-06-03 20:19:45] <Sheetal> This listens for connections with the listen() system call.
+[2016-06-03 20:19:56] <Sheetal> Here,
+[2016-06-03 20:20:10] <Sheetal> 5 indicates the maximum no.of connect requests that the server will accept at the same time
+[2016-06-03 20:20:10] ⇐ Shantanu quit (75e410d4@gateway/web/freenode/ip.117.228.16.212): Ping timeout: 250 seconds
+[2016-06-03 20:20:45] <Sheetal> Now for each client,
+[2016-06-03 20:20:59] <Sheetal> accept a connection with the accept() system call.
+[2016-06-03 20:21:10] <Sheetal> This call typically blocks the connection until a client connects with the server.
+[2016-06-03 20:21:22] <Sheetal> Step 7
+[2016-06-03 20:21:33] <Sheetal> c, addr = s.accept()
+[2016-06-03 20:21:41] <Sheetal> Here, the server establishes connection with the client. 
+[2016-06-03 20:21:51] <Sheetal> c just denotes the connection,
+[2016-06-03 20:22:01] <Sheetal> and addr denotes the IP address and the port number.
+[2016-06-03 20:22:34] <Sheetal> This u will be seeing when u run the code
+[2016-06-03 20:22:53] <Sheetal> Step 8
+[2016-06-03 20:22:55] <Sheetal> print c.recv(1024)
+[2016-06-03 20:23:06] <Sheetal> Receive data from the client and print it
+[2016-06-03 20:23:17] <Sheetal> Here, recv() is a system call, and 1024 is any port. 
+[2016-06-03 20:23:30] <Sheetal> Step 9
+[2016-06-03 20:23:41] <Sheetal> c.close()
+[2016-06-03 20:23:54] <Sheetal> This closes the connection
+[2016-06-03 20:23:59] <Sheetal> Here is the code
+[2016-06-03 20:24:27] <Sheetal> http://ideone.com/qsmOZu
+[2016-06-03 20:24:42] <Sheetal> Have a look at it...u will understand it better
+[2016-06-03 20:26:03] → shantanu joined (1b618aff@gateway/web/freenode/ip.27.97.138.255)
+[2016-06-03 20:26:54] <Sheetal> When ure done with the server code, just tell me here so that i can start with client code then
+[2016-06-03 20:29:06] <Ravali_> done
+[2016-06-03 20:29:54] <gautham___> done in the sense trying out in our pc????:P
+[2016-06-03 20:30:11] <Sheetal> No no...just see the understand 
+[2016-06-03 20:30:15] <Sheetal> *and
+[2016-06-03 20:30:28] <Sheetal> u will need the client code too, to run it 
+[2016-06-03 20:30:37] <Sheetal> which i will give u in a while
+[2016-06-03 20:30:41] <Aneesh_> yeah you can start
+[2016-06-03 20:30:50] <gautham___> ok done
+[2016-06-03 20:31:08] <Harita_Reddy> done
+[2016-06-03 20:31:37] <Sheetal> So coming to the client side..
+[2016-06-03 20:32:00] <Sheetal> The first 4 steps are the same as server. 
+[2016-06-03 20:32:35] <Sheetal> wherein we import socket module, create a socket, get the hostname and assign a port
+[2016-06-03 20:32:53] <Sheetal> Step 5
+[2016-06-03 20:33:02] <Sheetal> s.connect((host, port))
+[2016-06-03 20:33:21] <Sheetal> This connects the socket to the address of the server using the connect() system call.
+[2016-06-03 20:33:55] <Sheetal> Now we need to send data to the server
+[2016-06-03 20:33:58] <Sheetal> Step 6
+[2016-06-03 20:34:01] <Sheetal> s.send(raw_input())
+[2016-06-03 20:34:21] <Sheetal> The method raw_input() is used to accept data from the keyboard
+[2016-06-03 20:34:35] <Sheetal> and this will be sent to the server side, and printed there
+[2016-06-03 20:35:00] <Sheetal> Here's the code
+[2016-06-03 20:35:02] <Sheetal> http://ideone.com/pVWmSD
+[2016-06-03 20:35:30] <Sheetal> The client-server interaction can be understood from this diagram:
+[2016-06-03 20:35:41] <Sheetal> http://www.tutorialspoint.com/unix_sockets/images/socket_client_server.gif
+[2016-06-03 20:35:53] <Sheetal> Go through both and tell me when ure done
+[2016-06-03 20:37:53] <Aneesh_> done
+[2016-06-03 20:39:14] <gautham___> done
+[2016-06-03 20:39:31] <shamitha> done
+[2016-06-03 20:40:41] <Sheetal> So do u guys use ubuntu or windows?
+[2016-06-03 20:42:25] <shantanu> i've got windows..
+[2016-06-03 20:42:31] <Harita_Reddy> i use ubuntu
+[2016-06-03 20:42:36] <gautham___> now on windows :(
+[2016-06-03 20:42:41] <Aneesh_> Windows
+[2016-06-03 20:42:58] <Ravali_> windows
+[2016-06-03 20:43:04] <shamitha> windows
+[2016-06-03 20:43:05] <Sheetal> okay so copy both the codes and paste it in 2 files called server.py and client.py respectively
+[2016-06-03 20:43:13] <Sheetal> any name can be given 
+[2016-06-03 20:43:18] ⇐ Harita_Reddy quit (3cfe7e20@gateway/web/freenode/ip.60.254.126.32): Quit: Page closed
+[2016-06-03 20:43:25] <Sheetal> and then run the files from your terminal/cmd
+[2016-06-03 20:43:43] <Sheetal> make sure u first run the server file
+[2016-06-03 20:43:51] <Sheetal> and then run the client file
+[2016-06-03 20:44:16] <Sheetal> u can open multiple terminals and try connecting multiple clients to the same server too
+[2016-06-03 20:44:36] <Sheetal> So when u run the server, it will start listening
+[2016-06-03 20:44:42] <Sheetal> and when u run the client,
+[2016-06-03 20:44:49] <Sheetal> type in something and press enter
+[2016-06-03 20:44:58] <Sheetal> u will see that printed on the server side
+[2016-06-03 20:45:10] → Harita_Reddy joined (3cfe7e20@gateway/web/freenode/ip.60.254.126.32)
+[2016-06-03 20:45:40] → AndroUser2 joined (~androirc@103.246.42.50)
+[2016-06-03 20:45:56] <Sheetal> but keep in mind, since i have specified listen(5), the server will listen to only max 5 clients at a time
+[2016-06-03 20:46:01] <Sheetal> U can change the number and try out
+[2016-06-03 20:46:33] <Sheetal> So just post here when ure done running it and seeing the output
+[2016-06-03 20:52:46] ⇐ AndroUser2 quit (~androirc@103.246.42.50): Ping timeout: 252 seconds
+[2016-06-03 20:54:00] <Sheetal> Done?
+[2016-06-03 20:54:11] <revanth> done
+[2016-06-03 20:55:42] ⇐ Ravali_ quit (dfe3e09f@gateway/web/freenode/ip.223.227.224.159): Ping timeout: 250 seconds
+[2016-06-03 20:56:29] → Ravali joined (dfe3e09f@gateway/web/freenode/ip.223.227.224.159)
+[2016-06-03 20:56:58] <Sheetal> Others? Facing problems?
+[2016-06-03 20:57:27] <shantanu> how exactly do we run it through cmd?
+[2016-06-03 20:57:39] → AndroUser2 joined (~androirc@103.246.42.50)
+[2016-06-03 20:57:39] ⇐ AndroUser2 quit (~androirc@103.246.42.50): Client Quit
+[2016-06-03 20:57:46] <Sheetal> go into the directory where u saved the file
+[2016-06-03 20:57:49] <Sheetal> and type
+[2016-06-03 20:57:53] <Aneesh_> I'm getting this error "Missing parenthesis to call in 'print
+[2016-06-03 20:57:54] <Sheetal> python server.py
+[2016-06-03 20:58:03] <Sheetal> to run the server file
+[2016-06-03 20:58:29] <Aneesh_> on line 11 of server.py
+[2016-06-03 20:59:11] → AndroUser2 joined (~androirc@103.246.42.50)
+[2016-06-03 20:59:28] <Sheetal> its running for me...i jus checked
+[2016-06-03 20:59:35] <Sheetal> make sure u copy the exact code
+[2016-06-03 20:59:49] <Sheetal> just check if u've made any changes by mistake
+[2016-06-03 21:01:40] <Ravali> does it run on windows xp cmd prompt
+[2016-06-03 21:01:56] <Ravali> im using xp
+[2016-06-03 21:02:15] <Sheetal> yea it should
+[2016-06-03 21:02:16] <rakshith> what else will be covered in this session?
+[2016-06-03 21:02:23] <Sheetal> what error are u getting?
+[2016-06-03 21:02:45] <shantanu> 'python' is not recognized as an internal or external command, operable program or batch file.
+[2016-06-03 21:03:02] <shantanu> that's the error i get everytime i try to run it
+[2016-06-03 21:03:03] <rakshith> add python to your path env variable
+[2016-06-03 21:03:13] <Aneesh_> yeah i think I fixed it. Turns out Python ver 3 needs braces everywhere. 
+[2016-06-03 21:03:23] <Ravali> yea the above msg for me too
+[2016-06-03 21:03:39] <Sheetal> u havent installed python on your system then 
+[2016-06-03 21:03:45] <shantanu> how do i add python to my path env variable?
+[2016-06-03 21:03:48] <shantanu> oh
+[2016-06-03 21:03:49] <Sheetal> install python and try it out later. 
+[2016-06-03 21:03:52] <shantanu> lol
+[2016-06-03 21:03:52] <Sheetal> It will run
+[2016-06-03 21:03:54] <shantanu> yeah sorry
+[2016-06-03 21:04:06] <Ravali> k
+[2016-06-03 21:04:12] <Sheetal> If it doesnt then, u can always contact me!
+[2016-06-03 21:04:16] <Sheetal> Okay so..
+[2016-06-03 21:04:18] <shantanu> sweet!
+[2016-06-03 21:04:29] <Sheetal> Thats all for today's session! 
+[2016-06-03 21:04:41] <Sheetal> Hope you all understood everything and hope u liked it.
+[2016-06-03 21:04:48] <Sheetal> Thank you for attending!
+[2016-06-03 21:05:00] <Sheetal> Any doubts, u can always ping me, pooja or isha. 
+[2016-06-03 21:05:05] <Ravali> Thank you!
+[2016-06-03 21:05:06] <revanth> thank you.
+[2016-06-03 21:05:06] <Sheetal> Goodnight everyone :)
+[2016-06-03 21:05:24] ⇐ Harita_Reddy quit (3cfe7e20@gateway/web/freenode/ip.60.254.126.32): Quit: Page closed
+[2016-06-03 21:05:25] <shantanu> goodnight!
+[2016-06-03 21:05:26] <shantanu> thanks
+[2016-06-03 21:05:27] ⇐ revanth quit (~revanth@106.51.235.31): Quit: Leaving
+[2016-06-03 21:05:28] <Aneesh_> good night! thank you!
+[2016-06-03 21:05:29] <shantanu> :)
+[2016-06-03 21:05:34] ⇐ shantanu quit (1b618aff@gateway/web/freenode/ip.27.97.138.255): Quit: Page closed
+[2016-06-03 21:05:34] ⇐ Ravali quit (dfe3e09f@gateway/web/freenode/ip.223.227.224.159): Quit: Page closed
+[2016-06-03 21:05:35] ← rakshith left (~hehaichi@117.192.99.8)
+[2016-06-03 21:05:53] ⇐ shamitha quit (75601736@gateway/web/freenode/ip.117.96.23.54): Quit: Page closed

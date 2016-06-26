@@ -1,0 +1,179 @@
+[11:19:33] <vinayb> hey folks
+[11:22:31] *** vinayb changes topic to 'Distributed Systems Programming with Erlang | Today's log: https://goo.gl/FdGIf7'
+[11:22:35] *** Joins: rakshith (~hehaichi@103.194.22.43)
+[11:27:44] *** Joins: vilas_m (75c6771a@gateway/web/freenode/ip.117.198.119.26)
+[11:28:11] *** Joins: aditya_a (~androirc@110-170-29-146.static.asianet.co.th)
+[11:31:37] *** Quits: aditya_a (~androirc@110-170-29-146.static.asianet.co.th) (Client Quit)
+[11:32:04] *** Joins: aditya_a (~androirc@110-170-29-146.static.asianet.co.th)
+[11:32:09] <vinayb> Alright guys, i guess no one else is going to join us. Shall we begin?
+[11:32:46] <vilas_m> Yea
+[11:32:57] <aditya_a> Yes
+[11:33:06] *** Joins: Pratyushgr (31cbcc3d@gateway/web/freenode/ip.49.203.204.61)
+[11:33:12] <rakshith> yes
+[11:33:23] <vinayb> alright we'll start
+[11:34:08] <vinayb> Today we'll talk about the Records data structure in Erlang
+[11:34:50] <vinayb> Erlang records are a lot like structs in C
+[11:35:21] <vinayb> Pretty useful whenever you have a small data structure where you want to access the attributes by name directly
+[11:35:40] <vinayb> Alright, open up a records.erl file
+[11:35:43] <vinayb> and type this:
+[11:36:01] <vinayb> -module(records).
+[11:36:01] <vinayb> -compile(export_all).
+[11:36:04] <vinayb> -record(robot, {name, type=industrial, hobbies, details=[]}).
+[11:36:40] <vinayb> btw, if you're tired of passing each function signature to the compile attribute, then you can just use export_all
+[11:37:01] <vinayb> but, don't do this usually, because it helps prevent small errors
+[11:37:38] <vinayb> so a record is declared just as module attributes
+[11:37:51] *** Joins: m_gautham (67fd8231@gateway/web/freenode/ip.103.253.130.49)
+[11:38:15] <vinayb> in the third line, we just defined a record of the type robot, with fields, name, type, hobbies and details
+[11:38:35] <vinayb> and we have given default value of industrial to type and empty list to details
+[11:39:06] <vinayb> Please don't confuse yourself when I say "record of the type robot" and has a "field called type"
+[11:39:17] <vinayb> any doubts?
+[11:39:22] <vilas_m> No
+[11:39:40] <vinayb> alright, go ahead and define this function in the same file:
+[11:39:52] <vinayb> first_robot() ->
+[11:39:53] <vinayb>     #robot{name="Mechatron",
+[11:39:53] <vinayb>            type=handmade, 
+[11:39:55] <vinayb>            details=["Moved by a small man inside"]}.
+[11:40:31] <vinayb> and then run the code
+[11:40:34] <vinayb> and call the function
+[11:40:41] <vinayb> records:first_robot()
+[11:40:44] <vinayb> what's the output?
+[11:42:20] <vilas_m> {robot,"Mechatron",handmade,undefined,        ["Moved by a small man inside"]}
+[11:42:34] *** Joins: adarsh_h (6ace8120@gateway/web/freenode/ip.106.206.129.32)
+[11:42:55] <vinayb> Right! so you can see how the output is like a tuple
+[11:43:20] <vinayb> in fact, records are nothing but some additional syntax (what we call syntactic sugar) on top of tuples
+[11:43:28] <vinayb> Fortunately, there's a way to make it better
+[11:43:46] <vinayb> The Erlang shell has a command rr(Module) that lets you load record definitions from module:
+[11:43:56] <vinayb> run this:
+[11:43:57] <vinayb> rr(records).
+[11:44:04] <vinayb> records:first_robot(). 
+[11:44:20] <vinayb> what's the output?
+[11:44:54] <vilas_m> #robot{name = "Mechatron",type = handmade,        hobbies = undefined,        details = ["Moved by a small man inside"]}
+[11:45:09] <vinayb> right! so here the output explicitly shows us that it is a record
+[11:45:42] <vinayb> To see the behavior of the defaults we set in the robot definition, let's compile the following function:
+[11:45:58] <vinayb> car_factory(CorpName) -> #robot{name=CorpName, hobbies="building cars"}.
+[11:46:39] <vinayb> run it:
+[11:46:40] <vinayb> c(records).
+[11:46:50] <vinayb> records:car_factory("Jokeswagen").
+[11:47:58] <vinayb> what's the output?
+[11:48:14] <vilas_m> #robot{name = "Jokeswagen",type = industrial,        hobbies = "building cars",details = []}
+[11:48:39] <vinayb> yeah, so you can see that when we didn't specify the type and details, the defaults got used
+[11:48:42] *** Quits: m_gautham (67fd8231@gateway/web/freenode/ip.103.253.130.49) (Ping timeout: 250 seconds)
+[11:49:03] <vinayb> Writing records alone won't do much. We need a way to extract values from them. There are basically two ways to do this. The first one is with a special 'dot syntax'
+[11:49:34] <vinayb> run this:
+[11:49:35] <vinayb> Crusher = #robot{name="Crusher", hobbies=["Crushing people","petting cats"]}. 
+[11:49:42] <vinayb> in the shell
+[11:49:54] <vinayb> Crusher#robot.hobbies.
+[11:49:57] <vinayb> what's the output?
+[11:51:19] <vilas_m> ["Crushing people","petting cats"]
+[11:52:14] <vinayb> right! so you can see how we can extract values from a record. Yes, the syntax is pretty ugly. Even though techincally you shouldn't need to specify the 'robot' keyword, it's just the way it is
+[11:52:42] <vinayb> nested records get even uglier:
+[11:52:50] <vinayb> NestedBot = #robot{details=#robot{name="erNest"}}.
+[11:52:59] <vinayb> (NestedBot#robot.details)#robot.name.
+[11:54:09] <vinayb> And yes, the parentheses are mandatory.
+[11:54:32] <vinayb> one saving feature of records is the possibility to use them in function heads to pattern match and also in guards 
+[11:55:00] <vinayb> declare a new record as follows on top of the file, and then add the functions under:
+[11:55:08] <vinayb> -record(user, {id, name, group, age}).
+[11:55:16] <vinayb> admin_panel(#user{name=Name, group=admin}) ->
+[11:55:16] <vinayb> Name ++ " is allowed!";
+[11:55:16] <vinayb> admin_panel(#user{name=Name}) ->
+[11:55:17] <vinayb> Name ++ " is not allowed".
+[11:56:10] <vinayb> adult_section(U = #user{}) when U#user.age >= 18 -> %% Show stuff that can't be written in such a text allowed;
+[11:56:13] <vinayb> adult_section(_) -> %% redirect to pogo website forbidden.
+[11:56:30] <vinayb> damn formatting, hold on
+[11:56:35] <vinayb> adult_section(U = #user{}) when U#user.age >= 18 ->
+[11:56:44] <vinayb>     allowed;
+[11:56:49] <vinayb> adult_section(_) ->
+[11:56:58] <vinayb>     forbidden.
+[11:57:53] <vinayb> so you can see how you can use variables to bind to any field of a record
+[11:58:37] <vinayb> you can also bind the entire record to a variable by doing Var = #record{}
+[11:58:40] *** Joins: m_gautham (75c67580@gateway/web/freenode/ip.117.198.117.128)
+[11:58:48] <vinayb> like in the adult_section definition :P
+[11:58:55] *** Parts: m_gautham (75c67580@gateway/web/freenode/ip.117.198.117.128) ()
+[11:59:15] <vinayb> alright, load all this up in the shell
+[11:59:53] <vinayb> and tell me the output to these expressions:
+[12:00:11] <vinayb> don't foget to c(records). and then rr(records).
+[12:00:36] <vinayb> records:admin_panel(#user{id=1, name="rohit", group=admin, age=96}).
+[12:00:45] <vinayb> records:admin_panel(#user{id=2, name="you", group=users, age=66}).
+[12:00:56] *** Joins: m_gautham (75c67580@gateway/web/freenode/ip.117.198.117.128)
+[12:01:10] <vinayb> records:adult_section(#user{id=21, name="rahul", group=users, age=72}).
+[12:01:32] <vinayb> records:adult_section(#user{id=22, name="akshay", group=users, age=13}).
+[12:01:47] <vinayb> give me all the 4 outputs
+[12:03:06] *** Quits: rakshith (~hehaichi@103.194.22.43) (Ping timeout: 276 seconds)
+[12:05:04] <vilas_m> "rohit is allowed!", "you is not allowed", allowed, forbidden
+[12:05:45] <vinayb> right! so you can see the benefits of records over tuples
+[12:06:04] <vinayb> . If we were to use a normal tuple, the function definition might need to look a bit like function({record, _, _, ICareAboutThis, _, _}) -> .... 
+[12:06:34] <vinayb> then if somebody changes the number of elements in tuples, then that would ruin the code
+[12:06:52] <vinayb> hence, you can use records, and make decisions on one field, while not caring about other fiels
+[12:06:55] <vinayb> *fields
+[12:07:32] <vinayb> any doubts?
+[12:07:38] <vilas_m> no
+[12:07:44] <aditya_a> No
+[12:08:48] <vinayb> The following function illustrates how to update a record (they wouldn't be very useful otherwise):
+[12:09:14] <vinayb> repairman(Rob) -> Details = Rob#robot.details, NewRob = Rob#robot{details=["Repaired by repairman"|Details]}, {repaired, NewRob}.
+[12:09:39] <vinayb> and then:
+[12:09:43] <vinayb> c(records).
+[12:10:10] <vinayb> records:repairman(#robot{name="Bor", hobbies=["trying to have feelings"]}).
+[12:10:35] <vinayb> what's the output?
+[12:11:11] <adarsh_h> {repaired,#robot{name = "Bor",type = industrial,
+[12:11:16] <adarsh_h> hobbies = ["trying to have feelings"],
+[12:11:23] <adarsh_h>  details = ["Repaired by repairman"]}}
+[12:12:01] <vinayb> right! the syntax to update records is a bit special here, gotta get used to it
+[12:12:32] <vinayb> so guys, in C we have two types of files yes? .h and .c, why is that?
+[12:13:36] *** Parts: m_gautham (75c67580@gateway/web/freenode/ip.117.198.117.128) ()
+[12:14:09] <vilas_m> .h is for the files containing only function definitions and .c makes use of .h files and contains the main program?
+[12:14:31] <vinayb> correct! why do we seperate these two things?
+[12:14:46] <vinayb> function definitions and struct defintions
+[12:14:52] <vinayb> both in .h files
+[12:14:58] <adarsh_h> lesser code to type and more reuse of code?
+[12:14:58] <vinayb> implementation of functions in .c files
+[12:15:04] <vinayb> exactly adarsh_h !
+[12:15:23] <vinayb> so similarly 
+[12:15:28] <vinayb> we have Erlang header files also
+[12:16:07] <vinayb> they're similar to their C counterpart in that, they just get added to the module as if it were written there in the first place
+[12:16:39] *** Joins: rakshith (~hehaichi@103.194.22.43)
+[12:17:06] <vinayb> can anyone guess what the file extension might be? ;)
+[12:17:35] <adarsh_h> .beam?
+[12:18:35] <vinayb> not quite, .beam are the files generated when your Erlang code gets converted to bytecode. Then the bytecode runs on the Erlang virtual machine
+[12:19:15] <adarsh_h> oh okay
+[12:20:09] <vinayb> so the file extension for erlang header files is .hrl
+[12:20:52] <vinayb> create a file named records.hrl with the following content:
+[12:21:04] <vinayb> %% this is a .hrl (header) file.
+[12:21:06] <vinayb> -record(included, {some_field, some_default = "yeah!", unimaginative_name}).
+[12:22:15] <vinayb> to include it in records.erl, just add the following line to the module:
+[12:22:22] <vinayb> -include("records.hrl").
+[12:22:36] <vinayb> make sure both files are in same directory
+[12:22:53] <vinayb> then you can define a function to try it out:
+[12:22:58] <vinayb> included() -> #included{some_field="Some value"}.
+[12:23:35] <vinayb> now, try it out as usual:
+[12:23:38] <vinayb> c(records).
+[12:23:41] <vinayb> rr(records).
+[12:23:50] <vinayb> records:included().
+[12:24:01] <vinayb> what's the output?
+[12:26:15] <vinayb> you guys dozed off or something? :p
+[12:26:32] <adarsh_h> am getting an exception error
+[12:26:58] <vilas_m> Sorry. The shell is stuck for some reason :P
+[12:27:04] <vinayb> what does the error say?
+[12:27:24] <adarsh_h> undefined function/0
+[12:27:31] <adarsh_h> sorry wait..
+[12:27:40] <adarsh_h> undefined function records:included/0
+[12:28:12] <adarsh_h> corrected it
+[12:28:28] <adarsh_h> #included{some_field = "Some_value",some_default = "yeah!",
+[12:28:35] <adarsh_h> unimaginative_name = undefined}
+[12:29:03] <vinayb> right! so that's all there is pretty much to records. They're like structs in C, useful to structure data with
+[12:29:07] <vinayb> any doubts?
+[12:29:29] <adarsh_h> nope
+[12:29:35] <vilas_m> No
+[12:29:39] <aditya_a> No
+[12:31:46] <vinayb> Alright! we're done with a major part of the course! 
+[12:32:01] <vinayb> We have covered the functional aspects of Erlang
+[12:32:12] <vinayb> Control flow, records, recursion etc
+[12:32:24] <vinayb> Akshay will be having a session on sorting tomorrow maybe
+[12:32:33] <vinayb> After that, we shall begin CONCURRENCY!
+[12:32:45] <vinayb> how to get things running at the same time :)
+[12:32:52] <vinayb> and that's it for today folks
+[12:33:22] <vilas_m> Thanks for the session :)
+[12:33:26] *** Parts: vilas_m (75c6771a@gateway/web/freenode/ip.117.198.119.26) ()
+[12:33:29] <aditya_a> Thnx!
+[12:34:02] *** Quits: aditya_a (~androirc@110-170-29-146.static.asianet.co.th) (Quit: AndroIRC - Android IRC Client ( http://www.androirc.com ))
+[12:34:41] <adarsh_h> thanks..see ya
+[12:34:50] *** Quits: adarsh_h (6ace8120@gateway/web/freenode/ip.106.206.129.32) (Quit: Page closed)

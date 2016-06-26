@@ -1,0 +1,958 @@
+**** BEGIN LOGGING AT Tue May 10 18:44:55 2016
+
+**** BEGIN LOGGING AT Tue May 10 18:44:55 2016
+
+May 10 18:56:46 *	shamitha (ab4e9d65@gateway/web/freenode/ip.171.78.157.101) has joined #ieeespnetworking
+**** BEGIN LOGGING AT Tue May 10 18:56:49 2016
+
+May 10 18:56:49 <isha_97>	am I connected ?
+May 10 18:56:55 *	aswin (1fd74fb0@gateway/web/freenode/ip.31.215.79.176) has joined #ieeespnetworking
+May 10 18:57:19 *	Aneesh_ (75c66161@gateway/web/freenode/ip.117.198.97.97) has joined #ieeespnetworking
+May 10 18:58:40 *	gautham (75c670a6@gateway/web/freenode/ip.117.198.112.166) has joined #ieeespnetworking
+May 10 18:59:20 <gautham>	am i at right place?
+May 10 18:59:25 <pooja>	ya.
+May 10 18:59:59 <pooja>	ya
+May 10 19:00:20 <pooja>	just 5 of you have joined.
+May 10 19:00:22 *	rakshith (~rakshith@117.192.110.132) has joined #ieeespnetworking
+May 10 19:00:26 <pooja>	where are the rest?
+May 10 19:01:08 <pooja>	am i connected?
+May 10 19:02:39 *	Ravali (73628794@gateway/web/freenode/ip.115.98.135.148) has joined #ieeespnetworking
+May 10 19:02:54 <pooja>	okay, we will wait for others to join in. 
+May 10 19:03:06 <pooja>	start by 7:05pm. :)
+May 10 19:04:07 *	mohitreddy1996 (uid85309@gateway/web/irccloud.com/x-djhgcxcoublhhzfc) has joined #ieeespnetworking
+May 10 19:05:29 <pooja>	hello everyone.:)
+May 10 19:06:08 <pooja>	i need interaction here from all of you. It's your first session.
+May 10 19:06:12 <rakshith>	Hi!
+May 10 19:06:16 <Aneesh_>	hey!
+May 10 19:06:21 <aswin>	hi
+May 10 19:06:22 <gautham>	hello!!
+May 10 19:06:36 <Ravali>	Hello
+May 10 19:06:40 *	djchakli (7aa70d24@gateway/web/freenode/ip.122.167.13.36) has joined #ieeespnetworking
+May 10 19:06:47 <shamitha>	hi!
+May 10 19:06:51 <revanth>	hey
+May 10 19:06:53 <pooja>	okay so this is your introduction session. won't be going too deep into anything. 
+May 10 19:07:06 *	Shantanu (6a4d0148@gateway/web/freenode/ip.106.77.1.72) has joined #ieeespnetworking
+May 10 19:07:13 <pooja>	so you can just read through and understand and ask in case of doubts.
+May 10 19:07:28 <Ravali>	ok
+May 10 19:07:33 <gautham>	ok
+May 10 19:07:37 <aswin>	ok
+May 10 19:07:45 <pooja>	so now you all know what networking is.
+May 10 19:07:57 <pooja>	how many of you don't know?
+May 10 19:07:59 <pooja>	:P
+May 10 19:08:27 <djchakli>	me
+May 10 19:08:28 <Shantanu>	i have a slight idea but it would be better if you give a brief explanation too
+May 10 19:08:32 <isha_97>	yeah
+May 10 19:08:41 <pooja>	okay.
+May 10 19:09:21 <pooja>	so to understand networking, you need to first understand what communication is..what communicating is
+May 10 19:09:37 <pooja>	what is communication? 
+May 10 19:09:53 *	Anish_ (6ac807d7@gateway/web/freenode/ip.106.200.7.215) has joined #ieeespnetworking
+May 10 19:09:54 <pooja>	Whenever I ask a question, I expect answers from you all. :)
+May 10 19:10:08 <Shantanu>	receiving or sending data
+May 10 19:10:10 <Aneesh_>	sharing of  information
+May 10 19:10:11 <aswin>	transfer of information
+May 10 19:10:15 <djchakli>	exhanging  information between people
+May 10 19:10:19 <rakshith>	process of interchange of data between two people
+May 10 19:10:21 <isha_97>	Sorry to interrupt, please use same nick during all sessions so that we can keep a track of your progress.
+May 10 19:10:26 <Ravali>	exchange of information
+May 10 19:10:35 <pooja>	ok nice.
+May 10 19:10:53 <pooja>	so what is important during share of this information?
+May 10 19:11:00 *	rakshith_ (~rakshith@117.192.110.132) has joined #ieeespnetworking
+May 10 19:11:25 <gautham>	channels
+May 10 19:11:39 <pooja>	start from basics. :P
+May 10 19:12:02 <Aneesh_>	to ensure a unrestricted medium of information travel?
+May 10 19:12:34 <Shantanu>	that's what i was thinking 
+May 10 19:12:36 <aswin>	making sure all information is recieved without distraction
+**** BEGIN LOGGING AT Tue May 10 19:12:37 2016
+
+May 10 19:12:37 <mohitreddy1996>	oye djchakli kon hai ?
+May 10 19:12:37 <pooja>	ya, tell me is sending information the only requirement?
+May 10 19:12:40 <pooja>	no right,
+May 10 19:12:44 <pooja>	it should be sent on time.
+May 10 19:12:52 <pooja>	it should be sent with maximum accuracy
+May 10 19:12:59 <pooja>	it should have no noise
+May 10 19:13:17 <pooja>	it should be most importantly sent to the right destination
+May 10 19:13:36 <pooja>	ya right aswin. 
+May 10 19:13:42 <aswin>	yes
+May 10 19:13:56 *	Harita_Reddy (01273c4f@gateway/web/freenode/ip.1.39.60.79) has joined #ieeespnetworking
+May 10 19:14:10 <pooja>	now, what are the components of communication
+May 10 19:14:21 <pooja>	i could say one component is "sender"
+May 10 19:14:28 <pooja>	ani
+May 10 19:14:31 <aswin>	receiver 
+May 10 19:14:32 <pooja>	hehe
+May 10 19:14:34 <aswin>	medium
+May 10 19:14:38 <djchakli>	hard
+May 10 19:14:42 <pooja>	correct
+May 10 19:14:52 <Shantanu>	hard?
+May 10 19:14:53 <Aneesh_>	lol
+May 10 19:15:05 <djchakli>	he said medium. sorry
+May 10 19:15:07 <djchakli>	continue
+May 10 19:15:18 <Shantanu>	oh okay 
+**** BEGIN LOGGING AT Tue May 10 19:15:27 2016
+
+May 10 19:15:27 <djchakli>	dont tell anyone
+May 10 19:15:29 <djchakli>	that its me
+May 10 19:15:31 <pooja>	transmission medium
+May 10 19:15:36 *	aswin_ (1fd74fb0@gateway/web/freenode/ip.31.215.79.176) has joined #ieeespnetworking
+May 10 19:15:49 <gautham>	feedback
+May 10 19:15:49 <pooja>	are protocols components too?
+May 10 19:16:09 <pooja>	i told mohit
+May 10 19:16:11 <pooja>	heheh
+May 10 19:16:13 <pooja>	tahts all
+May 10 19:16:14 <djchakli>	waste
+May 10 19:16:15 <pooja>	kong back
+May 10 19:16:18 <pooja>	long back
+May 10 19:16:24 <pooja>	you tell him to not tell anyone
+May 10 19:16:27 <Aneesh_>	yeah. they help in processing  and translating the information right?
+May 10 19:16:28 <djchakli>	xD
+May 10 19:16:33 <pooja>	correct.
+May 10 19:16:37 <pooja>	They help in lot many things
+May 10 19:16:44 <Aneesh_>	okay
+May 10 19:16:50 *	isha_97 has quit (Ping timeout: 250 seconds)
+May 10 19:16:50 *	isha_97 has quit (Ping timeout: 250 seconds)
+May 10 19:16:58 <pooja>	so protocols are the most important component of communication
+May 10 19:17:18 <pooja>	now you all mentioned sharing of data/information
+May 10 19:17:35 <pooja>	how is this data represented?
+May 10 19:17:46 <Shantanu>	0s and 1s
+May 10 19:17:51 <aswin_>	binary
+May 10 19:17:57 <Aneesh_>	translated to binary i guess
+May 10 19:18:08 <gautham>	encoded
+May 10 19:18:20 <pooja>	okay. before conversion to binary
+May 10 19:18:31 <rakshith>	packets
+May 10 19:18:31 <Shantanu>	analog?
+May 10 19:18:32 <pooja>	its in the form of text, numbers, 
+May 10 19:18:36 <pooja>	images
+May 10 19:18:40 <pooja>	audio
+May 10 19:18:42 <pooja>	video
+May 10 19:18:42 <Shantanu>	yeah
+May 10 19:18:44 <pooja>	right/
+May 10 19:18:46 <pooja>	?
+May 10 19:18:51 <Ravali>	yeah
+May 10 19:18:55 <aswin_>	yeah
+May 10 19:19:00 *	aswin has quit (Ping timeout: 250 seconds)
+May 10 19:19:03 <djchakli>	correct
+May 10 19:19:07 <gautham>	yes
+May 10 19:19:18 <pooja>	now. in these which data representation is continous
+May 10 19:19:28 <Aneesh_>	analog
+May 10 19:19:30 <pooja>	which is *
+May 10 19:19:39 <Shantanu>	continuos meaning?
+May 10 19:20:11 <pooja>	example. text can be descrete
+May 10 19:20:21 <pooja>	discrete*
+May 10 19:20:28 <pooja>	numbers can be discrete
+May 10 19:20:43 <pooja>	there need not be continous numbers 
+May 10 19:20:47 <pooja>	right?
+May 10 19:20:53 <rakshith>	yeah
+May 10 19:20:54 <pooja>	but audio/ video cannot be like that
+May 10 19:20:56 <Shantanu>	yup
+May 10 19:20:57 <djchakli>	definitely
+May 10 19:21:07 <Aneesh_>	yes
+May 10 19:21:08 <pooja>	they have to be continous.
+May 10 19:21:26 <pooja>	also Images, all of you know are made up from pixels
+May 10 19:21:38 <pooja>	RGB is one standard...red blue green
+May 10 19:22:03 <gautham>	but text can also be continous
+May 10 19:22:37 <pooja>	i mentioned text can be discretee
+May 10 19:22:46 <pooja>	i never mentioned it cannot be continous
+May 10 19:22:59 <pooja>	but audio and video cannot be discrete
+May 10 19:23:05 <gautham>	ok 
+May 10 19:23:13 <djchakli>	what is the meaning of discrete?
+May 10 19:23:24 <pooja>	ya so white is 111 and black is 000 of RGB
+May 10 19:23:39 <pooja>	same with YCM yellow cyan magenta...its another standard
+May 10 19:23:41 <djchakli>	people wont know what discrete is
+May 10 19:24:03 <pooja>	you keep quiet
+May 10 19:24:04 <pooja>	:P
+May 10 19:24:07 <Aneesh_>	okay
+May 10 19:25:02 <pooja>	i will explain what is discrete with an example
+May 10 19:25:16 <pooja>	now i mentioned video is continous. right?
+May 10 19:25:30 <pooja>	i mentioned that assuming video comprises of sound
+May 10 19:25:36 <revanth>	 
+May 10 19:25:44 <pooja>	but imagine a video which is just set of pictures/images put togther
+May 10 19:25:55 <pooja>	then it should be discrete right?
+May 10 19:26:38 <Shantanu>	but then you said a image is continuous too
+May 10 19:26:58 <Shantanu>	so images put together would be continuous wouldn't they?
+May 10 19:27:17 <pooja>	image is discrete
+May 10 19:27:27 <pooja>	text number image are discrete
+May 10 19:27:33 <pooja>	come its just one image
+May 10 19:27:40 <pooja>	with well defined number of pixels
+May 10 19:27:41 <Shantanu>	okay..mybad
+May 10 19:28:03 <pooja>	audio is different in comparison to text and number and image
+May 10 19:28:15 <pooja>	it is made up of composite analog signals right?
+May 10 19:28:39 <pooja>	it has to be continous.
+May 10 19:28:45 <pooja>	am i there
+May 10 19:28:45 *	djchakli is excited
+May 10 19:28:51 <djchakli>	yeah
+May 10 19:28:58 <pooja>	ok
+May 10 19:29:02 <pooja>	my last message was
+May 10 19:29:08 <Shantanu>	makes sense
+May 10 19:29:26 <pooja>	ya. soemthing well defined is discrete
+May 10 19:29:37 <pooja>	audio will change every instance
+May 10 19:29:39 <Aneesh_>	what about videos then? the images forming them are discrete.
+May 10 19:30:15 <Shantanu>	so a video will be continuous
+May 10 19:30:17 <pooja>	exactly. when it's just images. video is discrete, but which video comes with just images? 
+May 10 19:30:26 <pooja>	it's always with audio
+May 10 19:30:28 <pooja>	isnt it
+May 10 19:30:33 <Shantanu>	yeah
+May 10 19:30:45 <pooja>	practical usage wise then video is continous
+May 10 19:30:49 <pooja>	okay let's get back
+May 10 19:31:11 <pooja>	data representation is understood..what about data flow?
+May 10 19:31:20 <pooja>	it may be unidirectional
+May 10 19:31:29 <pooja>	that's called simplex
+May 10 19:31:52 <Aneesh_>	and duplex is bidirectional? 
+May 10 19:31:59 <pooja>	In simplex mode, the communication is unidirectional, as on a one-way street.
+May 10 19:32:10 <pooja>	In half-duplex mode, each station can both transmit and receive, but not at the same time.
+May 10 19:32:34 <pooja>	In full-duplex mode, both stations can transmit and receive simul-
+May 10 19:32:34 <pooja>	taneously
+May 10 19:32:53 <Aneesh_>	okay
+May 10 19:33:05 <aswin_>	ok
+May 10 19:33:05 <pooja>	clear till now?
+May 10 19:33:16 <Aneesh_>	yep
+May 10 19:33:19 <Ravali>	yeah
+May 10 19:33:31 <rakshith>	yes
+May 10 19:33:31 <Anish_>	yeah
+May 10 19:33:37 <gautham>	yeah
+May 10 19:33:37 <shamitha>	yes
+May 10 19:34:07 <pooja>	now networking involves this communication with  performance , reliability and security into consideration.
+May 10 19:34:10 *	revanth has quit (Ping timeout: 250 seconds)
+May 10 19:34:34 <pooja>	i need not explain the three terms.
+May 10 19:34:41 <pooja>	self explanatory  right?
+May 10 19:34:48 <rakshith>	yeah
+May 10 19:34:53 <Aneesh_>	yeah
+May 10 19:35:00 <aswin_>	yeah
+May 10 19:35:02 *	Shantanu has quit (Ping timeout: 250 seconds)
+May 10 19:35:07 *	Shantanu_ (75e9250f@gateway/web/freenode/ip.117.233.37.15) has joined #ieeespnetworking
+May 10 19:35:12 <gautham>	yeah
+May 10 19:35:27 <pooja>	Performance can be measured in many ways, including transit time and response time. Transit time is the amount of time required for a message to travel from one device to another. Response time is the elapsed time between an inquiry and a response.
+May 10 19:35:59 <pooja>	network reliability is measured by the frequency of failure, the time it takes a link to recover from a failure,
+May 10 19:36:20 <pooja>	Network security issues include protecting data from unauthorized access, protecting data from damage and development
+May 10 19:36:22 <pooja>	okay?
+May 10 19:36:33 <Ravali>	okay
+May 10 19:36:35 <rakshith>	okay
+May 10 19:36:41 <aswin_>	ok
+May 10 19:36:42 <Anish_>	okay
+May 10 19:36:43 <Aneesh_>	okay
+May 10 19:36:44 <Shantanu_>	i lost connection for a minute i htink and when i logged in againyou guys have moved on. can i access the previous conversation again if i want?
+May 10 19:36:44 <gautham>	okay
+May 10 19:36:57 <Shantanu_>	had moved on
+May 10 19:37:01 <Shantanu_>	*
+May 10 19:37:02 <pooja>	Ya, I will be sending the log.
+May 10 19:37:11 <pooja>	to your email, soon after the session.
+May 10 19:37:17 <Shantanu_>	okay thanks
+May 10 19:37:28 <pooja>	you can view the entire conversation there. :)
+May 10 19:37:49 <djchakli>	have to leave
+May 10 19:37:50 <djchakli>	bye!
+May 10 19:38:01 <pooja>	okay quick points: communication can be point to point, multipoint that's more like broadcasting.
+May 10 19:38:02 <djchakli>	keep up the good work :)
+May 10 19:38:05 <pooja>	then topology
+May 10 19:38:19 <pooja>	you all must be familiar with ring, star, bus and mesh
+May 10 19:38:28 <rakshith>	yeah
+May 10 19:38:32 <aswin_>	yeah
+May 10 19:38:34 <Anish_>	yeah
+May 10 19:38:35 <pooja>	In a mesh topology, every device has a dedicated point-to-point link to every
+May 10 19:38:35 <pooja>	other device.
+May 10 19:39:13 <pooja>	so how many wires required?
+May 10 19:39:33 <pooja>	okay
+May 10 19:39:34 <pooja>	cya
+May 10 19:39:39 <Anish_>	nc2 ?
+May 10 19:39:51 <pooja>	n*(n-1)/2
+May 10 19:39:53 <pooja>	ya
+May 10 19:40:15 <pooja>	so its lost of wire waste, 
+May 10 19:40:17 <pooja>	In a star topology, each device has a dedicated point-to-point link
+May 10 19:40:17 <pooja>	only to a central controller, usually called a hub.
+May 10 19:41:09 <pooja>	one question. star and mesh, point to point or mutlipoint?
+May 10 19:41:40 <Anish_>	mesh is point to point star is multipoint ?
+May 10 19:41:48 <aswin_>	star is multi
+May 10 19:41:51 <pooja>	no both are point to point
+May 10 19:42:02 <Anish_>	ok
+May 10 19:42:13 <pooja>	at a time...one computer connects to the hub
+May 10 19:42:29 <pooja>	one computer is not interacting with anything else that time
+May 10 19:42:42 <pooja>	now tell me is bus point to point?
+May 10 19:42:42 <gautham>	then example for multi point??
+May 10 19:42:52 <pooja>	patience. :)
+May 10 19:44:10 <aswin_>	bus : point to point
+May 10 19:44:43 <pooja>	no. bus is multipoint
+May 10 19:45:02 <pooja>	One long cable acts as a backbone to link all the devices in a network
+May 10 19:45:16 <pooja>	see one computer has to interact with other computer
+May 10 19:45:26 <pooja>	has to go through a series of computer
+May 10 19:45:56 <pooja>	understand?
+May 10 19:45:56 <Anish_>	yeah
+May 10 19:46:01 <rakshith>	yes
+May 10 19:46:09 <Aneesh_>	yeah
+May 10 19:46:18 <gautham>	yes
+May 10 19:46:20 <aswin_>	yup
+May 10 19:46:41 <pooja>	yet, strangely ring is a dedicated point to point connection
+May 10 19:47:09 <pooja>	A signal is passed along the ring in one direction, from device to device, until it reaches its destination.
+May 10 19:47:38 <pooja>	IBM used something called Token Ring
+May 10 19:49:05 <pooja>	here there was a token bit set to 0 which meant it was free..and moving through connections.. but when one computer wanted to send data to another on the ring.. it would use the token set it to 1, and send the data.. mean while no other computer would use the ring as it needs token for it
+May 10 19:49:09 <pooja>	get it?
+May 10 19:49:56 <pooja>	even if you don't its okay. it's not an important part. 
+May 10 19:50:12 <pooja>	let's me start with what is important.
+May 10 19:50:17 <pooja>	hope you guys have some idea now
+May 10 19:51:10 <pooja>	reply guys 
+May 10 19:51:11 <pooja>	:)
+May 10 19:51:21 <Shantanu_>	yes
+May 10 19:51:23 <Aneesh_>	yeah.
+May 10 19:51:24 <aswin_>	okay
+May 10 19:51:30 <Anish_>	yes
+May 10 19:51:34 <shamitha>	yes
+May 10 19:51:39 <gautham>	yes
+May 10 19:51:40 <Ravali>	okay
+May 10 19:51:42 <pooja>	okay coming back to protocols.
+May 10 19:52:21 <pooja>	The key elements of a protocol are syntax, semantics, and timing.
+May 10 19:52:37 <pooja>	The term syntax refers to the structure or format of the data, meaning the order in which they are presented.
+May 10 19:53:39 <pooja>	The word semantics refers to the meaning of each section of bits.
+May 10 19:53:43 <pooja>	am I there?
+May 10 19:53:45 <Shantanu_>	quick questions.. so can none of bus, ring,mesh or star transmit data simultaneously to different points?
+May 10 19:53:45 <Anish_>	bus can i guess
+May 10 19:54:01 *	djchakli has quit (Quit: Page closed)
+May 10 19:54:01 *	djchakli has quit (Quit: Page closed)
+May 10 19:54:30 <pooja>	I have internet issues. Are you guys getting my messages?
+May 10 19:54:37 <Shantanu_>	i am
+May 10 19:54:38 <rakshith>	yep
+May 10 19:54:39 <Ravali>	yeah
+May 10 19:54:40 <Aneesh_>	yes
+May 10 19:54:47 <Anish_>	yes
+May 10 19:55:01 <pooja>	ya. see shantanu, understand this.
+May 10 19:55:21 <pooja>	point to point and multipoint is different from simplex, duplex
+May 10 19:55:51 <pooja>	and if one computer wants to send messages to three four computers it cand o so
+May 10 19:55:54 <pooja>	do so*
+May 10 19:56:04 <Shantanu_>	at the same time?
+May 10 19:56:10 <pooja>	you also send mails to many people at the same time na
+May 10 19:56:17 <pooja>	think of that on a local network
+May 10 19:56:20 <Shantanu_>	yeah okay
+May 10 19:56:37 <rakshith>	that is essentially many point to point messages right?
+May 10 19:56:46 <pooja>	ya
+May 10 19:57:03 <pooja>	one computer to another computer is always point to point
+May 10 19:57:04 <Anish_>	so will that be multipoint?
+May 10 19:57:05 <pooja>	:)
+May 10 19:57:33 <pooja>	okay i think you are all confused. wait i will clear it
+May 10 19:57:40 <pooja>	see. in star and mesh
+May 10 19:58:00 *	Harita_Reddy has quit (Ping timeout: 250 seconds)
+May 10 19:58:09 <pooja>	one computer is communicating to only one computer in case of mesh..
+May 10 19:59:01 <Shantanu_>	okay
+May 10 19:59:07 <pooja>	for star one computer is communicating with the hub immaterial to which computer it wants to send data to.
+May 10 19:59:09 <pooja>	okay?
+May 10 19:59:21 <pooja>	so its point to point
+May 10 19:59:39 <Ravali>	okay
+May 10 19:59:47 <pooja>	but in bus....one computer will communicate to all intermediate computer to reach destincation
+May 10 20:00:03 <pooja>	in ring how it is still point to point is
+May 10 20:00:43 <pooja>	one computer communicates to neighbouring only...and then the neighbouring computer further communicates with  it's neighbour
+May 10 20:00:57 <pooja>	that way one computer still communicates only with one..in ring
+May 10 20:01:11 <pooja>	understand?
+May 10 20:01:18 <rakshith>	yes
+May 10 20:01:30 <pooja>	so only bus is multipoint
+May 10 20:01:35 <Shantanu_>	got it
+May 10 20:01:52 <pooja>	coming back to protocols.
+May 10 20:02:02 <pooja>	i defined syntax..semantics
+May 10 20:02:10 <pooja>	The term timing refers to two characteristics: when data should be sent and how fast they can be sent.
+May 10 20:02:18 <pooja>	so suppose you have TCP protocol
+May 10 20:02:31 <Shantanu_>	what is a tcp protocol?
+May 10 20:02:31 <pooja>	then it will have a format which is it's syntax
+May 10 20:02:51 <pooja>	Transfer Control Protocol. youy don't need to knwo what it is.
+May 10 20:02:51 <Shantanu_>	do we need to know that atm or are you just using it as an example?
+May 10 20:02:56 <Shantanu_>	okay
+May 10 20:02:58 <pooja>	for now just know it is a protocol
+May 10 20:03:17 <pooja>	okay some XYZ protocol we have
+May 10 20:03:31 <pooja>	it has a format unique to itself. that will be its synatx
+May 10 20:03:33 *	isha_97 (9e90411d@gateway/web/freenode/ip.158.144.65.29) has joined #ieeespnetworking
+May 10 20:03:52 <pooja>	semantics will be what each bit of that protocol means.. 
+May 10 20:04:02 <isha_97>	who was that djchakali ?
+May 10 20:04:06 <pooja>	and timing is when this protocol is to be used.
+May 10 20:04:18 <Anish_>	ok
+May 10 20:04:19 <pooja>	so this will be explained in depth alter
+May 10 20:04:23 <pooja>	later.
+May 10 20:04:39 <pooja>	just remember the key elements, syntax,...semantics...timing
+May 10 20:05:05 <pooja>	next, I will be explaining to you th OSI MOdel
+May 10 20:05:29 <pooja>	Open Systems Interconnection
+May 10 20:05:29 <pooja>	model
+May 10 20:05:36 <pooja>	koi nahi
+May 10 20:05:44 <pooja>	okay?
+May 10 20:05:48 <Ravali>	okay
+May 10 20:05:52 <gautham>	okay
+May 10 20:05:53 <rakshith>	okay
+May 10 20:05:54 <aswin_>	ok
+May 10 20:05:56 <Anish_>	ok
+May 10 20:05:57 <pooja>	That is an networking model with seven layers
+May 10 20:05:58 <Aneesh_>	okay
+May 10 20:06:00 <isha_97>	matlab ?
+May 10 20:06:35 <pooja>	TCP/IP protocol suit
+May 10 20:06:44 <pooja>	that was developed before OSI model
+May 10 20:06:49 <pooja>	but i will explain OSI
+May 10 20:07:01 <pooja>	paat anhi
+May 10 20:07:35 <isha_97>	He/She msgd me that she'll need some extra help :p my connection went off but 
+May 10 20:07:38 <pooja>	 the seven layers are
+May 10 20:07:45 <pooja>	Application layer
+May 10 20:07:48 <pooja>	presentation
+May 10 20:07:50 <pooja>	session
+May 10 20:07:52 <pooja>	transport
+May 10 20:07:54 <pooja>	network
+May 10 20:07:57 <pooja>	data link
+May 10 20:08:03 <pooja>	physical
+May 10 20:08:35 <pooja>	i will be giving you an introduction to OSI model and then explain physical layer in detail. that will be the session.
+May 10 20:09:04 <pooja>	so now.
+May 10 20:09:08 <pooja>	one small example
+May 10 20:09:13 <pooja>	when you post a letter
+May 10 20:09:20 <pooja>	you follow steps
+May 10 20:09:22 <pooja>	don;t you
+May 10 20:09:33 <pooja>	lol
+May 10 20:09:38 <pooja>	abhi kya pata
+May 10 20:09:38 <Shantanu_>	yes
+May 10 20:09:42 <pooja>	mujeh koi message nahi aay
+May 10 20:09:49 <isha_97>	chod
+May 10 20:09:51 <pooja>	okay what are the steps
+May 10 20:10:17 <Shantanu_>	write a letter 
+May 10 20:10:19 <pooja>	these steps are nothing but similar to layers in OSI model
+May 10 20:10:26 <Shantanu_>	oh nevermind
+May 10 20:10:36 <Shantanu_>	okay
+May 10 20:10:38 <pooja>	you are right
+May 10 20:10:43 <pooja>	correct approach
+May 10 20:10:45 <pooja>	see firstly
+May 10 20:10:54 <pooja>	you will have two sides always
+May 10 20:10:57 <pooja>	sender side
+May 10 20:11:04 <pooja>	receiver side'
+May 10 20:11:10 <pooja>	on sender side:
+May 10 20:11:26 <pooja>	Higher layer. The sender writes the letter, inserts the letter in an envelope, write the sender and receiver addresses, and drops the letter in a mailbox.
+May 10 20:11:39 <pooja>	Middle layer. The letter is picked up by a letter carrier and delivered to the post office.
+May 10 20:11:51 <pooja>	Lower layer. The letter is sorted at the post office; a carrier transports the letter.
+May 10 20:11:54 <pooja>	okay?
+May 10 20:12:04 <rakshith>	okay
+May 10 20:12:07 <Anish_>	ok
+May 10 20:12:11 <aswin_>	okay
+May 10 20:12:13 <gautham>	okay
+May 10 20:12:15 <Ravali>	okay
+May 10 20:12:16 <shamitha>	ok
+May 10 20:12:23 <pooja>	now transport medium will be bus truck airplane etc
+May 10 20:12:28 <pooja>	on receiver side:
+May 10 20:12:37 <pooja>	Lower layer. The carrier transports the letter to the post office.
+May 10 20:12:48 <pooja>	Middle layer. The letter is sorted and delivered to the recipient's mailbox.
+May 10 20:12:57 <pooja>	Higher layer. The receiver picks up the letter, opens the envelope, and reads it.
+May 10 20:13:03 <pooja>	correct?
+May 10 20:13:11 <gautham>	no
+May 10 20:13:21 <pooja>	what's wrong?
+May 10 20:13:56 <pooja>	others?
+May 10 20:14:07 <pooja>	are you all able to understand?
+May 10 20:14:28 <aswin_>	ok
+May 10 20:14:30 <Aneesh_>	yeah
+May 10 20:14:30 <rakshith>	yes
+May 10 20:14:38 <Anish_>	yeah
+May 10 20:14:43 <Ravali>	yes
+May 10 20:14:46 <pooja>	see on the sender side higher level will transit to lower layer..but on receiver side lower will to higher
+May 10 20:14:47 *	Harita_Reddy (012715e2@gateway/web/freenode/ip.1.39.21.226) has joined #ieeespnetworking
+May 10 20:14:53 <pooja>	it's understood right
+May 10 20:15:09 <pooja>	directly how can higher level take the data?
+May 10 20:15:12 <pooja>	no right.
+May 10 20:15:22 <pooja>	you get it?
+May 10 20:15:29 <rakshith>	correct
+May 10 20:16:14 <pooja>	At the sender site, the letter must be written and dropped in the mailbox before being picked up by the letter carrier and delivered to the post office. At the receiver site, the letter must be dropped in the recipient mailbox before being picked up and read by the recipient.
+May 10 20:16:29 <pooja>	so it is higher level to lower level at sender side
+May 10 20:16:37 <pooja>	and lower to higher at receiver side
+May 10 20:16:47 <Anish_>	yeah
+May 10 20:16:49 <pooja>	remember this
+May 10 20:16:57 <Ravali>	okay
+May 10 20:16:57 <pooja>	this is rule of OSI model also
+May 10 20:17:05 <Anish_>	okay
+May 10 20:17:20 <pooja>	now there will be many things happening on each layer
+May 10 20:17:31 <pooja>	let's not get into what happens
+May 10 20:17:39 <pooja>	but things happen
+May 10 20:18:04 <pooja>	now in case of OSI model there are 7 layers
+May 10 20:18:26 <pooja>	so last and lower most layer is physical layer
+May 10 20:18:31 <pooja>	that is the transmission layer
+May 10 20:19:40 <pooja>	now it is obvious if there is some conversion of data happening in the senders physical layer.. it will be understood only by the physical layer of the receiver.
+May 10 20:20:35 <pooja>	so similarly if some thing which is happening in Nth layer on sender side, then it can be understood only by Nth layer on the receiver side
+May 10 20:20:47 <pooja>	another important point related to OSI model
+May 10 20:20:51 <pooja>	got it?
+May 10 20:21:00 <Ravali>	yeah
+May 10 20:21:01 <Aneesh_>	yes
+May 10 20:21:06 <shamitha>	yes
+May 10 20:21:15 <aswin_>	yes
+May 10 20:21:24 <Anish_>	yes
+May 10 20:21:28 <pooja>	transport layer on sender side cannot be expected to be understood by application layer of receiver side
+May 10 20:21:34 <gautham>	yes
+May 10 20:21:48 <pooja>	because that it  is the work of receivers transport layer..and not its application layer
+May 10 20:22:01 <pooja>	and on receiver side transport layer will come before application
+May 10 20:22:08 <pooja>	as we go from lower to higher
+May 10 20:22:11 <pooja>	got it?
+May 10 20:22:15 <Anish_>	yes
+May 10 20:22:25 <aswin_>	yeah
+May 10 20:22:36 <Shantanu_>	yeah
+May 10 20:22:41 <Aneesh_>	yeah
+May 10 20:22:42 <pooja>	cool . you guys are damn fast. :)
+May 10 20:22:53 <Shantanu_>	thanks to you :P
+May 10 20:23:06 <pooja>	okay. so let me tell you about each layer in two three lines
+May 10 20:23:14 <pooja>	so that you get a picture of it
+May 10 20:23:23 <pooja>	so first on sender side where will it go.
+May 10 20:23:25 <pooja>	which layer?
+May 10 20:23:32 <Ravali>	application layer
+May 10 20:23:34 *	Harita_Reddy has quit (Ping timeout: 250 seconds)
+May 10 20:23:35 <pooja>	cool.
+May 10 20:23:59 <pooja>	so that layer is for all file transfers, mail services
+May 10 20:24:05 <pooja>	directory services
+May 10 20:24:15 <Shantanu_>	wait
+May 10 20:24:27 <pooja>	you decide whcih file you want to send from which directory and everything.
+May 10 20:24:30 <pooja>	ya tell me
+May 10 20:24:32 <Shantanu_>	didn't you say the bottom most layer was physical layer
+May 10 20:24:36 <pooja>	ya it is
+May 10 20:24:39 <Shantanu_>	so 
+May 10 20:24:52 <pooja>	but on sender side you start from higher to lowed\r
+May 10 20:24:56 <Shantanu_>	shouldn't that be the first layer that the data goes to
+May 10 20:25:01 <pooja>	and on receiver from lower to higher
+May 10 20:25:02 <Shantanu_>	oh yeah
+May 10 20:25:05 <Shantanu_>	i forgot
+May 10 20:25:09 <Shantanu_>	go on
+May 10 20:25:10 <Shantanu_>	sorry
+May 10 20:25:14 <pooja>	its like this..
+May 10 20:25:16 <pooja>	example.
+May 10 20:25:23 <pooja>	you have a chocolate
+May 10 20:25:25 <Shantanu_>	i got it.. its fine
+May 10 20:25:31 <pooja>	you wrap it with cover A
+May 10 20:25:36 <pooja>	then with cover B
+May 10 20:25:40 <pooja>	then with cover C
+May 10 20:25:49 <pooja>	but while opening you will first open cover C n
+May 10 20:25:52 <pooja>	right?
+May 10 20:26:01 <Shantanu_>	yeah yeah  .. understood
+May 10 20:26:01 *	anish__ (6ac807d7@gateway/web/freenode/ip.106.200.7.215) has joined #ieeespnetworking
+May 10 20:26:12 <pooja>	so data also while being sent get processed the very similar way
+May 10 20:26:36 *	Anish_ has quit (Ping timeout: 250 seconds)
+May 10 20:26:38 <Shantanu_>	okay
+May 10 20:26:49 <pooja>	so application layer will be described in detail in later session.
+May 10 20:26:49 <Shantanu_>	and whats the order of the layers from top to bottom?
+May 10 20:26:59 <pooja>	i will move ont o presentation layer
+May 10 20:27:02 *	isha_97 has quit (Ping timeout: 250 seconds)
+May 10 20:27:02 *	isha_97 has quit (Ping timeout: 250 seconds)
+May 10 20:27:10 <pooja>	the way i wrote it
+May 10 20:27:16 <Shantanu_>	oh yeah
+May 10 20:27:21 <Shantanu_>	okay
+May 10 20:27:41 <pooja>	highest: application.....presentation........session...transport...network...data link...physical../lowest
+May 10 20:27:44 <pooja>	got it?
+May 10 20:27:57 <pooja>	now application is for file transfers and all
+May 10 20:27:58 <Shantanu_>	sweet
+May 10 20:28:08 <pooja>	presentation is presenting this data
+May 10 20:28:24 <pooja>	see we need to compress data and send..for more efficiency
+May 10 20:28:43 <pooja>	and suppose one computer uses UTF-8 another ASCII so on
+May 10 20:28:51 <pooja>	so we need to encod ethe data
+May 10 20:28:55 <pooja>	encode*
+May 10 20:29:08 <pooja>	then for security we need encryption of data
+May 10 20:29:26 <pooja>	so on sender side in presentation layer data is compressed encoded and encrypted
+May 10 20:29:28 *	anish_ (6ac807d7@gateway/web/freenode/ip.106.200.7.215) has joined #ieeespnetworking
+May 10 20:29:33 <pooja>	and reverse on receiver side
+May 10 20:29:35 <pooja>	got it?
+May 10 20:30:53 <pooja>	session layer is not that much required right now. understand it is just for synchronization of data being sent
+May 10 20:31:05 *	rakshith has quit (Quit: Leaving)
+May 10 20:31:08 <pooja>	are you guys able to get my messages?
+May 10 20:31:23 <aswin_>	yup
+May 10 20:31:31 *	rakshith (~rakshith@117.192.110.132) has joined #ieeespnetworking
+May 10 20:31:41 <pooja>	what was my last message
+May 10 20:31:51 <pooja>	did you get all my messages on presentation layer?
+May 10 20:32:02 <aswin_>	yeah
+May 10 20:32:14 <pooja>	UTF-8, compression all that'
+May 10 20:32:17 <pooja>	cool
+May 10 20:32:33 <pooja>	so any doubts in these three layers?
+May 10 20:32:40 *	anish__ has quit (Ping timeout: 250 seconds)
+May 10 20:32:42 <gautham>	no
+May 10 20:32:57 <pooja>	okay so, next is transport layer
+May 10 20:33:02 <aswin_>	no
+May 10 20:33:06 <pooja>	we are sending data
+May 10 20:33:14 <pooja>	suppose you are mailing someone
+May 10 20:33:20 <pooja>	you are the sender right
+May 10 20:33:51 <pooja>	so now... the port number from which you are mailing can be found out.
+May 10 20:33:51 <aswin_>	sure
+May 10 20:34:00 <pooja>	you all know what port number is?
+May 10 20:34:42 <Shantanu_>	i know its a 4 digit number but not sure what it actually means
+May 10 20:34:43 *	Harita_Reddy (01273fdf@gateway/web/freenode/ip.1.39.63.223) has joined #ieeespnetworking
+May 10 20:34:45 <pooja>	also called service point address
+May 10 20:34:46 <Ravali>	no
+May 10 20:34:53 <pooja>	okay see.
+May 10 20:34:58 <rakshith>	need not be just digit 
+May 10 20:35:01 <rakshith>	4*
+May 10 20:35:03 <pooja>	there are four types of addresses
+May 10 20:35:11 <rakshith>	any number from 1 - 65535
+May 10 20:35:13 <Shantanu_>	okay
+May 10 20:35:13 <pooja>	ip address which is logical address related to network layer
+May 10 20:35:18 <Shantanu_>	ah
+May 10 20:35:32 <pooja>	mac address which is phyical address related to data link layer
+May 10 20:36:00 <pooja>	port number or service address related to transport layer
+May 10 20:36:08 <pooja>	service point address*
+May 10 20:36:20 <pooja>	and specific address.. will deal with those later
+May 10 20:36:32 <pooja>	rigth now understand this
+May 10 20:36:53 <pooja>	first it is important to know this..
+May 10 20:37:18 <pooja>	we have many computers all accross globe. At nitk also we have set of computers togther
+May 10 20:37:24 <pooja>	now to make things easy
+May 10 20:37:39 <pooja>	computers on same network have same MAC address
+May 10 20:38:14 *	Disconnected (Connection reset by peer).
+May 10 20:38:14 *	Disconnected (Connection reset by peer).
+May 10 20:38:14 *	Disconnected (Connection reset by peer).
+May 10 20:38:14 *	Disconnected (Connection reset by peer).
+**** ENDING LOGGING AT Tue May 10 20:38:14 2016
+
+May 10 20:38:14 *	Disconnected (Connection reset by peer).
+May 10 20:38:24 *	Looking up irc.ubuntu.com
+May 10 20:38:24 *	Connecting to chat.freenode.net (38.229.70.22) port 8001...
+May 10 20:38:24 *	Connected. Now logging in...
+May 10 20:38:24 *	*** Looking up your hostname...
+May 10 20:38:24 *	*** Checking Ident
+May 10 20:38:25 *	*** Couldn't look up your hostname
+May 10 20:38:34 *	*** No Ident response
+May 10 20:38:35 *	Welcome to the freenode Internet Relay Chat Network pooja
+May 10 20:38:35 *	Your host is card.freenode.net[38.229.70.22/8001], running version ircd-seven-1.1.3
+May 10 20:38:35 *	This server was created Sun Mar 15 2015 at 18:31:32 UTC
+May 10 20:38:35 *	card.freenode.net ircd-seven-1.1.3 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+May 10 20:38:35 *	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode KNOCK STATUSMSG=@+ CALLERID=g :are supported by this server
+May 10 20:38:35 *	CASEMAPPING=rfc1459 CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 ETRACE CPRIVMSG CNOTICE DEAF=D MONITOR=100 FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: :are supported by this server
+May 10 20:38:35 *	EXTBAN=$,ajrxz WHOX CLIENTVER=3.0 SAFELIST ELIST=CTU :are supported by this server
+May 10 20:38:35 *	There are 149 users and 90357 invisible on 25 servers
+May 10 20:38:35 *	24 :IRC Operators online
+May 10 20:38:35 *	13 :unknown connection(s)
+May 10 20:38:35 *	51537 :channels formed
+May 10 20:38:35 *	I have 4474 clients and 1 servers
+May 10 20:38:35 *	4474 4513 :Current local users 4474, max 4513
+May 10 20:38:35 *	90506 95832 :Current global users 90506, max 95832
+May 10 20:38:35 *	Highest connection count: 4514 (4513 clients) (95308 connections received)
+May 10 20:38:35 *	- card.freenode.net Message of the Day - 
+May 10 20:38:35 *	-  
+May 10 20:38:35 *	- Welcome to card.freenode.net in Washington, DC, US, kindly sponsored by
+May 10 20:38:35 *	- Team Cymru (http://www.team-cymru.org).
+May 10 20:38:35 *	-  
+May 10 20:38:35 *	- CARD, ORSON SCOTT [1951-].  Born in Richland, Washington, Card grew up in
+May 10 20:38:35 *	- California, Arizona, and Utah.  He lived in Brazil for two years as an
+May 10 20:38:35 *	- unpaid missionary for the Mormon Church.  Author of the Ender and Alvin
+May 10 20:38:35 *	- Maker books, Card's science fiction and fantasy work is strongly influenced
+May 10 20:38:35 *	- by his Mormon cultural background.  The first author to win the Hugo and
+May 10 20:38:35 *	- Nebula novel awards two years in a row, Card currently lives in Greensboro,
+May 10 20:38:35 *	- North Carolina, US.
+May 10 20:38:35 *	-  
+May 10 20:38:35 *	-  
+May 10 20:38:35 *	- Welcome to freenode - supporting the free and open source
+May 10 20:38:35 *	- software communities since 1998.
+May 10 20:38:35 *	-  
+May 10 20:38:35 *	- By connecting to freenode you indicate that you have read and
+May 10 20:38:35 *	- accept our policies as set out on http://www.freenode.net
+May 10 20:38:35 *	- freenode runs an open proxy scanner. Please join #freenode for
+May 10 20:38:35 *	- any network-related questions or queries, where a number of
+May 10 20:38:35 *	- volunteer staff and helpful users will be happy to assist you.
+May 10 20:38:35 *	-  
+May 10 20:38:35 *	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+May 10 20:38:35 *	- together with like-minded FOSS enthusiasts for talks and
+May 10 20:38:35 *	- real-life collaboration.
+May 10 20:38:35 *	-  
+May 10 20:38:35 *	- We would like to thank Private Internet Access
+May 10 20:38:35 *	- (https://www.privateinternetaccess.com/) and the other
+May 10 20:38:35 *	- organisations that help keep freenode and our other projects
+May 10 20:38:35 *	- running for their sustained support.
+May 10 20:38:35 *	-  
+May 10 20:38:36 *	- In particular we would like to thank the sponsor
+May 10 20:38:36 *	- of this server, details of which can be found above.
+May 10 20:38:36 *	-  
+May 10 20:38:36 *	End of /MOTD command.
+**** BEGIN LOGGING AT Tue May 10 20:38:36 2016
+
+May 10 20:38:36 *	pooja sets mode +i pooja
+May 10 20:38:36 -NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+**** ENDING LOGGING AT Tue May 10 20:38:41 2016
+
+**** BEGIN LOGGING AT Tue May 10 20:38:41 2016
+
+May 10 20:38:41 *	Now talking on #ieeespnetworking
+May 10 20:38:42 *	Topic for #ieeespnetworking is: Channel for IEEE Summer Project for Networking
+May 10 20:38:42 *	Topic for #ieeespnetworking set by chinmay_dd!~chinmay_d@2604:a880:800:10::153:1001 at Mon May  9 17:37:18 2016
+May 10 20:38:53 <pooja>	so first on receiver side 
+May 10 20:39:06 <pooja>	we get data link layer righjt
+May 10 20:39:09 <Shantanu_>	so are you saying that if we there are a 100 computers on the same network they will have the same mac address?
+May 10 20:39:10 <pooja>	right*
+May 10 20:39:14 <pooja>	ya
+May 10 20:39:20 <pooja>	they will have same MAC
+May 10 20:39:27 <Shantanu_>	and ccc won't be able to spot which of those 100 is downloading torrents?
+May 10 20:39:38 <Shantanu_>	:P
+May 10 20:39:43 <pooja>	i want you to see the full form of MAC and reaad about NIC card
+May 10 20:39:57 <pooja>	I will ask this in you assignment
+May 10 20:40:04 <pooja>	you all will have an assignment:P
+May 10 20:40:05 <pooja>	later
+May 10 20:40:14 <pooja>	your*
+May 10 20:40:17 <rakshith>	bring it on! :P
+May 10 20:40:22 <pooja>	hah
+May 10 20:40:26 <pooja>	mac is same 
+May 10 20:40:30 <pooja>	ip is different na
+May 10 20:40:37 <pooja>	you should be pateint
+May 10 20:40:39 <pooja>	:P
+May 10 20:40:53 <pooja>	so wait.
+May 10 20:41:03 <pooja>	now when sender sends data..
+May 10 20:41:18 <pooja>	we need to determine the receiver right
+May 10 20:41:20 *	Harita_Reddy has quit (Ping timeout: 250 seconds)
+May 10 20:41:21 *	gautham_ (3b58c5c6@gateway/web/freenode/ip.59.88.197.198) has joined #ieeespnetworking
+May 10 20:41:26 <pooja>	these three address will help in that
+May 10 20:41:44 <pooja>	MAC address will first tell which network this computer belongs to
+May 10 20:42:00 <pooja>	then IP will tell us which computer in this network is our destination computer
+May 10 20:42:15 <pooja>	then port number will tell us which process should get the data
+May 10 20:42:29 <pooja>	on receiver side simply anywhere you can't dump the data right
+May 10 20:42:41 <pooja>	when you receive some file.
+May 10 20:42:51 <pooja>	you receive it where you want it right
+May 10 20:43:04 <pooja>	that is possible with this port number
+May 10 20:43:06 <pooja>	got it?
+May 10 20:43:12 <rakshith>	yeah
+May 10 20:43:15 <Aneesh_>	yeah
+May 10 20:43:16 <anish_>	yeah
+May 10 20:43:31 <aswin_>	ok
+May 10 20:43:44 <shamitha>	yes
+May 10 20:43:46 <pooja>	that is why on receiver side it first goes to data link layer.. check MAC address..if MAC is not same as Destination MAC address no point checking further upper layer right?
+May 10 20:43:56 *	gautham has quit (Ping timeout: 250 seconds)
+May 10 20:43:58 <Ravali>	yes
+May 10 20:44:22 <pooja>	once MAC matches...it knows..okay i found the computers local network
+May 10 20:44:34 <pooja>	now it checks upper layer..if ip is matchign or not
+May 10 20:44:51 *	gautham (3b58c5c6@gateway/web/freenode/ip.59.88.197.198) has joined #ieeespnetworking
+May 10 20:44:53 <pooja>	if ip doesnt match,,.it goes on to next computer in same network
+May 10 20:44:57 <pooja>	got it?
+May 10 20:45:15 *	gautham has quit (Client Quit)
+May 10 20:45:16 <pooja>	understand this flow. it is very important
+May 10 20:45:26 <Ravali>	okay
+May 10 20:45:38 <gautham_>	okay
+May 10 20:45:39 <anish_>	yeah got it
+May 10 20:45:43 <aswin_>	ok
+May 10 20:46:48 <pooja>	now when we send a data at a sending speed...if that sending speed is more then receiving speed..then data will over flow at receiver end
+May 10 20:47:02 <pooja>	that had to be avoided...its called flow control
+May 10 20:48:27 <pooja>	Access control. When two or more devices are connected to the same link, data link layer protocols are necessary to determine which device has control over the link at any given time.
+May 10 20:48:51 <pooja>	Error control. The data link layer adds reliability to the physical layer by adding mechanisms to detect and retransmit damaged or lost frames.
+May 10 20:48:57 <pooja>	now remember this
+May 10 20:49:03 <pooja>	in data link layer data is frame
+May 10 20:49:08 <pooja>	in network layer is is packets
+May 10 20:50:36 <pooja>	data is*
+May 10 20:50:48 <pooja>	just notation
+May 10 20:51:26 <pooja>	i have little bit more to talk
+May 10 20:51:42 <pooja>	can i extend the session till 9:15/9;30
+May 10 20:51:45 <pooja>	is that okay?
+May 10 20:51:52 <Ravali>	okay
+May 10 20:52:01 <pooja>	otherwise i will have to take session tomorrow
+May 10 20:52:02 <anish_>	ok
+May 10 20:52:04 <aswin_>	ok
+May 10 20:52:06 <pooja>	and you all wouldnt want that
+May 10 20:52:14 <pooja>	cool. thanks
+May 10 20:52:22 <pooja>	i will quickly tell out things then
+May 10 20:52:45 <pooja>	so you have any doubt about any layer 
+May 10 20:52:54 <pooja>	physical layer i will talk now
+May 10 20:52:58 <pooja>	in detail
+May 10 20:53:11 <pooja>	other layers will be covered by isha and sheetal later
+May 10 20:53:16 <pooja>	in next sessions
+May 10 20:53:17 <pooja>	:)
+May 10 20:53:21 <pooja>	cool?
+May 10 20:53:31 <Ravali>	ok
+May 10 20:53:33 <pooja>	but just overview of all layers.. is that clear?
+May 10 20:53:46 <anish_>	yes
+May 10 20:53:48 <pooja>	flow , access and error control come under data link layer
+May 10 20:54:02 <pooja>	okay..because after data link layer we have the physcial layer
+May 10 20:54:23 <pooja>	so all these errors are to be checked before entering this physical layer
+May 10 20:54:35 <pooja>	as i mentioned about chocolate and wrappers
+May 10 20:54:49 <pooja>	each layer wraps a header to the data
+May 10 20:55:00 <pooja>	which will be removed on the receiver side
+May 10 20:55:55 <pooja>	see on sender side in transport layer sender port number,,...destination port number has to be mentioned in the header and sent to network layer
+May 10 20:56:20 <pooja>	where sender ip address and destination ip address gets attached and sent to data link layer..
+May 10 20:56:46 <pooja>	in data link layer.. sender mac and destination mac is put in header and sent to physical layer
+May 10 20:57:18 <pooja>	in physical layer set of operations occur..and data is transmitted through wires or in air..whatever the medium is
+May 10 20:57:49 <pooja>	then on receiver side...data is fetched by physical layer..from signal it is converted to bits 
+May 10 20:58:00 <pooja>	then sent to data link layer
+May 10 20:58:40 <pooja>	where header is removed and mac is checked..if mac matched..sent to above network layer..else the data is dropped/
+May 10 20:58:51 <pooja>	because it does not belong to that computer
+May 10 20:58:53 <pooja>	got it?
+May 10 20:59:09 <gautham_>	yes
+May 10 20:59:27 <pooja>	now physical layer on sender side converts the data from bits to electromagnetic signals 
+May 10 20:59:40 <pooja>	and on receiver side does ooposite.. signal to bits
+May 10 20:59:57 <pooja>	in physical layer following occurs.
+May 10 21:00:05 <pooja>	you determine the data rate
+May 10 21:00:16 <pooja>	rate at which bits are being sent as signal
+May 10 21:00:27 <pooja>	are the bits being sent in rigth order
+May 10 21:00:30 <pooja>	that is checked
+May 10 21:00:49 <pooja>	is it point to point or mutli point...that is checked
+May 10 21:01:01 <pooja>	the topology is checked
+May 10 21:01:14 <pooja>	transmission mode is checked...simplex duplex etc
+May 10 21:01:26 <pooja>	now 
+May 10 21:01:31 <pooja>	as i mentioned
+May 10 21:01:40 <pooja>	the data can be text number video audio etc
+May 10 21:01:49 <pooja>	let me jsut simplify this
+May 10 21:02:05 <pooja>	the data can be analog or digital
+May 10 21:02:09 *	Ravali has quit (Ping timeout: 250 seconds)
+May 10 21:02:10 <pooja>	okay?
+May 10 21:02:19 <Shantanu_>	yeah
+May 10 21:02:24 <aswin_>	ok
+May 10 21:02:36 <anish_>	ok
+May 10 21:02:42 <pooja>	so what all conversions will come into plau
+May 10 21:02:56 <pooja>	digital data to digital signal
+May 10 21:03:02 <pooja>	digital data to analog signal
+May 10 21:03:06 <pooja>	analog to analog
+May 10 21:03:10 <pooja>	analog to digital
+May 10 21:03:12 <pooja>	right?
+May 10 21:03:54 <pooja>	guys, are you understanding?
+May 10 21:04:06 <aswin_>	yes
+May 10 21:04:12 <pooja>	in transmission medium you can transmit only signals
+May 10 21:04:22 <pooja>	so you need to convert data to signal
+May 10 21:04:32 <pooja>	that happens in physical layer
+May 10 21:04:33 <pooja>	:)
+May 10 21:04:35 *	Ravali (6a4cd9bf@gateway/web/freenode/ip.106.76.217.191) has joined #ieeespnetworking
+May 10 21:04:44 <pooja>	okay so firstly
+May 10 21:05:16 <pooja>	period, amplitude, frequency, speed, wavelength, bandwidth, phase all will come into picture
+May 10 21:05:24 <pooja>	anyone not aware of any term 
+May 10 21:06:25 <pooja>	for analog signal we need many simple sine waves that is composite waves..that way we will have many freqencies...which also increases bandwdith
+May 10 21:06:35 <pooja>	and we would love to get more bandwidth
+May 10 21:07:13 <pooja>	it's always nice to have more bandwidth. radio stations would get so happy if they were given more bandwidth
+May 10 21:07:16 <pooja>	right? :P
+May 10 21:07:49 <anish_>	yeah
+May 10 21:07:53 <pooja>	here bandwidth is the difference in highest frequency and lowest frequency used for data transmission
+May 10 21:09:39 <pooja>	now digital signal is transmitted through baseband transmission or boradband transmission
+May 10 21:09:44 <pooja>	broad*
+May 10 21:11:08 <pooja>	In baseband transmission, the required bandwidth is proportional to the bit rate, if we need to send bits faster, we need more bandwidth.
+May 10 21:11:17 <pooja>	so baseband has to types
+May 10 21:11:28 <pooja>	low pass limited bandwidth
+May 10 21:11:37 <pooja>	low pass wide bandwidth
+May 10 21:11:55 <pooja>	low pass channel
+May 10 21:12:08 <pooja>	just go through these. it is not very tought o understand
+May 10 21:12:46 <pooja>	all you need to know is
+May 10 21:13:12 <pooja>	baseband transmission, digital signal is transmitted as digital signal itself
+May 10 21:13:29 <pooja>	in broadband digital signal gets converted to analog signal
+May 10 21:13:47 <pooja>	through modulation demodulation
+May 10 21:13:49 <pooja>	cool?
+May 10 21:14:05 *	Ravali_ (73628794@gateway/web/freenode/ip.115.98.135.148) has joined #ieeespnetworking
+May 10 21:14:17 <Aneesh_>	yeah
+May 10 21:14:23 <pooja>	now while transmitting..you will have impairments, that is unwanted disturbance
+May 10 21:14:31 <pooja>	can you tell me few impairments
+May 10 21:14:47 <Shantanu_>	packet loss?
+May 10 21:14:52 <aswin_>	attenuation
+May 10 21:14:53 <pooja>	no no
+May 10 21:15:00 <pooja>	ya attenuation
+May 10 21:15:02 <pooja>	tahts correct
+May 10 21:15:19 <pooja>	packet loss is not unwanted disturbance
+May 10 21:15:28 <pooja>	disturbance is always external
+May 10 21:15:31 <pooja>	error is internal
+May 10 21:15:39 <Shantanu_>	ah okay
+May 10 21:15:42 <pooja>	packet loss is an error
+May 10 21:15:52 <pooja>	distortion noise attenuation
+May 10 21:15:55 <pooja>	three impairments
+May 10 21:16:04 <pooja>	so aswin what is attenuation
+May 10 21:16:26 <aswin_>	loosing the strength of signal
+May 10 21:16:35 <pooja>	ya
+May 10 21:16:40 <pooja>	Several types of noise, such as thermal noise,
+May 10 21:16:40 <pooja>	induced noise, crosstalk, and impulse noise, may corrupt the signal.
+May 10 21:16:59 <pooja>	Distortion means that the signal changes its form or shape. Distortion can occur in a composite signal made of different frequencies.
+May 10 21:17:02 <pooja>	okay?
+May 10 21:17:12 <anish_>	okay
+May 10 21:17:36 <gautham_>	ok
+May 10 21:17:38 <aswin_>	ok
+May 10 21:17:39 <pooja>	okay i will quickly tell some points
+May 10 21:17:44 *	Ravali has quit (Ping timeout: 250 seconds)
+May 10 21:17:45 <pooja>	you all should read through these.
+May 10 21:17:49 <pooja>	they are very simple
+May 10 21:17:57 <pooja>	digital data to digital signals
+May 10 21:18:07 <pooja>	you need line encoding
+May 10 21:18:25 <pooja>	it has several types, uni polar, polar, bipolar, multilevel
+May 10 21:18:39 <pooja>	i am concerned with only these four
+May 10 21:18:45 <pooja>	read them..
+May 10 21:18:57 <pooja>	you will be taught these in you courses nect year
+May 10 21:18:59 <pooja>	next*
+May 10 21:19:05 <pooja>	its more of diagram
+May 10 21:19:19 <pooja>	so to explain on IRC
+May 10 21:19:25 <pooja>	read through okay
+May 10 21:19:35 <pooja>	analog data to digital signal
+May 10 21:19:36 <Ravali_>	okay
+May 10 21:19:46 <pooja>	first we need an analog signal
+May 10 21:19:52 <pooja>	we need to do sampling
+May 10 21:20:38 <pooja>	you all knwo sampling is>
+May 10 21:20:39 <pooja>	?
+May 10 21:21:01 <pooja>	in analog signal...its a composite wave right..
+May 10 21:21:11 <pooja>	so only few points from the wave are to be taken
+May 10 21:21:44 <pooja>	same with data.. first convert analog data to analog signal...
+May 10 21:21:57 <pooja>	that is through modulation
+May 10 21:22:09 <pooja>	using modulating signal and carrier signal
+May 10 21:22:12 <pooja>	get it?
+May 10 21:22:24 <aswin_>	yeah
+May 10 21:22:52 <pooja>	once we have analog signal ..it undergoes sampling..then quantizing and then encoding to form digital signal
+May 10 21:23:07 <pooja>	sampling.. only points on the composite wave are taken
+May 10 21:23:48 <pooja>	quantising...these points are quantised...like 2.3,2.4are all made 2 and 2.6,2.7 are made 3 as we need digital data
+May 10 21:23:55 <pooja>	digital signal sorry
+May 10 21:24:19 <pooja>	lastly we have digital to analog signal
+May 10 21:24:57 <pooja>	this is simple
+May 10 21:25:07 <pooja>	suppose you have 0 and 1 digital signal
+May 10 21:25:11 <pooja>	to make it analog
+May 10 21:25:18 <pooja>	0 remains analog 0
+May 10 21:25:27 <pooja>	1 becomes a signal
+May 10 21:25:49 <pooja>	suppose you had 00 01 10 11
+May 10 21:25:57 <pooja>	then accordingly 00 is complete 0
+May 10 21:25:58 *	Shantanu (75e9250f@gateway/web/freenode/ip.117.233.37.15) has joined #ieeespnetworking
+May 10 21:26:12 <pooja>	11 is full analog signal
+May 10 21:26:24 *	Shantanu_ has quit (Ping timeout: 250 seconds)
+May 10 21:26:50 <pooja>	this is is amplitude shift key
+May 10 21:26:54 <pooja>	ASK
+May 10 21:27:12 <pooja>	in PSK 0 is wave in 180 degree and 1 is wave is 0 degree
+May 10 21:27:24 *	Harita (01273f58@gateway/web/freenode/ip.1.39.63.88) has joined #ieeespnetworking
+May 10 21:27:33 <pooja>	and FSK 0 is low frequncy and 1 is high frequency
+May 10 21:28:21 <pooja>	http://www.as-interface.net/knowledge-base/as-i-wiki/frequenzumtastung-(fsk)?lang=en
+May 10 21:28:23 <pooja>	see this
+May 10 21:28:59 <pooja>	http://www.tmatlantic.com/upload/images/keying_ASK.jpg
+May 10 21:29:05 *	Shantanu_ (75e9250f@gateway/web/freenode/ip.117.233.37.15) has joined #ieeespnetworking
+May 10 21:29:25 <pooja>	http://www.tmatlantic.com/upload/images/keying_PSK.jpg
+May 10 21:29:29 <pooja>	got it?
+May 10 21:29:44 <anish_>	yeah
+May 10 21:29:50 <pooja>	lastly
+May 10 21:29:57 <pooja>	then i end the sesssion
+May 10 21:30:01 <pooja>	is multiplexing
+May 10 21:30:10 <pooja>	oops.
+May 10 21:30:14 <pooja>	before that
+May 10 21:30:18 *	Shantanu has quit (Ping timeout: 250 seconds)
+May 10 21:30:29 <pooja>	transmission mode can be serial or parallel okay
+May 10 21:30:38 <pooja>	like many wires betweek two computers
+May 10 21:30:42 <pooja>	each wire carrying one bit
+May 10 21:30:57 <pooja>	but then disadvantage here is the bits should arrive in order
+May 10 21:31:04 <pooja>	taht has to be managed
+May 10 21:31:09 <pooja>	using index..flags etc
+May 10 21:31:15 <pooja>	advantage..faster
+May 10 21:31:26 <pooja>	serial is our normal one wire
+May 10 21:31:43 <pooja>	in serial.. we have asynchronous..synchoronous...isochronous
+May 10 21:32:02 *	Harita has quit (Ping timeout: 250 seconds)
+May 10 21:32:09 <pooja>	check them.. i am giving in too many details., not all is very important
+May 10 21:32:14 <pooja>	but just see it
+May 10 21:32:15 <pooja>	:)
+May 10 21:32:30 <pooja>	ya so coming back to multiplexing
+May 10 21:32:42 <pooja>	we use MUX DEMUX for this
+May 10 21:33:02 <pooja>	frequency and wavelength mulitplexing is for analog signals
+May 10 21:33:14 <pooja>	and time division multiplexing is for digital
+May 10 21:33:59 <pooja>	Whenever the bandwidth of a medium linking two devices is greater than the bandwidth needs of the devices, the link can be shared. Multiplexing is the set of techniques that allows the simultaneous transmission of multiple signals across a single data link.
+May 10 21:34:32 <pooja>	in frequency mutliplexing
+May 10 21:34:54 <pooja>	if suppose you have 120 Hz and sender need only 20
+May 10 21:35:05 <pooja>	then rest 100 can be used by others
+May 10 21:35:20 *	Harita (01273e1b@gateway/web/freenode/ip.1.39.62.27) has joined #ieeespnetworking
+May 10 21:35:37 <pooja>	wavelength is just speed/frequecny..same utilisation
+May 10 21:35:48 <pooja>	in case of time division what happens is
+May 10 21:35:59 <pooja>	bandwidth frequency is not shared
+May 10 21:36:17 <pooja>	rather entire bandwidth is used 
+May 10 21:36:24 <pooja>	but time is divided
+May 10 21:36:41 <pooja>	first 1 second one uses the bandwidth to send data
+May 10 21:36:48 <pooja>	nect second other uses
+May 10 21:36:49 <pooja>	so on
+May 10 21:37:01 <pooja>	this was in raw english
+May 10 21:37:13 <pooja>	sit and read it further...you will understand
+May 10 21:37:24 <pooja>	i have given overview of everything that si important
+May 10 21:37:32 <pooja>	anything you all want to ask?
+May 10 21:37:49 <pooja>	doubts?
+May 10 21:38:05 <pooja>	you all must be hungry or wanting to watch IPL.
+May 10 21:38:10 <pooja>	i won't stop you guys.
+May 10 21:38:17 <pooja>	carry on. session is done
+May 10 21:38:18 <pooja>	:)
+May 10 21:38:25 <pooja>	doubts ping me
+May 10 21:38:31 <pooja>	or isha or sheetal anyone.:)
+May 10 21:38:34 <gautham_>	not yet we may get it after we go through again
+May 10 21:38:40 <pooja>	ya sure
+May 10 21:38:43 <pooja>	you can ask me
+May 10 21:38:57 <pooja>	i expect you all to have loads of doubts
+May 10 21:39:05 <pooja>	i took lot of time to understand all this
+May 10 21:39:17 <pooja>	you guys understanding in one session.. hatsoff. :)
+May 10 21:39:35 <pooja>	okay then. thank you for attending the session
+May 10 21:39:41 <pooja>	ping me with your doubts
+May 10 21:39:45 <pooja>	good night.:)
+May 10 21:39:50 *	Harita has quit (Ping timeout: 250 seconds)
+May 10 21:40:03 <pooja>	I will send the log on the google group.
+May 10 21:40:03 <Shantanu_>	Thanks!!
+May 10 21:40:12 <gautham_>	thanks
+May 10 21:40:16 <mohitreddy1996>	nice session madam
+May 10 21:40:17 <Ravali_>	Thank yu
+May 10 21:40:21 <aswin_>	thanks
+May 10 21:40:23 <anish_>	Thank you
+May 10 21:40:28 <Aneesh_>	thank you
+May 10 21:40:32 <pooja>	you can suggest how it can be made better okay
+May 10 21:40:40 <pooja>	i will improvise in my nect session.:)
+May 10 21:40:42 <pooja>	next*
+May 10 21:40:49 <pooja>	welcome.:)
+May 10 21:41:15 <shamitha>	Thank you!
+May 10 21:41:49 *	Ravali_ (73628794@gateway/web/freenode/ip.115.98.135.148) has left #ieeespnetworking
+May 10 21:42:48 <mohitreddy1996>	pooja kaha tak padha diya?
+May 10 21:43:10 *	anish_ (6ac807d7@gateway/web/freenode/ip.106.200.7.215) has left #ieeespnetworking

@@ -1,0 +1,155 @@
+  Prabhanjan │ Hi all!
+       Tarun │ hey
+  rahul_kumm │ hello
+      gaurab │ hello
+           ◥ │ Arun97 has joined #ieee-ctf
+      Samvid │ Hey
+           ◥ │ jeshventh has joined #ieee-ctf
+    akshayub │ Hi
+  @chinmay_d │ Hey!
+     yuvaraj │ Hii
+  Prabhanjan │ We will be covering the pre requisites today.
+  Prabhanjan │ It mostly includes python and using git
+           ◥ │ Sreeps has joined #ieee-ctf
+           ◣ │ Arunraj has quit (Ping timeout: 240 seconds)
+  Prabhanjan │ How many of you went through the resources I had posted?
+      Samvid │ Went through it
+           ⚡ │ Tarun went through it
+           ⚡ │ Arun97 went through it
+  Prabhanjan │ Okay cool.
+           ⚡ │ gaurab went through it
+  Prabhanjan │ I need you all to create github accounts.
+           ⤷ │ Create a new repo IEEE CTF Summer project 2016
+      Sreeps │ do we have to download git onto our desktops?
+  @chinmay_d │ Sreeps: Are you on Windows?
+      Sreeps │ as of now..no
+  @chinmay_d │ Cool, try running "git --version"
+           ⤷ │ If it does not show you the version number, install it using "sudo apt-get install git" :)
+           ⤷ │ *Assuming apt-get is your package manager*
+           ⤷ │ Do you all have git setup?
+      Samvid │ yup
+  @chinmay_d │ https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup
+       Tarun │ yes
+  rahul_kumm │ yes
+  RohanSurve │ sorry for joining late
+           ⤷ │ did i miss anything
+           ⤷ │ ?
+  @chinmay_d │ RohanSurve: not much.
+           ⤷ │ If you have Git setup, you are fine.
+           ⤷ │ Okay. I assume all of you have accounts on Github ready!
+      Sreeps │ yes
+  RohanSurve │ yes
+      Arun97 │ yup
+       Tarun │ yes
+     nandini │ yes
+  @chinmay_d │ Nice. So as Prabhanjan mentioned, can you create an empty repository on Github and try pushing it from local computer?
+           ⤷ │ It is important that you understand what version control is -> https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
+  @chinmay_d │ Git is a software and Github is a service provider used to "host" your Git projects.
+           ⤷ │ We also have Gitlab, Bitbucket and other service providers.,
+           ⤷ │ Similarly, we also have hg(mercury), bazaar and other version control systems
+           ⤷ │ But the Git + Github combination is most popular.
+           ⤷ │ While you are pushing your code to Github, if there are any doubts, please go ahead and ask.
+      Sreeps │ when pushing the repo u have to type git remote add origin https://github.com/Sreeps/IEEE-CTF-Summer-Project-2016.git this right?
+  @chinmay_d │ Sreeps: yes
+       Tarun │ after that line do we have to type "git push -u origin master" ?
+  @chinmay_d │ Did you make any changes to the empty repo?
+       Tarun │ no
+      Sreeps │ i didnt..but i am getting this error fatal: Not a git repository (or any of the parent directories): .git
+    skarthik │ cd
+  @chinmay_d │ Okay, so let me point out what to do exactly. Dont type until I am done.
+  rahul_kumm │ same here
+  @chinmay_d │ 1. Create a repo on Github
+  rahul_kumm │ okay
+  @chinmay_d │ 2. Clone the repo using "git clone <repo url>"
+           ⤷ │ 3. "cd" into the repo
+           ⤷ │ 4. Make a file named "hello.txt" and write content "hello, world" in the file.
+           ⤷ │ 5. Do "git add hello.txt"
+           ⤷ │ 6. "git commit -m 'Creates hello'"
+           ⤷ │ 7. "git push origin master"
+           ⤷ │ Everyone tried this?
+       Tarun │ whats the third step?
+  @chinmay_d │ You enter the repository you cloned :)
+           ⤷ │ Was everyone able to see their new file on Github?
+      Sreeps │ how do u cd into ur repo..do u type the repo url again?
+      Samvid │ yup
+  @chinmay_d │ "cd <folder name>"
+       Tarun │ it says no such directory
+  @chinmay_d │ Umm, the directory name will be the name of your project on Github
+           ⤷ │ So if the project name is "Chinmay", type "cd Chinmay"
+           ⤷ │ cd stands for "change directory (to)"
+       Tarun │ cd Tarun-Karthik
+           ⤷ │ sorry
+  @chinmay_d │ Sure, no problems :)
+       Tarun │ its giving me this $ cd -IEEE-CTF_Summer-project-2016
+           ⤷ │ bash: cd: -I: invalid option
+           ⤷ │ cd: usage: cd [-L|[-P [-e]] [-@]] [dir]
+  @chinmay_d │ Remove the "-" before "IEEE"
+       Tarun │ now it says no such directory
+  @chinmay_d │ Can you output the result of the "ls" command for me
+           ⤷ │ Tarun: ^
+  Prabhanjan │ I assume all of you have created the repo, and pushed some example file to the repo.
+      Sreeps │ what is the difference between git add and git commit?
+     ranjith │ sorry i'm late
+       Tarun │ i was able to do the third step
+  @chinmay_d │ Nice!
+       Tarun │ where do we create and store the text file?
+  @chinmay_d │ In the folder
+      Sreeps │ in the repo folder?
+  @chinmay_d │ Yep
+  RohanSurve │ i am not able to clone the repo :/
+      Arun97 │ same here
+  RohanSurve │ it says no such file or directory
+      Arun97 │ fatal: could not create work tree dir 'IEEE-CTF-Summer-project-2016': Permission denied
+      Sreeps │ i am done
+           ⤷ │ u must first create the repo in github
+      Arun97 │ ya i did that
+  RohanSurve │ did that
+       Tarun │ i am done too
+      Sreeps │ u need u to type the full url
+           ⤷ │ after git clone
+  Prabhanjan │ Yeah create the repo
+           ⤷ │ Then clone it locally using git clone <URL of the repo>
+  RohanSurve │ syntax error near unexpected token `newline'
+           ⤷ │ i am getting this erroe!
+  Prabhanjan │ For example - git clone https://github.com/PrabhanjanPM/IEEE-CTF.git
+  RohanSurve │ \msg sreeps
+  Prabhanjan │ How many are yet to push anything to the repo ?
+      Sreeps │ its forward slash Rohan
+  RohanSurve │ i am
+     nandini │ while pushing the file into the repo it is giving an error   fatal: pathspec 'hello.txt' did not match any files
+  Prabhanjan │ Whoever is done, I need you to write a python program to create an array(or list or dictionary depending on your choice) of the names in this group
+           ⤷ │ and sort them
+           ⤷ │ according to alphabetical order
+          ℹ  │ rahul__ is now known as rahul_kummi
+  Prabhanjan │ You can ask doubts here, but i think if you've gone through the resources, it should'nt be too hard
+      Samvid │ done
+  Prabhanjan │ Samvid: Now you can create a new folder named Pre Requisites in your repo and this file to that!
+     Samvid_ │ sorry, laptop rebooted..
+  Prabhanjan │ Its fine if you aren't able to complete it right now
+           ⤷ │ I will be checking your repos before the session on thursday
+           ⤷ │ Complete it before that
+       Tarun │ we have to add the python file to the repo folder right?
+  Prabhanjan │ Yep
+           ⤷ │ create a new folder called Pre Requisites in the repo
+       Tarun │ are we supposed to push the python file also?
+  Prabhanjan │ and add the python code to that folder
+           ⤷ │ yes. you should push the python file to the remote repo
+    akshayub │ how do i add a folder ?
+           ⤷ │ and push it to the master branch through terminal?
+  Prabhanjan │ akshayub: are you using linux?
+    akshayub │ yes
+  Prabhanjan │ cd into the repo directory
+           ⤷ │ mkdir PreRequisites
+    akshayub │ yup working there.
+  Prabhanjan │ cd PreRequisites
+           ⤷ │ create/add your python file here
+    akshayub │ yup done
+       Tarun │ done
+  rahul_kumm │ done
+    akshayub │ done
+  Prabhanjan │ Awesome work guys !
+           ⤷ │ We are done for the day.
+           ⤷ │ TODO(if you havent done it yet)- Create a repo called IEEE CTF Summer Project 2016
+           ⤷ │ Write a python script to sort a list of names
+           ⤷ │ push it to the repo
+           ⤷ │ If you have any doubts, feel free to contact any of the mentors

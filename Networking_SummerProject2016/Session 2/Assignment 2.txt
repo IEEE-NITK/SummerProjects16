@@ -1,0 +1,24 @@
+1) What is the importance of error detection and correction, and the difference between them?
+2) Explain the 2 methods of error correction.
+3) What is the central concept in error detection and correction, and how is it achieved?
+4) Consider this table of datawords and their corresponding codewords.
+	00 - 000
+	01 - 011
+	10 - 101
+	11 - 110
+	Apply block coding and analyze what happens if the dataword is 01 and the receiver receives 111,011 and 110 individually.
+5) Consider a 2D-parity check code.
+	0 0 1 1
+	1 0 1 0
+	1 1 1 1
+	1 0 0 1
+	1 1 1 1
+	Here, the last row and column are filled such that, the no.of 1's in that particular row or column is even. Can this code be used to detect 2-bit, 3-bit and 4-bit errors? Explain individual cases in which each of these errors can be detected or not detected. 
+6) Differentiate between byte stuffing and bit stuffing. 
+7) What is the importance of network layer?
+8) Distinguish between the following:
+	a. Switch and Router
+	b. Forwarding and Routing
+9) Explain the format of routing table and how it helps in routing. 
+10) Use Dijkstra's Algorithm and find the shortest distance between vertices S and T in the graph. 
+	Link : https://community.topcoder.com/i/education/maxflow_push/maxflow_push1.gif 

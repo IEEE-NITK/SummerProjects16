@@ -1,0 +1,39 @@
+Assignment:
+ 
+Your manager gives you a bunch of data with cities and their current temperatures in celcius. He wants to go on vacation and needs your help to
+decide on the location. He wants to go to cool places with temperatures between 25 and 35 degree celcius, 25 and 35 included. Assume the data 
+provided is bound to the Temperature_data variable.
+ 
+Your codes will be tested against some other data. Example test data for you to use and test with:
+ 
+Temperature_data = [{bangalore, 35}, {chennai, 40}, {dehradun, 25}, {delhi, 45}, {vizag, 33}, {ooty, 26}, {suratkal, 41}].
+ 
+(i) Write a List Comprehension expression to get a list of all cool cities. Use the Temperature_data variable.
+Example: Your expression should return the following list for the given test data:
+[bangalore, dehradun, vizag, ooty].
+ 
+(ii) Write a function is_cool_temp/1 which takes a tuple as an argument and returns true with the cities name if the temperature given is cool, false if not.
+Example: 
+Tupl = {bangalore, 35}.
+is_cool_temp(Tupl).
+==> {bangalore, true}
+is_cool_temp({delhi, 45}).
+==> {delhi, false}
+ 
+(iii) Given a variable
+Temperature_boolean_data = [ is_cool_temp(X) || X <- Temperature_data ].
+Now write a List Comprehension expression which uses this variable Temperature_boolean_data to give us a list of all cool cities, that is,
+the SAME output as the (i) question.
+ 
+(iv) Write a to_fahrenheit/1 function which takes an integer argument as celcius and converts it to fahrenheit value. 
+Example:
+to_fahrenheit(37). 
+==> 98.6
+ 
+(v) Using your to_fahrenheit function, write a List Comprehension expression which, using the Temperature_data variable returns a list
+of all cool cities along with their fahrenheit value. 
+Example: Your expression should return the following list for the given test data:
+[{bangalore, 95.0}, {dehradun, 104.0}, {vizag, 91.4}, {ooty, 78.8}].
+ 
+ 
+Happy coding!

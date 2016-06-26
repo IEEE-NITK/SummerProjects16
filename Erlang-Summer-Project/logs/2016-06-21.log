@@ -1,0 +1,277 @@
+[03:37:18] *** Quits: kbhat (~kbhat@ec2-52-88-50-237.us-west-2.compute.amazonaws.com) (Ping timeout: 272 seconds)
+[03:37:55] *** Joins: kbhat (~kbhat@ec2-52-88-50-237.us-west-2.compute.amazonaws.com)
+[11:17:53] *** Joins: rakshith (~hehaichi@117.216.132.196)
+[11:26:19] <vinayb> we'll start in 10 mins or so
+[11:29:15] *** vinayb changes topic to 'Distributed Systems Programming with Erlang | Today's log: https://goo.gl/364pmd'
+[11:29:36] *** Joins: aditya (75d8ec5c@gateway/web/freenode/ip.117.216.236.92)
+[11:32:35] <vinayb> we'll wait for 5 mins for others to join
+[11:34:19] *** Joins: vilas_m (2befa942@gateway/web/freenode/ip.43.239.169.66)
+[11:37:12] <vinayb> Alright, we'll start now
+[11:37:33] <vinayb> So today we are going to be starting off with concurrency in detail in Erlang
+[11:37:52] <vinayb> We have covered the functional aspects and you know to play around with it
+[11:38:02] <vinayb> Now we'll see the concurrent aspects
+[11:38:30] <vinayb> and we'll also go over a bit of history of Erlang, to see why the things are implemented or designed the way they are
+[11:38:46] <vinayb> by the way, before we proceed, any doubts from ANY of the previous sessions?
+[11:39:05] <vilas_m> No
+[11:39:09] <aditya> no
+[11:40:34] *** Joins: gautham_ (673c46b7@gateway/web/freenode/ip.103.60.70.183)
+[11:40:37] <vinayb> Okay, so our discipline -- Programming -- or Computer Science, for that matter, has always wondered how to go about running things at the same time in a program
+[11:41:17] <vinayb> The most widely used approach is either shared memory based or message passing based. Does anyone here have an idea of what shared memory approach might be?
+[11:41:33] <vilas_m> Nope.
+[11:42:04] <vinayb> okay, so the shared memory approach is one where we define a small region of code as a "critical section"
+[11:42:09] *** Joins: akshayrevankar (67157d53@gateway/web/freenode/ip.103.21.125.83)
+[11:42:40] <vinayb> that region of code is code that accesses memory that is SHARED between various different threads / processes
+[11:43:12] <vinayb> for eg, you might have a variable x which both threads in a program try to access at one point. that is a critical section
+[11:43:28] <vinayb> so that critical section is surrounded by a software lock
+[11:43:48] <vinayb> by using this lock, only one thread can go over the critical section area at a time
+[11:43:57] <vinayb> so this is the shared memory approach
+[11:44:40] <vinayb> but these usually lead to bugs which are very hard to debug. 
+[11:44:50] <vinayb> can anyone guess why that might be so?
+[11:46:25] <vinayb> okay, so basically it can lead to what we call "race conditions"
+[11:46:46] <vinayb> basically, bugs where due to the order of which thread goes, some bug happens
+[11:47:10] <vinayb> so it is pretty hard to debug these systems
+[11:47:38] <vinayb> Erlang however, uses the message passing approach
+[11:48:23] <vinayb> in the message passing approach, there is no shared memory-- threads or processes have their own memory, which cannot be accessed by any other thread / process
+[11:48:37] <vinayb> only way of synchronization or communication is through sending messages
+[11:49:35] <vinayb> Erlang inherited this approach from PLEX, a language created earlier at Ericsson, for a telecom switch developed with it
+[11:50:16] <vinayb> so let's see what the goals for Erlang were (and you can actually see how from those goals, WHY exactly Erlang is used for WhatsApp and Facebook messenger):
+[11:50:30] <vinayb> The main ones were being able to scale up and support many thousands of users across many switches, and then to achieve high reliability—to the point of never stopping the code.
+[11:51:01] <vinayb> any doubts?
+[11:51:18] <vilas_m> No
+[11:51:28] <aditya> nope
+[11:51:29] <gautham_> no
+[11:51:48] <rakshith> no
+[11:51:57] <vinayb> okay, so the two main goals for Erlang: Scalability, Fault-tolerance
+[11:52:08] <vinayb> let's focus on them for a bit
+[11:52:17] <vinayb> i'll focus on scaling first
+[11:53:26] <vinayb> so in the telecom system, users would be represented as processes which only reacted upon certain events 
+[11:53:42] <vinayb> ie, receiving a call, hanging up, etc
+[11:54:08] <vinayb> so an ideal system would support processes doing small computations, switching between them very quickly as events came through
+[11:54:51] <vinayb> to make it efficient, it made sense for processes to be started very quickly, to be destroyed very quickly and to be able to switch them very fast
+[11:55:08] <vinayb> having them lightweight was mandatory to achieve this
+[11:55:26] <vinayb> it was also mandatory because you didn't want to have things like process pools (a fixed amount of processes you split the work between.)
+[11:55:44] <vinayb> instead, it would be much easier to design programs that could use as many processes as they need.
+[11:56:30] <vinayb> another important aspect of scalability is to be able to bypass your hardware
+[11:56:39] <vinayb> or hardware's limitations rather
+[11:56:54] <vinayb> you can either make hardware better, or add more hardware
+[11:57:28] <vinayb> as you might have heard, Moore's law is kinda about to fail... so don't expect cheap better hardware anytime soon. So only option is to add more hardware
+[11:57:46] <vinayb> This is where distribution is so useful
+[11:58:25] <vinayb> so because telephony applications needed a lot of reliability, it was decided that the cleanest way to do things was to forbid processes from sharing memory
+[11:58:55] <vinayb> instead, processes should communicate by sending messages where all the data is copied
+[11:59:07] <vinayb> a little slower, but MUCH MUCH sager
+[11:59:10] <vinayb> *safer
+[11:59:21] <rakshith> and also resource intensive?
+[11:59:32] <vinayb> now let's talk a bit about fault-tolerance
+[11:59:59] <vinayb> yes rakshith, that too. But then again, that's very much dependent of how the implementation is done
+[12:00:04] <vinayb> any doubts?
+[12:00:10] <rakshith> no
+[12:00:16] <aditya> no
+[12:00:20] <vilas_m> no
+[12:00:27] <gautham_> no
+[12:01:07] <vinayb> the first writers of erlang always kept in mind that failure is common
+[12:01:28] <vinayb> you can try to prevent bugs all you want, but most of the time some of them will still happen
+[12:01:44] <vinayb> and other than software bugs, there can be hardware failures too
+[12:02:25] <vinayb> the idea is thus to find good ways to handle errors and problems than trying to prevent them all
+[12:03:53] <vinayb> so the design of having lightweight processes where it is trivial to shutdown and start processes
+[12:04:13] <vinayb> is helpful as wherever an error occurs, that process can be shut down
+[12:04:23] <vinayb> rather that letting it propogate
+[12:05:13] <vinayb> keep in mind that there are many ways for a system to terminate: two of which are clean shutdowns and crashes (unexpected errors)
+[12:06:18] <vinayb> so how do we ensure that crashes and shutdowns become equivalent? by ensuring the message-passign and functional design, and keeping side-effects down and purity high
+[12:07:36] <vinayb> so it brings us to modern Erlang"
+[12:07:37] <vinayb> *:
+[12:08:04] <vinayb> Erlang has lightweight processes with asynchronous message passing model
+[12:08:31] <vinayb> here messages are sent from one process to second one and stored in a *mailbox* inside the receiving process until they are taken out to be read
+[12:08:52] <vinayb> this is the *Actor model* of Erlang
+[12:09:15] <vinayb> every process has a mailbox
+[12:09:32] <rakshith> asynchronous here means non-blocking?
+[12:10:15] <vinayb> yeah, asynchronous means non-blocking. Good question, let me elaborate more on this
+[12:10:46] <rakshith> in that case, there is a possibility that the message might not be delivered?
+[12:10:53] <vinayb> In blocking, or synchronous message passing, what happens is that when you send something, it would block until other process would call "receive" 
+[12:11:01] <vinayb> and vice-versa
+[12:11:19] <vinayb> yes rakshith , very good observation!
+[12:11:33] <vinayb> if you need to have a confirmation of delivery, you have to send a second message as a reply to the original process
+[12:13:24] <vinayb> To illustrate just how lightweight Erlang processes are, Erlang processes take about 600 bytes of memory each and can be created in a matter of microseconds
+[12:13:44] <vinayb> not something doable on major OS's these days
+[12:13:55] <vinayb> so all of these processes sit on top of the Erlang VM
+[12:15:45] <vinayb> any doubts?
+[12:15:58] <rakshith> no
+[12:16:07] <vilas_m> no.
+[12:16:11] <aditya> no
+[12:17:04] <vinayb> Now i'll talk a bit about Linear Scaling
+[12:18:19] <vinayb> So, it is very easy to come to the conclusion that, the more parallelism we add to our programs, that they'll scale linearly to that
+[12:18:35] <vinayb> for eg: by doubling cores, we can get 2x performance
+[12:18:40] <vinayb> that is Linear Scaling
+[12:18:51] <vinayb> However, getting that kind of performance is very hard
+[12:19:11] <vinayb> It is not due to the language itself, but rather to the nature of the problems to solve
+[12:19:56] <vinayb> problems that scale very well are far and few in between: ray-tracing (a method to create 3D graphics), brute-forceing searches in cryptography, etc
+[12:21:20] <vinayb> So, there are two kinds of parallelism: high level and low level
+[12:21:52] <vinayb> can Erlang be used to program a GPU (which have thousands of cores?), or any number crunching problem? No.
+[12:22:24] <vinayb> all these problems are usually numerical algorithms which benefit from direct hardware access
+[12:22:53] <vinayb> and hence this is called low level parallelism
+[12:23:06] <vinayb> C is de facto language used for such proclivities 
+[12:23:32] <vinayb> So what is parallelism which benefit from parallelism?
+[12:23:38] <vinayb> *high level parallelism
+[12:24:23] <vinayb> Concepts such as chat servers, phone switches, web servers, message queues, web crawlers or any other application where the work done can be represented as independent logical entities 
+[12:24:43] <vinayb> which benefit from Actor model
+[12:24:59] <vinayb> these problems can be solved efficiently with close-to-linear scaling
+[12:25:20] <vinayb> and Erlang is tremendously good at this
+[12:25:42] <vinayb> One major realization is: your parallel program only goes as fast as its slowest sequential part
+[12:26:05] <vinayb> example: Hundreds of people can be shopping at once, rarely interfering with each other. Then once it's time to pay, queues form as soon as there are fewer cashiers than there are customers ready to leave.
+[12:27:18] <vinayb> A generalization of this principle is called *Amdahl* 's law
+[12:27:40] <vinayb> According to Amdahl's law, code that is 50% parallel can never get faster than twice what it was before, and code that is 95% parallel can theoretically be expected to be about 20 times faster if you add enough processors. 
+[12:28:41] <vinayb> any doubts?
+[12:29:04] <rakshith> no
+[12:29:50] <vilas_m> No..
+[12:31:03] <vinayb> okay enough of theory!
+[12:31:11] <vinayb> let's revv up our shells!
+[12:33:26] <vinayb> So what exactly is a process? It's nothing but a function. That's it. It runs a function and once it's done, it disappears. There is some hidden state like mailbox, but functions are enough for now
+[12:33:56] <vinayb> to start a new process, Erlang provides the function spawn/1 which takes a single function and runs it
+[12:33:59] <vinayb> type this:
+[12:34:11] <vinayb> F = fun() -> 2 + 2 end.
+[12:34:16] <vinayb> spawn(F).
+[12:34:19] <vinayb> what's the output?
+[12:34:49] <rakshith> <0
+[12:34:55] <rakshith> <0.37.0>
+[12:35:04] <rakshith> is that the pid?
+[12:35:05] <vilas_m> <0.36.0>
+[12:35:24] <vinayb> right! the result of spawn/1 is called a Process Identifier, or pid
+[12:36:17] <vinayb> it's just an arbitrary value used to identiy the process distinctly
+[12:36:56] <vinayb> you'll notice that we can't see the result of the function F. we only got the pid. that's because processes do not return anything
+[12:37:19] <vinayb> how can we see the result of F then? two ways. first one:
+[12:37:42] <vinayb> spawn(fun() -> io:format("~p~n", [2+2]) end).
+[12:37:59] <vinayb> what's the output?
+[12:38:09] <aditya> 4 <0.38.0>
+[12:38:37] <vinayb> now run this:
+[12:38:39] <vinayb> G = fun(X) -> timer:sleep(10), io:format("~p~n", [X]) end.
+[12:38:49] <vinayb> [spawn(fun() -> G(X) end) || X <- lists:seq(1,10)].
+[12:38:53] <vinayb> what's the output?
+[12:39:54] <vilas_m> [<0.41.0>,<0.42.0>,<0.43.0>,<0.44.0>,<0.45.0>,<0.46.0>,  <0.47.0>,<0.48.0>,<0.49.0>,<0.50.0>] 5   1   2   3   4   6   7   8   9   10
+[12:40:06] <aditya> [<0.41.0>,<0.42.0>,<0.43.0>,<0.44.0>,<0.45.0>,<0.46.0>,  <0.47.0>,<0.48.0>,<0.49.0>,<0.50.0>] 8   9   10  1   2   3   4   5   6   7
+[12:40:59] <aditya> Y different order?
+[12:41:07] <vinayb> The order is completely arbitrary! Welcome to parallelism
+[12:41:10] <rakshith> the're happening parallely
+[12:41:24] <vinayb> yes, at the same time
+[12:42:01] <vinayb> what we did here was spawn 10 processes real quick and pause each of them for a while with the help of timer:sleep/1 which takes an integer value N and waits for N ms before resuming code
+[12:43:25] <vinayb>  because the processes are running at the same time, the ordering of events isn't guaranteed anymore. that's because the Erlang VM uses many tricks to decide when to run a process or another one, making sure each gets a good share of time
+[12:44:03] <vinayb> any doubts?
+[12:44:09] <rakshith> no
+[12:44:12] <vilas_m> No
+[12:44:12] <aditya> no
+[12:44:15] <gautham_> no
+[12:44:39] <vinayb> even the shell is a process: you can run self(). to get its' pid
+[12:45:33] <vinayb> alright, let's see how we can send messages to processes!
+[12:45:37] <vinayb> run this:
+[12:45:41] <vinayb> self() ! hello.
+[12:46:02] <rakshith> hello
+[12:46:16] <vinayb> right! the "!" is the bang operator
+[12:46:33] <vinayb> on the LHS, it takes a PID, on the RHS it takes any Erlang term
+[12:46:50] <vinayb> the term is then sent to the process represented by the pid, which can access it
+[12:46:59] <rakshith> like a pipe?
+[12:47:23] <rakshith> rather in the reverse order
+[12:47:58] <vinayb> yes, in some ways
+[12:48:06] <vinayb> self() ! self() ! double.
+[12:48:36] <aditya> double
+[12:48:50] <vinayb> one major difference, of course, is pipes are blocking, and this is non-blocking
+[12:49:17] <rakshith> ah..
+[12:49:27] <vinayb> right! so the returned value of (self() ! double) can itself be sent again to self()
+[12:49:55] <vinayb> okay i am going to tone down my excitement here lest you guys confuse that with the bang operator.. :P
+[12:50:11] <rakshith> lol
+[12:50:13] <vilas_m> xD
+[12:52:07] <vinayb> also, note that the messages a process' mailbox receives are kept in the order they are recieved
+[12:53:02] <vinayb> to see the contents of the current mailbox, you can use flush() command while in the shell:
+[12:53:05] <vinayb> flush().
+[12:53:07] <vinayb> what's the output?
+[12:53:35] <aditya> Shell got double Shell got double ok
+[12:53:40] <rakshith>  Shell got hello
+[12:53:40] <rakshith> Shell got double
+[12:53:40] <rakshith> Shell got double
+[12:53:40] <rakshith> ok
+[12:53:52] <vinayb> Right! This function is just a shortcut that outputs received messages. This means we still can't bind the result of a process to a variable, but at least we know how to send it from a process to another one and check if it's been received.
+[12:55:02] <vinayb> now let's see the receive statement
+[12:55:13] <vinayb> open up your editor, and type this up:
+[12:56:12] <vinayb> dolphin1() ->
+[12:56:12] <vinayb>     receive
+[12:56:12] <vinayb>         do_a_flip ->
+[12:56:12] <vinayb>             io:format("How about no?~n");
+[12:56:12] <vinayb>         fish ->
+[12:56:14] <vinayb>             io:format("So long and thanks for all the fish!~n");
+[12:56:17] <vinayb>         _ ->
+[12:56:19] <vinayb>             io:format("Heh, we're smarter than you humans.~n")
+[12:56:22] <vinayb>     end.
+[12:56:35] <vinayb> do the usual module and compile declarations earlier
+[12:57:26] <vinayb> alright, also note the fact how similar it is to case expressions
+[12:58:00] <vinayb> now open up the shell and tell me the outputs:
+[12:58:05] <vinayb> c(module_name).
+[12:58:19] <vinayb> Dolphin = spawn(module_name, dolphin1, []).
+[12:58:34] <vinayb> Dolphin ! "oh, hello dolphin!".
+[12:58:44] <vinayb> Dolphin ! fish.
+[13:01:02] <aditya> Heh, we're smarter than you humans. "oh, hello dolphin!"
+[13:01:15] <aditya> fish
+[13:02:03] <vinayb> right! somethings to note:
+[13:02:15] <vinayb> we saw a new way to use spawn function
+[13:02:32] <vinayb> rather than taking a single function, spawn/3 takes the module, function and its arguments as its own arguments
+[13:03:10] <vinayb> once the function is running, the following events take place:
+[13:03:48] <vinayb> 1. The function hits the receive statement. Given the process' mailbox is empty, our dolphin waits until it gets a message;
+[13:03:55] <vinayb> 2. The message "oh, hello dolphin!" is received. The function tries to pattern match against do_a_flip. This fails, and so the pattern fish is tried and also fails. Finally, the message meets the catch-all clause (_) and matches.
+[13:04:04] <vinayb> 3. The process outputs the message "Heh, we're smarter than you humans."
+[13:04:52] <vinayb> also, did somebody notice something odd about Dolphin ! fish. ?
+[13:06:56] <aditya> It didnt get any reaction from d process
+[13:07:17] <vinayb> correct!
+[13:07:48] <vinayb> that is because once our function gave the output "Heh, we're smarter than you humans.", it terminated and so did the process
+[13:07:56] <vinayb> We'll need to restart it:
+[13:08:08] <vinayb> f(Dolphin).
+[13:08:22] <vinayb> Dolphin = spawn(module_name, dolphin1, []).
+[13:08:28] <vinayb> Dolphin ! fish.
+[13:08:31] <vinayb> what's the output?
+[13:08:50] <vilas_m> So long and thanks for all the fish!  fish
+[13:09:11] <vinayb> Right! so this time it works
+[13:10:06] <vinayb> now wouldn't it be nice to receive a reply from the dolphin rather than having to use io:format/2 ? Of course! So let's see how to send a reply
+[13:11:01] <vinayb> what we can do is, when we send a message, let's package it a tuple like this: {Pid, Message}.
+[13:11:06] <vinayb> now create a new function:
+[13:11:17] <vinayb> dolphin2() ->
+[13:11:17] <vinayb>     receive
+[13:11:17] <vinayb>         {From, do_a_flip} ->
+[13:11:17] <vinayb>             From ! "How about no?";
+[13:11:20] <vinayb>         {From, fish} ->
+[13:11:22] <vinayb>             From ! "So long and thanks for all the fish!";
+[13:11:25] <vinayb>         _ ->
+[13:11:27] <vinayb>             io:format("Heh, we're smarter than you humans.~n")
+[13:11:30] <vinayb>     end.
+[13:11:33] <vinayb> run this in shell:
+[13:11:37] <vinayb> c(module_name).
+[13:11:56] <vinayb> Dolphin2 = spawn(module_name, dolphin2, []).
+[13:12:09] <vinayb> Dolphin2 ! {self(), do_a_flip}.
+[13:12:21] <vinayb> flush().
+[13:12:24] <vinayb> what's the output?
+[13:13:37] *** Quits: rakshith (~hehaichi@117.216.132.196) (Quit: Leaving)
+[13:14:11] <aditya> Shell got "How about no?"
+[13:14:54] <vinayb> right! so that's how we can reply to a received message
+[13:15:06] <vinayb> now let's deal with one final problem
+[13:15:21] <vinayb> how do we ensure that the process doesn't stop?
+[13:15:37] <vinayb> Well, recursion to the rescue!
+[13:15:47] <vinayb> here's another function which shows it:
+[13:15:59] <vinayb> dolphin3() ->
+[13:16:00] <vinayb>     receive
+[13:16:00] <vinayb>         {From, do_a_flip} ->
+[13:16:00] <vinayb>             From ! "How about no?",
+[13:16:00] <vinayb>             dolphin3();
+[13:16:02] <vinayb>         {From, fish} ->
+[13:16:04] <vinayb>             From ! "So long and thanks for all the fish!";
+[13:16:07] <vinayb>         _ ->
+[13:16:09] <vinayb>             io:format("Heh, we're smarter than you humans.~n"),
+[13:16:12] <vinayb>             dolphin3()
+[13:16:14] <vinayb>     end.
+[13:16:28] <vinayb> here the catch-all clause and the do_a_flip clause both loop with the help of dolphin3/0. Note that the function will not blow the stack because it is tail recursive. As long as only these messages are sent, the dolphin process will loop indefinitely. However, if we send the fish message, the process will stop
+[13:17:23] <vinayb> any doubts?
+[13:17:43] <vilas_m> No
+[13:17:47] <aditya> no
+[13:18:39] <vinayb> okay then, that's it for today. we saw the core primitives for concurrency in Erlang. we'll see some more in next sessions to truly build reliable and scalable applications. 
+[13:19:51] <vilas_m> Thanks for the session :)
+[13:19:52] <vinayb> so if you guys have no doubts, i guess we'll call it a night!
+[13:19:56] *** Parts: vilas_m (2befa942@gateway/web/freenode/ip.43.239.169.66) ()
+[13:20:12] <aditya> thnx!
+[13:20:18] <gautham_> thanks
+[13:20:21] *** Quits: aditya (75d8ec5c@gateway/web/freenode/ip.117.216.236.92) (Quit: Page closed)
+[13:20:23] <vinayb> no problem guys, have a good night
+[13:20:36] <gautham_> good night
+[13:20:41] *** Quits: gautham_ (673c46b7@gateway/web/freenode/ip.103.60.70.183) (Quit: Page closed)

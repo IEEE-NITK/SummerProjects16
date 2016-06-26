@@ -1,0 +1,291 @@
+**** BEGIN LOGGING AT Mon May 16 20:15:59 2016
+
+May 16 20:15:59 *	Now talking on #ieee-os
+May 16 20:15:59 *	adams.freenode.net sets mode +n on #ieee-os
+May 16 20:15:59 *	adams.freenode.net sets mode +s on #ieee-os
+
+May 16 21:12:35 *	Now talking on #ieee-os
+http://dl.hexchat.net/hexchat/HexChat%202.12.1%20x64.exe
+May 16 21:13:57 *	hrily (~androirc@106.77.56.20) has joined
+May 16 21:16:01 *	hrily has quit (Client Quit)
+May 16 21:16:23 *	hrily (~androirc@106.77.56.20) has joined
+May 16 21:19:31 <sangi>	Hey guys :)
+May 16 21:19:40 <sangi>	How was your weekend?
+May 16 21:19:58 <hrily>	Pretty good
+May 16 21:20:18 <sangi>	What did you do hrily ?
+May 16 21:20:20 <shashibhushankan>	ok ok
+May 16 21:20:25 <hrily>	Yours?
+May 16 21:20:32 <sangi>	Why ok ok? :P 
+May 16 21:20:44 <shashibhushankan>	had to wait for mac book 6 days :/
+May 16 21:20:54 <shashibhushankan>	laptop was not proper previous one
+May 16 21:20:57 <shashibhushankan>	so no work
+May 16 21:21:04 <hrily>	Nothin, just coding and movies
+May 16 21:21:04 <sangi>	Mine was good :) Went to native. Ohh that's sad :/ 
+May 16 21:21:09 <hrily>	Ohhhh wow
+May 16 21:21:32 <sangi>	We'll wait for the others to come and then start off. Did you both watch the lecture>
+May 16 21:21:37 <sangi>	s?
+May 16 21:21:49 <hrily>	just two
+May 16 21:22:17 <sangi>	Okay. Did you follow>
+May 16 21:22:34 <sangi>	Shashi wbu?
+May 16 21:22:40 <hrily>	Yup
+May 16 21:22:47 <sangi>	Cool. 
+May 16 21:23:01 <shashibhushankan>	one
+May 16 21:23:07 <shashibhushankan>	jus got in the evening laptop
+May 16 21:23:09 <shashibhushankan>	:(
+May 16 21:23:15 <sangi>	Followed?
+May 16 21:25:00 *	Shivani_ (~Shivani@59.88.11.69) has joined
+May 16 21:25:16 <sangi>	Hey Shivani
+May 16 21:25:22 <Shivani_>	Hey di..
+May 16 21:25:29 <sangi>	How many lectures could you watch?
+May 16 21:25:43 <Shivani_>	I did all.. But have doubts..
+May 16 21:25:58 <sangi>	And how was your weekend ? Sorry for the order of asking :P
+May 16 21:26:08 <sangi>	Oh great! We can discuss here.
+May 16 21:26:17 <Shivani_>	It was good :)
+May 16 21:26:27 <Shivani_>	Okay..
+May 16 21:32:13 <shashibhushankan>	anyone ?
+May 16 21:34:48 *	trish (~Trish@116.75.142.96) has joined
+May 16 21:34:54 <sangi>	10 min buffer for the others to join 
+May 16 21:34:59 <trish>	Hi
+May 16 21:35:05 <sangi>	Hey Trisha
+May 16 21:35:16 *	saurabh (~saurabh@111-91-105-247-videoman.ll.hns.net.in) has joined
+May 16 21:35:23 <sangi>	How many lectures could you watch?
+May 16 21:35:33 <sangi>	@trish
+May 16 21:35:46 <sangi>	and @saurabh
+May 16 21:36:01 <trish>	i have about 20 mins of the last one left. the rest i watched
+May 16 21:36:17 <sangi>	Great. Could you follow?
+May 16 21:36:27 *	saurabh has quit (Client Quit)
+May 16 21:36:47 <trish>	Yep. we did some of the concepts at school, so i could follow well
+May 16 21:36:56 *	saurabh (~saurabh@111-91-105-247-videoman.ll.hns.net.in) has joined
+May 16 21:37:21 <sangi>	Sounds nice :) Facing internet problems saurabh?
+May 16 21:37:45 *	saurabh has quit (Client Quit)
+May 16 21:38:31 *	snigdha (~snigdha@183.82.217.200) has joined
+May 16 21:39:41 <sangi>	Hey guys. So let us start off the session now. 
+May 16 21:39:53 <hrily>	Ok
+May 16 21:40:01 <trish>	Ok
+May 16 21:40:03 <shashibhushankan>	ok
+May 16 21:40:06 <Shivani_>	Ok
+May 16 21:40:17 <snigdha>	ok
+May 16 21:40:49 <sangi>	So only when I ask questions you guys reply :) No need to reply otherwise. If there's any doubt at any time fire them right away :)
+May 16 21:42:00 <sangi>	So the 4 lectures I have shared are the basics of OS. You guys need to know a little bit about how a computer handles a program before learning OS. So I'll brief you guys on that today
+May 16 21:42:19 <sangi>	Remember - Program in execution is a process. 
+May 16 21:43:18 <sangi>	Computer generally has Processor - which has registers and cache memory, bus, ALU and PCB
+May 16 21:43:24 <sangi>	Quick question :
+May 16 21:43:36 <sangi>	snigdha - what's ALU?
+May 16 21:43:45 <sangi>	hrily - what's PCB?
+May 16 21:44:07 <hrily>	Printed Circuit Board?
+May 16 21:44:37 <sangi>	Ummm not in this context. PCB - Process Control Block. Good try :)
+May 16 21:44:46 <snigdha>	arithmetic logic unit
+May 16 21:44:56 <hrily>	:D
+May 16 21:45:05 <sangi>	What happens when we compile a program is that an assembly code is generated
+May 16 21:45:06 <snigdha>	sorry i was writting the previous points it took time
+May 16 21:45:38 <sangi>	No problem Snigdha. you don't have to write all this. I'll post the logs.
+May 16 21:45:52 <sangi>	Okay so ALU - Arithmetic and Logic Unit
+May 16 21:46:48 <sangi>	This assembly code is then linked with the header files (like stdio.h) and an executable is generated 
+May 16 21:47:28 <sangi>	When we run a program, the file (say a.out in this case) is loaded onto the main mem.
+May 16 21:47:43 <trish>	main menu?
+May 16 21:47:54 <sangi>	Main memory. 
+May 16 21:48:04 <trish>	oaky
+May 16 21:48:16 <sangi>	The Instructions and data are present in the same place.
+May 16 21:49:35 <sangi>	The file will have a specific structure when brought to the processor
+May 16 21:50:34 <sangi>	http://www.tenouk.com/Bufferoverflowc/Bufferoverflow1_files/image021.png
+May 16 21:50:59 <sangi>	This structure is easily accessible by the ALU
+May 16 21:51:29 <trish>	bss?
+May 16 21:51:31 <Shivani_>	what is the bss section?
+May 16 21:51:38 <sangi>	Btw any operation is performed by the ALU. It is made up of the Logic gates and is hardwired.
+May 16 21:52:24 <sangi>	bss is unintialized data
+May 16 21:52:43 <sangi>	say int a; will be in .bss segment
+May 16 21:53:00 <sangi>	but int a = 0; will be in data segment. 
+May 16 21:53:21 <sangi>	Clear Shivani_ ?
+May 16 21:53:28 <Shivani_>	Is it an abbreviation for something?
+May 16 21:53:57 <sangi>	yeah 
+May 16 21:54:12 <Shivani_>	okay..
+May 16 21:54:17 <sangi>	Basic Service set. Wiki link - https://en.wikipedia.org/wiki/.bss
+May 16 21:54:43 <Shivani_>	thanku..
+May 16 21:54:55 <sangi>	Cool so now the processor fetches every instruction and executes it in 5 stages
+May 16 21:55:43 <sangi>	Instruction Fetch, Instruction Decode, Execute, Memory Access, Write Back.
+May 16 21:56:54 <sangi>	Stage 1 : Instruction Fetch - There is a special register called PC - Program Counter in the Processor that keeps track of the address of the instrcution fetched and the next instruction to be fetched 
+May 16 21:57:12 <sangi>	new PC = old PC + 4 
+May 16 21:57:33 <sangi>	4 = 4 bytes (one instruction occupies 4 bytes say)
+May 16 21:57:55 <Shivani_>	.bss is for statically allocated variables only or auto as well?
+May 16 21:58:53 <sangi>	So once the first instruction is fetched (say address byte 100) . The PC increments to 104 and then the Instruction Decode for address 100 takes place 
+May 16 21:59:27 <sangi>	It is for all uninitialised variables 
+May 16 21:59:37 <Shivani_>	okay
+May 16 21:59:47 <sangi>	Is the concept of PC clear to all of you?
+May 16 22:00:20 <trish>	so PC is like a stack structure with the pointer to the instructions.
+May 16 22:01:28 <sangi>	PC is a register and yes it is a pointer to the next instruction to be fetched
+May 16 22:02:22 <sangi>	Note that if suppose there are jumps in your code like say goto label_name; then the PC value is changed to the value of the address where the goto block starts.
+May 16 22:02:34 <trish>	okay. So what type of data structures are registers?
+May 16 22:02:39 <sangi>	Is it clear now? I want everyone to reply.
+May 16 22:02:46 <Shivani_>	yes
+May 16 22:02:54 <snigdha>	yes
+May 16 22:02:56 <shashibhushankan>	its jus another pointer basically ?
+May 16 22:03:41 <sangi>	Yes but it is a smart pointer. It knows how much to increment to fetch the next ins
+May 16 22:03:59 <trish>	okay
+May 16 22:04:01 <sangi>	Trisha registers are hardware components. 
+May 16 22:04:16 <sangi>	The address is stored in binary
+May 16 22:04:22 <trish>	okay
+May 16 22:04:29 <shashibhushankan>	okay
+May 16 22:04:40 <sangi>	http://2.bp.blogspot.com/-3d1P2vy115E/T6GzScWdT4I/AAAAAAAAAJ8/GbbBXwVNiIQ/s1600/umips.png - The processor looks like this.
+May 16 22:04:48 *	Received a DCC CHAT offer from shashibhushankan
+May 16 22:05:10 <sangi>	Don't go into the details of the image. 
+May 16 22:05:16 <trish>	Wow
+May 16 22:05:31 <sangi>	Know that the intruction execution happens from left to right.
+May 16 22:06:00 <sangi>	The left most components constitute the PC. 
+May 16 22:06:35 <sangi>	The PC value is passed through the bus and the instruction is fetched from the Instruction Register Shown.
+May 16 22:06:57 <sangi>	The instruction is now fetched. PC = PC + 4
+May 16 22:07:03 <sangi>	Now first stage is donw
+May 16 22:07:08 <sangi>	any doubts?
+May 16 22:07:19 <sangi>	1 min to digest this all :P
+May 16 22:07:55 <Shivani_>	Is this bus the system bus reffered in videos?
+May 16 22:08:54 <sangi>	Yes.
+May 16 22:09:00 <Shivani_>	okay..
+May 16 22:09:57 <sangi>	Bus is a set of wires hardwired to the registers. 32 bit bus implies there are 32 wires connected to the place to collect info. So 32 bits can be fetched at a time.
+May 16 22:10:15 <sangi>	The place to collect info is called BUFFER.
+May 16 22:10:22 <sangi>	Ok now second stage. 
+May 16 22:11:25 <sangi>	say we have written c = a + b; in the .c file
+May 16 22:12:21 <sangi>	in assembly this becomes ADD R1,R2,R3 implies - add values in Register 1 and 2 and put it into register 3. 
+May 16 22:12:49 <sangi>	Note that previous intsructions would have loaded the values of a b and c into R1,2 and 3 respectively.
+May 16 22:13:20 <sangi>	Now in the binary file, what happens is ADD is coded as an OPCODE.
+May 16 22:14:05 <sangi>	OPCODE is basically a binary string which tells the Control unit (Refer the picture) which operation the ALU must perform.
+May 16 22:14:12 <shashibhushankan>	one sec,how many registers will be there ?
+May 16 22:14:31 <sangi>	That is, which gate should work in the ALU.
+May 16 22:14:44 <sangi>	There are many types of registers. 
+May 16 22:15:01 <sangi>	GPR - General Purpose registers 32  
+May 16 22:15:20 *	himadri (~himadripa@1.39.61.100) has joined
+May 16 22:15:31 <sangi>	For now we are dealing only with GPR and PC 
+May 16 22:15:37 <sangi>	cool Shashi?
+May 16 22:16:10 <sangi>	Hey himadri. Try to follow from here. You can read the logs later. 
+May 16 22:16:19 <shashibhushankan>	ya
+May 16 22:16:22 <sangi>	Great
+May 16 22:16:25 <himadri>	Okay.
+May 16 22:17:35 <sangi>	So now that the control Unit knows which gate in the ALU must function, the next step is the processor finds the input to this logic gate. Here it is R1 and R2.
+May 16 22:17:49 <trish>	So the register in which the operand is stored is THE GPR and the register in which the PC is stored is??
+May 16 22:18:31 <sangi>	So from the register file (ref dia), the values R1 and R2 are fetched 
+May 16 22:19:27 <sangi>	trisha, The registers where data is stored is GPR, The register where instruction address is stored is PC  
+May 16 22:19:59 <trish>	okay. its clear now
+May 16 22:20:08 <sangi>	Great.
+May 16 22:21:11 <sangi>	So the Instruction Decode Phase - The operation to be executed is decoded by the control unit based on the OPCODE. The operands are fetched and supplied as input the the logic gates through buses.
+May 16 22:21:15 <sangi>	Clear?
+May 16 22:21:18 <sangi>	Everyone
+May 16 22:21:21 <Shivani_>	is buffer a kind of register?
+May 16 22:22:33 <sangi>	Buffer is different in different places. The buffer to store the keyboard inputs is different from that used between registers inside the processor.
+May 16 22:22:51 <Shivani_>	okay..
+May 16 22:23:17 <trish>	yes
+May 16 22:23:19 <sangi>	I am not sure what the hardware is for buffers but I'll let you know later :)
+May 16 22:23:40 <Shivani_>	okay.. :)
+May 16 22:23:52 <snigdha>	okay :)
+May 16 22:24:29 <sangi>	So next stage is Execute. Quite clear from its name, now that we know which gates have to function and the inputs to the gate are ready, we let the ALU do it's job 
+May 16 22:25:00 *	himadri has quit (Ping timeout: 246 seconds)
+May 16 22:26:07 <sangi>	Suppose we had a goto statement, which translates to BRANCH in assembly code, once the ALU knows that it's a branch, the PC value (which is fetched in the decode stage) is added to the address of the label_name 
+May 16 22:26:10 <sangi>	Clear?
+May 16 22:26:35 <hrily>	Yup
+May 16 22:26:49 <snigdha>	ya
+May 16 22:27:08 <sangi>	The 4th stage is Memory Access. Suppose the isntruction was assigning value. say int c = b;
+May 16 22:27:58 <sangi>	Assemble would first load b into R1. Then load address of int c. 
+May 16 22:28:34 <sangi>	The Instruction decode phase then figures that this is a store instruction. 
+May 16 22:29:24 <sangi>	So the ALU calculates the hardware address from the loaded address of int c. The memory access stage writes the value of c into this place
+May 16 22:29:36 <sangi>	This is memory access.
+May 16 22:30:28 <sangi>	The previous instructions which is to load b and address of c into the registers also requires memory access from the data (Cache or Main memory)
+May 16 22:30:37 <sangi>	Clear everyone?
+May 16 22:31:09 <sangi>	Last stage - Write back - Say we have ADD R1, R2, R3
+May 16 22:31:27 <sangi>	Shashi, quickly tell me what this instruction does.
+May 16 22:32:31 <sangi>	Okay I'll answer :p
+May 16 22:32:33 <sangi>	Answer R3 = R2 + R1. 
+May 16 22:33:24 <sangi>	So now the ALU performs this operation. There is no MEM ACCESS needed. So now the value of Register R3 inside the processor has to be updated.
+May 16 22:33:36 <sangi>	Thus the write back stage happens.
+May 16 22:34:05 <sangi>	Similarly, write back stage updates PC value incase of BRANCH statements. 
+May 16 22:34:13 <sangi>	Clear everyone?
+May 16 22:34:21 <hrily>	Yup
+May 16 22:34:31 <sangi>	Shashi wake up!
+May 16 22:34:43 <sangi>	:P
+May 16 22:34:48 <Shivani_>	Could you explain the memory access stage again?
+May 16 22:35:06 <shashibhushankan>	awake
+May 16 22:35:30 <shashibhushankan>	ya
+May 16 22:35:47 <sangi>	Sure. What happens is the modified values have to be written back into the main memory right? 
+May 16 22:36:09 <shashibhushankan>	ya. 
+May 16 22:36:11 <Shivani_>	yeah
+May 16 22:36:53 <sangi>	So now the processor fetches the value to be written into the memory from the GPRs and with the help of buses writes it into the main memory at a particular address,
+May 16 22:37:26 <sangi>	It is applicable for reading a particular value from the main memory into a register also
+May 16 22:37:33 <sangi>	Clear Shivani?
+May 16 22:37:48 <Shivani_>	Then what is difference in write back and memory access?
+May 16 22:37:52 <sangi>	So these 5 stages take 1 clock each. 
+May 16 22:38:25 *	himadri (~himadripa@1.39.61.100) has joined
+May 16 22:38:35 <sangi>	Yes. Good question. Mem access is for read and write from Main Memory to Processor. Write back - Write into registers inside the processor.
+May 16 22:38:42 <sangi>	Clear Shivani?
+May 16 22:38:50 <Shivani_>	yeah..
+May 16 22:39:33 <himadri>	sorry had some problem with the connection. Had to restart the app. 
+May 16 22:39:54 <hrily>	All this in 1 clock period?
+May 16 22:40:13 <sangi>	Nope. every stage takes 1 clock each
+May 16 22:40:24 <hrily>	Ohhh :D
+May 16 22:41:35 <sangi>	Cool. So this is done for all the instructions in the program. And the output is then displayed.
+May 16 22:42:01 <shashibhushankan>	so min 5 clock pulse for each instruction ?
+May 16 22:42:26 <sangi>	Now for this the processor has to be free before it picks up a process. (Quite obvious i suppose) :P
+May 16 22:42:52 <sangi>	Shashi, max 5 . Any instruction will complete within these 5 stages.
+May 16 22:43:09 <sangi>	example ADD R1 , R2, R3 does not have mem access.
+May 16 22:43:14 <sangi>	Clear Shashi?
+May 16 22:43:31 <shashibhushankan>	ya
+May 16 22:43:37 <sangi>	So what does OS do here? 
+May 16 22:43:44 <shashibhushankan>	so min and max both will be 5 no?
+May 16 22:43:46 <trish>	it would depend on the type of processor and thy type of instruction also??
+May 16 22:43:57 <shashibhushankan>	coz these 5 steps need to take place for each instruction ?
+May 16 22:45:02 <sangi>	Yes. For now we consider general purpose processor. And yes for any type of instruction that eexcutes on a general purpose processor, it will complete its execution in 5 clocks.
+May 16 22:45:27 <sangi>	Clear both of you?
+May 16 22:45:32 <shashibhushankan>	ya
+May 16 22:45:34 <trish>	okay
+May 16 22:46:30 <sangi>	Cool. So when one process is executing on a processor, the other processes will be waiting for their turn. So now a part of the OS decides which process goes next.
+May 16 22:47:07 <sangi>	Another part of the OS makes the processor ready for the Process.
+May 16 22:47:16 <sangi>	The first one is Scheduler
+May 16 22:47:23 <sangi>	The second is Dispatcher.
+May 16 22:47:30 <sangi>	We'll see these later.
+May 16 22:47:37 <shashibhushankan>	like round robin ? or first come first serve?
+May 16 22:47:47 <shashibhushankan>	that way ?
+May 16 22:48:24 <sangi>	Yes. They are some of the algorithms for picking the next process.
+May 16 22:48:33 <sangi>	We'll discuss them in detail later.
+May 16 22:48:58 <sangi>	There are 2 modes of operation for any process. User mode and kernel mode. 
+May 16 22:50:01 <sangi>	User mode is till when the process needs to take control of some hardware (say input). The process then requests the kernel to give the resource and the process is now in kernel mode.
+May 16 22:50:28 <sangi>	When the use of resource is done, the process is back to the User mode.  
+May 16 22:51:02 <sangi>	To go from user mode to kernel mode, something called Syscalls are used.
+May 16 22:51:12 <hrily>	Is mem acces kernel mode?
+May 16 22:51:39 <Shivani_>	Resources like?
+May 16 22:51:43 <trish>	the process we discussed used all the processor hardware. so was this all in Kernel Mode??
+May 16 22:51:54 <trish>	The addition process
+May 16 22:52:06 <sangi>	Yes. Pretty much anything that the process does on the processor is in kernel mode. 
+May 16 22:52:17 <hrily>	Ok
+May 16 22:52:19 <shashibhushankan>	anything other than input?
+May 16 22:52:49 <sangi>	Resources like - Display for output, Bus for writing into a file etc...
+May 16 22:53:23 <sangi>	I'll just mention what threads are and then we'll end this session
+May 16 22:53:24 <Shivani_>	like libraries?
+May 16 22:54:14 <sangi>	No Shivani, I'm talking about hardware resources like say a program wants to print a file. So the resource it needs is the bus to the printer 
+May 16 22:54:21 <sangi>	Got it?
+May 16 22:54:35 <Shivani_>	ooh.. 
+May 16 22:55:32 <sangi>	Okay I won't do threads today.
+May 16 22:55:43 <sangi>	We'll do that on wednesday's session.
+May 16 22:55:54 <hrily>	Okay
+May 16 22:56:02 <trish>	okay
+May 16 22:56:10 <shashibhushankan>	ok
+May 16 22:56:11 <Shivani_>	Okay..
+May 16 22:56:52 <snigdha>	okay
+May 16 22:56:58 <sangi>	I expect all of you to watch those 4 lectures by tuesday. I will share 2 more lectures. Please try to watch them in this week.
+May 16 22:57:31 <sangi>	So the session is over. Good night people :) Any feedbacks on the sessions?
+May 16 22:57:39 <sangi>	*session
+May 16 22:57:52 <sangi>	You can tell me anytime. :)
+May 16 22:57:58 <hrily>	Nope was really great
+May 16 22:58:08 <trish>	i enjoyed the session. well structured
+May 16 22:58:24 <Shivani_>	It was great.. :)
+May 16 22:58:45 <sangi>	Cool. So the logs will be up by tomorrow evening. NOTE assignment is coming in that mail :P 
+May 16 22:58:57 <shashibhushankan>	thank you
+May 16 22:59:08 <sangi>	I hope everyone has the same enthu till the end :)
+May 16 22:59:12 <sangi>	Byee guys :)
+May 16 22:59:19 <Shivani_>	Bye.. :)
+May 16 22:59:38 <trish>	Good Night:)
+May 16 22:59:46 <shashibhushankan>	bye
+May 16 22:59:50 <shashibhushankan>	gn
+May 16 22:59:55 <hrily>	GN
+May 16 23:00:23 <sangi>	You can quit the channel :P
+May 16 23:00:38 *	Shivani_ has quit (Quit: Leaving)
+May 16 23:00:58 *	shashibhushankan has quit (Quit: Leaving)
+May 16 23:01:46 *	hrily has quit (Quit: AndroIRC - Android IRC Client ( http://www.androirc.com ))
+May 16 23:02:11 *	hrily (~androirc@223.196.248.6) has joined
+May 16 23:02:52 *	hrily (~androirc@223.196.248.6) has left
+May 16 23:04:02 *	trish has quit (Quit: Leaving)
+May 16 23:04:56 *	snigdha has quit (Quit: Leaving)

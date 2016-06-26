@@ -1,0 +1,297 @@
+[08:31:38] *** Joins: rakshith (~hehaichi@117.192.105.24)
+[11:18:22] *** Joins: vilas_m (2d7d2557@gateway/web/freenode/ip.45.125.37.87)
+[11:26:45] *** Joins: rakshith_ (~hehaichi@117.192.105.24)
+[11:26:57] *** Quits: rakshith_ (~hehaichi@117.192.105.24) (Client Quit)
+[11:27:21] *** Joins: rakshith_ (~hehaichi@117.192.105.24)
+[11:27:50] *** Quits: rakshith_ (~hehaichi@117.192.105.24) (Client Quit)
+[11:29:43] *** Joins: salman_ (b63a2e08@gateway/web/freenode/ip.182.58.46.8)
+[11:30:10] <salman_> hey I'll join in some time . I have some guests at home.
+[11:31:17] *** Quits: rakshith (~hehaichi@117.192.105.24) (Remote host closed the connection)
+[11:32:14] *** Joins: rakshith (~hehaichi@117.192.105.24)
+[11:34:46] *** Joins: m_gautham (75dd6b77@gateway/web/freenode/ip.117.221.107.119)
+[11:38:59] *** Joins: aditya (cbac7f67@gateway/web/freenode/ip.203.172.127.103)
+[11:39:19] *** Joins: Pratyushgr (75c67ae0@gateway/web/freenode/ip.117.198.122.224)
+[11:42:40] <vinayb> hey folks
+[11:42:46] <vinayb> we'll start soon
+[11:44:32] <Pratyushgr> Yeah! !
+[11:46:12] *** vinayb changes topic to 'Distributed Systems Programming with Erlang | Today's log: https://goo.gl/l3nL9q'
+[11:46:24] *** Joins: akshayrevankar (67157d53@gateway/web/freenode/ip.103.21.125.83)
+[11:46:46] <akshayrevankar> hello guys
+[11:46:54] <vilas_m> Hi :)
+[11:46:58] <rakshith> Hi!
+[11:47:12] <aditya> hi!
+[11:47:42] <akshayrevankar> has anyone among you learnt the quick sort algorithm for sorting?
+[11:48:50] <m_gautham> better to say no
+[11:48:54] <vilas_m> Had read it long back. Kinda forgot now :P. Remember something about using a pivot
+[11:48:56] <akshayrevankar> lol
+[11:49:35] <aditya> A little bit!
+[11:50:27] <akshayrevankar> ok fine.. anyway i will prefer teaching about quick sort and how to approach it using recursion in erlang on my next session which will be the end of recursion. It will mostly not be a irc chat.. :D
+[11:50:41] <akshayrevankar> difficult to teach that on just text..
+[11:50:58] <akshayrevankar> so today.. we will be doing basic exception handling.
+[11:51:05] <rakshith> cool!
+[11:52:50] <akshayrevankar> if i am not wrong, Vilas asked me about the BIF sort.
+[11:53:33] <akshayrevankar> he said he will try defining his own sorting function for the assignment 2 where is needed to use it..
+[11:53:53] <vilas_m> Yea :P
+[11:54:14] <vilas_m> Then you said it's better to use the inbuilt function..
+[11:54:28] <akshayrevankar> I would prefer to use the BIF lists:sort rather than writing my own, because it is more optimised and erlang doesnt follow just one algorithm to sort.. it uses the best algorithm to sort..
+[11:54:52] <akshayrevankar> atleast thats what the programmers think :P
+[11:55:42] <akshayrevankar> so if you have a BIF, do prefer it.. but nonetheless , you should know basics of different algorithms.. so we will be discussing quick sort using recursion..
+[11:56:01] <akshayrevankar> i wnt u guys to try it out before next recursion session.. without googling :P
+[11:56:14] *** Quits: salman_ (b63a2e08@gateway/web/freenode/ip.182.58.46.8) (Ping timeout: 250 seconds)
+[11:56:16] <akshayrevankar> so we will start with Errors and Exceptions..
+[11:56:43] <akshayrevankar> i would like all of you to open your erlang console
+[11:58:25] <akshayrevankar> so firstly can anyone just tell an erlang statement to sort a list [1,2,3,4].
+[11:58:30] <m_gautham> done
+[11:59:17] <vilas_m> lists:sort(L).
+[11:59:32] <akshayrevankar> ya correct...
+[11:59:45] <akshayrevankar> now what happens if my L is '1234' ?
+[12:00:09] <akshayrevankar> or say '4572' (we are using the sort function :P )
+[12:00:32] <vilas_m> Pattern matching error?
+[12:00:46] <akshayrevankar> ya.. its an error
+[12:00:58] <akshayrevankar> because these are defined to operate on a list.
+[12:01:40] <akshayrevankar> so assume you have a code snippet running and you pass '4572'.. it would be an error..
+[12:02:05] <akshayrevankar> an error here is equivalent to telling.. i cant handle it.. you stop doing everything else..
+[12:02:33] <akshayrevankar> so this is a function-clause error
+[12:02:51] <akshayrevankar> where your function parameters couldnt match any clause
+[12:03:16] <akshayrevankar> we will be discussing runtime errors for a while.. may be boring.. deal with it :P
+[12:03:29] <akshayrevankar> ok now lets say a case statement
+[12:04:03] <akshayrevankar> case "some random thingy" of
+[12:04:10] <akshayrevankar> expected_value -> ok;
+[12:04:18] <akshayrevankar>  other_expected_value -> 'still ok'
+[12:04:24] <akshayrevankar> end.
+[12:04:29] <akshayrevankar> what would this result in
+[12:06:35] <aditya> error! No true statement
+[12:07:02] <akshayrevankar> ok is that the exact line you get in erlang?
+[12:08:18] <aditya> ** exception error: no case clause matching "some random"
+[12:08:41] <akshayrevankar> ohk cool..
+[12:09:09] <akshayrevankar> ya so theres no clause matching
+[12:09:20] <akshayrevankar> so imagine you are running a c code..
+[12:09:28] <akshayrevankar> and because there is no case matching..
+[12:09:47] <akshayrevankar> you wont expect it to stop ur code..
+[12:10:39] <akshayrevankar> in erlang it would lead to an error..
+[12:11:01] <akshayrevankar> so.. you either need to take care of it to tell it to do something...
+[12:11:29] <akshayrevankar> its the same with a if statement
+[12:11:40] <akshayrevankar>  if 2 > 4 -> hiee;
+[12:11:48] <akshayrevankar>  0 > 1 -> whatever
+[12:11:50] <akshayrevankar> end.
+[12:12:34] <akshayrevankar> so even here that's :\
+[12:12:59] <akshayrevankar> [X,Y] = {4,5}. this is a error as theres no match on both sides
+[12:13:32] <akshayrevankar> abc:random([1,2,3]). This would be a undefined error
+[12:13:45] <akshayrevankar> as there is no function defined by you or inbuilt in erlang
+[12:14:10] <akshayrevankar> its unlikely that it would be a runtime error unless u forget to include the file
+[12:14:42] <akshayrevankar> so these are a few exceptions in erlang
+[12:15:07] <akshayrevankar> when u have function with arity 1 and call that with 2 parameters..
+[12:15:32] <akshayrevankar> these erlang errors have their own meanings and are fixed for certain kind of errors
+[12:15:38] <akshayrevankar> if u want to raise an error:
+[12:16:00] <akshayrevankar> erlang:error('Why am I Here?').
+[12:16:21] <akshayrevankar> or something similar where you want to tell the user explicitly what might have gone wrong.
+[12:17:08] <akshayrevankar> like instead of telling undefined function.. you can tell that 'you might need to include xyz module by using c('xyz'). explicitly'
+[12:17:12] <akshayrevankar> or something like that
+[12:19:11] <akshayrevankar> we will come to throw in the later section today
+[12:19:24] <akshayrevankar> so when you get an exception how would you deal with it?
+[12:19:35] <akshayrevankar> can someone tell me in a C like language
+[12:19:42] <akshayrevankar> hoow would u handle
+[12:20:25] <akshayrevankar> if u use C++, python, java etc...
+[12:20:34] <rakshith> try catch clause
+[12:20:37] <akshayrevankar> C doesn't have exception handling
+[12:20:43] <akshayrevankar> ya.. try catch clause..
+[12:20:51] <akshayrevankar> its exactly the same here..
+[12:20:56] <akshayrevankar> but erlang style
+[12:21:19] <akshayrevankar> its:
+[12:21:32] <akshayrevankar> try expr of
+[12:21:47] <akshayrevankar> correctpattern1 [guards] -> exp1;
+[12:21:57] <akshayrevankar> correctpattern2 [guard] ->exp2
+[12:22:00] <akshayrevankar> catch
+[12:22:29] <akshayrevankar> typeoferror:pat1=>exp3;
+[12:22:42] <akshayrevankar> typeoferror:pat2->exp3
+[12:22:44] <akshayrevankar> end.
+[12:23:19] <akshayrevankar> just => change to ->          (used to ruby :D)
+[12:23:39] <akshayrevankar> so..
+[12:23:43] <akshayrevankar> we will start with an example
+[12:25:17] <akshayrevankar> ya before that.. the default catch is a throw which means if u dont specify the typeoferror, it will be a throw
+[12:25:34] <akshayrevankar> Throw:  is intended to be used for non-local returns and does not generate an error unless it is not caught ..
+[12:25:42] *** Joins: adarsh_h (6ad886a3@gateway/web/freenode/ip.106.216.134.163)
+[12:26:02] <adarsh_h> sorry am late..just came back home
+[12:26:19] <akshayrevankar> Error:  is generated when the system detects an error. You can explicitly generate an error using error/1. as you did before using erlang:error('Why am I here?').
+[12:26:53] <akshayrevankar> you can do the same for Throw as erlang:throw('Just throw me').
+[12:27:42] <akshayrevankar> Exit: is generated using exit/1 and is intended to signal that this process is to die.
+[12:28:46] <akshayrevankar> ok lets make a module exceptions
+[12:28:51] <akshayrevankar> -module(exceptions).
+[12:29:41] <akshayrevankar> -compile(export_all).
+[12:29:47] <akshayrevankar>   throws(F) -> try F() of
+[12:29:52] <akshayrevankar> _ -> ok
+[12:30:01] <akshayrevankar> catch
+[12:30:04] <akshayrevankar> Throw -> {throw, caught, Throw}
+[12:30:06] <akshayrevankar> end.
+[12:30:51] <akshayrevankar> c(exceptions).
+[12:31:55] <akshayrevankar> exceptions:throws(fun() -> throw(lol) end).
+[12:32:06] <akshayrevankar> exceptions:throws(fun() -> erlang:error(pang) end).
+[12:32:22] <akshayrevankar> ok can some tell and try to explain the output
+[12:35:56] <akshayrevankar> ...
+[12:37:15] <akshayrevankar> can someone tell the output atleast...
+[12:37:18] <akshayrevankar> :|
+[12:37:38] <m_gautham> {throw,caught,lol} for 1st
+[12:37:49] <m_gautham> ** exception error: pang      in function  exceptions:throws/1 (exceptions.erl, line 4) for 2nd
+[12:37:58] <m_gautham> :(
+[12:38:00] <akshayrevankar> ah thank god.. some1 is alive..
+[12:38:47] <akshayrevankar> ok can u try explaining whats happening
+[12:39:22] <m_gautham> no sorry
+[12:39:35] <akshayrevankar> oh ohk fine :D
+[12:39:50] <akshayrevankar> so we will move on to next example and come back
+[12:40:09] <rakshith> we're sending an error, thats being caught?
+[12:40:26] <akshayrevankar> ya..
+[12:40:35] <akshayrevankar> why the difference in the two outputs
+[12:40:42] <akshayrevankar> an important thing i mentioned before
+[12:41:41] <m_gautham> btw whats that ok??
+[12:42:22] <akshayrevankar> what ok?
+[12:42:48] <m_gautham> _->ok
+[12:43:08] <rakshith> atom
+[12:43:22] <akshayrevankar> haha. ya ok is an atom alright..
+[12:43:29] <akshayrevankar> if u type:
+[12:43:31] <akshayrevankar> exceptions:throws(fun() -> hi end).
+[12:43:41] <akshayrevankar> there is no exception being sent.. so it will return ok..
+[12:45:04] <akshayrevankar> got it?
+[12:45:18] <m_gautham> yes
+[12:45:27] <akshayrevankar> -module(exceptions).
+[12:45:30] <akshayrevankar>  -compile(export_all).
+[12:45:35] <akshayrevankar>  throws(F) -> try F() of
+[12:45:40] <akshayrevankar> _ -> ok
+[12:45:53] <akshayrevankar> catch
+[12:45:56] <akshayrevankar> Throw -> {throw, caught, Throw};
+[12:46:01] <akshayrevankar> error:Error -> {error, caught, Error};
+[12:46:04] <akshayrevankar> exit:Exit -> {exit, caught, Exit}
+[12:46:05] <akshayrevankar> end.
+[12:46:28] <akshayrevankar> now try the two statements as before
+[12:47:56] <rakshith> Error is also being caught now
+[12:48:24] <akshayrevankar> ya so what was the point that i mentioned before?
+[12:48:31] <akshayrevankar> why error was not getting caught?
+[12:48:35] <akshayrevankar> why only throw
+[12:49:43] <rakshith> throw raises an exception. Only exceptions are caught?
+[12:50:14] <akshayrevankar> uh.. doesnt error raise an exception?
+[12:50:34] <akshayrevankar> [21:55] ME: the default catch is a throw which means if u dont specify the typeoferror, it will be a throw
+[12:50:45] <rakshith> ah..
+[12:51:20] <akshayrevankar> thats why error is not caught..
+[12:51:23] <rakshith> was having dinner at that time :P
+[12:51:44] <m_gautham> i think the second one returned exit
+[12:52:18] <akshayrevankar> ok..
+[12:52:33] <akshayrevankar> it would return an error handled..
+[12:52:38] <akshayrevankar> it wouldnt exit
+[12:52:51] <m_gautham> ok
+[12:53:04] <akshayrevankar> because it is made to handle the exception..
+[12:53:12] <akshayrevankar> error, throw , exit are all exception..
+[12:53:20] <akshayrevankar> if there is an exception.. dont do it.. do something else..
+[12:53:26] <akshayrevankar> thats what try and catch is meant to do
+[12:53:42] <akshayrevankar> now in cath you can have statements like:
+[12:54:19] <akshayrevankar> error:crap -> "Harm can come to a young lad like that!";
+[12:54:28] <akshayrevankar> so it will match error(crap)
+[12:55:20] *** Joins: vilas_m_ (2d7d2557@gateway/web/freenode/ip.45.125.37.87)
+[12:55:39] <akshayrevankar> _:_ -> "Just what do you think you're doing?"
+[12:56:17] <akshayrevankar> now lets go to another feature of try catch
+[12:56:22] <akshayrevankar> that is the extension after
+[12:56:24] <akshayrevankar> try
+[12:56:25] <akshayrevankar> catch
+[12:56:26] <akshayrevankar> after
+[12:56:36] <akshayrevankar> try ... of
+[12:56:39] <akshayrevankar> something...
+[12:56:41] <akshayrevankar> catch
+[12:56:45] <akshayrevankar> ...........;
+[12:56:47] <akshayrevankar> .........
+[12:56:50] <akshayrevankar> after
+[12:56:54] *** Quits: vilas_m (2d7d2557@gateway/web/freenode/ip.45.125.37.87) (Ping timeout: 250 seconds)
+[12:56:56] <akshayrevankar> expression.........
+[12:56:59] <akshayrevankar> end.
+[12:57:10] <akshayrevankar> the expression in the after block is always executed...
+[12:57:20] *** Quits: m_gautham (75dd6b77@gateway/web/freenode/ip.117.221.107.119) (Ping timeout: 250 seconds)
+[12:58:07] <rakshith> isn't there something like try-catch-else like in python? else being executed only if no exception was raised..?
+[12:58:45] <akshayrevankar> ya agreed
+[12:59:14] <akshayrevankar> but this is not like else..
+[12:59:23] <akshayrevankar> in after irrespective of error or not..
+[12:59:25] <akshayrevankar> it will excute
+[12:59:32] <rakshith> no no. i'm asking isn't there an equivalent in erlang..
+[12:59:33] <akshayrevankar> ###but this block cant return any value
+[13:00:10] <akshayrevankar> now instead of always having a try catch..
+[13:00:17] <akshayrevankar> you can just have a catch statement..
+[13:00:21] <akshayrevankar> like catch 2/2.
+[13:00:31] <akshayrevankar> catch 2/2.
+[13:00:34] <akshayrevankar> whats the output
+[13:00:39] *** Joins: m_gautham (3b63c6db@gateway/web/freenode/ip.59.99.198.219)
+[13:02:49] <akshayrevankar> .....
+[13:02:50] <akshayrevankar> ?
+[13:02:51] <rakshith> 1.0?
+[13:02:58] <akshayrevankar> ya
+[13:02:59] <akshayrevankar> good
+[13:03:13] <akshayrevankar> so you see. .no error.. it just outputs the answer
+[13:03:18] <akshayrevankar> now try catch 2/0.
+[13:03:50] <rakshith> {'EXIT',{badarith,[{erlang,'/',[2,0],[]},
+[13:03:51] <rakshith>                    {erl_eval,do_apply,6,[{file,"erl_eval.erl"},{line,673}]},
+[13:03:51] <rakshith>                    {erl_eval,expr,5,[{file,"erl_eval.erl"},{line,431}]},
+[13:03:51] <rakshith>                    {shell,exprs,7,[{file,"shell.erl"},{line,686}]},
+[13:03:51] <rakshith>                    {shell,eval_exprs,7,[{file,"shell.erl"},{line,641}]},
+[13:03:51] <rakshith>                    {shell,eval_loop,3,[{file,"shell.erl"},{line,626}]}]}}
+[13:04:25] <akshayrevankar> oh god.. good good..
+[13:04:26] <akshayrevankar> :D
+[13:04:40] <akshayrevankar> basically it returned some value..
+[13:04:43] <akshayrevankar> not an error..
+[13:04:46] <akshayrevankar> the code goes on..
+[13:04:58] *** Joins: vilas_m (2d7d2557@gateway/web/freenode/ip.45.125.37.87)
+[13:05:10] <akshayrevankar> but imagine.. for a divide by 0 you wan to explicitly output an Inf or Nan
+[13:05:19] <akshayrevankar> then we can do it in the catch block
+[13:05:44] <akshayrevankar> try catch block*
+[13:05:48] *** Quits: vilas_m (2d7d2557@gateway/web/freenode/ip.45.125.37.87) (Client Quit)
+[13:05:51] *** Joins: vilas_m__ (2d7d2557@gateway/web/freenode/ip.45.125.37.87)
+[13:05:57] *** Quits: vilas_m_ (2d7d2557@gateway/web/freenode/ip.45.125.37.87) (Quit: Page closed)
+[13:06:15] <akshayrevankar> if u just dont care about handling the error.. just use catch expr..
+[13:06:37] <akshayrevankar> you can also do this instead of try catch..
+[13:06:42] <akshayrevankar> case catch X/Y of
+[13:07:02] <akshayrevankar>  {'EXIT', {badarith,_}} -> "I say it's Infinite";
+[13:07:08] <akshayrevankar> N -> N
+[13:07:09] <akshayrevankar> end.
+[13:07:44] <akshayrevankar> you know it will return {'EXIT',{badarith,...}}
+[13:07:54] <akshayrevankar> so if that's the value.. output infinite
+[13:08:13] <akshayrevankar> else if its not that.. just output the same..
+[13:08:31] <akshayrevankar> which is shown as if case is N, output N..
+[13:08:47] <akshayrevankar> where N can be anything other than {'EXIT',{'badarith,...}}
+[13:08:50] <akshayrevankar> got it?
+[13:09:05] <rakshith> yeah
+[13:09:43] <m_gautham> yes
+[13:09:49] <aditya> yes
+[13:09:59] <akshayrevankar> though there are some complications with catch
+[13:10:01] <akshayrevankar> example:
+[13:10:17] <akshayrevankar> X=catch 4+2.
+[13:10:22] <akshayrevankar> whats the output
+[13:10:37] <rakshith> syntax error
+[13:11:00] <akshayrevankar> ya.. theres an issue with precedence..
+[13:11:13] <akshayrevankar> so u need to do X= (catch 4+2.)
+[13:11:36] <akshayrevankar> X= (catch 4+2).
+[13:11:55] <akshayrevankar> then for example..
+[13:12:01] <akshayrevankar> catch 4.
+[13:12:16] <akshayrevankar> sorry..
+[13:12:23] <akshayrevankar> catch return.
+[13:12:57] <akshayrevankar> and catch throw(return).
+[13:12:57] <akshayrevankar> whats the output?
+[13:13:09] <akshayrevankar> catch 4.
+[13:13:14] <akshayrevankar> catch throw(4).
+[13:13:52] <rakshith> 4
+[13:14:04] <aditya> return
+[13:14:31] <akshayrevankar> ya.. so its not possible to distinguish the throw catch with the correct value without throw sometimes..
+[13:14:52] <akshayrevankar> so guys.. this is all about basics of exception..
+[13:15:04] <akshayrevankar> next session of mine i will be telling about....??
+[13:15:19] <rakshith> recursion
+[13:15:28] <aditya> quick sort?
+[13:15:33] <rakshith> quick sort
+[13:15:48] <m_gautham> when??
+[13:15:55] <akshayrevankar> ya. we will have session on quick sort and binary trees
+[13:16:09] <akshayrevankar> and exception handling in binary trees
+[13:16:22] <akshayrevankar> will be a long one NOT on IRC..
+[13:16:43] <akshayrevankar> and we will have records.. either by me or vsb most probably
+[13:17:50] <aditya> Ok....Thnx!
+[13:18:14] *** Quits: aditya (cbac7f67@gateway/web/freenode/ip.203.172.127.103) (Quit: Page closed)
+[13:18:16] <m_gautham> ok thanks
+[13:18:26] <rakshith> thanks!
+[13:18:28] <akshayrevankar> ok
+[13:18:30] *** Quits: m_gautham (3b63c6db@gateway/web/freenode/ip.59.99.198.219) ()
+[13:18:32] <akshayrevankar> any doubts ping me
+[13:19:52] *** Quits: Pratyushgr (75c67ae0@gateway/web/freenode/ip.117.198.122.224) (Ping timeout: 250 seconds)
+[13:20:57] <akshayrevankar> bye everyone..
+[13:21:27] *** Parts: akshayrevankar (67157d53@gateway/web/freenode/ip.103.21.125.83) ()
+[13:21:37] *** Quits: adarsh_h (6ad886a3@gateway/web/freenode/ip.106.216.134.163) (Quit: Page closed)

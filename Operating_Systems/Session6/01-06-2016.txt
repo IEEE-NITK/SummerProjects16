@@ -1,0 +1,114 @@
+**** BEGIN LOGGING AT Wed Jun 01 21:42:40 2016
+
+Jun 01 21:42:40 *	Now talking on #ieee-os
+Jun 01 21:42:46 <sangi>	Hey guys
+Jun 01 21:42:54 <trish>	Hi
+Jun 01 21:43:58 <sangi>	Nice Answers everyone :) I really love the way you guys think!!!
+Jun 01 21:44:53 <sangi>	Give me 5 min. I still have to go through one submission
+Jun 01 21:48:30 <sangi>	Feel free to discuss your answers here. Also tell me how you found the questions and how it could have been better.
+Jun 01 21:50:09 *	himadri (~himadri@182.57.118.201) has joined
+Jun 01 21:50:55 *	himadri has quit (Client Quit)
+Jun 01 21:51:14 <sangi>	Yeah so I hope you guys had fun :)
+Jun 01 21:51:14 *	himadri (~himadripa@182.57.118.201) has joined
+Jun 01 21:51:33 <sangi>	Let's look at the first question
+Jun 01 21:52:15 <sangi>	Practically they have been implemented as DOCKERS-the backbone and the CONTAINERS are the Operating systems
+Jun 01 21:53:33 <sangi>	Is there anyone who hasn't understood the 1st question?
+Jun 01 21:55:36 <sangi>	I'll give the answers here. But note that to choose a correct answer there are many factors to take into consideration. Given a certain situation, we might have to choose something not usually chosen (in case someone plans to implement this ;) )
+Jun 01 21:56:08 <sangi>	So, I hope everyone understood how a boot loader works
+Jun 01 21:56:18 <sangi>	If any doubt please ask here
+Jun 01 21:57:23 <sangi>	1 - Answer : Backbone is slightly different from boot loader due to the intelligence quotient.
+Jun 01 21:58:13 <sangi>	What I mean is a normal boot loader does not care what OS is present. It finds the memory location of the kernel and puts it into RAM. 
+Jun 01 21:59:52 <sangi>	But what we'll want the backbone to do is select which OS to load first and which next, which OS should occupy the display, which processor is for which OS and stuff like these.
+Jun 01 22:00:55 <sangi>	I liked Trisha's answer where she has compared the backbone structure to a micro kernel architecture
+Jun 01 22:01:48 <sangi>	In such an architecture, every component is independent of the other but can run simultaneously.
+Jun 01 22:03:06 <sangi>	Snigdha has got confused with VMs and this. If any doubts please let me know
+Jun 01 22:03:39 <snigdha>	ya kindof clear now
+Jun 01 22:03:52 <sangi>	Shivani's answer is good but not what I was looking for. She has given the memory implementation of such a concept
+Jun 01 22:03:54 <sangi>	The problem can be solved by involving the use of partitions.Partitions like FAT32 contain the shared data and hence can be accessed by both the operating systems. Its just that the drives will be divided into three partitions- 2 OSs' and one common that contains the shared data. 
+Jun 01 22:05:46 <sangi>	Himadri here we are saying that both OSes are 2 processes. So question of which process can access what memory will not arise.
+Jun 01 22:06:16 <sangi>	Ok so going to the next question, 
+Jun 01 22:07:01 <sangi>	Computation-wise Message Passing is better. 
+Jun 01 22:07:26 <sangi>	Space-wise Shared Memory is better.
+Jun 01 22:08:07 <sangi>	So overall since we need the sharing to happen fast, we prefer message passing. 
+Jun 01 22:08:36 <sangi>	This question is based on the fact that when there is shared memory, there is need for synchronization.
+Jun 01 22:09:07 <trish>	sice the two OSs have different achitecture, the form of message passing will be different. what if they do not understad each other??
+Jun 01 22:10:04 <sangi>	That's the beauty of Binary Language - everything is 1s and 0s. A common encoding is used for most OSs.
+Jun 01 22:10:51 <sangi>	Note that in message passing, 'Message'+'Destination Address' is sent. 
+Jun 01 22:11:11 <sangi>	So the common encoding can be taken care of by the backbone.
+Jun 01 22:11:45 <trish>	okay, :)
+Jun 01 22:13:00 <sangi>	but yeah for those who have chosen shared memory considering that they are processes, we'll be complicating the system by bringing in the  factors like semaphore for processes in the same OS and processes in different OS, the memory location, scheduling kernel threads, etc..
+Jun 01 22:13:25 <sangi>	Now third part - Scheduling. 
+Jun 01 22:14:45 <sangi>	the question is  If you had to schedule processes on the whole (from both the OSs), would the OS to which the process belongs to matter and why?
+Jun 01 22:15:31 <sangi>	Snigdha when I said on the whole , I meant that the OSes no longer have a CPU scheduler for themselves. Sorry for not being clear about this.
+Jun 01 22:15:58 <sangi>	Many people have said that the OS to which the processes belong does not matter and Indeed this is correct :) 
+Jun 01 22:17:18 <sangi>	When we have made the analogy of OS to process, we have unknowingly accepted that the processes in the OS will be like the threads inside a process (only with a mem constraint.)
+Jun 01 22:17:55 <sangi>	So yeah for the CPU Scheduler, the OS to which the process belongs wouldn't matter.
+Jun 01 22:18:26 <sangi>	Coming to the last question
+Jun 01 22:19:16 <sangi>	I want to explain the question since one of you has said that you didn't get the question. 
+Jun 01 22:19:49 <sangi>	Why I have said MACBOOK is because of the price => heavy but important transactions.
+Jun 01 22:20:25 <sangi>	Why I have said Mega Sale event is because during a Mega Sale there'll be many people trying to buy items. 
+Jun 01 22:21:00 <sangi>	Now the point of this was trying to understand how you plan to design the thread model in the server. 
+Jun 01 22:22:14 <sangi>	I'm surprised none of you mentioned Hybrid Models. 
+Jun 01 22:22:48 <sangi>	Most of you have gone with Many to One which I think is the first best solution that comes to anyone!
+Jun 01 22:23:19 <sangi>	The user requests from the client will be handled by the user threads on the server. 
+Jun 01 22:24:19 <sangi>	Now to service those requests, what we'll need is kernel threads. So, some of the user threads, say requests to load a page, request to sign in can be put in the many to one model.
+Jun 01 22:24:50 <sangi>	The requests like money payment for a macbook can be put under one-to-one thread model
+Jun 01 22:25:05 <sangi>	So this was the objective behind the question. 
+Jun 01 22:25:34 <sangi>	I hope the answers are clear. These are my answers. If any of you have anything to say, please do so.
+Jun 01 22:26:15 <sangi>	2 min time :)
+Jun 01 22:27:19 <trish>	where are these CONTAINERS and DOCKERS used??
+Jun 01 22:30:22 <sangi>	They are used for having separate development enviroments on the same machine
+Jun 01 22:31:06 <sangi>	I haven't used dockers
+Jun 01 22:32:00 <sangi>	But they help run many apps that are platform specific on the same platform by using data containers.
+Jun 01 22:32:48 <sangi>	It is the new trend now since they are faster than VMs
+Jun 01 22:32:58 <trish>	oohh..
+Jun 01 22:33:37 <sangi>	Say hi to the Compsoc Head Chinmay!
+Jun 01 22:33:52 <chinmay_dd>	Hello all! :)
+Jun 01 22:34:11 <snigdha>	Hey! :)
+Jun 01 22:34:12 <shivani>	Hello..
+Jun 01 22:34:18 <trish>	Hey!
+Jun 01 22:34:20 <chinmay_dd>	(Sorry for the interruption, you guys can carry on. Awesome work.)
+Jun 01 22:34:35 <sangi>	Haha :D 
+Jun 01 22:34:51 <shashibhushankan>	o.O
+Jun 01 22:35:01 <sangi>	Okay now assignments - Good work people. 
+Jun 01 22:35:48 <shivani>	I didn't get the execve...
+Jun 01 22:35:50 <himadri>	Hello.. sorry for the late reply 
+Jun 01 22:35:55 <himadri>	:p
+Jun 01 22:36:05 <sangi>	Yeah I was typing the same :P
+Jun 01 22:36:53 <sangi>	So , when do we use execve() shashi?
+Jun 01 22:37:54 <shashibhushankan>	execute the program 
+Jun 01 22:38:02 <shashibhushankan>	which is pointed by the file name
+Jun 01 22:38:18 <sangi>	or?
+Jun 01 22:38:42 <sangi>	hint : #!
+Jun 01 22:39:18 <shashibhushankan>	the #define thingy ?
+Jun 01 22:39:21 <sangi>	Ok that's a script. A bash script to be specific.
+Jun 01 22:39:24 <shashibhushankan>	replace the entire code ?
+Jun 01 22:39:44 <sangi>	Thanks shashi!
+Jun 01 22:40:19 <sangi>	Now we use execve to replace the current process's content with the new command we want to run. 
+Jun 01 22:40:41 <shashibhushankan>	my msgs are reaching slow or what ?
+Jun 01 22:40:55 <shivani>	what are environment variables?
+Jun 01 22:41:20 <sangi>	exec() based system calls are used after fork() to make execution efficient.
+Jun 01 22:41:52 <sangi>	Yes Shashi, there seems to be a lag ! 
+Jun 01 22:42:31 <sangi>	I'll give you an example - 
+Jun 01 22:44:18 <sangi>	When you have both python 2 and python 3 - you tell the code which python to use
+Jun 01 22:44:29 <sangi>	That is by specifying env vars
+Jun 01 22:44:51 *	trish has quit (Ping timeout: 264 seconds)
+Jun 01 22:45:25 <sangi>	Clear?
+Jun 01 22:45:53 <shivani>	Is there any site I could refer for more clarification? Not much.. :(
+Jun 01 22:46:12 <sangi>	Yeah I'll share it with the logs. 
+Jun 01 22:46:17 <shivani>	Thank you..
+Jun 01 22:47:22 <sangi>	Okay cool
+Jun 01 22:48:25 <sangi>	So I think we are done for today's session. I'll be posting what we need to do with XV6 in the mail since it is quite elaborate.
+Jun 01 22:48:39 <sangi>	If you guys have doubts please let me know :)
+Jun 01 22:49:49 <sangi>	Thank you for answering :) Hope you guys liked the questions. If you have any suggestion please let me know :)
+Jun 01 22:50:30 *	trish (~Trish@122.172.215.94) has joined
+Jun 01 22:50:36 <himadri>	Thank you.. liked the practical aspect questions.. :)
+Jun 01 22:50:45 <himadri>	*of
+Jun 01 22:50:53 <shivani>	Thank you... :) 
+Jun 01 22:51:06 <trish>	Ya, they really made us think about all of hat we learnt
+Jun 01 22:51:14 <snigdha>	Thank you!
+Jun 01 22:51:16 <trish>	*what
+Jun 01 22:53:52 <sangi>	Byee :) Goodnight!!
+Jun 01 22:53:57 <shivani>	Bye!
+Jun 01 22:53:57 Update Checker plugin unloaded
+**** ENDING LOGGING AT Wed Jun 01 22:53:57 2016

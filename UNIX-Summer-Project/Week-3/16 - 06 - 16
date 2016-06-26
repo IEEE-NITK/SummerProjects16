@@ -1,0 +1,144 @@
+:Harita_Reddy!7448058e@gateway/web/freenode/ip.116.72.5.142 JOIN #ieee-UNIX
+:siddhanth!8b053085@gateway/web/freenode/ip.139.5.48.133 JOIN #ieee-UNIX
+:rahul_kummi!~Rahul@117.233.247.22 JOIN #ieee-UNIX
+:swati_!~swati@117.248.76.125 JOIN #ieee-UNIX
+:rahul_kummi!~Rahul@117.233.247.22 QUIT :Read error: Connection reset by peer
+:kaushik_sk!~kaushik21@43.247.156.179 JOIN #ieee-UNIX
+:varsh!0e633eca@gateway/web/freenode/ip.14.99.62.202 JOIN #ieee-UNIX
+
+:AdithyaBhat :Hello everyone.
+:AdithyaBhat :Today we will be learning about tool developments, so that you can start working on your projects.
+
+:rahul_kummi!~Rahul@117.231.255.107 JOIN #ieee-UNIX
+
+:AdithyaBhat :For demonstration purposes I'll be showing you how to install a software called axel.
+:AdithyaBhat :Before we begin, is everyone clear with the PATH variable concept?
+
+:rahul_kummi!~Rahul@117.231.255.107 QUIT :Read error: Connection reset by peer
+:rahul_kummi!~Rahul@117.232.160.122 JOIN #ieee-UNIX
+:rahul-kummi!~Rahul@117.211.251.137 JOIN #ieee-UNIX
+:rahul_kummi!~Rahul@117.232.160.122 QUIT :Read error: Connection reset by peer
+
+:kaushik_sk :yeah
+:AdithyaBhat :I won't proceed without an answer. :/
+:Harita_Reddy :yes
+
+:rahul__!~Rahul@117.233.236.55 JOIN #ieee-UNIX
+:rahul-kummi!~Rahul@117.211.251.137 QUIT :Read error: Connection reset by peer
+:rahul__!~Rahul@117.233.236.55 QUIT :Read error: Connection reset by peer
+
+:swati_ :yes
+:AdithyaBhat :Any program that you install, their binaries will be put in the /usr/bin folder.
+:siddhanth :ok
+:Adithybhat :Eg. whereis ls
+:Adithybhat :You can try it out.
+:Adithybhat :To write your own command would now simply mean to make sure your C program or any script is in any of the PATH defined folders.
+:Adithybhat :Clear?
+:swati_ :yes
+:kaushik_sk :yeah
+:Adithybhat :So for your project you will be writing programs, for which you will have to write scripts to INSTALL them as well.
+:Adithybhat :INSTALL means to copy the script/binary to one of the folders and create symbolic links in the other folders.
+:Adithybhat :Symbolic links ensure that if one of the folders are accidentally corrupted or deleted, you can still access them.
+
+:gautham_!673c472e@gateway/web/freenode/ip.103.60.71.46 QUIT :Ping timeout: 250 seconds
+
+:Adithybhat :It is however optional to create these sym links.
+:Adithybhat :https://github.com/angelj-a/axel
+:Adithybhat :The above link contains the source code for a software called axel.
+:Adithybhat :It is a command line download manager.
+:Adithybhat :A very powerful one for that matter.
+:Adithybhat :There are two ways to install this software.
+:Adithybhat :You can install it from the Ubuntu Repositories(Repos).
+:Adithybhat :By typing `sudo apt-get install axel'
+:Adithybhat :However this will not guarantee that the software is the latest one.
+:Adithybhat :There are lots of outdated softwares in ubuntu repos.
+:Adithybhat :The second way is to BUILD from source.
+:Adithybhat :Meaning compile from the source code.
+:Adithybhat :Go to the above link and download the zip source for now.
+:Adithybhat :Tell me when you are done.
+:siddhanth :done
+:kaushik_sk :done
+:Harita_Reddy :done
+:swati_ :done
+:Adithybhat :Now unzip it.
+:Adithybhat :Open a terminal in that folder.
+:Adithybhat :Most of them will contain instructions on how to install the software.
+:Adithybhat :In this case Readme.md contains those instructions.
+:Adithybhat :Run ./configure
+:Adithybhat :Then run make
+:Adithybhat :Let me know when you are done.
+:siddhanth :done
+:Harita_Reddy :done
+:Adithybhat :You should see an executable file "axel" in that folder.
+:Adithybhat :No errors, i hope.
+
+:gautham_!3b58c5a2@gateway/web/freenode/ip.59.88.197.162 JOIN #ieee-UNIX
+
+:kaushik_sk :done
+:Adithybhat!dfe3ad89@gateway/web/freenode/ip.223.227.173.137 NICK :AdithyaBhat
+:AdithyaBhat :Now you have the software compiled and ready.
+:AdithyaBhat :You can run the software using ./axel
+:AdithyaBhat :You can check it out by downloading something.
+:AdithyaBhat :./axel -an 32 http://cl.releases.ubuntu.com/16.04/ubuntu-16.04-desktop-amd64.iso
+:AdithyaBhat :If you have broadband it will give you very fast download speeds.
+:AdithyaBhat :However, at the cost of the other users on the network.
+:AdithyaBhat :you can install this software on your machine by running `sudo make install'
+:AdithyaBhat :But one drawback of this method of installation is that everytime the source is updated you have to rebuild your software.
+:AdithyaBhat :Manually.
+:AdithyaBhat :This can be a pain if you have a lot of manually compiled softwares.
+:AdithyaBhat :Clear?
+:kaushik_sk :yeah
+:kaushik_sk :so what's the alternative ?
+:kaushik_sk :I mean. is there any ?
+:AdithyaBhat :You only have two options.
+:kaushik_sk :that allows automatic rebuild?
+:AdithyaBhat :However the BUILD systems are designed intelligently.
+:AdithyaBhat :When you run make on the updated code, only those components are compiled which have changed since the last version.
+:AdithyaBhat :Resulting in saving a lot of computer time.
+:AdithyaBhat :Also, patches are available which updates your software.
+:AdithyaBhat :Or you can use up to date software repositories like packman.
+:AdithyaBhat :*pacman - package manager
+:AdithyaBhat :You can now easily write your own commands.
+:AdithyaBhat :And this is what it means by Open Source. The source code being open and available for you to edit.
+:AdithyaBhat :Some of them also provide libraries which can be used in other programs.
+:AdithyaBhat :Any questions?
+:AdithyaBhat :If you don't have any questions, I want you all to come up with your project ideas and/or teams.
+
+:gautham_!3b58c5a2@gateway/web/freenode/ip.59.88.197.162 QUIT :Ping timeout: 250 seconds
+
+:AdithyaBhat :You have time till Sunday 9PM to come up with your project details.
+:AdithyaBhat :The session is over for today.
+:kaushik_sk :A help tool. It might seem redundant. But something that simplifies whatever is in man.
+
+:gautham_!3b63c45b@gateway/web/freenode/ip.59.99.196.91 JOIN #ieee-UNIX
+
+:AdithyaBhat :You will write code to simplify man?
+:AdithyaBhat :Or to display simpler help pages?
+:kaushik_sk :If it is possible.
+:kaushik_sk :return docstrings of specific options
+:kaushik_sk :with some work, return related pages too. web links etc
+:kaushik_sk :help grep -e 
+:kaushik_sk :should return what that option does
+:AdithyaBhat :You can check out doxygen and info.
+:AdithyaBhat :Redundancy doesn't matter for now.
+:AdithyaBhat :We will look for ingenious and high quality applications.
+:AdithyaBhat :Not something that can be coded in two days and forgotten later.
+:AdithyaBhat :Something that has been well though of.
+:AdithyaBhat :And well structured.
+
+:gautham_!3b63c45b@gateway/web/freenode/ip.59.99.196.91 QUIT :Ping timeout: 250 seconds
+
+:kaushik_sk :can you provided us with some example projects. Just so we know in what direction to think ?
+:kaushik_sk :provide*
+:siddhanth :yeah can you give us some demo projects
+:AdithyaBhat :As an example: A very neatly designed junk file cleaner.
+:AdithyaBhat :That scans folders and removes any swap or temporary files.
+:AdithyaBhat :The user must be able to define and redefine junk files.
+:AdithyaBhat :Or say, a command that will find and remove invalid soft links.
+:AdithyaBhat :The above already exists.
+:AdithyaBhat :for a folder.
+:AdithyaBhat :You can write a command that cleans the whole system.
+:AdithyaBhat :Another example would be a web scraping project.
+:AdithyaBhat :Given a web page, say download all the .mp3 files in the page.
+:AdithyaBhat :I hope you get the idea.
+:siddhanth :yes

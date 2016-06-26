@@ -1,0 +1,4 @@
+Resources : Some reference links/books for further reading on what was discussed yesterday are given below. 
+1. read appendix A1 only - https://books.google.co.in/books?id=pqYl3SWkA64C&lpg=PA90&ots=0Q9SChGEVI&dq=five%20stages%20of%20executing%20a%20program&pg=SL1-PA1#v=onepage&q=five%20stages%20of%20executing%20a%20program&f=false 
+2. What is Pipelining? - https://en.wikipedia.org/wiki/Instruction_pipelining
+3. Architecture types - RISC vs CISC - http://cs.stanford.edu/people/eroberts/courses/soco/projects/risc/risccisc/

@@ -1,0 +1,291 @@
+[08:24:39] <vinayb> hey folks
+[08:24:41] <vinayb> how's it going
+[08:26:32] *** Joins: aditya_ (3d031751@gateway/web/freenode/ip.61.3.23.81)
+[08:27:37] *** vinayb changes topic to 'Distributed Systems Programming with Erlang | Today's log: https://goo.gl/oXe00J'
+[08:30:41] <aditya_> Wat r u going to teach today?
+[08:31:11] <vinayb> passing around state between processes, selectively receiving certain messages, time delays etc
+[08:31:41] <vinayb> and i'll also show you some code that'll clarify your flush doubt
+[08:31:48] <aditya_> ok!
+[08:32:11] <vinayb> we'll wait a few minutes for others to join
+[08:32:16] <vinayb> and then we'll start
+[08:32:38] <aditya_> Fine!
+[08:36:53] <vinayb> we'll start now
+[08:38:37] <vinayb> so now we've seen how to pass around simple messages between processes
+[08:38:45] *** Joins: rakshith (~hehaichi@103.194.12.98)
+[08:39:53] <vinayb> let's see how we can maintain state in a process, or rather how to store values which persist between repeated invocations of the process
+[08:40:22] <vinayb> let's first create a function in a new kitchen.erl module that will let a process act like a fridge :P
+[08:40:32] <vinayb> Here are the requirements: 
+[08:40:52] <vinayb> we should be able to store food in the fridge, and take out food from the fridge
+[08:41:07] <vinayb> it should only be possible to take food that has been stored beforehand
+[08:41:24] <vinayb> type up this in the new file:
+[08:42:09] <vinayb> -module(kitchen).
+[08:42:10] <vinayb> -compile(export_all).
+[08:42:10] <vinayb> fridge1() ->
+[08:42:10] <vinayb>     receive
+[08:42:10] <vinayb>         {From, {store, _Food}} ->
+[08:42:12] <vinayb>             From ! {self(), ok},
+[08:42:14] <vinayb>             fridge1();
+[08:42:17] <vinayb>         {From, {take, _Food}} ->
+[08:42:19] <vinayb>             %% uh....
+[08:42:22] <vinayb>             From ! {self(), not_found},
+[08:42:25] <vinayb>             fridge1();
+[08:42:27] <vinayb>         terminate ->
+[08:42:30] <vinayb>             ok
+[08:42:32] <vinayb>     end.
+[08:43:12] <vinayb> can anyone notice any issue with this function?
+[08:43:19] <vinayb> does it meet our requirements?
+[08:45:34] <aditya_>  'take'  food doesnt make sense ? from where?
+[08:46:09] <vinayb> exactly! we are not storing food anywhere. so it's kinda impossible to take it
+[08:46:31] <vinayb> basically, we need to maintain state 
+[08:46:38] <vinayb> so we can use recursion
+[08:46:58] <vinayb> then, the state to a process can be held entirely in the parameters of the function 
+[08:47:40] <vinayb> in the case of our fridge process, a possibility would be to store all the food as a list, and then look in that list when someone needs to eat something:
+[08:47:43] <vinayb> so type this up:
+[08:48:35] <vinayb> fridge2(FoodList) ->
+[08:48:35] <vinayb>     receive
+[08:48:35] <vinayb>         {From, {store, Food}} ->
+[08:48:35] <vinayb>             From ! {self(), ok},
+[08:48:35] <vinayb>             fridge2([Food|FoodList]);
+[08:48:37] <vinayb>         {From, {take, Food}} ->
+[08:48:40] <vinayb>             case lists:member(Food, FoodList) of
+[08:48:42] <vinayb>                 true ->
+[08:48:45] <vinayb>                     From ! {self(), {ok, Food}},
+[08:48:47] <vinayb>                     fridge2(lists:delete(Food, FoodList));
+[08:48:50] <vinayb>                 false ->
+[08:48:52] <vinayb>                     From ! {self(), not_found},
+[08:48:55] <vinayb>                     fridge2(FoodList)
+[08:48:57] <vinayb>             end;
+[08:49:00] <vinayb>         terminate ->
+[08:49:02] <vinayb>             ok
+[08:49:05] <vinayb>     end.
+[08:50:08] <vinayb> now type this in the shell:
+[08:50:08] <vinayb> c(kitchen).
+[08:50:24] <vinayb> Pid = spawn(kitchen, fridge2, [[baking_soda]]).
+[08:50:36] <vinayb> Pid ! {self(), {store, milk}}.
+[08:50:42] <vinayb> flush().
+[08:50:52] <vinayb> what's the output?
+[08:52:04] <vinayb> Pid ! {self(), {store, chocolate}}.
+[08:52:14] <vinayb> Pid ! {self(), {take, chocolate}}.
+[08:52:27] <vinayb> Pid ! {self(), {take, bread}}.
+[08:52:29] <vinayb> flush().
+[08:52:36] <vinayb> what are the outputs for these too?
+[08:53:39] <rakshith> Shell got {<0.61.0>,ok}
+[08:53:40] <rakshith> Shell got {<0.61.0>,{ok,chocolate}}
+[08:53:40] <rakshith> Shell got {<0.61.0>,not_found}
+[08:53:40] <rakshith> ok
+[08:55:17] <vinayb> right! so basically what we are doing in this process is that we are storing the entire list in the parameter, and appending to it whenever we have to "store" something. When we have to take out something, we check if it is there in the list or not, if it is, we remove it, if not, we return not_found
+[08:55:22] <vinayb> any doubts?
+[08:55:47] <aditya_> no
+[08:55:51] <rakshith> no
+[08:56:31] <vinayb> so tell how does storing in the parameter work? why is it not "vanishing" after we spawn the process and call it once/
+[08:56:34] <vinayb> *?
+[08:59:16] <vinayb> okay, it is because of recursion
+[08:59:24] <vinayb> since we call the function again
+[09:00:15] *** Joins: akshayrevankar (67157d53@gateway/web/freenode/ip.103.21.125.83)
+[09:01:15] <vinayb> okay, now something annoying is that the person using the fridge needs to know the protocol that's been invented for that process. That's a burden, we can simplify things. Also, note that we had to call flush() to get all the received messages. Let's see how we can change that
+[09:01:26] <vinayb> type this up:
+[09:01:36] <vinayb> store(Pid, Food) ->
+[09:01:37] <vinayb>     Pid ! {self(), {store, Food}},
+[09:01:37] <vinayb>     receive
+[09:01:37] <vinayb>         {Pid, Msg} -> Msg
+[09:01:37] <vinayb>     end.
+[09:01:39] <vinayb> take(Pid, Food) ->
+[09:01:41] <vinayb>     Pid ! {self(), {take, Food}},
+[09:01:44] <vinayb>     receive
+[09:01:46] <vinayb>         {Pid, Msg} -> Msg
+[09:01:49] <vinayb>     end.
+[09:02:44] <vinayb> now the interaction with the process is much cleaner:
+[09:02:48] <vinayb> c(kitchen).
+[09:02:51] <vinayb> f().
+[09:03:04] <vinayb> Pid = spawn(kitchen, fridge2, [[baking_soda]]).
+[09:03:13] <vinayb> kitchen:store(Pid, water).
+[09:03:20] <vinayb> kitchen:take(Pid, water).
+[09:03:31] <vinayb> kitchen:take(Pid, juice).
+[09:03:41] <vinayb> what's the output?
+[09:04:33] <aditya_> ok {ok,water}  not_found
+[09:05:15] <vinayb> right! aditya_ is your doubt cleared now? did you notice how by using receive..end expression in our helper functions we showed the msg without using flush()?
+[09:05:49] <aditya_> yes!
+[09:07:05] <vinayb> alright. now, the one thing left to do would be to hide that whole part about needing to spawn a process. so we can add the following start/1 function:
+[09:07:22] <vinayb> start(FoodList) -> spawn(?MODULE, fridge2, [FoodList]).
+[09:07:37] <vinayb> Here, ?MODULE is a macro returning the current module's name
+[09:07:48] <vinayb> Erlang macros are just like C macros
+[09:08:39] <vinayb> okay, so now everything to do with the fridge process is now handled in the kitchen module
+[09:08:48] <vinayb> let's see this function put to use:
+[09:08:51] <vinayb> f().
+[09:08:54] <vinayb> c(kitchen).
+[09:09:20] <vinayb> Pid = kitchen:start([dairy_milk, oreos, lays]).
+[09:09:29] <vinayb> kitchen:take(Pid, oreos).
+[09:09:38] <vinayb> kitchen:take(Pid, oreos).
+[09:09:46] <vinayb> what's the output?
+[09:10:15] <aditya_> <0.128.0>  {ok,oreos}  not_found
+[09:11:18] <vinayb> right! now that the oreos are out of the fridge, our abstraction is complete
+[09:12:25] <vinayb> alright, let's try a little something with the help of the command pid(A,B,C)
+[09:12:41] <vinayb> this command lets us change the 3 integers A, B and C into a pid
+[09:13:28] <vinayb> here we'll deliberately feed kitchen:take/2 a fake one:
+[09:13:42] <vinayb> kitchen:take(pid(0,250,0), oreos).
+[09:13:54] <vinayb> run this. what happens when you try this out?
+[09:15:14] <aditya_> no output!
+[09:15:26] <vinayb> yep, the shell freezes!
+[09:15:46] <vinayb> to understand what's going on, let's revise what happens in the normal case when we call take/2
+[09:15:53] <vinayb> 1. A message to take food is sent from you (the shell) to the fridge process;
+[09:16:00] <vinayb> 2. Your process switches to receive mode and waits for a new message;
+[09:16:08] <vinayb> 3. The fridge removes the item and sends it to your process;
+[09:16:22] <vinayb> 4. Your process receives it and moves on with its life.
+[09:16:33] <vinayb> And here's what happens when the shell freezes:
+[09:16:39] <vinayb> 1. A message to take food is sent from you (the shell) to an unknown process;
+[09:16:47] <vinayb> 2. Your process switches to receive mode and waits for a new message;
+[09:16:54] <vinayb> 3. The unknown process either doesn't exist or doesn't expect such a message and does nothing with it;
+[09:17:01] <vinayb> 4. Your shell process is stuck in receive mode.
+[09:17:26] <vinayb> that's annoying, especially because there is no error handling possible here. Nothing illegal happened, the program is just waiting. 
+[09:18:11] <vinayb> In general, anything dealing with asynchronous operations (which is how message passing is done in Erlang) needs a way to give up after a certain period of time if it gets no sign of receiving data
+[09:19:04] <vinayb> A web browser does it when a page or image takes too long to load, you do it when someone takes too long before answering the phone or is late at a meeting.
+[09:19:44] <vinayb> Erlang certainly has an appropriate mechanism for that, and it's part of the receive construct:
+[09:19:59] <vinayb> receive Match -> Expression1
+[09:19:59] <vinayb> after Delay -> Expression2
+[09:20:00] <vinayb> end.
+[09:20:32] <vinayb> The part in between receive and after is exactly the same that we already know. The after part will be triggered if as much time as Delay (an integer representing milliseconds) has been spent without receiving a message that matches the Match pattern. When this happens, Expression2 is executed.
+[09:22:41] <vinayb> We'll write two new interface functions, store2/2 and take2/2, which will act exactly like store/2 and take/2 with the exception that they will stop waiting after 3 seconds:
+[09:23:03] <aditya_> Is d match compulsory before d ' after Delay '?
+[09:24:13] <vinayb> no, you can do this also:
+[09:24:16] <vinayb> func() ->
+[09:24:18] <vinayb>   receive
+[09:24:22] <vinayb> after T -> ok
+[09:24:26] <vinayb>   end.
+[09:24:40] <vinayb> i'll show you an example of this type
+[09:24:42] <vinayb> but before that
+[09:24:52] <aditya_> ok
+[09:24:55] <vinayb> let's see store and take
+[09:25:00] <vinayb> store2(Pid, Food) ->
+[09:25:00] <vinayb>     Pid ! {self(), {store, Food}},
+[09:25:00] <vinayb>     receive
+[09:25:00] <vinayb>         {Pid, Msg} -> Msg
+[09:25:00] <vinayb>     after 3000 ->
+[09:25:02] <vinayb>         timeout
+[09:25:05] <vinayb>     end.
+[09:25:07] <vinayb> take2(Pid, Food) ->
+[09:25:10] <vinayb>     Pid ! {self(), {take, Food}},
+[09:25:12] <vinayb>     receive
+[09:25:15] <vinayb>         {Pid, Msg} -> Msg
+[09:25:17] <vinayb>     after 3000 ->
+[09:25:20] <vinayb>         timeout
+[09:25:22] <vinayb>     end.
+[09:26:32] <vinayb> you can now unfreeze the shell with Ctrl+G
+[09:26:37] <vinayb> and try the new functions
+[09:26:43] <vinayb> c(kitchen).
+[09:26:57] <vinayb> kitchen:take2(pid(0,250,0), dog).
+[09:27:02] <vinayb> what's the output?
+[09:29:34] <aditya_> timeout
+[09:29:43] <vinayb> right! so that's how it works
+[09:30:11] <vinayb> the timer:sleep/1 function we used earlier is implemented this way:
+[09:30:16] <vinayb> sleep(T) ->
+[09:30:19] <vinayb>   receieve 
+[09:30:22] <vinayb>   after T -> ok
+[09:30:24] <vinayb>   end.
+[09:30:40] <vinayb> In this specific case, no message will ever be matched in the receive part of the construct because there is no pattern. Instead, the after part of the construct will be called once the delay T has passed.
+[09:31:39] <vinayb> Another special case is when the timeout is at 0:
+[09:31:53] <vinayb> flush() ->
+[09:31:54] <vinayb>     receive
+[09:31:54] <vinayb>         _ -> flush()
+[09:31:54] <vinayb>     after 0 ->
+[09:31:54] <vinayb>         ok
+[09:31:56] <vinayb>     end.
+[09:32:39] <vinayb> When that happens, the Erlang VM will try and find a message that fits one of the available patterns. In the case above, anything matches. As long as there are messages, the flush/0 function will recursively call itself until the mailbox is empty. Once this is done, the after 0 -> ok part of the code is executed and the function returns.
+[09:33:06] <vinayb> any doubts?
+[09:33:35] <aditya_> nope
+[09:33:46] <rakshith> no
+[09:34:34] <vinayb> ok now we'll see the concept of Selective receives
+[09:35:00] <vinayb> This 'flushing' concept makes it possible to implement a selective receive which can give a priority to the messages you receive by nesting calls:
+[09:35:23] <vinayb> important() ->
+[09:35:23] <vinayb>     receive
+[09:35:23] <vinayb>         {Priority, Message} when Priority > 10 ->
+[09:35:23] <vinayb>             [Message | important()]
+[09:35:23] <vinayb>     after 0 ->
+[09:35:26] <vinayb>         normal()
+[09:35:28] <vinayb>     end.
+[09:35:50] <vinayb> normal() ->
+[09:35:51] <vinayb>     receive
+[09:35:51] <vinayb>         {_, Message} ->
+[09:35:51] <vinayb>             [Message | normal()]
+[09:35:51] <vinayb>     after 0 ->
+[09:35:53] <vinayb>         []
+[09:35:55] <vinayb>     end.
+[09:36:15] <vinayb> This function will build a list of all messages with those with a priority above 10 coming first:
+[09:36:25] <vinayb> type all that up
+[09:36:28] <vinayb> then in the shell:
+[09:36:32] <vinayb> c(module_name).
+[09:37:04] <vinayb> self() ! {15, high}, self() ! {7, low}, self() ! {1, low}, self() ! {17, high}.
+[09:37:12] <vinayb> module_name:important().
+[09:37:16] <vinayb> what's the output?
+[09:38:58] <aditya_> [high,high,low,low]
+[09:40:04] <vinayb> Right! Because I used the after 0 bit, every message will be obtained until none is left, but the process will try to grab all those with a priority above 10 before even considering the other messages, which are accumulated in the normal/0 call.
+[09:41:12] <vinayb> any doubts?
+[09:41:18] <aditya_> I didnt understand how it works!
+[09:42:56] <vinayb> basically what happens is that
+[09:43:09] <vinayb> when messages are sent to a process, they're stored in the mailbox until the process reads them and they match a pattern there
+[09:43:21] <vinayb> the messages are stored in the order they were received
+[09:43:29] <vinayb> this means every time you match a message, it begins by the oldest one
+[09:44:03] <vinayb> that oldest message is then tried against every pattern of the receive until one of them matches.
+[09:44:11] <aditya_> So d order is 15 7 1 17?
+[09:44:31] <vinayb> hold on, i'll explain
+[09:44:32] <vinayb> hen it does, the message is removed from the mailbox and the code for the process executes normally until the next receive. 
+[09:44:36] <vinayb> *then
+[09:45:28] <vinayb> basically, we try to match the messages.. one by one in order. if it matches? great. if it doesn't? then it gets put in a seperate SAVE QUEUE
+[09:45:46] <vinayb> and then next message is tried
+[09:46:27] <vinayb> THE moment the next matches, the ones from save queue get added back to mailbox
+[09:46:57] <vinayb> okay, i'll give you a proper example
+[09:47:21] <vinayb> say there are N messages where the order in which they came was 1 first, then 2, then 3, etc..
+[09:47:41] <vinayb> so we try to match MSG1
+[09:47:45] <vinayb> say it matches!
+[09:47:56] <vinayb> then we recurse, try to match with MSG2
+[09:48:29] <vinayb> say it didn't match
+[09:48:37] <vinayb> so we put MSG2 in save queue
+[09:48:48] <vinayb> try match with MSG3
+[09:48:52] <vinayb> say it didn't match again,
+[09:48:58] <vinayb> put MSG3 in save queue
+[09:49:39] <vinayb> now try to match with MSG4
+[09:49:43] <vinayb> say it matches!
+[09:50:24] <vinayb> AT THIS POINT, MSG2 and MSG3 get added to mailbox behind MSG N (so they will be tried again AFTER all N are processed)
+[09:50:37] <vinayb> so we take them from save queue, and put them back to mailbox
+[09:51:15] <vinayb> and as MSG4 matches, and MSG2, MSG3 get added to mailbox behind MSG N, we continue to next one, MSG5
+[09:51:30] <vinayb> is this clear? 
+[09:51:52] <aditya_> yes but wat happens when they r tried again?
+[09:53:16] <vinayb> this time when there's no match, Erlang will go to the 'after' part
+[09:53:46] <vinayb> IMPORTANT POINT: All of this is happening only because there are multiple messages in mailbox
+[09:53:58] <vinayb> if we just sent one, say
+[09:54:06] <vinayb> self() ! {15, high}
+[09:54:15] <vinayb> then directly after not matching, it will go to 'after' part
+[09:54:37] <vinayb> ONLY BECAUSE we are sending them together, like self() ! {15, high}, self() ! {7, low}, .. etc
+[09:54:41] <vinayb> this happens
+[09:54:45] <vinayb> clear?
+[09:54:47] <aditya_> ok understood!
+[09:55:05] <aditya_> but isnt d purpose of after 0 defeated then?
+[09:56:50] <vinayb> no, it still holds value. If there was no after 0 part, then it would have just thrown away those less priority ones. Here, we want to process all the higher priority ones FIRST, THEN deal with low priority ones
+[09:57:25] <vinayb> got it?
+[09:57:41] <aditya_> Does it go to d normal() func after 0ms still?
+[09:58:23] <vinayb> yes, after all the initial high priority matchings are done
+[09:58:55] <vinayb> basically, imagine this: there was 'after 40000' in the function
+[09:59:37] <vinayb> so as an Erlang implementer, would you rather have your messages wait 40s before something useful happens, or should we go save it first, and check for ones that do match?
+[09:59:48] <vinayb> that's the philosophy
+[10:00:16] <vinayb> because say there are 100 msgs which won't match, and only 101st msg matches
+[10:00:47] <vinayb> so if Erlang waited one by one, it would take 4000 seconds before 101st msg got processed
+[10:00:57] <vinayb> get it?
+[10:01:38] <rakshith> yeah
+[10:01:54] <aditya_> yes!
+[10:02:52] <vinayb> so this is how selective receives work in Erlang :)
+[10:03:50] <vinayb> Because of the risks of having useless messages polluting a process' mailbox, Erlang programmers sometimes take a defensive measure against such events. A standard way to do it might look like this:
+[10:04:06] <vinayb> receive
+[10:04:07] <vinayb>     Pattern1 -> Expression1;
+[10:04:07] <vinayb>     Pattern2 -> Expression2;
+[10:04:07] <vinayb>     Pattern3 -> Expression3;
+[10:04:07] <vinayb>     ...
+[10:04:09] <vinayb>     PatternN -> ExpressionN;
+[10:04:11] <vinayb>     Unexpected ->
+[10:04:14] <vinayb>         io:format("unexpected message ~p~n", [Unexpected])
+[10:04:16] <vinayb> end.
+[10:04:23] <vinayb> What this does is make sure any message will match at least one clause. The Unexpected variable will match anything, take the unexpected message out of the mailbox and show a warning
+[10:05:09] <vinayb> and that's pretty much there is to say about selective receives 
+[10:05:19] <vinayb> so that's it for today guys :)
+[10:05:30] <vinayb> you can ask me if you have any doubts
+[10:07:12] <aditya_> Thnx for the session!!
+[10:09:02] <vinayb> no problem, have a fun upcoming weekend!
+[10:09:28] *** Quits: aditya_ (3d031751@gateway/web/freenode/ip.61.3.23.81) (Quit: Page closed)
