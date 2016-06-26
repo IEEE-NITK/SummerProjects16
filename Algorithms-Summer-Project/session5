@@ -1,0 +1,213 @@
+[19:51] == salman-bhai [b63a44d1@gateway/web/freenode/ip.182.58.68.209] has joined #IEEE-SP-CP
+[19:53] == gautham_ [75dd22d4@gateway/web/freenode/ip.117.221.34.212] has joined #IEEE-SP-CP
+[19:56] == mohitreddy1996 changed the topic of #IEEE-SP-CP to: Greedy algorithm
+[19:57] <mohitreddy1996> call your friends too people
+[19:57] == abhi_ [673951ce@gateway/web/freenode/ip.103.57.81.206] has joined #IEEE-SP-CP
+[19:58] == shamitha [6ac87438@gateway/web/freenode/ip.106.200.116.56] has joined #IEEE-SP-CP
+[19:58] <mohitreddy1996> It will be better if we take up dp after greedy
+[19:58] <salman-bhai> ok
+[19:58] <mohitreddy1996> https://www.irccloud.com/pastebin/2zGKKblG/
+[19:59] == Tushaar [31f9291a@gateway/web/freenode/ip.49.249.41.26] has joined #IEEE-SP-CP
+[20:01] == Prerana1997 [25e76e5b@gateway/web/freenode/ip.37.231.110.91] has joined #IEEE-SP-CP
+[20:01] == DVG [31f9291a@gateway/web/freenode/ip.49.249.41.26] has joined #IEEE-SP-CP
+[20:02] <mohitreddy1996> okay lets start
+[20:03] <mohitreddy1996> "greedy" algorithm = take the step which you feel is the best at thatr moment without thinking about the future or the future sub problems created.
+[20:03] <mohitreddy1996> so lets try to understand this better with an example
+[20:04] <mohitreddy1996> say you have 100 rs.
+[20:04] <mohitreddy1996> and you have coins of denominations of rs 10, 5, 3, 2, 1
+[20:05] <mohitreddy1996> No lets say given N = 56
+[20:05] == namratha [74caa714@gateway/web/freenode/ip.116.202.167.20] has joined #IEEE-SP-CP
+[20:05] <mohitreddy1996> And we need to make sure that we have to complete that amount using minimum number of coins or notes whatever.
+[20:05] <mohitreddy1996> So how will we do it>
+[20:05] <mohitreddy1996> *?
+[20:05] <mohitreddy1996> Any approaches?
+[20:06] <salman-bhai> WHats N?
+[20:06] <mohitreddy1996> Say the amount which you have to pay
+[20:07] <salman-bhai> 5-10s 1-5s 1-1s
+[20:07] <mohitreddy1996> Any given the denominations you have to use minimum number of coins
+[20:07] <mohitreddy1996> yeah
+[20:07] <gautham_> 10x5+5x1
+[20:07] <gautham_> 1
+[20:07] <mohitreddy1996> but how did you come up with that?
+[20:07] == varsh [0e602c6f@gateway/web/freenode/ip.14.96.44.111] has joined #IEEE-SP-CP
+[20:08] <salman-bhai> Started with the maximum amount and kept on subtracting till it doesn't become negative or 0
+[20:08] <salman-bhai> And then move on to the next greatest denomination
+[20:08] <mohitreddy1996> yeah..
+[20:08] <mohitreddy1996> So thats greedy right?
+[20:08] <salman-bhai> Oh okay
+[20:09] == nihalakp [0e63328b@gateway/web/freenode/ip.14.99.50.139] has joined #IEEE-SP-CP
+[20:09] <salman-bhai> I don't actually know
+[20:09] == Arvind1997 [75eb56dc@gateway/web/freenode/ip.117.235.86.220] has joined #IEEE-SP-CP
+[20:09] <Tushaar> Me neither.
+[20:09] <mohitreddy1996> how greedy? you know that you have to make sure that the coins should be as low as possible.
+[20:09] <mohitreddy1996> So you will try to cover as much amount as possible in one coin if it is possible
+[20:10] <mohitreddy1996> So coming up with a greedy approach is easy but proving its correctness is damn tough
+[20:10] <Tushaar> Okay.
+[20:10] == Ramu [2d7d2a83@gateway/web/freenode/ip.45.125.42.131] has joined #IEEE-SP-CP
+[20:10] == naksha [7ab329b4@gateway/web/freenode/ip.122.179.41.180] has joined #IEEE-SP-CP
+[20:10] <mohitreddy1996> and its So what could be a possible algo for that?
+[20:11] <mohitreddy1996> Sort the amounts in descending order.
+[20:11] <mohitreddy1996> say N is the required number.
+[20:12] == sagar [75ca46dc@gateway/web/freenode/ip.117.202.70.220] has joined #IEEE-SP-CP
+[20:12] <mohitreddy1996> while (N!=0){
+[20:12] <mohitreddy1996> ans+=(N/denom[i]);
+[20:12] <mohitreddy1996> N=N-((N/denom[i])*denom[i]);
+[20:12] <mohitreddy1996> i++;
+[20:12] <mohitreddy1996> }
+[20:13] == sagar has changed nick to Guest17560
+[20:13] <mohitreddy1996> lets say denom is the array in descending order of denominations.
+[20:13] == Remoteserver [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has joined #IEEE-SP-CP
+[20:14] <mohitreddy1996> got it?
+[20:15] <salman-bhai> Umm no
+[20:15] <Tushaar> Can modulus operation be used?
+[20:15] <salman-bhai> Why not use modulus
+[20:15] <mohitreddy1996> yeah there are many approaches
+[20:15] <mohitreddy1996> you can use them.
+[20:16] <salman-bhai> Oh okay
+[20:16] <salman-bhai> Cool understood :)
+[20:17] == suraksha [75e6d45a@gateway/web/freenode/ip.117.230.212.90] has joined #IEEE-SP-CP
+[20:17] == asd [670ac502@gateway/web/freenode/ip.103.10.197.2] has joined #IEEE-SP-CP
+[20:17] <mohitreddy1996> Next problem
+[20:18] <gautham_> ground rules not there today??
+[20:18] <mohitreddy1996> nah man
+[20:18] == asd [670ac502@gateway/web/freenode/ip.103.10.197.2] has quit [Client Quit]
+[20:18] == abcd [0e6138d6@gateway/web/freenode/ip.14.97.56.214] has joined #IEEE-SP-CP
+[20:19] <mohitreddy1996> i thought everyone will attend the sessions :P
+[20:19] <mohitreddy1996> Okay so moving on..
+[20:19] <mohitreddy1996> Problem 2 : Interval scheduling
+[20:19] == abcd has changed nick to Guest38858
+[20:20] <mohitreddy1996> the problem statement : Say you are a 3rd and you have interviews with starting times and ending times
+[20:20] <Arvind1997>  
+[20:20] <mohitreddy1996> *3rd year undergrad :P
+[20:21] <mohitreddy1996> you want to attend as many interview as possible
+[20:22] == nihalakp_ [0e63328b@gateway/web/freenode/ip.14.99.50.139] has joined #IEEE-SP-CP
+[20:22] <mohitreddy1996> say i1: [1,3], i2: [2,4], i3:[1,2], i4:[2,5], i5:[3,6], i6:[2,4]
+[20:22] <mohitreddy1996> so can you tell which interviews will you attend?
+[20:23] <mohitreddy1996> and how did you come up with that solution?
+[20:23] <mohitreddy1996> 3 mins time :P
+[20:23] == feeb [6f7dc436@gateway/web/freenode/ip.111.125.196.54] has joined #IEEE-SP-CP
+[20:23] <salman-bhai> 2
+[20:23] <salman-bhai> ?
+[20:23] <salman-bhai> Multiple solutions though
+[20:24] <salman-bhai> 2 interviews*
+[20:24] <Tushaar> What is [1,3]?
+[20:24] <mohitreddy1996> [starting time, ending time]4
+[20:24] <salman-bhai> 1 - starting time ; 3- ending time
+[20:24] <mohitreddy1996> @salman-bhai full on sir :P
+[20:24] <Tushaar> 5
+[20:25] <mohitreddy1996> 5? how come?
+[20:25] <mohitreddy1996> :O
+[20:25] <Tushaar> Oh okay. I thought interview is only for a minute ;)
+[20:25] <Tushaar> Sorry.
+[20:25] <Tushaar> 2.
+[20:26] <mohitreddy1996> yeah
+[20:26] <mohitreddy1996> so say for a general case
+[20:26] <mohitreddy1996> how will you do it?
+[20:26] <salman-bhai> You keep a clock as a counter arrange in order of starting times and then traverse through the list
+[20:28] <salman-bhai> So the list will be [ [ 1,2] , [1,3], [2,4] , [2,4] , [2,5] , [3,6] ] .
+[20:28] <salman-bhai> And then count accordingly
+[20:28] <mohitreddy1996> okay lets say :
+[20:28] <mohitreddy1996> i1 - [1,8], i2:[2,3], i3:[3,4], i4:[4,5]
+[20:28] <mohitreddy1996> so according to you it will be i1
+[20:29] <mohitreddy1996> but whereas you can chill out [1,2] then attend the 3 interviews :P
+[20:29] <salman-bhai> Yess sorry
+[20:30] == Ramu [2d7d2a83@gateway/web/freenode/ip.45.125.42.131] has quit [Ping timeout: 250 seconds]
+[20:30] <mohitreddy1996> so any other approaches?
+[20:31] == Ramu [2d7d2a83@gateway/web/freenode/ip.45.125.42.131] has joined #IEEE-SP-CP
+[20:31] <naksha> we check for the shortest duration interview first. if that doesn't class with any other timings, well and good. if it does, then we search for the next shortest duration interview :P
+[20:32] <naksha> *clash
+[20:33] <mohitreddy1996> okay say interviews are scheduled as :
+[20:33] <mohitreddy1996> i1: [1,5], i2: [6,10], i3:[4,7]
+[20:33] == vbaidya [310fddee@gateway/web/freenode/ip.49.15.221.238] has joined #IEEE-SP-CP
+[20:34] <mohitreddy1996> so according to you, you will be attending only one interview
+[20:34] <mohitreddy1996> :P
+[20:34] <mohitreddy1996> understood?
+[20:34] <naksha> no.. because it's clashing with another interview..
+[20:35] <naksha> so it won't consider that time slot..
+[20:36] <Guest17560> Does it mean no interview for the day?
+[20:36] <mohitreddy1996> no see,
+[20:36] <mohitreddy1996> i1: [1,5], i2: [6,10], i3:[4,7], i4:[8,9], i5:[9,10]
+[20:36] <mohitreddy1996> lets say this is one example
+[20:37] <mohitreddy1996> according to you solution, i4 overlaps with i2.
+[20:37] <mohitreddy1996> so you wont consider i4?
+[20:37] <mohitreddy1996> but here the solution can be i3, i4, i5
+[20:37] <mohitreddy1996> 3 interviews.
+[20:38] <mohitreddy1996> think, you are close to the solution.
+[20:38] <naksha> nope, according to my logic too, it'll be i3, i4, and i5..
+[20:38] <naksha> i think i didn't state clearly..
+[20:38] <mohitreddy1996> okay so explain step by step :P
+[20:40] <naksha> no wait, yeah i4 does get cancelled...and so does i5..:/ sorry, my bad :P
+[20:40] <mohitreddy1996> its fine :)
+[20:40] <mohitreddy1996> Okay solution, you sort the list with ascending ending times
+[20:40] <Tushaar> Maybe you choose the interviews with starting and ending times in a cycle.
+[20:40] <mohitreddy1996> you pick the first one.
+[20:40] <Tushaar> Oh okay.
+[20:41] <mohitreddy1996> then remove all the interviews which overlap with that interview or clash
+[20:42] <mohitreddy1996> So you can cross check the algo with the examples which we just discussed :P
+[20:43] <mohitreddy1996> proof of correctness is a bit complicated.
+[20:43] == Remoteserver [2bf79cb8@gateway/web/freenode/ip.43.247.156.184] has quit [Ping timeout: 250 seconds]
+[20:44] <mohitreddy1996> i will search for a link and put it up?
+[20:45] <mohitreddy1996> you can contact me later if have any doubts regarding that.
+[20:45] <mohitreddy1996> http://lonati.di.unimi.it/algo/0910/lab/kowalski6.pdf
+[20:45] <mohitreddy1996> You can see this link
+[20:45] <salman-bhai> yea
+[20:46] <mohitreddy1996> Okay one more algo
+[20:46] <mohitreddy1996> Its related to graph theory
+[20:46] <mohitreddy1996> but lets try to change the problem statement so that we no graph theory related terminology comes up
+[20:47] <naksha> whoa.. that was cool :) but the proof just went above my head :P
+[20:48] <mohitreddy1996> yeah you can ping me anytym and we can discuss on that once.
+[20:48] <mohitreddy1996> Okay say you are at some point A.
+[20:48] <mohitreddy1996> and there are say 5 more points, B,C,D,E
+[20:48] <mohitreddy1996> and F
+[20:49] <mohitreddy1996> and there are paths in between different points, which have weights associated with them
+[20:49] == vbaidya [310fddee@gateway/web/freenode/ip.49.15.221.238] has left #IEEE-SP-CP []
+[20:50] <mohitreddy1996> So we need to find the shortest path from A to all other points
+[20:51] <salman-bhai> Weights as in distance?
+[20:51] <mohitreddy1996> yeah you can call that
+[20:52] <mohitreddy1996> http://www.pitt.edu/~is2470pb/Spring08/Final/GroupA/1.jpg
+[20:52] <mohitreddy1996> see this image
+[20:53] <mohitreddy1996> So how do we do it?
+[20:53] <mohitreddy1996> initially we set the weights of the points as infinity .
+[20:53] <mohitreddy1996> After that we set the weight of the point A as 0
+[20:53] <mohitreddy1996> as you are already there.
+[20:54] <mohitreddy1996> Then we pick the route connected to A, with minimum weight and update the end point with => weight(ending) = weight(A)+weight(route)
+[20:55] <mohitreddy1996> So we update the weights of each point which is directly reachable from A.
+[20:55] <mohitreddy1996> in that fashion
+[20:55] <mohitreddy1996> and mark 'A' as done.
+[20:56] <mohitreddy1996> you pick the minimum after that and set the minimum weights after that.
+[20:56] <mohitreddy1996> lets do this with an example
+[20:56] <mohitreddy1996> Initially A = 0
+[20:56] == Guest38858 [0e6138d6@gateway/web/freenode/ip.14.97.56.214] has quit [Ping timeout: 250 seconds]
+[20:57] <mohitreddy1996> From A, B and C are reachable
+[20:57] <mohitreddy1996> in that image
+[20:57] <mohitreddy1996> So we update the weight of the points.
+[20:57] <mohitreddy1996> Weight(B) = 4,
+[20:57] <mohitreddy1996> Weight(C) = 1
+[20:57] <mohitreddy1996> and we mark A as 'done'
+[20:57] <mohitreddy1996> after that we pick the minimum, i.e C
+[20:58] <mohitreddy1996> And proceed. So we see that
+[20:58] <mohitreddy1996> B and D are reachable
+[20:59] <mohitreddy1996> so we update the minimum of the original weight and new weight which will be updated
+[20:59] <mohitreddy1996> Weight(B) = 1 + (c->B) = 3
+[21:00] == abcd [0e60a46d@gateway/web/freenode/ip.14.96.164.109] has joined #IEEE-SP-CP
+[21:00] <mohitreddy1996> Weight(D) = 1+(c->D) = 3.
+[21:00] == abcd [0e60a46d@gateway/web/freenode/ip.14.96.164.109] has left #IEEE-SP-CP []
+[21:00] <mohitreddy1996> And also A is reachable. But A was already marked as 'done'
+[21:00] <mohitreddy1996> so we skip that
+[21:01] <mohitreddy1996> consider that the directions in the image are not unidirectional. Dont consider the directions in the image :p
+[21:01] <mohitreddy1996> understood?
+[21:01] <mohitreddy1996> following?
+[21:01] <mohitreddy1996> This is called dijkstra's algorithm.
+[21:01] <Tushaar> Yup.
+[21:01] <feeb> yeah!
+[21:01] <naksha> yup
+[21:01] <mohitreddy1996> you can read about this. http://www.geeksforgeeks.org/greedy-algorithms-set-6-dijkstras-shortest-path-algorithm/
+[21:02] <mohitreddy1996> and you can solve problems : https://a2oj.com/category?ID=56
+[21:02] <mohitreddy1996> about greedy
+[21:02] <feeb> one doubt
+[21:03] <mohitreddy1996> Do solve some problems and i would love to clear some doubts :P
+[21:03] <mohitreddy1996> shoot
+[21:03] <feeb> oh i got it..sorry :p
+[21:04] <mohitreddy1996> k seeya guys P
+[21:04] <mohitreddy1996> Do contact if you any doubts
+[21:04] <mohitreddy1996> Logs will be up by tmrw morning
