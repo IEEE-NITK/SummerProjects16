@@ -1,0 +1,196 @@
+So today we will discuss few important dp problems.
+9:12 PM → Rajgauri_ and Bharath joined  
+
+9:13 PM M<mohitreddy1996> mohit reddy 
+they are the basic problems. Many problems are actually based on them.. or just modified version of them.
+9:13 PM So how i basically approach a dp problem is
+9:13 PM 1) Think of a recursive function.
+9:13 PM 2) Try to optimise it using memoisation.
+9:14 PM So today we will try that out once. And yeah there could be many ways. This is the way which most of the people follow.. and i feel is a good one.
+9:14 PM ⇐ Rajgauri quit (75c8abf1@gateway/web/freenode/ip.117.200.171.241) Ping timeout: 250 seconds
+
+9:14 PM M<mohitreddy1996> mohit reddy 
+So first problem
+9:14 PM 1) LCS - longest common subsequence.
+9:14 PM So lets say we have 2 strings
+9:14 PM ABCDEFGJ
+9:15 PM AZYCZZEF
+9:15 PM So the longest common subsequence here is ACEF
+9:15 PM So anyone any thoughts on that?
+9:16 PM how to approach?
+9:16 PM any recursion you can think of?
+9:18 PM no?
+9:18 PM say yes or no?
+
+9:18 PM A<aditya> 
+no
+
+9:18 PM G<gautham_> 
+no:(
+
+9:19 PM T<Tushaar> 
+Nope =(
+
+9:19 PM V<varsh> 
+Nope
+
+9:19 PM M<mohitreddy1996> mohit reddy 
+yeah its fine.. 
+9:20 PM So lets define a function 
+9:20 PM say F
+9:20 PM and F(String1, String 2) gives the length of the longest common subsequence.
+9:20 PM So what do we try to do in a recursion?
+9:21 PM we try to attempt or operate on all possible cases right>
+9:21 PM So say i have a string AAABB and another string AAB
+9:21 PM there can be several cases.
+9:21 PM 1) where the last character is same. in both the strings/
+9:21 PM Like in the recent example .
+9:22 PM So what do we do when both are same.
+9:22 PM We can increment the answer. 
+9:22 PM as there is atleast one character in common.
+9:22 PM F(AAABB, AAB) = 1 + F(AAAB, AA)
+9:23 PM So the second part
+9:23 PM What if the characters are not the same.
+9:23 PM Like in the current situation .
+9:23 PM F(AAAB,AA)
+9:24 PM there are two possibilities.
+9:24 PM 1) F(AAA,AA) 
+9:24 PM 2) F(AAAB,A)
+9:25 PM Because we went to check for all the possibilities these two recursive function will take care of it.
+9:25 PM And we want the longest CS.
+9:25 PM So F(AAAB, AA) = max(F(AAA,AA) + F(AAAB,A));
+9:25 PM ⇐ Rajgauri_ quit (75c8abf1@gateway/web/freenode/ip.117.200.171.241) Ping timeout: 250 seconds
+
+9:26 PM M<mohitreddy1996> mohit reddy 
+understood?
+
+9:26 PM A<aditya> 
+yes
+
+9:26 PM M<mohitreddy1996> mohit reddy 
+so finally the recursive Function is.
+9:28 PM if( A[lenA - 1] == B(lenB-1))
+9:28 PM {
+9:28 PM  F(A,B) = 1+ F(A[0...lenA-2], B[0...lenB-2]);
+9:28 PM }else{
+9:28 PM  F(A,B) = max(F(A[0...lenA-2], B[0..lenB-1]), F(A[0...lenA-1), B[0..lenB-2]));
+9:28 PM }
+9:28 PM So everyone understood?
+9:29 PM ⇐ Suraksha quit (3b5b2b4e@gateway/web/freenode/ip.59.91.43.78) Quit: Page closed
+
+9:30 PM N<naksha> 122.179.51.57 - http://webchat.freenode.net 
+yup
+
+9:31 PM G<gautham_> 
+yes
+
+9:31 PM M<mohitreddy1996> mohit reddy 
+So lets optimize this...
+9:31 PM any idea how to do it?
+
+9:35 PM G<gautham_> 
+no
+
+9:35 PM M<mohitreddy1996> mohit reddy 
+http://ideone.com/lzDFB1
+9:35 PM this is a basic code how we can optimise it.
+9:36 PM We keep a 2D matrix. 
+9:36 PM and all the elements initialised to -1.
+9:37 PM And we store the result for every possible instance. and return it whenever it is required.
+9:37 PM So Time complexity = O(m*n) m = length of string 1, n = length of string 2.
+9:38 PM understood?
+9:38 PM any doubts?
+
+9:38 PM A<aditya> 
+how O(m*n)??
+
+9:39 PM M<mohitreddy1996> mohit reddy 
+see because of the case 2 where the last characters were not same.
+9:40 PM We call check for 2 cases.
+9:40 PM There will be overlapping in them and we dont operate or call the function is it was handled before.
+9:40 PM So max for a particular value of m
+9:41 PM ⇐ Guest11955 quit (75c0f0a9@gateway/web/freenode/ip.117.192.240.169)
+
+9:41 PM M<mohitreddy1996> mohit reddy 
+We will just call the function for value of n in [1 to n]
+9:41 PM So if we do that for all m.
+9:41 PM We get (m*n)
+
+9:42 PM A<aditya> 
+Ok!
+
+9:43 PM M<mohitreddy1996> mohit reddy 
+there is an iterative approach also
+9:43 PM http://www.geeksforgeeks.org/dynamic-programming-set-4-longest-common-subsequence/
+9:43 PM you can refer that.
+9:43 PM next problem 
+9:43 PM 0-1 knapsack problem
+9:44 PM → suhas joined (75c0f0a9@gateway/web/freenode/ip.117.192.240.169)
+
+9:44 PM M<mohitreddy1996> mohit reddy 
+what does 0-1 mean here -> Either we pick the whole element or we dont pick that element at all.
+9:44 PM suhas → suhas1
+
+9:44 PM M<mohitreddy1996> mohit reddy 
+problem is
+9:45 PM You are given n items with its weight and value.
+9:45 PM ⇐ Bharath quit (dfe3719c@gateway/web/freenode/ip.223.227.113.156) Ping timeout: 250 seconds
+
+9:45 PM M<mohitreddy1996> mohit reddy 
+And you have a knapsack which can hold a max weight of W.
+9:46 PM And you want to put items in the knapsack 
+9:46 PM such that the value is maximum.
+9:46 PM So you are given W, wei[1..m], val[1..n]
+9:46 PM Recursive way =>
+9:47 PM again here we try to get max out of all possible combinations.
+9:47 PM 2 cases here again.
+9:47 PM case 1) wei[i] > W
+9:47 PM We skip the item. Because we can't keep the item.
+9:48 PM case 2) 
+9:48 PM Either we keep the item, which means ans = ans+val[i]
+9:48 PM  and the weight has to be reduced W-wei[i]
+9:48 PM or we dont include the item.
+9:49 PM So recursive function looks like this =>
+9:51 PM F(val, wei, W, n)
+9:51 PM {
+9:51 PM  if(n==0 || W==0)
+9:51 PM        return 0;
+9:51 PM  if(wei[n]>W)
+9:51 PM        return F(val, wei, W, n-1);
+9:51 PM  return max( val[n] + F(val, wei, W-wei[n], n-1), F(val,wei,W, n-1));
+9:51 PM }
+9:52 PM understood?>
+9:52 PM → feeb joined  ⇐ Guest41668 quit  
+
+9:53 PM M<mohitreddy1996> mohit reddy 
+Here the imp step is either we pick the element and increment the value and decrement the weight.
+9:53 PM Or we dont pick that element and skip.
+9:54 PM So how do we use memoization here.
+9:54 PM We use an arry  Arr[n][W];
+9:54 PM and initialise with a flag = -1.
+9:55 PM store for each result. Else check it was used again, return the value.
+9:55 PM Last basic problem : Largest sum contiguous subarray.
+9:56 PM We are given a array with elements
+9:56 PM and we want the subarray with max sum.
+9:57 PM So the idea is the same.
+9:58 PM Either we include a particular element of the array or we dont.
+9:59 PM http://ideone.com/id4rpI
+10:00 PM This is the basic code.
+10:00 PM any doubts so far>
+10:00 PM other than the code which i just shared?
+10:00 PM You will understand Dp better by solving more problems.
+
+10:01 PM A<aditya> 
+no
+
+10:01 PM M<mohitreddy1996> mohit reddy 
+try to do some examples and understand the working of the code on a paper.
+10:01 PM You will understand better
+10:02 PM Theory is well explained in GeeksForGeeks
+10:02 PM http://www.geeksforgeeks.org/fundamentals-of-algorithms/#DynamicProgramming
+10:02 PM try solving few problems on spoj.
+10:02 PM There are really good problems on spoj.
+10:04 PM Any doubts you can pick anyone one of us
+10:04 PM i will try sharing few good problem on Dp 
+10:04 PM Keep solving problems
+10:04 PM we will have a session on doubts clearing session.
