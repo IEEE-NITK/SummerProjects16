@@ -1,0 +1,268 @@
+[20:07] == AdithyaBhat [6ace82cf@gateway/web/freenode/ip.106.206.130.207] has joined #ieee-UNIX
+[20:10] <AdithyaBhat> Hello everyone.
+[20:10] <AdithyaBhat> Today I will be talking about perl and some basics of the vi editor.
+[20:11] <AdithyaBhat> Are we good to go?
+[20:12] <Samvid> yup
+[20:13] <kaushik_sk> yup
+[20:14] == TheSilentSpectat [~TheSilent@106.206.130.207] has quit [Ping timeout: 276 seconds]
+[20:14] <AdithyaBhat> I'll start off with perl.
+[20:15] == TheSilentSpectat [~TheSilent@223.227.106.26] has joined #ieee-UNIX
+[20:15] <AdithyaBhat> perl stands for Practical Extraction and Reporting Language.
+[20:16] <AdithyaBhat> It is used in scripting and web backends as well.
+[20:16] <AdithyaBhat> It is a mixture of C, bash and python.
+[20:17] <AdithyaBhat> Let' s start with a hello-world program.
+[20:17] <AdithyaBhat> Perl files CAN be denoted by a .pl extension.
+[20:17] <AdithyaBhat> It is an interpreted language.
+[20:18] <AdithyaBhat> But it can be compiled as well.
+[20:20] <AdithyaBhat> make a file with the extension ".pl"
+[20:20] <AdithyaBhat> Add the following lines to it.
+[20:20] <AdithyaBhat> print "Hello world\n";
+[20:21] <AdithyaBhat> And your hello world perl script is ready.
+[20:21] <AdithyaBhat> You can interpret it by running `perl file.pl'
+[20:21] <AdithyaBhat> Done?
+[20:21] <Samvid> yup
+[20:22] <swati> yeah
+[20:22] <siddhanth> yes
+[20:23] <Harita_Reddy> yes
+[20:25] <kaushik_sk> yes
+[20:25] <AdithyaBhat> run `whereis perl'
+[20:26] <AdithyaBhat> perl: /usr/bin/perl /usr/bin/perl5.22-x86_64-linux-gnu /etc/perl /usr/share/perl /usr/share/man/man1/perl.1.gz
+[20:26] <AdithyaBhat> You will get something like this.
+[20:26] == gauthan-m [~androirc@103.246.42.3] has joined #ieee-UNIX
+[20:27] <AdithyaBhat> Take the first location and add it as the first line in your script.
+[20:27] <AdithyaBhat> #!/usr/bin/perl
+[20:29] <AdithyaBhat> Now run `./file.pl'
+[20:30] <AdithyaBhat> All interpreted languages can be made to run in this fashion.
+[20:30] <AdithyaBhat> Done?
+[20:30] <siddhanth> yes
+[20:31] <Samvid> yup
+[20:31] == swati [~swati@117.200.116.233] has quit [Ping timeout: 258 seconds]
+[20:32] == swati [~swati@117.200.120.198] has joined #ieee-UNIX
+[20:32] <AdithyaBhat> Variables in perl start with a "$"
+[20:33] <AdithyaBhat> All statements in perl end with a semi colon.
+[20:33] <AdithyaBhat> And you can use here files in perl too.
+[20:33] <AdithyaBhat> Try this.
+[20:33] <AdithyaBhat> $x=<<cv
+[20:33] <AdithyaBhat> ..
+[20:33] <AdithyaBhat> ..
+[20:33] <AdithyaBhat> ..
+[20:33] <AdithyaBhat> cv
+[20:34] == swati_ [~swati@117.215.132.222] has joined #ieee-UNIX
+[20:34] <AdithyaBhat> Sorry, it should be $x=<<"cv";
+[20:35] <AdithyaBhat> And then write anything you wish.
+[20:35] <AdithyaBhat> End with a "cv".
+[20:35] <AdithyaBhat> Then print "x";
+[20:35] <AdithyaBhat> Let me know if you are done or get any errors.
+[20:36] == swati [~swati@117.200.120.198] has quit [Ping timeout: 250 seconds]
+[20:38] <AdithyaBhat> Done?
+[20:39] <kaushik_sk> how exactly d we end
+[20:39] <kaushik_sk> do*
+[20:39] <kaushik_sk> error
+[20:39] <Samvid> Is the x in quotes?
+[20:39] <AdithyaBhat> You end with whatever you gave as the here file name.
+[20:39] <AdithyaBhat> $x=<<"something";
+[20:39] == swati [~swati@14.99.46.135] has joined #ieee-UNIX
+[20:40] <AdithyaBhat> Then you must end with "something"
+[20:40] <AdithyaBhat> You can write anything in between the assignment and "something".
+[20:41] == swati_ [~swati@117.215.132.222] has quit [Ping timeout: 260 seconds]
+[20:41] == VARSH [0e633db7@gateway/web/freenode/ip.14.99.61.183] has joined #ieee-UNIX
+[20:42] <AdithyaBhat> Got the output?
+[20:42] <Harita_Reddy> yes
+[20:43] <AdithyaBhat> Use print "$x\n" to see the result.
+[20:44] <AdithyaBhat> Moving on to lists.
+[20:44] <kaushik_sk> Nope
+[20:44] <AdithyaBhat> In perl the arrays are represented as lists.
+[20:44] <AdithyaBhat> List variables start with an @ symbol.
+[20:45] <AdithyaBhat> Lists are a set of values surrounded by "(" and ")".
+[20:46] <AdithyaBhat> An example declaration is @names = ("a","b","c");
+[20:46] <AdithyaBhat> Like python, heterogenous lists are permitted.
+[20:46] <AdithyaBhat> Perl has the following data types.
+[20:46] <AdithyaBhat> SCALAR
+[20:46] <AdithyaBhat> LISTS
+[20:46] <AdithyaBhat> HASHES
+[20:46] <AdithyaBhat> REFERENCES
+[20:47] <AdithyaBhat> And some more.
+[20:47] <AdithyaBhat> Clear?
+[20:47] <siddhanth> yes
+[20:49] <Harita_Reddy> yes
+[20:49] <AdithyaBhat> You can the list variables like this: $names[0]
+[20:49] <AdithyaBhat> *access
+[20:51] <AdithyaBhat> Perl also has context specific variable assignment.
+[20:51] <AdithyaBhat> @x = @names;
+[20:51] <AdithyaBhat> The above statement copies the entire list.
+[20:53] <AdithyaBhat> Whereas $x = @names; stores the length of the list in x.
+[20:53] <AdithyaBhat> Clear?
+[20:53] == gauthamm_ [67f62a03@gateway/web/freenode/ip.103.246.42.3] has joined #ieee-UNIX
+[20:55] <AdithyaBhat> Hashes are key - value pairs.
+[20:55] <Samvid> yup
+[20:55] == gauthan-m [~androirc@103.246.42.3] has quit [Ping timeout: 246 seconds]
+[20:55] <AdithyaBhat> %x = ("a",1,"b",2,"c",3);
+[20:55] <AdithyaBhat> We can access the value of a key with $x{"a"}
+[20:56] <AdithyaBhat> You can get the list of keys with @keylist = keys %x;
+[20:57] <AdithyaBhat> An alternative way to declare to a hash is %x = ("a"=>1,"b"=>2,"c"=>3);
+[20:57] <AdithyaBhat> You can also directly add elements by declaring new key - value pairs.
+[20:57] <AdithyaBhat> $x{"d"} = 4;
+[20:58] <AdithyaBhat> Feel free to stop me if you have any questions.
+[20:59] <AdithyaBhat> Elements are deleted by `delete $x{"d"}'
+[20:59] <AdithyaBhat> Clear
+[20:59] <AdithyaBhat> ?
+[21:00] <siddhanth> yes
+[21:00] <Samvid> yeah
+[21:01] <AdithyaBhat> If you don't respond I'll take that as a yes and move on.
+[21:01] <AdithyaBhat> Conditionals in perl and similar to the ones in C.
+[21:01] <AdithyaBhat> if ( condition ){
+[21:02] <AdithyaBhat> statements;
+[21:02] <AdithyaBhat> }
+[21:02] <AdithyaBhat> else{
+[21:02] <AdithyaBhat> statements;
+[21:02] <AdithyaBhat> }
+[21:02] <AdithyaBhat> There is a slight change in else - if statemet.
+[21:02] <AdithyaBhat> *statement.
+[21:03] <AdithyaBhat> elsif ( condition ){
+[21:03] <AdithyaBhat> }
+[21:03] <AdithyaBhat> Note the missing e in "elsif"
+[21:03] <AdithyaBhat> The operators are similar to C.
+[21:03] <AdithyaBhat> ==,!=,>,>=,<,<=
+[21:04] <AdithyaBhat> "&&" or "and" can be used as logical operators.
+[21:04] <AdithyaBhat> Similarly "||" or "or" can be used.
+[21:05] <AdithyaBhat> "not" is used for logical not.
+[21:05] <AdithyaBhat> There are some special comparators in perl.
+[21:05] <AdithyaBhat> Try 3 <=> 4 and tell me what you get as the output.
+[21:07] <siddhanth> -1?
+[21:08] <Samvid> yeah -1
+[21:08] <AdithyaBhat> Try 4<=>3 and 5<=>5 too.
+[21:09] <Samvid> 1 and 0
+[21:09] <AdithyaBhat> Correct.
+[21:10] <AdithyaBhat> There's a similar operator "cmp" for strings.
+[21:10] <AdithyaBhat> Try "aa" cmp "b" and tell me the result.
+[21:10] <AdithyaBhat> Is everyone getting the output?
+[21:11] <Harita_Reddy> -1
+[21:12] <AdithyaBhat> Now what does that imply?
+[21:12] <AdithyaBhat> Based on your knowledge on 3<=>4.
+[21:13] <Samvid> Difference?
+[21:13] == swati [~swati@14.99.46.135] has quit [Ping timeout: 264 seconds]
+[21:13] <Harita_Reddy> compares the two strings
+[21:13] <Harita_Reddy> doesn't give difference though
+[21:14] <Harita_Reddy> first argument is lesser than second hence gives -1?
+[21:15] <Harita_Reddy> gives -1 even for  1 <=> 6
+[21:16] <Samvid> ^yeah, right
+[21:18] <AdithyaBhat> Good.
+[21:18] <AdithyaBhat> it returns three values.
+[21:19] <AdithyaBhat> -1 if left is < right.
+[21:19] <AdithyaBhat> 0 if equal.
+[21:19] <AdithyaBhat> 1 if left is greater than right.
+[21:20] <AdithyaBhat> Similarly cmp checks the ascii difference and ignores the string length.
+[21:20] <AdithyaBhat> "a" is less than "b"
+[21:20] <AdithyaBhat> "aa" is also < "b"
+[21:21] <AdithyaBhat> Perl also supports unless-else and unless-elsif-else conditionals.
+[21:21] <AdithyaBhat> unless statements are executed if the condition is false.
+[21:22] <AdithyaBhat> ^ is xor, ** is exponentiation.
+[21:22] <AdithyaBhat> & - bitwise and, | - bitwise or
+[21:22] == gauthan-m [~androirc@59.99.198.96] has joined #ieee-UNIX
+[21:22] <AdithyaBhat> ~ ones complement .
+[21:22] == mgauthamm [3b63c660@gateway/web/freenode/session] has joined #ieee-UNIX
+[21:23] == gauthamm_ [67f62a03@gateway/web/freenode/ip.103.246.42.3] has quit [Ping timeout: 250 seconds]
+[21:24] <AdithyaBhat> Tell me what outputs are given by `"aaa"."bbb" '  and `("str" x 8)'?
+[21:24] == mgauthamm [3b63c660@gateway/web/freenode/session] has quit [Changing host]
+[21:24] == mgauthamm [3b63c660@gateway/web/freenode/ip.59.99.198.96] has joined #ieee-UNIX
+[21:26] <AdithyaBhat> It also supports the ternary ?: operator.
+[21:26] <Samvid> aaabbb and strstrstrstr..8 times
+[21:27] <AdithyaBhat> Right.
+[21:28] <AdithyaBhat> So "." concatenates two strings. and ( x ) multiplies them.
+[21:28] <AdithyaBhat> Moving on to loops.
+[21:28] == swati_ [~swati@117.200.125.9] has joined #ieee-UNIX
+[21:28] <AdithyaBhat> It supports the normal for,while and do-while loops.
+[21:29] <AdithyaBhat> for($x=0;$x<10;$x++){..}
+[21:29] == mgauthamm [3b63c660@gateway/web/freenode/ip.59.99.198.96] has quit [Ping timeout: 250 seconds]
+[21:29] <AdithyaBhat> Perl also has until and foreach loops.
+[21:30] <AdithyaBhat> until(condition){
+[21:30] <AdithyaBhat> statements;
+[21:30] <AdithyaBhat> }
+[21:30] <AdithyaBhat> until loop executes till the condition becomes true.
+[21:31] <AdithyaBhat> foreach $var (1,2,3,4){
+[21:31] <AdithyaBhat> statements;
+[21:31] <AdithyaBhat> }
+[21:31] <AdithyaBhat> Loop support is very powerful in Perl.
+[21:32] <AdithyaBhat> It has continue, goto, next,last and redo.
+[21:32] <AdithyaBhat> continue { statements; }
+[21:33] <AdithyaBhat> these statements are executed in every iteration of the loop except when next,last,redo or last is used.
+[21:33] <AdithyaBhat> Like C labels are used.
+[21:33] <AdithyaBhat> Next skips the current iteration
+[21:33] <AdithyaBhat> last breaks thte loop.
+[21:34] <AdithyaBhat> next and last can be used along with labels to control the nested loops.
+[21:34] <AdithyaBhat> Like breaking the outer loop from the inner loop.
+[21:35] <AdithyaBhat> Clear?
+[21:35] <kaushik_sk> ok
+[21:35] <gauthan-m> Ok
+[21:36] <Samvid> yup
+[21:36] <AdithyaBhat> Moving on to Variable types.
+[21:36] <AdithyaBhat> There are private, local and state(static) variables.
+[21:37] <AdithyaBhat> private variables are declared as `my $x = 5;"
+[21:38] <AdithyaBhat> local variables as `local $x = 5"
+[21:38] <AdithyaBhat> state variables `state $x = 5"
+[21:40] <AdithyaBhat> private variables cannot be accessed from outside the function or object.
+[21:41] <AdithyaBhat> local variables also have the same property but they have dynamic scoping.
+[21:42] <AdithyaBhat> Example.if main calls fun1 which calls fun2 and main has $x = 5, fun1 has local $x = 6, then in fun2 print "$x\n"; will have the value 6.
+[21:43] <AdithyaBhat> This phenomenon is known as dynamic scoping.
+[21:43] <AdithyaBhat> Where the scope of the variable is in the order of the calling functions and not on the parent function.
+[21:44] <AdithyaBhat> I will send you a zip file consisting of some sample programs.
+[21:44] <AdithyaBhat> You can try them out to learn the different usages and features of perl.
+[21:48] <AdithyaBhat> Take a break now.
+[21:48] <AdithyaBhat> We will continue at 10.
+[21:54] == VARSH [0e633db7@gateway/web/freenode/ip.14.99.61.183] has quit [Quit: Page closed]
+[22:04] == mgauthamm [3b63c660@gateway/web/freenode/ip.59.99.198.96] has joined #ieee-UNIX
+[22:07] <AdithyaBhat> https://github.com/adithyabhatkajake/Perl-Programs/tree/master/Perl%20Programs
+[22:13] == kaushik_sk [~kaushik21@43.247.156.179] has quit [Quit: Leaving]
+[22:17] <AdithyaBhat> Next up is vi.
+[22:17] <AdithyaBhat> Vi is a famous in-cmdline editor.
+[22:17] <AdithyaBhat> It is lightweight.
+[22:18] <AdithyaBhat> And user - friendly.
+[22:18] <AdithyaBhat> `vi filename' will open the file in vi.
+[22:19] <AdithyaBhat> It has three modes: ex mode, command mode and the insert mode.
+[22:20] <AdithyaBhat> press i to goto insert mode.
+[22:20] <AdithyaBhat> press [esc] key to return to the command mode.
+[22:21] <AdithyaBhat> press [shift] + [:] to go to ex mode.
+[22:21] <AdithyaBhat> pressing [w][q] and then enter in ex mode will save and exit the file.
+[22:21] <AdithyaBhat> clear?
+[22:22] <AdithyaBhat> And everyone got the programs?
+[22:23] == gauthan-m [~androirc@59.99.198.96] has quit [Ping timeout: 252 seconds]
+[22:24] <Samvid> yup
+[22:24] <mgauthamm> yes
+[22:24] <Harita_Reddy> yes
+[22:26] == gauthan-m [~androirc@59.99.198.96] has joined #ieee-UNIX
+[22:26] == gauthan-m [~androirc@59.99.198.96] has quit [Client Quit]
+[22:26] <AdithyaBhat> Ok.
+[22:27] <AdithyaBhat> In the command mode, there are several commands.
+[22:27] <AdithyaBhat> In fact lots of them.
+[22:27] <AdithyaBhat> dd deletes the entire line.
+[22:28] <AdithyaBhat> x acts like the delete key.
+[22:28] <AdithyaBhat> X acts like backspace.
+[22:28] <AdithyaBhat> dw deletes a word.
+[22:31] <AdithyaBhat> yy copies the line.
+[22:32] <AdithyaBhat> p pastes the "yanked" content after thhe cursor position.
+[22:32] == swati_ [~swati@117.200.125.9] has quit [Ping timeout: 240 seconds]
+[22:32] <AdithyaBhat> P before the cursor.
+[22:35] == AdthyaBhat [dfe36a1a@gateway/web/freenode/ip.223.227.106.26] has joined #ieee-UNIX
+[22:35] <AdthyaBhat> There are many more commands like this.
+[22:36] == kaushik_sk [~kaushik21@43.247.156.179] has joined #ieee-UNIX
+[22:36] <AdthyaBhat> The main purpose of learning this command is that it doesn't need GUI or the Xserver to run.
+[22:36] == kaushiksk [~kaushik21@43.247.156.179] has joined #ieee-UNIX
+[22:36] == AdithyaBhat [6ace82cf@gateway/web/freenode/ip.106.206.130.207] has quit [Ping timeout: 250 seconds]
+[22:36] <AdthyaBhat> It was used on ttys when the first computers were there.
+[22:36] <AdthyaBhat> #nick AdithyaBhat
+[22:36] == kaushiksk [~kaushik21@43.247.156.179] has quit [Client Quit]
+[22:37] == AdthyaBhat has changed nick to AdithyaBhat
+[22:42] <AdithyaBhat> We will see if we can give a detailed explanation on vi.
+[22:42] <AdithyaBhat> It is just  a tool.
+[22:42] <AdithyaBhat> Perl, however is very important.
+[22:42] <AdithyaBhat> You can use it in your scripts.
+[22:42] == kaushik_sk [~kaushik21@43.247.156.179] has quit [Quit: Leaving]
+[22:43] <AdithyaBhat> The upcoming classes and very important.
+[22:44] <chinmay_dd> Everyone should use vim! ;)
+[22:45] <AdithyaBhat> In theory, everyody.
+[22:47] <AdithyaBhat> In the next sessions, we will diving into the workings of linux.
+[22:47] <AdithyaBhat> It'll help you in your projects and also other projects in general.
+[22:48] == Harita_Reddy [74481442@gateway/web/freenode/ip.116.72.20.66] has quit [Quit: Page closed]
+[22:51] == mgauthamm [3b63c660@gateway/web/freenode/ip.59.99.198.96] has quit [Quit: Page closed]
+[22:53] == Samvid [~Samvid@92.99.110.219] has quit [Quit: Good Night!]
+[22:55] == siddhanth [2d723df1@gateway/web/freenode/ip.45.114.61.241] has left #ieee-UNIX []
