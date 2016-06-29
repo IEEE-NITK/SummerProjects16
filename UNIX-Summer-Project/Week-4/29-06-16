@@ -1,0 +1,218 @@
+:AdithyaBhat#ieee-UNIX :Today I will be talking about the system maintainence.
+:AdithyaBhat#ieee-UNIX :Along with the system architecture.
+:AdithyaBhat#ieee-UNIX :Coz one is incomplete without the other.
+:AdithyaBhat#ieee-UNIX :You all remember the famous apt-get?
+:Harita_Reddy#ieee-UNIX :yes
+:ssp#ieee-UNIX :+yes
+:AdithyaBhat#ieee-UNIX :@ssp change your nick to something, us humans can understand.
+:gauthan-m#ieee-UNIX :Its me sorry
+:AdithyaBhat#ieee-UNIX :archive.ubuntu.com
+:AdithyaBhat#ieee-UNIX :apt-get just browses the contents of this ftp server.
+:AdithyaBhat#ieee-UNIX :You can go to this site and check it out.
+
+:ssp!673c4792@gateway/web/freenode/ip.103.60.71.146 NICK :gautham
+
+:AdithyaBhat#ieee-UNIX :Run apt-get update and see the site.
+:AdithyaBhat#ieee-UNIX :You can probably see the repositories in action.
+:AdithyaBhat#ieee-UNIX :Run apt-get update and see the site.
+:gauthan-m!~androirc@103.60.71.146 QUIT :Quit: AndroIRC - Android IRC Client ( http://www.androirc.com )
+:AdithyaBhat#ieee-UNIX :Lets start with the linux architecture.
+:AdithyaBhat#ieee-UNIX :Linux uses a software called grub in order to boot it.
+:AdithyaBhat#ieee-UNIX :It first loads a temporary file system called ramfs.
+:AdithyaBhat#ieee-UNIX :This fs has the information about a program known as init.
+:AdithyaBhat#ieee-UNIX :The role of the grub ends with the loading of the linux kernel.
+:AdithyaBhat#ieee-UNIX :The linux kernel loads the ramfs.
+:AdithyaBhat#ieee-UNIX :The ramfs further loads the actual file systems.
+:AdithyaBhat#ieee-UNIX :Once, the system reaches a ready state, it starts the display manager on a tty.
+:AdithyaBhat#ieee-UNIX :A tty is like a virtual monitor.
+:AdithyaBhat#ieee-UNIX :Monitor = screen.
+:AdithyaBhat#ieee-UNIX :By default it loads one tty.
+:AdithyaBhat#ieee-UNIX :And in that tty it starts the X windowing system.
+:AdithyaBhat#ieee-UNIX :The X windowing system then checks it's configurations and starts the display manager.
+:AdithyaBhat#ieee-UNIX :Once the display manager starts, you get the home screen/login screen.
+:AdithyaBhat#ieee-UNIX :When the system is loading the necessary programs, it shows the ubuntu logo, if you remember correctly.
+:AdithyaBhat#ieee-UNIX :This is known as the splash screen.
+:AdithyaBhat#ieee-UNIX :Also known as the plymouth splash screen.
+:AdithyaBhat#ieee-UNIX :Clear so far?
+:gautham#ieee-UNIX :yes
+:Samvid#ieee-UNIX :yup
+:AdithyaBhat#ieee-UNIX :Ok. 
+:AdithyaBhat#ieee-UNIX :Now, because of the flexibilty of linux you can customise everything.
+:AdithyaBhat#ieee-UNIX :From the appearance to the behaviour of grub to the display manager, everything can be changed.
+:AdithyaBhat#ieee-UNIX :You can run `top' to see the list of processes.
+:AdithyaBhat#ieee-UNIX :It is kind of like, the task manager in linux.
+:AdithyaBhat#ieee-UNIX :top - table of processes
+:AdithyaBhat#ieee-UNIX :the pr column is the priority.
+:AdithyaBhat#ieee-UNIX :ni is the nice value.
+:AdithyaBhat#ieee-UNIX :nice value means how nicely the process should behave with the other processes when competing for resources.
+:AdithyaBhat#ieee-UNIX :The nicer the process, the politer it is, the lesser the priority.
+:AdithyaBhat#ieee-UNIX :You can set the nice value of a process before running it using the nice command.
+:AdithyaBhat#ieee-UNIX :`nice' gives you the default nice value.
+:gautham#ieee-UNIX :syntax for top??
+:AdithyaBhat#ieee-UNIX :nice values range from -20 to 20/19.
+:AdithyaBhat#ieee-UNIX :just `top'
+:gautham#ieee-UNIX :ok
+:AdithyaBhat#ieee-UNIX :command column has the name of the processes.
+:AdithyaBhat#ieee-UNIX :The ones ending with d like kthreadd for example are called daemon(demon)s.
+:AdithyaBhat#ieee-UNIX :They are similar to services in windows.
+:AdithyaBhat#ieee-UNIX :They always run in the background.
+:AdithyaBhat#ieee-UNIX :Doing jobs like thread management, update network time, network data transfer, etc.
+:AdithyaBhat#ieee-UNIX :One daemon does one job.
+:AdithyaBhat#ieee-UNIX :The ones starting with k like kthreadd are kernel processes.
+:AdithyaBhat#ieee-UNIX :[Warning]: Do not kill kernel processes.
+:AdithyaBhat#ieee-UNIX :you can press q to quit it.
+:AdithyaBhat#ieee-UNIX :You can start a process and send it to the background with the &.
+:AdithyaBhat#ieee-UNIX :./script.sh &
+:AdithyaBhat#ieee-UNIX :And you can bring it back to the foreground with the `fg' command.
+:AdithyaBhat#ieee-UNIX :`fg'
+:AdithyaBhat#ieee-UNIX :will bring the script.sh back to the terminal.
+:AdithyaBhat#ieee-UNIX :you can run `jobs' to see the list of all jobs the current process in incharge of.
+:AdithyaBhat#ieee-UNIX :About nice.
+:AdithyaBhat#ieee-UNIX :you can run `jobs' to see the list of all jobs the current process in incharge of.
+:AdithyaBhat#ieee-UNIX :You can set the nice value of a process by `nice -n10 ./script'
+:AdithyaBhat#ieee-UNIX :clear?
+
+:siddhanth!2d723d81@gateway/web/freenode/ip.45.114.61.129 QUIT :
+
+:Samvid#ieee-UNIX :yes
+:gautham#ieee-UNIX :yes
+:swati_#ieee-UNIX :yes
+:AdithyaBhat#ieee-UNIX :Moving on then.
+:AdithyaBhat#ieee-UNIX :Priorities from 0 to 19/20 are given the users.
+:AdithyaBhat#ieee-UNIX :Negative priorities are assigned to the system processes.
+:AdithyaBhat#ieee-UNIX :So running an infinite loop in C, say with a priority of -20 will stop your GUI and crash your system.
+:AdithyaBhat#ieee-UNIX :So never execute programs with very low priority values.
+:AdithyaBhat#ieee-UNIX :Windows on the contrary uses NT file system.
+:AdithyaBhat#ieee-UNIX :The USB drives use FAT16/FAT32 file systems.
+
+:siddhanth!2d723d0c@gateway/web/freenode/ip.45.114.61.12 JOIN #ieee-UNIX
+
+:AdithyaBhat#ieee-UNIX :ext2/3/4 is theoretically and practically better than the ntfs for reasons which you will study in the next year.
+:AdithyaBhat#ieee-UNIX :Users belong to a group.
+:AdithyaBhat#ieee-UNIX :There are different groups.
+:AdithyaBhat#ieee-UNIX :Each user has an id called uid, and each group has an id called gid.
+:AdithyaBhat#ieee-UNIX :You might think you are the only user.
+:AdithyaBhat#ieee-UNIX :But each process also can have a user id.
+:AdithyaBhat#ieee-UNIX :You can check all the users by checking out the /etc/shadow file.
+:AdithyaBhat#ieee-UNIX :or /etc/passwd
+:AdithyaBhat#ieee-UNIX :root is a user.
+:AdithyaBhat#ieee-UNIX :sudo is a group.
+:AdithyaBhat#ieee-UNIX :you are also the user.
+:AdithyaBhat#ieee-UNIX :remember chmod?
+:AdithyaBhat#ieee-UNIX :chmod can edit the permissions for the user,group and the others.
+:AdithyaBhat#ieee-UNIX :chmod can edit the permissions for the user,group and the others.
+:AdithyaBhat#ieee-UNIX :It uses 3 bits for permissions.
+:AdithyaBhat#ieee-UNIX :First bit is executable bit, the second bit is the write bit and the third bit is for the read.
+:AdithyaBhat#ieee-UNIX :So if you want rwx the number will be 7.
+:AdithyaBhat#ieee-UNIX :for rw it is 6.
+:AdithyaBhat#ieee-UNIX :rwx(111); rw(110)
+:AdithyaBhat#ieee-UNIX :Can anyone tell me whatt read and execute will be?
+:swati_#ieee-UNIX :5
+:AdithyaBhat#ieee-UNIX :*what
+:AdithyaBhat#ieee-UNIX :Correct.
+:AdithyaBhat#ieee-UNIX :Did everyone understand the logic?
+:gautham#ieee-UNIX :yep
+:AdithyaBhat#ieee-UNIX :Ok.
+:AdithyaBhat#ieee-UNIX :now chmod +x file will add execute permission for all user, group and the others.
+:AdithyaBhat#ieee-UNIX :chmod u+x file will add execute permissions for just the user.
+:AdithyaBhat#ieee-UNIX :similarly chmod g+x file and chmod o+x file.
+:AdithyaBhat#ieee-UNIX :Now you can also give the absolute values.
+:AdithyaBhat#ieee-UNIX :chmod 777 file.
+:AdithyaBhat#ieee-UNIX :This will make the file rwx for the user,group and the others.
+
+:swati!~swati@14.96.65.56 JOIN #ieee-UNIX
+:AdithyaBhat_!dfe33173@gateway/web/freenode/ip.223.227.49.115 JOIN #ieee-UNIX
+
+:AdithyaBhat_#ieee-UNIX :All devices are files stored in the /dev/ directory.
+:AdithyaBhat_#ieee-UNIX :Including your hard disk, your pen drives, etc etc.
+
+:swati_!~swati@14.99.24.173 QUIT :
+:AdithyaBhat!dfe33173@gateway/web/freenode/ip.223.227.49.115 QUIT :
+
+:AdithyaBhat_#ieee-UNIX :\nick
+:AdithyaBhat_!dfe33173@gateway/web/freenode/ip.223.227.49.115 NICK :AdithyaBhat
+:AdithyaBhat#ieee-UNIX :All the C header files are stored in the /usr/include/ directory.
+:AdithyaBhat#ieee-UNIX :And all libraries like the math are stored in the /lib32 or /lib64 directories.
+:AdithyaBhat#ieee-UNIX :Linux is entirely written in C and asse,bly language.
+:AdithyaBhat#ieee-UNIX :*assembly
+:AdithyaBhat#ieee-UNIX :Linux is entirely written in C and asse,bly language.
+:AdithyaBhat#ieee-UNIX :Any doubts so far?
+:Samvid#ieee-UNIX :nope
+:gautham#ieee-UNIX :nope
+:AdithyaBhat#ieee-UNIX :Take a dinner break.
+:AdithyaBhat#ieee-UNIX :We will continue at 10:05.
+
+:AdithyaBhat!dfe33173@gateway/web/freenode/ip.223.227.49.115 QUIT :
+:AdithyaBhat_!dfe33173@gateway/web/freenode/ip.223.227.49.115 JOIN #ieee-UNIX
+:AdithyaBhat_!dfe33173@gateway/web/freenode/ip.223.227.49.115 NICK :AdithyaBhat
+:gauthan-m!~androirc@103.60.71.146 JOIN #ieee-UNIX
+:gauthan-m!~androirc@103.60.71.146 QUIT :Client Quit
+
+:AdithyaBhat#ieee-UNIX :Only a few topics left.
+:AdithyaBhat#ieee-UNIX :init, recovery and package management
+:AdithyaBhat#ieee-UNIX :init is the first process the kernel loads.
+:AdithyaBhat#ieee-UNIX :it is the parent of all daemons and other processes.
+:AdithyaBhat#ieee-UNIX :init has something known as runlevels.
+:AdithyaBhat#ieee-UNIX :These are values from 0 to 5.
+:AdithyaBhat#ieee-UNIX :runlevel 0 means system halt.
+:AdithyaBhat#ieee-UNIX :runlevel 1 stands for single user mode.
+:AdithyaBhat#ieee-UNIX :Usually for administrative purposes.
+:AdithyaBhat#ieee-UNIX :runlevel 2 is for multiuser local mode with networking but without networking service.
+:AdithyaBhat#ieee-UNIX :runlevel 3 is full multiuser with networking.
+:AdithyaBhat#ieee-UNIX :runlevel 5 is full multiuser with GUI.
+:AdithyaBhat#ieee-UNIX :runlevel 6 is for reboot.
+:AdithyaBhat#ieee-UNIX :services that start at each mode are usually stored in /etc/rcN.d
+:AdithyaBhat#ieee-UNIX :Obviously the default run level is 5.
+:AdithyaBhat#ieee-UNIX :However, in case the GUI fails, you might need to start recovery.
+:AdithyaBhat#ieee-UNIX :if only the gui is corrupt, you can boot upto runlevel 3.
+:AdithyaBhat#ieee-UNIX :In some critical cases, only runlevel 1 becomes possible.
+:AdithyaBhat#ieee-UNIX :The root user from the run level 1 then slowly starts the repair procedures.
+:AdithyaBhat#ieee-UNIX :Depending on the distribution, usually a number of alternate(previous) kernels are usually stored in case of emergencies.
+:AdithyaBhat#ieee-UNIX :When the system boots, the grub asks for other advanced options for the distribution where you can select the older kernel versions with different startup programs (upstart/systemd).
+:AdithyaBhat#ieee-UNIX :Alternatively, one can go to the recovery mode from the same.
+:AdithyaBhat#ieee-UNIX :Here, you can perform some basic operations like clean, failsafeX, etc.
+:AdithyaBhat#ieee-UNIX :clean usually checks the packages and removes incomplete or corrupt ones.
+:AdithyaBhat#ieee-UNIX :failsafeX tries to load the GUI in the most basic manner.
+:AdithyaBhat#ieee-UNIX :If all else fails, one has to fall down to a root prompt and collect the logs and debug the problem.
+:AdithyaBhat#ieee-UNIX :Note that any GUI operation can be performed in a terminal.
+:AdithyaBhat#ieee-UNIX :Including playing/pausing media, browsing websites,etc.
+:AdithyaBhat#ieee-UNIX :Hence, the linux recovery offers a powerful environment when compared to windows.
+:AdithyaBhat#ieee-UNIX :The last topic for the day is package management.
+:AdithyaBhat#ieee-UNIX :apt-get is a package management tool.
+:AdithyaBhat#ieee-UNIX :There are other package management tools as well.
+:AdithyaBhat#ieee-UNIX :aptitude, synaptic package manager, packman, etc.
+:AdithyaBhat#ieee-UNIX :Each distribution usually hosts all its repositories through one of these package managers.
+:AdithyaBhat#ieee-UNIX :debian based distros use apt-get.
+:AdithyaBhat#ieee-UNIX :opensuse uses yum.
+:AdithyaBhat#ieee-UNIX :fedora uses rpm.
+:AdithyaBhat#ieee-UNIX :arch uses packman and so on.
+:AdithyaBhat#ieee-UNIX :What these package managers do is that they collect a list of all the packages and their latest versions.
+:AdithyaBhat#ieee-UNIX :They also collect info about their dependencies.
+:AdithyaBhat#ieee-UNIX :Dependencies meaning library dependencies.
+:AdithyaBhat#ieee-UNIX :If the corresponding dependencies are UNMET, they are also downloaded.
+:AdithyaBhat#ieee-UNIX :They check this version list with the currently installed list.
+:AdithyaBhat#ieee-UNIX :If they are different, an update is available.
+:AdithyaBhat#ieee-UNIX :there is an option to add repositories.
+:AdithyaBhat#ieee-UNIX :add-apt-repository can be used.
+:AdithyaBhat#ieee-UNIX :After which, the lists will be fetched from all the repos.
+:AdithyaBhat#ieee-UNIX :Clear?
+:gautham#ieee-UNIX :yes
+:Samvid#ieee-UNIX :yup
+:swati#ieee-UNIX :yes
+:AdithyaBhat#ieee-UNIX :We have 3 more sessions remaining. 1) dependency management and kernel customizations
+:AdithyaBhat#ieee-UNIX :2) Version control with git
+:AdithyaBhat#ieee-UNIX :3) Awk and vi.
+:AdithyaBhat#ieee-UNIX :on July 1 the session will be on 10.
+:AdithyaBhat#ieee-UNIX :*1)
+:gautham#ieee-UNIX :pm right xp
+:AdithyaBhat#ieee-UNIX :8 pm.
+:AdithyaBhat#ieee-UNIX :Topic number 1.
+:AdithyaBhat#ieee-UNIX :We are done for today.
+:AdithyaBhat#ieee-UNIX :If you have questions, you can ask.
+
+:Samvid!~Samvid@92.99.110.219 QUIT :Quit: Goodnight!
+
+:gautham#ieee-UNIX :thank you
+:chinmay_dd#ieee-UNIX :Cool!
+
+:gautham!673c4792@gateway/web/freenode/ip.103.60.71.146 QUIT :Quit: goodnight
