@@ -1,0 +1,163 @@
+--- Log opened Wed Jul 06 19:41:16 2016
+19:41 ::: soundaryaramesh [~soundarya@117.202.67.158] has joined #ieee-UNIX
+19:41 ::: Irssi: #ieee-UNIX: Total of 3 nicks [0 ops, 0 halfops, 0 voices, 3 normal]
+19:41 ::: Irssi: Join to #ieee-UNIX was synced in 2 secs
+19:42 ::: Bharath [dfe31fd5@gateway/web/freenode/ip.223.227.31.213] has joined #ieee-UNIX
+19:55 ::: Bharath [dfe31fd5@gateway/web/freenode/ip.223.227.31.213] has left #ieee-UNIX []
+19:55 ::: Bharath [dfe31fd5@gateway/web/freenode/ip.223.227.31.213] has joined #ieee-UNIX
+19:57 ::: m_gautham [3b5b13de@gateway/web/freenode/ip.59.91.19.222] has joined #ieee-UNIX
+20:00 < soundaryaramesh> The session will start in another ten mins. Sorry for the delay guys.
+--- Log closed Wed Jul 06 20:11:28 2016
+--- Log opened Wed Jul 06 20:11:29 2016
+--- Log closed Wed Jul 06 20:16:56 2016
+--- Log opened Wed Jul 06 20:17:13 2016
+20:17 < catchchaos> Yes/no?
+20:17 < m_gautham> no
+20:17 < Bharath> No
+20:18 < catchchaos> Okay let's start from the beginning then
+20:18 < catchchaos> awk is actually defined by POSIX and therefore has to exist on all POSIX-conformant systems.
+20:19 < catchchaos> This means that if you are using Linux (like I am) you should be able to use awk in the command line
+20:19 < catchchaos> But this is a very minimalistic version
+20:19 < catchchaos> Containing very less functionality
+20:20 < catchchaos> go ahead and do "awk -W version"
+20:20 < catchchaos> Tell me what you get
+20:21 < m_gautham> awk: not an option: -w
+20:22 < m_gautham> sorry mistake
+20:22 < catchchaos> captial W
+20:22 < m_gautham> mawk 1.3.3 Nov 1996, Copyright (C) Michael D. Brennan  compiled limits: max NF             32767 sprintf buffer      2040
+20:22 < kaushiksk> GNU AWK 4.1.3
+20:23 < catchchaos> Oh wow! Kaushik looks like you already have gawk (more on this in a bit)
+20:23 < catchchaos> Are you using Ubuntu 14.04?
+20:24 < kaushiksk> My original ubuntu had some problems, currently running on VirtualBox
+20:24 < Bharath> I can do the operations as laptop screen is broken
+20:24 < kaushiksk> I downloaded the latest version from the ubuntu website
+20:24 < catchchaos> For the rest of you, you'll get an output like Gautham did
+20:25 < catchchaos> awk is provided in different packages
+20:25 < catchchaos> awk - the most common and will be found on most Unix-like systems, oldest version and inferior to newer ones.
+20:26 < catchchaos> mawk - fast AWK implementation which it's code base is based on a byte-code interpreter.
+20:27 < catchchaos> nawk - while the AWK language was being developed the authors released a new version (hence the n - new awk) to avoid confusion
+20:28 < catchchaos> gawk - abbreviated from GNU awk
+20:28 < catchchaos> Everyone except for Kaushik, go ahead and install gawk
+20:28 < catchchaos> sudo apt-get install gawk
+20:29 < catchchaos> After you're done run "which awk" and tell me what is the output
+20:31 < Bharath> I can not do operations 
+20:32 < catchchaos> What do you mean?
+20:32 < Bharath> My laptop screen is broken
+20:32 < Bharath> And joined channel from tab
+20:33 < kaushiksk> usr/bin/awk is what i get
+20:34 < m_gautham> usr/bin/awk
+20:34 < catchchaos> Lol @Bharath just keep in mind everything that I say in this session
+20:34 < catchchaos> And try it out for yourself when you get access to a laptop
+20:34 < catchchaos> Good, now Gautham run awk -W version again
+20:34 < Bharath> Sure
+20:35 < m_gautham> gettin GNU Awk 4.0.1
+20:36 < m_gautham> and a long message
+20:37 < catchchaos> Yup good
+20:37 < catchchaos> Now that we have gawk set up, let me tell you a little about awk
+20:38 < catchchaos> Okay before that, have you guys started shell scripting yet?
+20:39 < catchchaos> I'm sorry I haven't been able to keep track of all the sessions that have been held
+20:39 < m_gautham> yes
+20:40 < catchchaos> Nice
+20:40 < catchchaos> We can write scripts in that case
+20:41 < catchchaos> AWK is an interpreted programming language. It is very powerful and specially designed for text processing
+20:41 < catchchaos> AWK follows a simple workflow − Read, Execute, and Repeat
+20:41 < catchchaos> Take a look at this image
+20:41 < catchchaos> http://code.snipcademy.com/code/img/tutorials/shell-scripting/awk/workflow.svg
+20:42 < catchchaos> I like to think of an AWK program like a c++ class
+20:43 < catchchaos> With a constructor (BEGIN block), body and destructor(END block)
+20:44 < catchchaos> So AWK programs have BEGIN block, BODY block and END block
+20:44 < catchchaos> The BEGIN block gets executed at program start-up. It executes only once
+20:45 < catchchaos> The body block applies AWK commands on every input line of the file.
+20:45 < catchchaos> The END block executes at the end of the program.
+20:45 < catchchaos> Just keep this in mind while we write our first AWK program
+20:46 < catchchaos> Cool?
+20:46 < m_gautham> cool
+20:47 < kaushiksk> ok
+20:47 < Bharath> Yeah
+20:48 < catchchaos> First create a file to use AWK on
+20:48 < catchchaos> Have you started on vi yet?
+20:48 < catchchaos> I don't think so
+20:49 < catchchaos> So just open gedit (or some text editor)
+20:49 < catchchaos> Enter the following text
+20:49 < catchchaos> 1)  Amit    Physics  80 2)  Rahul   Maths    90 3)  Shyam   Biology  87 4)  Kedar   English  85 5)  Hari    History  89
+20:49 < catchchaos> On 5 separate lines
+20:50 < catchchaos> Tell me once you're done
+20:50 < catchchaos> FYI if you like GUI editors, check out sublime text
+20:51 < catchchaos> Later not now :p
+20:51 < catchchaos> Tell me once you're done creating the file
+20:51 < kaushiksk> done
+20:51 < catchchaos> Gautham too
+20:51 < m_gautham> done
+20:53 < catchchaos> To print this with a neat header, we use AWK
+20:53 < catchchaos> awk 'BEGIN{printf "Sr No\tName\tSub\tMarks\n"} {print}' file.txt
+20:53 < catchchaos> I've named the file file.txt
+20:54 < catchchaos> Can you relate this line to the picture I shared with you guys
+20:55 < catchchaos> One of try to explain how this line managed to output the text you see in the terminal
+20:56 < kaushiksk> in the BEGIN block we told awk to print the given string . So this will be executed first. Then we print the contents of file.txt
+20:57 < catchchaos> You need to remember that BEGIN block is executed just once, at the beginning of the program
+20:58 < catchchaos> And the body is {print}
+20:58 < catchchaos> This is iteratively applied to every line of the file
+20:58 < catchchaos> We have omitted the END block here
+20:58 < catchchaos> Understood?
+20:59 < Bharath> Yes
+20:59 < m_gautham> yes
+20:59 ::: gauthan-m [~androirc@45.125.38.129] has joined #ieee-UNIX
+21:01 < catchchaos> Ideally, you would write out a shell script to accomplish the same thing
+21:02 < catchchaos> https://docs.google.com/document/d/1QhFngU22f5spCDQJu0XblIlLt_vm6hZkoBY2ch5p1C4/edit?usp=sharing
+21:02 < catchchaos> This is what you're simple script would look like
+21:03 < catchchaos> This is applied using -f option
+21:03 < catchchaos> if the script was named test.awk, you'll need to type this in the command line
+21:04 < catchchaos> awk -f test.awk file.txt
+21:04 < catchchaos> Any doubts?
+21:05 < kaushiksk> no
+21:05 < catchchaos> This worked for you?
+21:07 < kaushiksk> yeah
+21:08 ::: Bharath [dfe31fd5@gateway/web/freenode/ip.223.227.31.213] has quit [Ping timeout: 250 seconds]
+21:08 < catchchaos> Gautham, you following?
+21:10 ::: Bharath [dfe3a4a5@gateway/web/freenode/ip.223.227.164.165] has joined #ieee-UNIX
+21:11 < catchchaos> Hello?
+21:12 < catchchaos> Moving on...
+21:15 ::: Harita_Reddy [74480e57@gateway/web/freenode/ip.116.72.14.87] has joined #ieee-UNIX
+21:15 ::: catchchaos_ [ca0c532b@gateway/web/freenode/ip.202.12.83.43] has joined #ieee-UNIX
+21:15 < catchchaos_> AWK views each input stream as a collection of records. Records can be thought of as individual lines, which are then divided into fields
+21:16 < catchchaos_> The fields are to be separated by whitespace characters (by default)
+21:16 ::: catchchaos [ca0c532b@gateway/web/freenode/ip.202.12.83.43] has quit [Ping timeout: 250 seconds]
+21:17 < catchchaos_> You can instruct awk to print only certain fields as follows
+21:17 < catchchaos_> awk '{print $3 "\t" $1}' file.txt
+21:18 < catchchaos_> This is quite similar to SQL, if any of are familiar
+21:19 < catchchaos_> You can format output like you need it
+21:20 < catchchaos_> This is done by setting separators in the BEGIN block
+21:20 < catchchaos_> Check out this link for more on this
+21:20 < catchchaos_> http://code.snipcademy.com/tutorials/shell-scripting/awk/records-fields
+21:22 < catchchaos_> One last thing
+21:22 < catchchaos_> AWK can be applied to selective lines based on a pattern
+21:23 < catchchaos_> Syntax for this is,
+21:24 < catchchaos_> awk '/pattern/ {action}' file.txt
+21:25 < catchchaos_> The action (print is one such action) is applied to a line only if the pattern is found on it
+21:26 < kaushiksk> the pattern is a regex right>
+21:26 < kaushiksk> or just a string ?
+21:27 < catchchaos_> Good question
+21:28 < catchchaos_> It is regex, generally when /pattern/ means a regex pattern
+21:28 < catchchaos_> This was true for sed as well right?
+21:30 < catchchaos_> AWK has a many options and a lot more functionality. I'll leave you with a link to tutorial
+21:30 < catchchaos_> http://www.tutorialspoint.com/awk/index.htm
+21:30 < catchchaos_> Finish this when you're free
+21:30 < catchchaos_> That's it for AWK today :)
+21:31 < catchchaos_> Did Soundarya tell you about vi?
+21:31 < kaushiksk> she sent us a document
+21:31 < kaushiksk> to read
+21:32 < kaushiksk> basics were told
+21:32 ::: gauthan-m [~androirc@45.125.38.129] has quit [Quit: AndroIRC - Android IRC Client ( http://www.androirc.com )]
+21:32 < catchchaos_> Okay yeah go through the document and finish the tutorial on awk as well
+21:32 < catchchaos_> That's it for today!
+21:33 < catchchaos_> We're closing early
+21:33 < catchchaos_> Any doubts?
+21:34 < kaushiksk> nope
+21:34 < catchchaos_> Goodnight then :)
+21:35 < m_gautham> goodnight and sorry for not responding:(
+21:35 ::: catchchaos_ [ca0c532b@gateway/web/freenode/ip.202.12.83.43] has quit [Quit: Page closed]
+21:35 ::: m_gautham [3b5b13de@gateway/web/freenode/ip.59.91.19.222] has quit [Quit: Page closed]
+21:40 ::: Bharath [dfe3a4a5@gateway/web/freenode/ip.223.227.164.165] has quit [Ping timeout: 250 seconds]
+21:41 ::: Harita_Reddy [74480e57@gateway/web/freenode/ip.116.72.14.87] has quit [Quit: Page closed]
+21:44 ::: soundaryaramesh [~soundarya@117.202.67.158] has left #ieee-UNIX []
+--- Log closed Wed Jul 06 21:44:57 2016
