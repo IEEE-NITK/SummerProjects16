@@ -1,0 +1,162 @@
+[20:47] == anand16 [3bb62ca7@gateway/web/freenode/ip.59.182.44.167] has joined #IEEE-SP-CP
+[20:51] == shamitha [6ac5768c@gateway/web/freenode/ip.106.197.118.140] has joined #IEEE-SP-CP
+[20:54] <sandeepmenon> we'll start at 9
+[20:59] == aditya_a [3d031503@gateway/web/freenode/ip.61.3.21.3] has joined #IEEE-SP-CP
+[21:01] <sandeepmenon> ok
+[21:01] <sandeepmenon> shall we start?
+[21:01] == varsh [0e606716@gateway/web/freenode/ip.14.96.103.22] has joined #IEEE-SP-CP
+[21:03] <sandeepmenon> ok starting...
+[21:03] <sandeepmenon> today we'll be seeing graphs
+[21:04] <sandeepmenon> What graphs are
+[21:04] <sandeepmenon> How to represent them in code
+[21:04] <sandeepmenon> Traversing graphs
+[21:04] <sandeepmenon> and some basic problems
+[21:04] == SagarB_97 [75d88214@gateway/web/freenode/ip.117.216.130.20] has joined #IEEE-SP-CP
+[21:04] == rupashi [75d8e3b3@gateway/web/freenode/ip.117.216.227.179] has joined #IEEE-SP-CP
+[21:05] <sandeepmenon> hi guys..
+[21:05] <sandeepmenon> we were just starting
+[21:05] <sandeepmenon> a graph has vertices and edges which connect them
+[21:06] <sandeepmenon> see this pic
+[21:06] <sandeepmenon> http://techieme.in/wp-content/uploads/graph3.png
+[21:07] <sandeepmenon> graph 1 has 5 vertices and 5 edges
+[21:07] <sandeepmenon> graph 2 has 4 vertices and 3 edges
+[21:07] <sandeepmenon> graph 3 : 4 vertices and 0 edges
+[21:07] <sandeepmenon> graph 4: 6 vertices and 4 edges
+[21:08] <sandeepmenon> in graphs 1 and 2 , you can see that all the edges are connected
+[21:08] <sandeepmenon> whereas in 3 and 4.. they are not
+[21:09] <sandeepmenon> about the edges
+[21:10] <sandeepmenon> all the above graphs have undirected edges
+[21:10] <sandeepmenon> that means its a two way bridge
+[21:10] <sandeepmenon> there are graphs with directed edges
+[21:10] <sandeepmenon> one way bridges if you may
+[21:10] <sandeepmenon> http://techieme.in/wp-content/uploads/graph10.png
+[21:11] <sandeepmenon> ^ see graph 8
+[21:11] <sandeepmenon> any doubts?
+[21:11] <varsh> nope
+[21:12] <aditya_a> no
+[21:12] <bharath> no
+[21:12] == vilas_m [3b63c7f4@gateway/web/freenode/ip.59.99.199.244] has joined #IEEE-SP-CP
+[21:12] <sandeepmenon> ok moving on
+[21:13] <sandeepmenon> every data structure that you might have seen before are made because they can be associated to real life model
+[21:13] <sandeepmenon> can you guess what graphs can be used for?
+[21:14] <sandeepmenon> no answers?
+[21:15] <sandeepmenon> ok moving on
+[21:15] <sandeepmenon> graphs can be used wherever there are connections, routes etc
+[21:15] <sandeepmenon> like in maps, networks etc
+[21:16] <sandeepmenon> the road structure of an entire area can be represented as a graph
+[21:16] <sandeepmenon> thats how distance between two places and all are calculated
+[21:16] <sandeepmenon> the pictures of graphs shown before, the edges were not labeled
+[21:17] <sandeepmenon> edges can be given weights
+[21:17] <sandeepmenon> which means it requires that much to travel that edge
+[21:17] <sandeepmenon> a weight can be distance, time, cost etc
+[21:20] <sandeepmenon> now.. how to represent graphs in your code
+[21:20] <sandeepmenon> if you get any doubts in between.. feel free to assk
+[21:20] <sandeepmenon> ok..
+[21:21] <sandeepmenon> two main methods are 1. adjacency matrix and 2. adjacency list
+[21:21] <sandeepmenon> if matrix is adj[m][m] there are m vertices
+[21:22] <sandeepmenon> and adj[i][j] describes the edge between vertex i and vertex j
+[21:22] <sandeepmenon> http://techieme.in/wp-content/uploads/graph3.png
+[21:23] <sandeepmenon> sorry not that one
+[21:23] <sandeepmenon> in this :
+[21:23] <sandeepmenon> http://d1gjlxt8vb0knt.cloudfront.net//wp-content/uploads/graph_representation12.png
+[21:23] <sandeepmenon> the vertices are 0,1,2,3,4
+[21:23] <sandeepmenon> adjacency matrix will be:
+[21:24] <sandeepmenon> http://d1gjlxt8vb0knt.cloudfront.net//wp-content/uploads/adjacency_matrix_representation.png
+[21:24] <sandeepmenon> 0 1 0 0 1
+[21:24] <sandeepmenon> 1 0 1 1 1
+[21:24] <sandeepmenon> 0 1 0 1 0
+[21:24] <sandeepmenon> 0 1 1 0 1
+[21:24] <sandeepmenon> 1 1 0 1 0
+[21:25] <sandeepmenon> row i is for vertex i and row j is for vertex j
+[21:25] <sandeepmenon> notice that all cells where i==j are 0
+[21:25] <sandeepmenon> means that there is no self loop: meaning no edge from one vertex to itself
+[21:26] <sandeepmenon> here adj[0][1]=1
+[21:26] <sandeepmenon> means there is an edge between vertex 0 and 1
+[21:26] <sandeepmenon> adj[1][0] is also 1
+[21:27] <sandeepmenon> what can that mean?
+[21:27] <sandeepmenon> notice that adj[i][j]=adj[j][i] for all i and j
+[21:27] <aditya_a> undirected edges?
+[21:27] <sandeepmenon> what does that say about the graph?
+[21:27] <sandeepmenon> yes : correct
+[21:28] <sandeepmenon> so.. what kind of an adjacency matrix will we get for an undirected graph?
+[21:29] <sandeepmenon> the matrix will be symmetric
+[21:30] <sandeepmenon> here the value 1 indicates that an edge is present
+[21:30] <sandeepmenon> if the edges are weighted, then instead of 1, the weight can be stored in the matrix
+[21:31] <sandeepmenon> any doubts?
+[21:32] <aditya_a> no
+[21:32] <varsh> no
+[21:33] <sandeepmenon> ok
+[21:33] <bharath> no
+[21:33] <sandeepmenon> next adjacency list
+[21:33] <anand16> main disadvantage of adjacency matrix is that it needs O(mn) space
+[21:34] <anand16> but do we really need that much space
+[21:34] <anand16> ?
+[21:34] <anand16> no
+[21:35] <anand16> we can store all the information required to represent the graph by just storing the edges
+[21:36] <anand16> such a representation is called adjacency list
+[21:37] <anand16> in this every node is associated with a linked list and all the nodes to which it is connected to is present in that linked list
+[21:38] == san260 [672364d6@gateway/web/freenode/ip.103.35.100.214] has joined #IEEE-SP-CP
+[21:39] <sandeepmenon> adjacency list for the previous example  :  http://d1gjlxt8vb0knt.cloudfront.net//wp-content/uploads/adjacency_list_representation.png
+[21:39] == feeb [6f7dc417@gateway/web/freenode/ip.111.125.196.23] has joined #IEEE-SP-CP
+[21:40] == vbaidya [dfe32817@gateway/web/freenode/ip.223.227.40.23] has joined #IEEE-SP-CP
+[21:40] <anand16> in our codes we don't use linked lists though
+[21:40] <anand16> we use vectors
+[21:42] <anand16> like this
+[21:42] <anand16> vector<int> adjList[100005];
+[21:44] <anand16> and suppose there is a edge between a and b in an undirected graph we do
+[21:44] <anand16> adjList[p].push_back(q);             adjList[q].push_back(p);
+[21:44] <anand16> *p and q
+[21:47] <anand16> okay that's all about representation
+[21:51] == vbaidya [dfe32817@gateway/web/freenode/ip.223.227.40.23] has quit [Ping timeout: 250 seconds]
+[21:51] <anand16> next we need to traverse the graph
+[21:52] == asdgfjldkfjgldkj [~ioefefwij@103.61.73.158] has joined #IEEE-SP-CP
+[21:52] <anand16> bfs and dfs are the two basic graph traversal algorithms
+[21:52] <anand16> bfs stands for breadth first search and dfs for depth first search
+[21:52] <sandeepmenon> https://www.google.co.in/search?q=breadth+first+search&espv=2&biw=768&bih=379&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjU8f-do-TNAhUIwI8KHfYVCCIQ_AUICCgD&dpr=2.5#imgrc=YZ7j4iAqLQKOVM%3A
+[21:53] <sandeepmenon> basic idea ^
+[21:54] <anand16> so first we'll see bfs
+[21:54] <anand16> as the name suggests we traverse the graph breadth wise
+[21:55] <anand16> starting from a vertex we explore all the vertices connected directly to it and then do the same for those connected vertices
+[21:55] <anand16> see this - https://upload.wikimedia.org/wikipedia/commons/4/46/Animated_BFS.gif
+[21:57] <anand16> we can use queues to do this in the order depicted by the image
+[21:58] <anand16> this is the code for bfs - http://ideone.com/xC5Fao
+[21:59] <sandeepmenon> thats bfs
+[21:59] <sandeepmenon> any doubts
+[22:00] <sandeepmenon> ok
+[22:00] <sandeepmenon> bfs was breadth first search
+[22:00] == asdgfjldkfjgldkj [~ioefefwij@103.61.73.158] has left #IEEE-SP-CP ["Leaving"]
+[22:01] <sandeepmenon> which means from a source, all its neighbouring vertices are visited, then their neighbours and so on
+[22:01] <sandeepmenon> its level by level
+[22:01] <sandeepmenon> only when all vertices at some k edges away from a vertex are visited, the k+1 edges away vertices will be visited
+[22:02] <sandeepmenon> Depth First Search or dfs, is quite the opposite
+[22:02] <sandeepmenon> it traverses depth first as the name suggests
+[22:02] <sandeepmenon> https://upload.wikimedia.org/wikipedia/commons/7/7f/Depth-First-Search.gif
+[22:02] <sandeepmenon> ^ see this for better understanding
+[22:03] <sandeepmenon> from a source, the full path is traversed until no further is possible
+[22:03] <sandeepmenon> onlyy then other vertices are visited
+[22:04] <sandeepmenon> a queue was used for bfs
+[22:04] <sandeepmenon> any guesses on dfs?
+[22:04] <SagarB_97> stack
+[22:04] <sandeepmenon> yes
+[22:04] <sandeepmenon> http://ideone.com/sKO5vy
+[22:04] <sandeepmenon> see this code
+[22:05] <sandeepmenon> both bfs and dfs can be written recursively
+[22:05] <sandeepmenon> you guys can try that out later
+[22:05] <sandeepmenon> especially,.. dfs recusrion is very easy to code
+[22:06] <sandeepmenon> thats it for today
+[22:06] <sandeepmenon> feel free to ask doubts
+[22:06] <sandeepmenon> we'll be here for some more time
+[22:06] <sandeepmenon> we'll post some questions for you guys to try out
+[22:06] <sandeepmenon> https://www.codechef.com/problems/FIRESC
+[22:07] <sandeepmenon> https://www.codechef.com/problems/EMRGENCY
+[22:08] <sandeepmenon> you guys make sure that you participate in as much as competitions as possible
+[22:08] <sandeepmenon> especially codechef long
+[22:08] <sandeepmenon> http://www.spoj.com/problems/BOTTOM/
+[22:08] <sandeepmenon> we'll put up more questions in the group
+[22:08] <sandeepmenon> you guys can find them too.. there are a lot of them
+[22:08] <sandeepmenon> thats it
+[22:09] <sandeepmenon> you guys can leave
+[22:09] <sandeepmenon> feel free to ask any doubts
+[22:09] == bharath [75c7fcac@gateway/web/freenode/ip.117.199.252.172] has quit [Quit: Page closed]
+[22:10] <anand16> good night :)
+[22:10] <sandeepmenon> good night
