@@ -1,0 +1,204 @@
+:Adithyabhatkajak #ieee-UNIX :Is everyone here?
+
+:kaushiksk!~kaushiksk@43.247.159.133 JOIN #ieee-UNIX
+
+:Adithyabhatkajak #ieee-UNIX :Let's start with dependency management.
+:Adithyabhatkajak #ieee-UNIX :You will be learning about dependency management using Makefiles and a brief overview of dependency management with maven.
+:Adithyabhatkajak #ieee-UNIX :Let us start by writing a modular C program.
+:Adithyabhatkajak #ieee-UNIX :Create a .h file with say 2 function definitions in it.
+:Adithyabhatkajak #ieee-UNIX :*function prototype declaration only.
+:Adithyabhat #ieee-UNIX :done with the .h file?
+:kaushiksk #ieee-UNIX :yeah
+:Adithyabhat #ieee-UNIX :now create two .c files 
+:Adithyabhat #ieee-UNIX :each containing the functions definitions.
+:Adithyabhat #ieee-UNIX :if you had void funct(); in your .h file, then
+:Adithyabhat #ieee-UNIX :define it in those .c files.
+:Adithyabhat #ieee-UNIX :void funct(){
+:Adithyabhat #ieee-UNIX :something..
+:Adithyabhat #ieee-UNIX :}
+
+:Harita_Reddy!7449d2e4@gateway/web/freenode/ip.116.73.210.228 QUIT :Ping timeout: 250 seconds
+
+:Adithyabhat #ieee-UNIX :After defining your function, create another .c file with the main function. 
+:Adithyabhat #ieee-UNIX :call these two functions in the main function.
+:Adithyabhat #ieee-UNIX :and #include your .h file on the top.
+:Adithyabhat #ieee-UNIX :and compile your file like this gcc file_with_main.c one.c two.c -I ./
+:Adithyabhat #ieee-UNIX :Let me know when you are done compiling and running.
+:kaushiksk #ieee-UNIX :done
+:Adithyabhat #ieee-UNIX :Tis is how you write modular programs in C.
+:Adithyabhat #ieee-UNIX :Tis is how you write modular programs in C.
+:Adithyabhat #ieee-UNIX :But each file must keep track of it's dependency file.
+:Adithyabhat #ieee-UNIX :You can do this by making use of the make utility.
+:Adithyabhat #ieee-UNIX :Sorry for the delay.
+:Adithyabhat #ieee-UNIX :you can create what is known as build rules and store them in a makefile.
+:Adithyabhat #ieee-UNIX :For illustrative purposes let us create a makefile.
+:Adithyabhat #ieee-UNIX :create a file called makefile.
+:Adithyabhat #ieee-UNIX :add these lines.
+:Adithyabhat #ieee-UNIX :all: file_with_main.c one.c two.c something.h
+:Adithyabhat #ieee-UNIX :\tgcc file_with_main.c one.c two.c -I ./
+:Adithyabhat #ieee-UNIX :By \t, i mean a tab.
+:Adithyabhat #ieee-UNIX :Note that, the tab is absolutely necessary.
+:Adithyabhat #ieee-UNIX :Now run make in that folder.
+:Adithyabhat #ieee-UNIX :Let me know when you are done or if you get stuck?
+:Adithyabhat #ieee-UNIX :*!
+:kaushiksk #ieee-UNIX :running make compiles the program
+:Adithyabhat #ieee-UNIX :Try running make 2 or 3 times.
+:Adithyabhat #ieee-UNIX :make will recompile only if the target dependencies have changed.
+:Adithyabhat #ieee-UNIX :The general syntax to write make rules are as follows.
+:Adithyabhat #ieee-UNIX :target: dependencies
+:Adithyabhat #ieee-UNIX :\tcommands...
+:Adithyabhat #ieee-UNIX :You can also use MACROS which are similar to shell variables.
+:Adithyabhat #ieee-UNIX :Like CC = gcc
+:Adithyabhat #ieee-UNIX :CFLAGS = -I ./
+:Adithyabhat #ieee-UNIX :And then use commands like,
+:Adithyabhat #ieee-UNIX :$(CC) $(CFLAGS) main.c func.c two.c
+:Adithyabhat #ieee-UNIX :This is how dependencies will be managed by make.
+:Adithyabhat #ieee-UNIX :Otherwise it is a tedious job to compile everything again, just because we change one file.
+:Adithyabhat #ieee-UNIX :It is particularly useful when writing larger programs .
+:Adithyabhat #ieee-UNIX :If your project work is based on C, you can use the modular approach and use make files.
+:Adithyabhat #ieee-UNIX :Convention to name the build rule file is "makefile" or "Makefile"
+:Adithyabhat #ieee-UNIX :If both exist, then "makefile" will be used.
+:Adithyabhat #ieee-UNIX :Only if "makefile" is unavailable, then it checks for "Makefile".
+:Adithyabhat #ieee-UNIX :Clear?
+:Adithyabhat #ieee-UNIX :This is all about makefiles.
+:Adithyabhat #ieee-UNIX :You can add a clean target too.
+:Adithyabhat #ieee-UNIX :clean:
+:Adithyabhat #ieee-UNIX :\t rm -rf a.out
+:Adithyabhat #ieee-UNIX :Note that it has to be a tab. Even four spaces are not considered as tabs.
+:Adithyabhat #ieee-UNIX :Next topic is Kernel Customization.
+:Adithyabhat #ieee-UNIX :It becomes very easy.
+:Adithyabhat #ieee-UNIX :As you already have the knowledge of makefiles.
+:Adithyabhat #ieee-UNIX :@siddhanth and @kaushik do you have the source code of the latest linux kernel?
+
+:bharath!3b5d7575@gateway/web/freenode/ip.59.93.117.117 JOIN #ieee-UNIX
+
+:kaushiksk #ieee-UNIX :yup
+:kaushiksk #ieee-UNIX :the tar file
+:Adithyabhat #ieee-UNIX :@bharath do you have the source code?
+:siddhanth #ieee-UNIX :no i don't have the latest one :(
+:Adithyabhat #ieee-UNIX :extract it.
+:Adithyabhat #ieee-UNIX :download it from kernel.org now.
+:Adithyabhat #ieee-UNIX :It's around 80mb ish.
+:siddhanth #ieee-UNIX :yeah put it on download already
+:bharath #ieee-UNIX :sry i went to my friend birthdayparty and i am late
+:bharath #ieee-UNIX :what code?
+:Adithyabhat #ieee-UNIX :Source code of linux kernel.
+:Adithyabhat #ieee-UNIX :Download it from kernel.org
+:Adithyabhat #ieee-UNIX :Let me know when you are done.
+:bharath #ieee-UNIX :is it 4.6.3
+:Adithyabhat #ieee-UNIX :yeah. I had trouble extracting it.
+:bharath #ieee-UNIX :i have it and i extracted it
+:Adithyabhat #ieee-UNIX :So i have 4.5.9 or something.
+:siddhanth #ieee-UNIX :it might take some time for me coz my net speed is slow
+:bharath #ieee-UNIX :now what should i do?
+:Adithyabhat #ieee-UNIX :after extracting, open a terminal in that folder.
+:bharath #ieee-UNIX :next
+:Adithyabhat #ieee-UNIX :@kaushik you can check out it's makefile to see the magnitude of make power.
+:Adithyabhat #ieee-UNIX :@bharath: sudo apt-get install linux-header-$(uname -r)
+:Adithyabhat #ieee-UNIX :run make menuconfig
+:Adithyabhat #ieee-UNIX :install any ncurses dependencies it asks for.
+:Adithyabhat #ieee-UNIX :Once you run make menuconfig, you will realise the true potential of linux.
+:Adithyabhat #ieee-UNIX :Everyone done?
+:bharath #ieee-UNIX :it says couldnt find any package from glob and regex
+
+:Harita_Reddy!7449d2e4@gateway/web/freenode/ip.116.73.210.228 JOIN #ieee-UNIX
+
+:kaushiksk #ieee-UNIX :and unable to locate linux-header-4.4.0-28 generic
+:Adithyabhat #ieee-UNIX :Which stage did you get the error?
+:kaushiksk #ieee-UNIX :"reading state information...Done"
+:Adithyabhat #ieee-UNIX :@kaushik skip to `make menuconfig'
+:kaushiksk #ieee-UNIX :After that
+:bharath #ieee-UNIX :yes that what it says
+:kaushiksk #ieee-UNIX :uh error again.
+:Adithyabhat #ieee-UNIX :linux-headers-$(uname -r)
+:Adithyabhat #ieee-UNIX :headerS
+:Adithyabhat #ieee-UNIX :Notice the S
+:Adithyabhat #ieee-UNIX :.
+:Adithyabhat #ieee-UNIX :so sudo apt-get install linux-headers-$(uname -r)
+:kaushiksk #ieee-UNIX :uh
+:Adithyabhat #ieee-UNIX :What error?
+:bharath #ieee-UNIX :now its done
+:kaushiksk #ieee-UNIX :ok install done
+:kaushiksk #ieee-UNIX :menuconfig says fatal eroor: curses.h no such file or directory
+:kaushiksk #ieee-UNIX :error*
+:bharath #ieee-UNIX :same error
+:Adithyabhat #ieee-UNIX :sudo apt-get install ncurses-base
+:Adithyabhat #ieee-UNIX :sudo apt-get install libncurses5-dev
+:Adithyabhat #ieee-UNIX :sudo apt-get install gawk zlib1g zlib1g-dev libncurses5 flex build-essential
+:Adithyabhat #ieee-UNIX :Now make menuconfig should work.
+:kaushiksk #ieee-UNIX :ok
+:kaushiksk #ieee-UNIX :that worked
+:kaushiksk #ieee-UNIX :a setup menu loaded
+:Adithyabhat #ieee-UNIX :It's a config menu.
+:Adithyabhat #ieee-UNIX :You can set all the kernel options.
+:Adithyabhat #ieee-UNIX :You can make the kernel lighter by removing all the unnecessary modules like AMD ones if you are not using any AMD harrdware.
+:Adithyabhat #ieee-UNIX :If you know the exact hardware specification of your computer, like PCI bridge driver, bus device etc, you can tune the kernel to make it atleast 20 times faster than the generic configuration.
+:Adithyabhat #ieee-UNIX :You can even remove support for legacy file systems like sun FS, IBM fs and so on.
+:Adithyabhat #ieee-UNIX :Reducing the kernel footprint.
+:Adithyabhat #ieee-UNIX :By default, the generic linux kernel is a monolithic modular kernel.
+:Adithyabhat #ieee-UNIX :It's kind of like one big main.c running all the time.
+:Adithyabhat #ieee-UNIX :Approporiate function code (modules) will be attached to this main.c (monolithic kernel) to add extra features.
+:Adithyabhat #ieee-UNIX :Usually these modules are device drivers.
+:Adithyabhat #ieee-UNIX :Save the config while exiting menuconfig.
+:Adithyabhat #ieee-UNIX :now run `make -jx'
+:Adithyabhat #ieee-UNIX :where x is number of cores in your system + 1.
+:Adithyabhat #ieee-UNIX :So if you have a quad core  machine run make -j5
+:Adithyabhat #ieee-UNIX :You can run lscpu to find out cpu info.
+:Adithyabhat #ieee-UNIX :Done?
+:Adithyabhat #ieee-UNIX :It should start compiling your kernel.
+:kaushiksk #ieee-UNIX :error with openssl/opensslv.h
+:Adithyabhat #ieee-UNIX :Any questions?
+:bharath #ieee-UNIX :same error as kaushik
+:Adithyabhat #ieee-UNIX :Done building your kernel?
+:Adithyabhat #ieee-UNIX :The install part of the kernel needs restart.
+:Adithyabhat #ieee-UNIX :Hence, I'll just tell you the instructions.
+:Adithyabhat #ieee-UNIX :"sudo make install"
+:Adithyabhat #ieee-UNIX :To uninstall you will have to delete some files in /boot directory by booting into a previous kernel.
+:Adithyabhat #ieee-UNIX :Obviously deleting a kernel when it is running can cause havoc in your system.
+:Adithyabhat #ieee-UNIX :You can write your own make install, make menuconfig scripts.
+:Adithyabhat #ieee-UNIX :It is very easy.
+:Adithyabhat #ieee-UNIX :To uninstall you will have to delete some files in /boot directory by booting into a previous kernel.
+:Adithyabhat #ieee-UNIX :Is everyone clear?
+:kaushiksk #ieee-UNIX :ok
+:kaushiksk #ieee-UNIX :how do we boot into a previous kernel ?
+:Adithyabhat #ieee-UNIX :Select other advanced options for ubuntu in the boot menu.
+:Adithyabhat #ieee-UNIX :You can choose your previously installed kernels.
+:kaushiksk #ieee-UNIX :alright
+:Adithyabhat #ieee-UNIX :One last topic remaining.
+:Adithyabhat #ieee-UNIX :Maven.
+:Adithyabhat #ieee-UNIX :It is similar to make in some ways.
+:Adithyabhat #ieee-UNIX :However, it is built for java.
+:Adithyabhat #ieee-UNIX :And source files are placed in a specific directory structure.
+:Adithyabhat #ieee-UNIX :Android uses gradle for project and dependency management.
+:Adithyabhat #ieee-UNIX :For those of you who know android programming, must have seen a lot of gradle scripts lying around everywhere.
+:Adithyabhat #ieee-UNIX :The order of complexity is as follows.
+:Adithyabhat #ieee-UNIX :Ant => Maven => Gradle
+:Adithyabhat #ieee-UNIX :However, Ant is also more powerful.
+:Adithyabhat #ieee-UNIX :You can learn about Ant, Maven and gradle next year, when you know an object oriented language.
+:Adithyabhat #ieee-UNIX :For all practical purposes, if you ever come across a maven package* , then all you have to do is to run mvn install
+:Adithyabhat #ieee-UNIX :*You will know a package is made by maven, when you see a file called pom.xml
+:Adithyabhat #ieee-UNIX :POM stands for Project Object Model
+:Adithyabhat #ieee-UNIX :Maven is so powerful that it can auto generate documentation for you.
+:Adithyabhat #ieee-UNIX :It can even generate web help pages.
+:Adithyabhat #ieee-UNIX :It has a lot of plugins.
+:Adithyabhat #ieee-UNIX :Imagine make utility with a lot of plugins = maven.
+:Adithyabhat #ieee-UNIX :sudo apt-get install maven
+
+:Harita_Reddy!7449d2e4@gateway/web/freenode/ip.116.73.210.228 QUIT :Quit: Page closed
+
+:Adithyabhat #ieee-UNIX :You can start working on maven by running 
+:Adithyabhat #ieee-UNIX :mvn -B archetype:generate \ 
+:Adithyabhat #ieee-UNIX :-DarchetypeGroupId=something \
+:Adithyabhat #ieee-UNIX :-DgroupId=something \
+:Adithyabhat #ieee-UNIX :-DartifactId=appname
+:Adithyabhat #ieee-UNIX :This will generate a template architecture for you to start working on.
+:Adithyabhat #ieee-UNIX :You can immediately run "mvn clean" "mvn test" and "mvn package"
+:Adithyabhat #ieee-UNIX :Eclipse IDE by default, uses maven.
+:Adithyabhat #ieee-UNIX :And, 
+:Adithyabhat #ieee-UNIX :I am done for today.
+:Adithyabhat #ieee-UNIX :Tomorrow's session will be on version controlling with git.
+:Adithyabhat #ieee-UNIX :It should be a very short session.
+:Adithyabhat #ieee-UNIX :You can learn more about maven from https://maven.apache.org/guides/getting-started/
+:Adithyabhat #ieee-UNIX :or from http://tutorials.jenkov.com/maven/maven-tutorial.html
+
+:bharath!3b5d7575@gateway/web/freenode/ip.59.93.117.117 PART #ieee-UNIX
